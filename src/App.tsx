@@ -109,51 +109,105 @@ export default function App() {
           </div>
 
           {/* Grid of 4 items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[36px] mb-16">
             {[
               {
                 num: "01",
                 title: "Google e Busca Orgânica",
-                desc: "Onde o ranqueamento tradicional e a relevância sistêmica continuam decisivos para etapas iniciais de descoberta, consideração e consideração de marca."
+                desc: "Onde o ranqueamento tradicional e a relevância sistêmica continuam decisivos para etapas iniciais de descoberta, consideração e consideração de marca.",
+                svg: (
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="11" y1="8" x2="11" y2="14" strokeLinecap="round" />
+                    <line x1="8" y1="11" x2="14" y2="11" strokeLinecap="round" />
+                  </svg>
+                )
               },
               {
                 num: "02",
                 title: "SEO Local e Mapas",
-                desc: "Filar de extrema importância para empresas dependentes de relevância regional, intenção comercial imediata e tomadas de decisão próximas da conversão fisica."
+                desc: "Filar de extrema importância para empresas dependentes de relevância regional, intenção comercial imediata e tomadas de decisão próximas da conversão fisica.",
+                svg: (
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                )
               },
               {
                 num: "03",
                 title: "Autoridade Temática",
-                desc: "O ecossistema que auxilia a marca do cliente a ser encontrada com as devidas respostas estruturadas, gerando credibilidade tática comparativa e confiança contextual."
+                desc: "O ecossistema que auxilia a marca do cliente a ser encontrada com as devidas respostas estruturadas, gerando credibilidade tática comparativa e confiança contextual.",
+                svg: (
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" strokeLinecap="round" strokeLinejoin="round" />
+                    <polyline points="2 17 12 22 22 17" strokeLinecap="round" strokeLinejoin="round" />
+                    <polyline points="2 12 12 17 22 12" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )
               },
               {
                 num: "04",
                 title: "Ambientes Generativos",
-                desc: "Contextos como Google AI Overviews, ChatGPT Search, Gemini, Copilot, Perplexity e outras respostas por IA, onde clareza técnica e estruturas semânticas pautam recomendações de marca."
+                desc: "Contextos como Google AI Overviews, ChatGPT Search, Gemini, Copilot, Perplexity e outras respostas por IA, onde clareza técnica e estruturas semânticas pautam recomendações de marca.",
+                svg: (
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )
               }
             ].map((box) => (
               <div
                 id={`ambiente-box-${box.num}`}
                 key={box.num}
-                className="flex flex-col text-left space-y-4 pt-4 border-t border-white/5"
+                className="luxury-card group"
               >
-                <div className="w-9 h-9 rounded-full bg-[#11100f] border border-[#b28453]/60 flex items-center justify-center font-mono text-xs font-bold text-[#b28453]">
-                  {box.num}
-                </div>
-                <h3 className="font-display text-lg font-bold text-[#f8f8f8]">
+                {/* Conteúdo do Card */}
+                <h3 
+                  className="font-bold text-[#f8f8f8]"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Manrope', 'Inter', sans-serif",
+                    fontSize: "24px",
+                    lineHeight: "1.18",
+                    letterSpacing: "-0.025em",
+                    marginTop: "0",
+                    marginBottom: "0"
+                  }}
+                >
                   {box.title}
                 </h3>
-                <p className="text-[#c9c9c9] text-sm leading-[1.6]">
+
+                {/* Linha dourada curta */}
+                <div 
+                  style={{
+                    width: "54px",
+                    height: "2px",
+                    background: "linear-gradient(90deg, #b28453, rgba(178,132,83,0))",
+                    marginTop: "22px",
+                    marginBottom: "22px"
+                  }} 
+                />
+
+                <p 
+                  className="font-normal"
+                  style={{
+                    fontSize: "16.5px",
+                    lineHeight: "1.65",
+                    color: "rgba(248,248,248,0.72)",
+                    maxWidth: "92%"
+                  }}
+                >
                   {box.desc}
                 </p>
+
+                {/* Detalhe Visual Abstrato */}
+                {box.svg}
               </div>
             ))}
           </div>
 
-          {/* Frase de impacto banner */}
-          <div className="bg-[#181716] border border-[#b28453]/15 p-8 rounded-2xl text-center select-none text-[#e0d3c3] font-semibold text-base sm:text-lg tracking-wide shadow-inner">
-            “A nova busca não reduz de forma alguma a importância do SEO. Ela simplesmente ampliou o papel estratégico do orgânico.”
-          </div>
+
 
         </div>
       </section>
@@ -314,28 +368,6 @@ export default function App() {
                 key={prop.num}
                 className="luxury-card group"
               >
-                {/* Medalhão Numérico Circular Premium */}
-                <div 
-                  className="luxury-medal select-none transition-all duration-300"
-                  style={{
-                    width: "56px",
-                    height: "56px",
-                    borderRadius: "999px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "18px",
-                    fontWeight: 700,
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                    color: "#e0d3c3",
-                    background: "radial-gradient(circle at 35% 25%, rgba(224,211,195,0.24), rgba(178,132,83,0.14) 42%, rgba(17,16,15,0.96) 100%)",
-                    border: "1px solid rgba(178,132,83,0.62)",
-                    boxShadow: "0 0 0 6px rgba(178,132,83,0.05), 0 0 28px rgba(178,132,83,0.22), inset 0 0 16px rgba(224,211,195,0.06)"
-                  }}
-                >
-                  {prop.num}
-                </div>
-
                 {/* Conteúdo do Card */}
                 <h3 
                   className="font-bold text-[#f8f8f8]"
@@ -344,7 +376,7 @@ export default function App() {
                     fontSize: "24px",
                     lineHeight: "1.18",
                     letterSpacing: "-0.025em",
-                    marginTop: "48px",
+                    marginTop: "0",
                     marginBottom: "0"
                   }}
                 >
@@ -412,11 +444,11 @@ export default function App() {
               </p>
 
               {/* Item destacado */}
-              <div className="border-l-4 border-[#b28453] pl-6 py-2 bg-[#f4eee5] rounded-r-lg shadow-sm">
+              <div className="border-l-4 border-[#b28453] pl-6 pr-6 py-3 bg-[#f4eee5] rounded-r-lg shadow-sm">
                 <span className="font-mono text-xs text-[#b28453] font-bold tracking-widest block mb-1 uppercase">
                   EQUILÍBRIO DE POSICIONAMENTO
                 </span>
-                <p className="font-display text-lg sm:text-lg font-bold text-[#11100f] italic leading-tight">
+                <p className="font-display text-base sm:text-[17px] md:text-lg font-bold text-[#11100f] italic leading-relaxed">
                   “SEO deixou de ser um trabalho periférico e virou uma camada estratégica insubstituível para crescer marcas de alto padrão.”
                 </p>
               </div>
@@ -744,22 +776,8 @@ export default function App() {
                   className="absolute inset-0 bg-repeat bg-[radial-gradient(circle_at_center,rgba(178,132,83,0.02)_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" 
                 />
 
-                {/* Medalhão Numérico Circular Premium */}
-                <div 
-                  className="w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-full flex items-center justify-center transition-all duration-[400ms]"
-                  style={{
-                    background: 'radial-gradient(circle at 35% 30%, rgba(224, 211, 195, 0.18), rgba(178, 132, 83, 0.10), rgba(17, 16, 15, 0.95))',
-                    border: '1px solid rgba(178, 132, 83, 0.55)',
-                    boxShadow: '0 0 24px rgba(178, 132, 83, 0.18), inset 0 0 12px rgba(224, 211, 195, 0.05)',
-                  }}
-                >
-                  <span className="font-serif select-none text-[15px] md:text-[16px] font-bold text-[#e0d3c3] tracking-wide transition-colors duration-300 group-hover:text-white">
-                    {card.num}
-                  </span>
-                </div>
-
                 {/* Conteúdo do Card */}
-                <div className="relative z-10 w-full mt-6">
+                <div className="relative z-10 w-full">
                   <span className="text-[11px] font-mono tracking-widest text-[#b28453] font-bold block mb-2 opacity-80">
                     MODELO_0{card.num}
                   </span>
