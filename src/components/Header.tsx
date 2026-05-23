@@ -57,7 +57,7 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
         </div>
 
         {/* DESKTOP NAV MENU */}
-        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <nav className="hidden lg:flex items-center justify-between w-[640px] shrink-0">
           {navItems.map((item) => (
             <button
               id={`nav-btn-${item.id}`}

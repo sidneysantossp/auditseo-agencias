@@ -12,6 +12,13 @@ export default function Hero({ onCtaClick }: HeroProps) {
       id="inicio"
       className="relative min-h-[820px] lg:min-h-[880px] bg-[#11100f] text-[#f8f8f8] flex items-center pt-[100px] md:pt-[110px] pb-16 md:pb-24 overflow-hidden"
     >
+      {/* Absolute background animation only on mobile */}
+      <div className="absolute inset-x-0 bottom-0 top-[80px] lg:hidden pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center">
+        <div className="w-full max-w-[550px] aspect-[760/520] transform scale-[1.35] opacity-[0.35] translate-y-[-80px]">
+          <NeuralSearchBrain />
+        </div>
+      </div>
+
       <div className="container mx-auto px-[24px] md:px-[48px] max-w-[1320px] z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
           
@@ -20,7 +27,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             
             {/* EYEBROW */}
             <span className="text-[#a69580] text-[11px] font-mono font-semibold tracking-[0.16em] uppercase mb-4 inline-block select-none opacity-90">
-              ORGANIC INNOVATION PARTNER FOR AGENCIES
+              ORGANIC INNOVATION PARTNER
             </span>
 
             {/* HEADLINE PRINCIPAL */}
@@ -36,16 +43,15 @@ export default function Hero({ onCtaClick }: HeroProps) {
               SEO, GEO, IA e<br className="hidden md:inline" /> inteligência de<br className="hidden md:inline" /> busca
             </h1>
 
-            {/* TEXT PARAGRAPH */}
+            {/* TEXT PARAGRAPH with increased margin on mobile to push CTA buttons down */}
             <p 
-              className="text-[#c9c9c9] text-base md:text-lg font-normal py-0"
+              className="text-[#c9c9c9] text-base md:text-lg font-normal py-0 mb-14 md:mb-9"
               style={{
                 textAlign: "left",
                 letterSpacing: "-0.01em",
                 wordSpacing: "normal",
                 lineHeight: "1.55",
-                maxWidth: "640px",
-                marginBottom: "36px"
+                maxWidth: "640px"
               }}
             >
               Estruturamos SEO, GEO e IA como uma camada white-label para sua agência reter clientes, comprovar resultados e expandir a carteira sem ampliar a estrutura interna.
@@ -71,27 +77,23 @@ export default function Hero({ onCtaClick }: HeroProps) {
 
             {/* LOWER BADGES BAR */}
             <div 
-              className="flex flex-wrap items-center font-mono mt-8 select-none text-[#8c8275]"
+              className="flex items-center justify-center lg:justify-start font-mono mt-8 select-none text-[#8c8275] gap-x-2 w-full text-center"
               style={{
                 opacity: 0.62,
-                fontSize: "13px",
+                fontSize: "11px",
                 letterSpacing: "0.02em",
                 wordSpacing: "normal"
               }}
             >
               <span>White-label</span>
-              <span className="mx-4 sm:mx-5 text-[#b28453]/30 font-bold">·</span>
-              <span>Entrega personalizada</span>
-              <span className="mx-4 sm:mx-5 text-[#b28453]/30 font-bold">·</span>
-              <span>Resultados mensuráveis</span>
-              <span className="mx-4 sm:mx-5 text-[#b28453]/30 font-bold">·</span>
-              <span>Expansão sem nova estrutura</span>
+              <span className="text-[#b28453]/30 font-bold">·</span>
+              <span>Entrega Sob Medida</span>
             </div>
 
           </div>
 
-          {/* RIGHT COLUMN: Neural Intelligence Brain Visual Component */}
-          <div className="lg:col-span-5 w-full relative flex items-center justify-center scale-[1.04] lg:scale-[1.06] lg:-translate-x-[16px] -translate-x-[8px] overflow-visible">
+          {/* RIGHT COLUMN: Neural Intelligence Brain Visual Component - Hidden on mobile, shown on lg screens */}
+          <div className="hidden lg:flex lg:col-span-5 w-full relative items-center justify-center scale-[1.04] lg:scale-[1.06] lg:-translate-x-[16px] -translate-x-[8px] overflow-visible">
             <NeuralSearchBrain />
           </div>
 
