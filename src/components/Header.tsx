@@ -40,61 +40,63 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
           scrolled
             ? "bg-[#11100f]/95 backdrop-blur-md border-b border-[#b28453]/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)] h-[82px] md:h-[82px]"
             : "bg-[#11100f] border-b border-transparent h-[82px] md:h-[82px]"
-        } h-[68px] md:h-[82px] flex items-center justify-between px-6 xl:px-12`}
+        } h-[68px] md:h-[82px] flex items-center justify-between`}
       >
-        {/* LOGO */}
-        <div
-          onClick={() => handleItemClick("inicio")}
-          className="cursor-pointer flex flex-col items-start select-none"
-        >
-          <div className="font-display text-xl md:text-2xl font-bold tracking-tight mb-1">
-            <span className="text-[#f8f8f8]">AUDIT</span>
-            <span className="text-[#b28453]">SEO</span>
+        <div className="container mx-auto px-[24px] md:px-[48px] max-w-[1320px] w-full flex items-center justify-between h-full">
+          {/* LOGO */}
+          <div
+            onClick={() => handleItemClick("inicio")}
+            className="cursor-pointer flex flex-col items-start select-none"
+          >
+            <div className="font-display text-xl md:text-2xl font-bold tracking-tight mb-1">
+              <span className="text-[#f8f8f8]">AUDIT</span>
+              <span className="text-[#b28453]">SEO</span>
+            </div>
+            <div className="border border-[#b28453]/40 rounded-full px-2.5 py-[3px] text-[7px] md:text-[8px] tracking-[0.15em] text-[#b28453] uppercase font-mono font-bold leading-none select-none">
+              Search Intelligence Partner
+            </div>
           </div>
-          <div className="border border-[#b28453]/40 rounded-full px-2.5 py-[3px] text-[7px] md:text-[8px] tracking-[0.15em] text-[#b28453] uppercase font-mono font-bold leading-none select-none">
-            Search Intelligence Partner
-          </div>
-        </div>
 
-        {/* DESKTOP NAV MENU */}
-        <nav className="hidden lg:flex items-center justify-between w-[640px] shrink-0">
-          {navItems.map((item) => (
+          {/* DESKTOP NAV MENU */}
+          <nav className="hidden lg:flex items-center justify-between w-[640px] shrink-0">
+            {navItems.map((item) => (
+              <button
+                id={`nav-btn-${item.id}`}
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className={`text-[14px] font-medium tracking-wide transition-colors cursor-pointer duration-250 ${
+                  activeSection === item.id
+                    ? "text-[#b28453]"
+                    : "text-[#c9c9c9] hover:text-[#b28453]"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          {/* RIGHT CTA BUTTON */}
+          <div className="hidden lg:block">
             <button
-              id={`nav-btn-${item.id}`}
-              key={item.id}
-              onClick={() => handleItemClick(item.id)}
-              className={`text-[14px] font-medium tracking-wide transition-colors cursor-pointer duration-250 ${
-                activeSection === item.id
-                  ? "text-[#b28453]"
-                  : "text-[#c9c9c9] hover:text-[#b28453]"
-              }`}
+              id="header-cta"
+              onClick={() => handleItemClick("diagnostico")}
+              className="bg-[#b28453] text-[#ffffff] px-6 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] hover:-translate-y-0.5"
             >
-              {item.label}
+              Avaliar parceria
             </button>
-          ))}
-        </nav>
+          </div>
 
-        {/* RIGHT CTA BUTTON */}
-        <div className="hidden lg:block">
-          <button
-            id="header-cta"
-            onClick={() => handleItemClick("diagnostico")}
-            className="bg-[#b28453] text-[#ffffff] px-6 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] hover:-translate-y-0.5"
-          >
-            Avaliar parceria
-          </button>
-        </div>
-
-        {/* MOBILE MENU TOGGLE */}
-        <div className="lg:hidden flex items-center">
-          <button
-            id="mobile-menu-toggle"
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-[#f8f8f8] hover:text-[#b28453] transition-colors p-2"
-            aria-label="Alternar Menu"
-          >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          {/* MOBILE MENU TOGGLE */}
+          <div className="lg:hidden flex items-center">
+            <button
+              id="mobile-menu-toggle"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-[#f8f8f8] hover:text-[#b28453] transition-colors p-2"
+              aria-label="Alternar Menu"
+            >
+              {isOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </div>
       </header>
 

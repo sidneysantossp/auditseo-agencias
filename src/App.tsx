@@ -157,16 +157,67 @@ export default function App() {
 
         </div>
       </section>
-
       {/* 5. SEÇÃO — PROPOSTA DE VALOR CENTRAL */}
       <section
         id="agencias"
         className="relative overflow-hidden bg-[#11100f] text-[#f8f8f8] pt-[110px] pb-[120px]"
       >
+        <style dangerouslySetInnerHTML={{__html: `
+          .luxury-card {
+            min-height: 300px;
+            padding: 42px;
+            border-radius: 22px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(31,30,28,0.98) 0%, rgba(17,16,15,0.98) 58%, rgba(11,11,10,1) 100%);
+            border: 1px solid rgba(178,132,83,0.34);
+            box-shadow: 0 28px 70px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -1px 0 rgba(178,132,83,0.08);
+            transition: all 350ms ease;
+          }
+          .luxury-card::before {
+            content: "";
+            position: absolute;
+            top: -90px;
+            right: -90px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(178,132,83,0.18) 0%, rgba(178,132,83,0.07) 36%, transparent 68%);
+            pointer-events: none;
+            transition: all 350ms ease;
+          }
+          .luxury-card::after {
+            content: "";
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            opacity: 0.14;
+            background-image: radial-gradient(circle, rgba(178,132,83,0.7) 1px, transparent 1px);
+            background-size: 14px 14px;
+            mask-image: radial-gradient(circle, black 0%, transparent 72%);
+            -webkit-mask-image: radial-gradient(circle, black 0%, transparent 72%);
+            pointer-events: none;
+            transition: all 350ms ease;
+          }
+          .luxury-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(178,132,83,0.68);
+            box-shadow: 0 34px 90px rgba(0,0,0,0.48), 0 0 42px rgba(178,132,83,0.13), inset 0 1px 0 rgba(255,255,255,0.07);
+          }
+          .luxury-card:hover .luxury-medal {
+            border-color: rgba(178,132,83,0.85);
+            box-shadow: 0 0 0 6px rgba(178,132,83,0.08), 0 0 36px rgba(178,132,83,0.34), inset 0 0 16px rgba(224,211,195,0.1);
+          }
+          .luxury-card:hover .luxury-vector {
+            opacity: 0.85;
+          }
+        `}} />
+
         {/* Radial glow background sutil */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#b28453]/4 rounded-full blur-[160px] pointer-events-none" />
 
-        <div className="container mx-auto px-[24px] xl:px-[48px] max-w-[1320px] relative z-10">
+        <div className="container mx-auto px-[48px] max-w-[1320px] relative z-10">
           {/* Header */}
           <div className="text-left flex flex-col items-start mb-16 md:mb-24">
             <span className="text-[#b28453] text-[13px] tracking-[0.12em] font-mono font-bold uppercase mb-4">
@@ -177,25 +228,22 @@ export default function App() {
             </h2>
             <div className="w-[160px] h-[4px] bg-[#b28453] mt-6 mb-8" />
             <p className="text-[#c9c9c9] text-base md:text-lg leading-relaxed max-w-3xl">
-              Donos e sócios de agências experientes já perceberam que SEO, GEO e inteligência de mapas deixaram de ser itens operacionais secundários de baixo valor. Eles determinam diretamente o valor do contrato comercial, retenção a longo prazo, escopo estruturado, autoridade de marca e novas fontes lucrativas de receita.
+              Donos e sócios de agências experientes já perceberam que SEO, GEO e inteligência de mapas deixaram de ser itens operacionais secundários de baixo value. Eles determinam diretamente o valor do contrato comercial, retenção a longo prazo, escopo estruturado, autoridade de marca e novas fontes lucrativas de receita.
             </p>
           </div>
 
           {/* Grid 3 colunas x 2 linhas */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px] md:gap-[40px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[36px]">
             {[
               {
                 num: "I",
                 title: "Venda com mais confiança",
-                desc: "Diagnósticos profundos, dados e roteiros estratégicos estruturados para sua agência apresentar propostas mais sólidas e aumentar a percepção de valor.",
+                desc: "Diagnósticos profundos, dados e roteiros estratégicos para sua agência apresentar propostas mais sólidas e aumentar a percepção de valor.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M 3 21 L 21 21" />
-                    <path d="M 6 21 L 6 15" strokeDasharray="1 1" />
-                    <path d="M 10 21 L 10 11" strokeDasharray="1 1" />
-                    <path d="M 14 21 L 14 7" strokeDasharray="1 1" />
-                    <path d="M 18 21 L 18 3" strokeDasharray="1 1" />
-                    <circle cx="18" cy="3" r="1.5" fill="#b28453" />
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <line x1="18" y1="20" x2="18" y2="10" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="12" y1="20" x2="12" y2="4" strokeLinecap="round" strokeLinejoin="round" />
+                    <line x1="6" y1="20" x2="6" y2="14" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
@@ -204,7 +252,7 @@ export default function App() {
                 title: "Aumente a retenção",
                 desc: "Mostre direção estratégica, novas oportunidades e próximos passos claros, em vez de relatórios repetitivos que o cliente não entende.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="9" />
                     <circle cx="12" cy="12" r="5" strokeDasharray="2 2" />
                     <circle cx="12" cy="12" r="1.5" fill="#b28453" />
@@ -212,22 +260,19 @@ export default function App() {
                     <path d="M 12 21 L 12 23" />
                     <path d="M 1 12 L 3 12" />
                     <path d="M 21 12 L 23 12" />
+                    <path d="M 21.5 2 v 6 h -6 M 21.34 8 a 10 10 0 1 0 -.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
               {
                 num: "III",
                 title: "Abra uma nova frente de receita",
-                desc: "Ofereça consultoria de Search Intelligence, SEO e GEO com alto valor percebido, sem precisar montar uma operação interna especializada.",
+                desc: "Ofereça Search Intelligence, SEO e GEO com alto valor percebido, sem montar uma operação interna especializada.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="6" cy="18" r="1.5" fill="#b28453" />
-                    <circle cx="18" cy="16" r="1.5" fill="#b28453" />
-                    <circle cx="12" cy="6" r="1.5" fill="#b28453" />
-                    <line x1="6" y1="18" x2="12" y2="6" strokeDasharray="2 2" />
-                    <line x1="12" y1="6" x2="18" y2="16" strokeDasharray="2 2" />
-                    <line x1="6" y1="18" x2="18" y2="16" strokeDasharray="2 2" />
-                    <circle cx="12" cy="12" r="3" strokeWidth="0.5" />
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
                   </svg>
                 )
               },
@@ -236,10 +281,9 @@ export default function App() {
                 title: "Substitua achismo por método",
                 desc: "Troque decisões improvisadas por diagnósticos, auditorias semânticas e roadmaps práticos que sua agência consegue defender com clareza.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M 2 18 Q 6 12, 10 15 T 18 9 T 22 13" />
-                    <path d="M 2 13 Q 6 7, 10 10 T 18 4 T 22 8" strokeDasharray="2 1" />
-                    <path d="M 2 22 Q 6 16, 10 19 T 18 13 T 22 17" />
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
@@ -248,10 +292,8 @@ export default function App() {
                 title: "Consolide sua autoridade",
                 desc: "Posicione sua agência como parceira mais estratégica para clientes que precisam se adaptar à nova era da busca e da inteligência artificial.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M 12 22 C 12 22, 20 18, 20 12 L 20 5 L 12 2 L 4 5 L 4 12 C 4 18, 12 22, 12 22 Z" />
-                    <path d="M 12 5 L 12 19" strokeDasharray="2 2" />
-                    <circle cx="12" cy="12" r="2.5" fill="#b28453" stroke="none" />
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <path d="M 12 22 s 8 -4 8 -10 V 5 l -8 -3 -8 3 v 7 c 0 6 8 10 8 10 Z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
@@ -260,10 +302,9 @@ export default function App() {
                 title: "Proteja sua carteira",
                 desc: "Evite que concorrentes usem SEO, GEO ou IA como argumento para tomar espaço dentro das contas que sua agência já atende.",
                 svg: (
-                  <svg className="absolute bottom-6 right-6 w-14 h-14 stroke-[0.75] text-[#b28453] opacity-15 group-hover:opacity-35 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <rect x="5" y="11" width="14" height="10" rx="2" />
-                    <path d="M 8 11 V 7 A 4 4 0 0 1 16 7 V 11" strokeDasharray="2 1" />
-                    <circle cx="12" cy="15" r="1.5" fill="#b28453" />
+                  <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M 7 11 V 7 a 5 5 0 0 1 10 0 v 4" />
                   </svg>
                 )
               }
@@ -271,50 +312,67 @@ export default function App() {
               <div
                 id={`proposta-card-${prop.num}`}
                 key={prop.num}
-                className="group relative overflow-hidden min-h-[280px] md:min-h-[320px] p-[42px] rounded-[24px] flex flex-col justify-between items-start text-left transition-all duration-[400ms] cubic-bezier(0.16, 1, 0.3, 1) hover:-translate-y-[6px]"
-                style={{
-                  background: 'linear-gradient(145deg, rgba(32, 31, 29, 0.96), rgba(15, 15, 14, 0.98))',
-                  border: '1px solid rgba(178, 132, 83, 0.32)',
-                  boxShadow: '0 24px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)',
-                }}
+                className="luxury-card group"
               >
-                {/* Glow dourado de canto interno ao passar o mouse */}
-                <div 
-                  className="absolute top-0 right-0 w-[160px] h-[160px] bg-[#b28453]/4 blur-[60px] rounded-full pointer-events-none opacity-40 group-hover:opacity-100 group-hover:bg-[#b28453]/8 transition-all duration-[400ms]" 
-                />
-
-                {/* Micro textura sutil */}
-                <div 
-                  className="absolute inset-0 bg-repeat bg-[radial-gradient(circle_at_center,rgba(178,132,83,0.02)_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" 
-                />
-
                 {/* Medalhão Numérico Circular Premium */}
                 <div 
-                  className="w-[48px] h-[48px] md:w-[52px] md:h-[52px] rounded-full flex items-center justify-center transition-all duration-[400ms]"
+                  className="luxury-medal select-none transition-all duration-300"
                   style={{
-                    background: 'radial-gradient(circle at 35% 30%, rgba(224, 211, 195, 0.18), rgba(178, 132, 83, 0.10), rgba(17, 16, 15, 0.95))',
-                    border: '1px solid rgba(178, 132, 83, 0.55)',
-                    boxShadow: '0 0 24px rgba(178, 132, 83, 0.18), inset 0 0 12px rgba(224, 211, 195, 0.05)',
+                    width: "56px",
+                    height: "56px",
+                    borderRadius: "999px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                    color: "#e0d3c3",
+                    background: "radial-gradient(circle at 35% 25%, rgba(224,211,195,0.24), rgba(178,132,83,0.14) 42%, rgba(17,16,15,0.96) 100%)",
+                    border: "1px solid rgba(178,132,83,0.62)",
+                    boxShadow: "0 0 0 6px rgba(178,132,83,0.05), 0 0 28px rgba(178,132,83,0.22), inset 0 0 16px rgba(224,211,195,0.06)"
                   }}
                 >
-                  <span className="font-serif select-none text-[15px] md:text-[16px] font-bold text-[#e0d3c3] tracking-wide transition-colors duration-300 group-hover:text-white">
-                    {prop.num}
-                  </span>
+                  {prop.num}
                 </div>
 
                 {/* Conteúdo do Card */}
-                <div className="relative z-10 w-full">
-                  <h3 className="font-display text-[22px] md:text-[24px] font-bold text-[#f8f8f8] mt-8 leading-[1.2] tracking-[-0.02em]">
-                    {prop.title}
-                  </h3>
+                <h3 
+                  className="font-bold text-[#f8f8f8]"
+                  style={{
+                    fontFamily: "'Space Grotesk', 'Manrope', 'Inter', sans-serif",
+                    fontSize: "24px",
+                    lineHeight: "1.18",
+                    letterSpacing: "-0.025em",
+                    marginTop: "48px",
+                    marginBottom: "0"
+                  }}
+                >
+                  {prop.title}
+                </h3>
 
-                  {/* Linha dourada curta */}
-                  <div className="w-[54px] h-[2px] bg-[#b28453] opacity-[0.85] my-[22px]" />
+                {/* Linha dourada curta */}
+                <div 
+                  style={{
+                    width: "54px",
+                    height: "2px",
+                    background: "linear-gradient(90deg, #b28453, rgba(178,132,83,0))",
+                    marginTop: "22px",
+                    marginBottom: "22px"
+                  }} 
+                />
 
-                  <p className="text-[#f8f8f8]/72 text-[15.5px] md:text-[16px] font-normal leading-[1.65] max-w-[90%]">
-                    {prop.desc}
-                  </p>
-                </div>
+                <p 
+                  className="font-normal"
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: "1.65",
+                    color: "rgba(248,248,248,0.72)",
+                    maxWidth: "92%"
+                  }}
+                >
+                  {prop.desc}
+                </p>
 
                 {/* Detalhe Visual Abstrato */}
                 {prop.svg}
