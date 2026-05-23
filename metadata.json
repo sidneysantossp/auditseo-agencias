@@ -1,0 +1,6 @@
+{
+  "name": "AUDITSEO",
+  "description": "Consultoria Estratégica de SEO, GEO e Search Intelligence para Agências de Marketing Digital.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

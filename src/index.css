@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #11100f;
+  --color-brand-gold: #b28453;
+  --color-brand-beige: #e0d3c3;
+  --color-brand-white: #f8f8f8;
+  --color-brand-light-gray: #c9c9c9;
+  --color-brand-dark-gray: #2a2927;
+  
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", "Sora", sans-serif;
+}
+
+/* Custom CSS Scrollbar and styling for a sleek consultative feel */
+html {
+  scroll-behavior: smooth;
+  background-color: #11100f;
+  color: #f8f8f8;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Elegant editorial typography effects */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #11100f;
+}
+::-webkit-scrollbar-thumb {
+  background: #b28453;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e0d3c3;
+}
