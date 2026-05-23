@@ -461,6 +461,123 @@ export default function App() {
         </div>
       </section>
 
+      {/* Entity & Authority Layer Section */}
+      <section
+        id="entity-authority-layer"
+        className="bg-[#11100f] text-[#f8f8f8] py-24 md:py-32 relative overflow-hidden"
+      >
+        {/* Glow sutil */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#b28453]/3 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 xl:px-12 max-w-[1320px] relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Coluna Esquerda: Texto Editorial/Consultivo */}
+            <div className="lg:col-span-6 text-left">
+              <span className="text-[#b28453] text-[13px] tracking-[0.15em] font-mono font-bold uppercase mb-4 block">
+                ENTITY & AUTHORITY LAYER
+              </span>
+              <h2 className="font-display text-[32px] sm:text-[40px] md:text-[46px] font-bold text-[#f8f8f8] leading-[1.15] tracking-tight mb-6">
+                Autoridade de entidade: a base invisível da nova busca
+              </h2>
+              <h3 className="font-sans text-[#e0d3c3] text-lg sm:text-xl font-medium leading-relaxed mb-6">
+                Google, IAs e usuários precisam entender quem é a marca, o que ela faz, onde atua, por que é confiável e quais sinais sustentam sua autoridade.
+              </h3>
+              <div className="w-[124px] h-[2px] bg-[#b28453]/60 mb-6" />
+              <p className="text-[#c9c9c9] text-base leading-relaxed mb-6">
+                Na nova busca, não basta publicar páginas, repetir palavras-chave ou criar conteúdos genéricos. Marcas precisam ser compreendidas como entidades consistentes: com posicionamento claro, serviços bem estruturados, reputação, provas, dados organizados e sinais externos de confiança.
+              </p>
+              <p className="text-[#c9c9c9] text-base leading-relaxed mb-8">
+                A AUDITSEO ajuda sua agência a transformar essa complexidade em uma entrega estruturada para seus clientes, conectando SEO semântico, dados estruturados, conteúdo estratégico, reputação digital e presença em ambientes de busca e IA.
+              </p>
+              <div className="bg-[#181716] border border-[#b28453]/15 p-6 rounded-xl">
+                <p className="text-[#e2d3c1] text-sm md:text-[14.5px] leading-relaxed italic">
+                  Não se trata de prometer aparição automática em IA. Trata-se de organizar os sinais que aumentam a clareza, a confiança e a capacidade da marca ser corretamente interpretada em diferentes ambientes de descoberta.
+                </p>
+              </div>
+            </div>
+
+            {/* Coluna Direita: Card Premium 'Sinais que organizamos' */}
+            <div className="lg:col-span-6 w-full">
+              <div 
+                className="relative overflow-hidden p-8 md:p-10 rounded-[22px] text-left"
+                style={{
+                  background: 'linear-gradient(145deg, rgba(31,30,28,0.98), rgba(17,16,15,0.98))',
+                  border: '1px solid rgba(178,132,83,0.34)',
+                  boxShadow: '0 28px 70px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.05)'
+                }}
+              >
+                {/* Glow decorativo interno do card */}
+                <div 
+                  className="absolute -top-[90px] -right-[90px] w-[220px] h-[220px] pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(178,132,83,0.15) 0%, rgba(178,132,83,0.05) 36%, transparent 68%)'
+                  }}
+                />
+
+                <h3 className="font-display font-bold text-[#e0d3c3] text-xl md:text-2xl mb-8 tracking-wide">
+                  Sinais que organizamos
+                </h3>
+
+                <div className="space-y-6">
+                  {[
+                    {
+                      num: "01",
+                      title: "Clareza de entidade",
+                      desc: "Quem é a marca, o que oferece, para quem atende e onde atua."
+                    },
+                    {
+                      num: "02",
+                      title: "Arquitetura semântica",
+                      desc: "Páginas, serviços e conteúdos conectados por intenção, contexto e relevância."
+                    },
+                    {
+                      num: "03",
+                      title: "Dados estruturados",
+                      desc: "Schema Markup coerente com o conteúdo visível e com a entidade do negócio."
+                    },
+                    {
+                      num: "04",
+                      title: "Provas e reputação",
+                      desc: "Avaliações, cases, menções, especialistas, diferenciais e sinais de confiança."
+                    },
+                    {
+                      num: "05",
+                      title: "Presença externa",
+                      desc: "Citações, backlinks, diretórios, perfis e consistência entre canais."
+                    },
+                    {
+                      num: "06",
+                      title: "Leitura em IA",
+                      desc: "Análise de como a marca pode ser interpretada em ambientes generativos e mecanismos de resposta."
+                    }
+                  ].map((item) => (
+                    <div 
+                      key={item.num} 
+                      className="flex items-start gap-4 pb-5 last:pb-0 last:border-0 border-b border-[#b28453]/16"
+                    >
+                      <span className="font-mono text-sm font-bold text-[#b28453] select-none mt-0.5">
+                        {item.num}
+                      </span>
+                      <div>
+                        <h4 className="text-white text-base font-bold mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-[#c9c9c9]/80 text-xs sm:text-[13px] leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 7. DOR DA AGÊNCIA */}
       <section
         className="bg-[#11100f] text-[#f8f8f8] py-24 md:py-32"
@@ -980,6 +1097,13 @@ export default function App() {
                 {block.svg}
               </div>
             ))}
+          </div>
+
+          {/* Bloco de destaque discreto */}
+          <div className="max-w-3xl mx-auto mt-12 mb-12 p-6 sm:p-8 rounded-2xl bg-[#181716]/80 border border-[#b28453]/30 text-center select-none shadow-md">
+            <p className="text-[#e0d3c3] text-sm md:text-base leading-relaxed font-sans font-medium">
+              Autoridade não é um elemento isolado. É o resultado da consistência entre o que a marca diz, o que o site estrutura, o que o mercado valida e o que buscadores e IAs conseguem interpretar.
+            </p>
           </div>
 
           <div className="text-center font-display italic text-base text-[#e0d3c3] select-none italic max-w-2xl mx-auto leading-relaxed">

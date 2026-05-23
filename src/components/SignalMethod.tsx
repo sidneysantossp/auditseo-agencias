@@ -29,9 +29,9 @@ export default function SignalMethod({ onCtaClick }: SignalMethodProps) {
     },
     {
       letter: "N",
-      title: "Narrative Authority",
-      subtitle: "Busca orgânica é sobre relevância. IA é sobre confiança contextual.",
-      description: "Construímos autoridade temática sólida através de silogismos de conteúdo e consistência de marca, ajudando as ferramentas de busca a validarem a inteligência e o know-how real do portal do cliente.",
+      title: "Narrative & Entity Authority",
+      subtitle: "Autoridade não nasce de um único schema. Ela nasce da consistência entre marca, conteúdo, reputação, dados e presença pública.",
+      description: "Organizamos a narrativa, a estrutura semântica e os sinais de autoridade que ajudam buscadores, IAs e usuários a entenderem por que aquela marca deve ser considerada uma opção confiável.",
       icon: <Award size={20} className="text-[#b28453]" />
     },
     {

@@ -37,9 +37,9 @@ export default function SolutionsSection({ onCtaClick }: SolutionsSectionProps) 
     {
       id: "sol-5",
       icon: <Cpu className="w-6 h-6 text-[#b28453]" />,
-      title: "Otimização para AI Search / GEO",
-      description: "Engenhosidade estrutural focada em treinar e alimentar os robôs de inteligência artificial de modo contextualizado, elevando as chances de a marca do cliente aparecer como autoridade recomendada para buscas do ChatGPT, Gemini, Copilot, Perplexity e outros.",
-      ideal: "Clientes com alto grau de inovação e presença digital que carecem de posicionar-se na vanguarda da nova era de IA."
+      title: "Entity & Authority Strategy (AI & GEO)",
+      description: "Estratégia para organizar clareza de entidade, dados estruturados, conteúdo semântico, reputação e sinais de confiança que fortalecem a presença orgânica da marca em buscadores tradicionais e ambientes de IA.",
+      ideal: "Clientes high-ticket que dependem de confiança, autoridade e validação estratégica robusta antes da decisão de compra."
     },
     {
       id: "sol-6",
