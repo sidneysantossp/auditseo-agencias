@@ -464,6 +464,18 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
     setAnswers((current) => ({ ...current, [key]: value }));
   };
 
+  const keepScanInView = () => {
+    window.setTimeout(() => {
+      const target = refEl.current || document.getElementById("organic-opportunity-scan");
+      if (!target) return;
+
+      const scanTop = target.getBoundingClientRect().top + window.scrollY - 92;
+      if (Math.abs(window.scrollY - scanTop) > 24) {
+        window.scrollTo({ top: scanTop, behavior: "smooth" });
+      }
+    }, 80);
+  };
+
   const goNext = () => {
     if (!canAdvance) return;
     if (stepIndex === steps.length - 1) {
@@ -475,15 +487,18 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
       return;
     }
     setStepIndex((current) => current + 1);
+    keepScanInView();
   };
 
   const goBack = () => {
     if (showResult) {
       setShowResult(false);
       setStepIndex(steps.length - 1);
+      keepScanInView();
       return;
     }
     setStepIndex((current) => Math.max(0, current - 1));
+    keepScanInView();
   };
 
   const resetScan = () => {
