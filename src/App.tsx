@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Sparkles, Star, TrendingUp, AlertTriangle, ShieldCheck, Mail, Send, FileText, Compass, Award, Users } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Sparkles, Star, TrendingUp, AlertTriangle, ShieldCheck, FileText, Compass, Award, Users } from "lucide-react";
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -13,12 +13,185 @@ import SolucoesPage from "./components/SolucoesPage";
 import WhiteLabelPage from "./components/WhiteLabelPage";
 import GeoIaPage from "./components/GeoIaPage";
 import DiagnosticoPage from "./components/DiagnosticoPage";
+import SiteFooter from "./components/SiteFooter";
+import BasePage, { BasePageConfig } from "./components/BasePage";
+
+const routeMetadata: Record<string, { title: string; description: string; activeSection?: string }> = {
+  "/": {
+    title: "AUDITSEO | Search Intelligence Partner para Agências",
+    description:
+      "Consultoria estratégica de SEO, GEO e inteligência de busca para agências que querem ampliar valor, retenção e evolução orgânica na carteira.",
+    activeSection: "inicio",
+  },
+  "/para-agencias": {
+    title: "Parceria Estratégica para Agências | AUDITSEO",
+    description:
+      "Parceria estratégica para agências incorporarem SEO, GEO e Search Intelligence white-label sem ampliar a operação interna.",
+    activeSection: "agencias",
+  },
+  "/metodo-signal": {
+    title: "Método S.I.G.N.A.L | Search Intelligence para Agências | AUDITSEO",
+    description:
+      "Conheça o Método S.I.G.N.A.L da AUDITSEO para organizar SEO, GEO, IA, autoridade de entidade e Search Intelligence em entregas white-label.",
+    activeSection: "signal",
+  },
+  "/solucoes": {
+    title: "Soluções para Cenários Orgânicos da Carteira | AUDITSEO",
+    description:
+      "Soluções por cenário orgânico da carteira para agências destravarem, recuperarem e evoluírem projetos com a AUDITSEO nos bastidores.",
+    activeSection: "solucoes",
+  },
+  "/white-label": {
+    title: "SEO White-Label para Agências | AUDITSEO",
+    description:
+      "Parceria white-label de SEO, GEO e Search Intelligence para agências manterem marca, relacionamento e protagonismo diante do cliente.",
+    activeSection: "white-label",
+  },
+  "/geo-ia": {
+    title: "GEO e IA para Agências | AUDITSEO",
+    description:
+      "GEO e IA para agências transformarem AI Search, autoridade de entidade, dados estruturados e nova busca em entrega responsável e white-label.",
+    activeSection: "geo-ia",
+  },
+  "/diagnostico": {
+    title: "Diagnóstico Orgânico para Agências | AUDITSEO",
+    description:
+      "Diagnóstico interativo para agências identificarem oportunidades de SEO, GEO, autoridade e inteligência de busca na carteira de clientes.",
+    activeSection: "diagnostico",
+  },
+  "/politica-de-privacidade": {
+    title: "Política de Privacidade | AUDITSEO",
+    description:
+      "Diretrizes de privacidade da AUDITSEO para uso do site, formulários, canais de contato e informações compartilhadas por agências.",
+  },
+  "/termos-de-uso": {
+    title: "Termos de Uso | AUDITSEO",
+    description: "Condições gerais de uso do site AUDITSEO, seus conteúdos, formulários e materiais informativos.",
+  },
+  "/obrigado": {
+    title: "Obrigado | AUDITSEO",
+    description: "Confirmação de solicitação enviada à AUDITSEO.",
+  },
+  "/blog": {
+    title: "Blog AUDITSEO | Search Intelligence para Agências",
+    description: "Conteúdos sobre SEO, GEO, inteligência de busca, autoridade de entidade e evolução orgânica para agências.",
+  },
+  "/guias": {
+    title: "Guias Técnicos | AUDITSEO",
+    description: "Guias técnicos da AUDITSEO sobre SEO, GEO, autoridade e inteligência de busca para agências.",
+  },
+  "/estudos-busca-ia": {
+    title: "Estudos de Busca com IA | AUDITSEO",
+    description: "Estudos sobre busca, respostas generativas, IA, descoberta, consideração e autoridade digital.",
+  },
+  "/guias/geo-readiness": {
+    title: "GEO Readiness | AUDITSEO",
+    description: "Guia em desenvolvimento sobre preparação de marcas para ambientes generativos e nova busca.",
+  },
+  "/guias/narrativa-semantica": {
+    title: "Narrativa Semântica | AUDITSEO",
+    description: "Guia em desenvolvimento sobre contexto, autoridade, entidades e conteúdo para nova busca.",
+  },
+  "/guias/search-intelligence": {
+    title: "Search Intelligence | AUDITSEO",
+    description: "Guia em desenvolvimento sobre a camada estratégica que conecta SEO, GEO, autoridade, dados e decisão.",
+  },
+};
+
+const basePages: Record<string, BasePageConfig> = {
+  "/politica-de-privacidade": {
+    eyebrow: "Página institucional",
+    title: "Política de Privacidade",
+    text:
+      "Esta página apresenta as diretrizes de privacidade da AUDITSEO em relação ao uso do site, formulários, canais de contato e informações compartilhadas por agências interessadas em parceria.",
+    notice: "Conteúdo jurídico definitivo em revisão.",
+    sections: ["Informações coletadas", "Uso das informações", "Compartilhamento", "Segurança", "Contato"],
+    actions: [
+      { label: "Voltar para o início", targetId: "inicio" },
+      { label: "Falar com a AUDITSEO", targetId: "diagnostico" },
+    ],
+  },
+  "/termos-de-uso": {
+    eyebrow: "Página institucional",
+    title: "Termos de Uso",
+    text: "Esta página apresenta as condições gerais de uso do site AUDITSEO, seus conteúdos, formulários e materiais informativos.",
+    notice: "Conteúdo jurídico definitivo em revisão.",
+    sections: ["Uso do site", "Conteúdos e materiais", "Limitações", "Contato"],
+    actions: [
+      { label: "Voltar para o início", targetId: "inicio" },
+      { label: "Falar com a AUDITSEO", targetId: "diagnostico" },
+    ],
+  },
+  "/obrigado": {
+    eyebrow: "Solicitação recebida",
+    title: "Recebemos sua solicitação",
+    text: "Obrigado pelo interesse na AUDITSEO. Nossa equipe irá analisar as informações enviadas e retornar pelo canal informado.",
+    actions: [
+      { label: "Voltar para o início", targetId: "inicio" },
+      { label: "Conhecer o Método S.I.G.N.A.L", targetId: "signal" },
+    ],
+  },
+  "/blog": {
+    eyebrow: "Conteúdos",
+    title: "Blog AUDITSEO",
+    text:
+      "Conteúdos sobre SEO, GEO, inteligência de busca, autoridade de entidade e evolução orgânica para agências de marketing digital.",
+    cards: [
+      { title: "Em breve: artigos estratégicos para agências" },
+      { title: "Em breve: análises sobre nova busca" },
+      { title: "Em breve: guias práticos de Search Intelligence" },
+    ],
+    actions: [{ label: "Voltar para o início", targetId: "inicio" }],
+  },
+  "/guias": {
+    eyebrow: "Conteúdos",
+    title: "Guias técnicos",
+    text:
+      "Materiais estratégicos para ajudar agências a entenderem e posicionarem SEO, GEO, autoridade e inteligência de busca para seus clientes.",
+    cards: [
+      { title: "GEO Readiness", href: "/guias/geo-readiness" },
+      { title: "Narrativa Semântica", href: "/guias/narrativa-semantica" },
+      { title: "Search Intelligence", href: "/guias/search-intelligence" },
+    ],
+    actions: [{ label: "Voltar para o início", targetId: "inicio" }],
+  },
+  "/estudos-busca-ia": {
+    eyebrow: "Estudos",
+    title: "Estudos de busca com IA",
+    text:
+      "Análises e estudos sobre como a busca, as respostas generativas e os ambientes de IA estão influenciando descoberta, consideração e autoridade digital. Conteúdo completo será criado depois.",
+    actions: [
+      { label: "Voltar para o início", targetId: "inicio" },
+      { label: "Conhecer GEO & IA", targetId: "geo-ia" },
+    ],
+  },
+  "/guias/geo-readiness": {
+    eyebrow: "Guia em desenvolvimento",
+    title: "GEO Readiness",
+    text: "Guia em desenvolvimento sobre preparação de marcas para ambientes generativos, mecanismos de resposta e nova busca.",
+    actions: [
+      { label: "Conhecer GEO & IA", targetId: "geo-ia" },
+      { label: "Avaliar parceria estratégica", targetId: "diagnostico" },
+    ],
+  },
+  "/guias/narrativa-semantica": {
+    eyebrow: "Guia em desenvolvimento",
+    title: "Narrativa semântica",
+    text:
+      "Guia em desenvolvimento sobre como marcas podem organizar contexto, autoridade, entidades e conteúdo para serem melhor compreendidas por buscadores e ambientes de IA.",
+    actions: [{ label: "Conhecer Método S.I.G.N.A.L", targetId: "signal" }],
+  },
+  "/guias/search-intelligence": {
+    eyebrow: "Guia em desenvolvimento",
+    title: "Search Intelligence",
+    text: "Guia em desenvolvimento sobre a camada estratégica que conecta SEO, GEO, autoridade, dados e decisão na nova busca.",
+    actions: [{ label: "Conhecer soluções", targetId: "solucoes" }],
+  },
+};
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("inicio");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => setCurrentPath(window.location.pathname);
@@ -29,60 +202,32 @@ export default function App() {
   useEffect(() => {
     const metaDescription = document.querySelector('meta[name="description"]') || document.createElement("meta");
     metaDescription.setAttribute("name", "description");
+    const routeMeta = routeMetadata[currentPath] || routeMetadata["/"];
 
-    if (currentPath === "/para-agencias") {
-      document.title = "SEO, GEO e Search Intelligence White-Label para Agências | AUDITSEO";
-      metaDescription.setAttribute(
-        "content",
-        "Parceria white-label de SEO, GEO, IA e inteligência de busca para agências reterem clientes, comprovarem resultados e expandirem carteira sem ampliar estrutura interna."
-      );
-      setActiveSection("agencias");
-    } else if (currentPath === "/metodo-signal") {
-      document.title = "Método S.I.G.N.A.L | SEO, GEO e Search Intelligence para Agências";
-      metaDescription.setAttribute(
-        "content",
-        "Conheça o Método S.I.G.N.A.L da AUDITSEO: metodologia white-label para agências estruturarem SEO, GEO, IA, autoridade de entidade e inteligência de busca em entregas mensuráveis."
-      );
-      setActiveSection("signal");
-    } else if (currentPath === "/solucoes") {
-      document.title = "Soluções de SEO, GEO e Search Intelligence para Agências | AUDITSEO";
-      metaDescription.setAttribute(
-        "content",
-        "Soluções white-label de SEO, GEO, IA, autoridade de entidade e Search Intelligence para agências entregarem mais clareza, mensuração e evolução aos seus clientes."
-      );
-      setActiveSection("solucoes");
-    } else if (currentPath === "/white-label") {
-      document.title = "SEO White-Label para Agências | AUDITSEO";
-      metaDescription.setAttribute(
-        "content",
-        "Parceria white-label de SEO, GEO e Search Intelligence para agências entregarem inteligência orgânica aos clientes mantendo marca, relacionamento e protagonismo."
-      );
-      setActiveSection("white-label");
-    } else if (currentPath === "/geo-ia") {
-      document.title = "GEO e IA para Agências | Search Intelligence na Nova Busca | AUDITSEO";
-      metaDescription.setAttribute(
-        "content",
-        "GEO, IA e Search Intelligence para agências: prepare marcas para a nova busca com autoridade de entidade, dados estruturados, contexto, conteúdo e governança estratégica."
-      );
-      setActiveSection("geo-ia");
-    } else if (currentPath === "/diagnostico") {
-      document.title = "Diagnóstico Orgânico para Agências | AUDITSEO";
-      metaDescription.setAttribute(
-        "content",
-        "Diagnóstico interativo para agências identificarem oportunidades de SEO, GEO, autoridade e inteligência de busca na carteira de clientes."
-      );
-      setActiveSection("diagnostico");
-    } else {
-      document.title = "AUDITSEO | SEO, GEO, IA e Inteligência de Busca";
-      metaDescription.setAttribute(
-        "content",
-        "AUDITSEO estrutura SEO, GEO e inteligência de busca como uma camada white-label para agências de marketing digital."
-      );
-    }
+    document.title = routeMeta.title;
+    metaDescription.setAttribute("content", routeMeta.description);
+    setActiveSection(routeMeta.activeSection || "");
 
     if (!metaDescription.parentElement) {
       document.head.appendChild(metaDescription);
     }
+  }, [currentPath]);
+
+  useEffect(() => {
+    if (!window.location.hash) return;
+
+    const anchorId = decodeURIComponent(window.location.hash.slice(1));
+    const timer = window.setTimeout(() => {
+      const anchorElement = document.getElementById(anchorId);
+      if (anchorElement) {
+        window.scrollTo({
+          top: anchorElement.offsetTop - 92,
+          behavior: "smooth",
+        });
+      }
+    }, 120);
+
+    return () => window.clearTimeout(timer);
   }, [currentPath]);
 
   // Scroll handler to track and highlight active navigation tab
@@ -223,17 +368,6 @@ export default function App() {
     scrollToHomeSection();
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newsletterEmail) {
-      setNewsletterSuccess(true);
-      setTimeout(() => {
-        setNewsletterEmail("");
-        setNewsletterSuccess(false);
-      }, 5000);
-    }
-  };
-
   if (currentPath === "/para-agencias") {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
@@ -284,6 +418,15 @@ export default function App() {
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
         <Header onNavClick={handleScrollToSection} activeSection="diagnostico" />
         <DiagnosticoPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (basePages[currentPath]) {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="" />
+        <BasePage page={basePages[currentPath]} onNavigate={handleScrollToSection} />
       </div>
     );
   }
@@ -1407,181 +1550,7 @@ export default function App() {
       </section>
 
       {/* 17. FOOTER */}
-      <footer className="bg-[#11100f] text-[#f8f8f8] border-t border-[#b28453]/10">
-        
-        {/* Newsletter champagne stripe */}
-        <div className="bg-[#b28453] text-[#ffffff] py-12">
-          <div className="container mx-auto px-6 xl:px-12 max-w-[1320px]">
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-8 text-left">
-              
-              <div className="min-w-0 max-w-2xl">
-                <h4 className="font-display text-lg sm:text-xl font-bold mb-2">
-                  Receba insights sobre SEO, GEO e Search Intelligence para agências
-                </h4>
-                <p className="text-white/80 text-xs sm:text-sm font-mono tracking-wide uppercase">
-                  Tendências analíticas e bastidores do mercado orgânico diretamente no seu e-mail
-                </p>
-              </div>
-
-              <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                {newsletterSuccess ? (
-                  <div className="bg-white/10 px-6 py-3 rounded-full text-white text-sm font-mono border border-white/20 whitespace-nowrap">
-                    Obrigado por assinar! Enviando insights em breve.
-                  </div>
-                ) : (
-                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                    <input
-                      type="email"
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder="Seu e-mail profissional"
-                      className="w-full bg-white text-[#11100f] px-6 py-3 rounded-full text-sm font-medium outline-none placeholder:text-gray-500 sm:w-[360px] lg:w-[390px]"
-                      required
-                    />
-                    <button
-                      id="newsletter-submit"
-                      type="submit"
-                      className="bg-[#11100f] text-white px-6 py-3 rounded-full text-sm font-bold flex shrink-0 items-center justify-center gap-2 whitespace-nowrap hover:bg-[#e0d3c3] hover:text-[#11100f] transition-all cursor-pointer"
-                    >
-                      <span>Inscrever-se</span>
-                      <Send size={12} />
-                    </button>
-                  </form>
-                )}
-                
-                <div className="hidden xl:flex items-center space-x-2 pl-4 border-l border-white/20">
-                  <button
-                    id="foot-news-partner"
-                    onClick={() => handleScrollToSection("diagnostico")}
-                    className="text-xs bg-white/20 border border-white/10 hover:bg-white text-white hover:text-black py-2.5 px-4 rounded-full transition-colors leading-none font-bold whitespace-nowrap"
-                  >
-                    Avaliar parceria
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        {/* Principal Footer Block */}
-        <div className="container mx-auto px-6 xl:px-12 max-w-[1320px] py-20">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 text-left">
-            
-            {/* Col 1: Marca */}
-            <div className="col-span-2 md:col-span-3 lg:col-span-1 flex flex-col justify-start">
-              <div className="font-display text-2xl font-bold tracking-tight mb-3">
-                <span className="text-[#f8f8f8]">AUDIT</span>
-                <span className="text-[#b28453]">SEO</span>
-              </div>
-              <span className="text-[10px] tracking-widest text-[#b28453] uppercase font-mono mb-4 block leading-none">
-                Search Intelligence Partner
-              </span>
-              <p className="text-[#c9c9c9] text-xs leading-[1.6] max-w-sm">
-                Consultoria estratégica de SEO tradicional, GEO e inteligência de busca para agências de marketing digital que almejam blindar a carteira, reduzir inchaço orgânico CLT e se posicionar com alto padrão no mercado.
-              </p>
-            </div>
-
-            {/* Col 2: Navegação */}
-            <div>
-              <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-                Navegação
-              </h5>
-              <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-                <li><button id="foot-nav-inicio" onClick={() => handleScrollToSection("inicio")} className="hover:text-white transition-colors cursor-pointer text-left">Início</button></li>
-                <li><button id="foot-nav-agencias" onClick={() => handleScrollToSection("agencias")} className="hover:text-white transition-colors cursor-pointer text-left">Para Agências</button></li>
-                <li><button id="foot-nav-signal" onClick={() => handleScrollToSection("signal")} className="hover:text-white transition-colors cursor-pointer text-left">Método S.I.G.N.A.L</button></li>
-                <li><button id="foot-nav-solucoes" onClick={() => handleScrollToSection("solucoes")} className="hover:text-white transition-colors cursor-pointer text-left">Soluções</button></li>
-                <li><button id="foot-nav-white" onClick={() => handleScrollToSection("white-label")} className="hover:text-white transition-colors cursor-pointer text-left">White-Label</button></li>
-                <li><button id="foot-nav-geo" onClick={() => handleScrollToSection("geo-ia")} className="hover:text-white transition-colors cursor-pointer text-left">GEO & IA</button></li>
-                <li><button id="foot-nav-diag" onClick={() => handleScrollToSection("diagnostico")} className="hover:text-white transition-colors cursor-pointer text-left">Diagnóstico</button></li>
-              </ul>
-            </div>
-
-            {/* Col 3: Soluções */}
-            <div>
-              <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-                Soluções
-              </h5>
-              <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-                <li><span className="block hover:text-white transition-colors">Auditoria White-Label</span></li>
-                <li><span className="block hover:text-white transition-colors">Roadmap Orgânico 90d</span></li>
-                <li><span className="block hover:text-white transition-colors">Consultoria Estratégica</span></li>
-                <li><span className="block hover:text-white transition-colors">Squad SEO para Agências</span></li>
-                <li><span className="block hover:text-white transition-colors">Otimização AI / GEO</span></li>
-                <li><span className="block hover:text-white transition-colors">SEO Local Integrado</span></li>
-              </ul>
-            </div>
-
-            {/* Col 4: Para Agências */}
-            <div>
-              <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-                Para Agências
-              </h5>
-              <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-                <li><span className="block hover:text-white transition-colors">Como funciona</span></li>
-                <li><span className="block hover:text-white transition-colors">Modelos de entrega</span></li>
-                <li><span className="block hover:text-white transition-colors">Laudos para propostas</span></li>
-                <li><span className="block hover:text-white transition-colors">Apoio em reuniões</span></li>
-                <li><span className="block hover:text-white transition-colors">Materiais white-label</span></li>
-                <li><span className="block hover:text-white transition-colors font-semibold text-[#b28453]">Diagnóstico Online</span></li>
-              </ul>
-            </div>
-
-            {/* Col 5: Conteúdos */}
-            <div>
-              <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-                Conteúdos
-              </h5>
-              <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-                <li><span className="block hover:text-white transition-colors font-mono">Blog Oficial</span></li>
-                <li><span className="block hover:text-white transition-colors">Guias Técnicos</span></li>
-                <li><span className="block hover:text-white transition-colors">Estudos de Busca com IA</span></li>
-                <li><span className="block hover:text-white transition-colors font-mono uppercase text-[#b28453]">GEO_READINESS_v1</span></li>
-                <li><span className="block hover:text-white transition-colors">Narrativa Semântica</span></li>
-                <li><span className="block hover:text-white transition-colors">Search Intelligence</span></li>
-              </ul>
-            </div>
-
-            {/* Col 6: Contato */}
-            <div>
-              <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-                Fale Conosco
-              </h5>
-              <span className="text-[10px] text-[#c9c9c9]/60 block mb-2 font-mono">Conversar sobre Parceria?</span>
-              <ul className="space-y-2 text-xs font-semibold">
-                <li>
-                  <a href="https://api.whatsapp.com/send?phone=5511999999999" target="_blank" rel="noopener noreferrer" className="text-[#b28453] hover:text-[#e0d3c3] transition-colors hover:underline">
-                    WhatsApp Comercial
-                  </a>
-                </li>
-                <li className="text-[#f8f8f8] font-normal font-mono select-all">parceria@auditseo.com.br</li>
-                <li className="pt-2 text-[10px] text-[#c9c9c9] font-normal">
-                  Atendimento executivo nacional de Segunda a Sexta.
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          {/* Lower Subfooter row */}
-          <div className="border-t border-white/5 pt-8 mt-16 flex flex-col md:flex-row justify-between items-center text-[#c9c9c9] text-xs gap-4">
-            <div className="flex flex-col items-center md:items-start">
-              <span>© 2026 AUDITSEO. Todos os direitos reservados.</span>
-              <span className="text-[10px] text-[#c9c9c9]/40 mt-1 block">
-                Consultoria tática de SEO tradicional, GEO e inteligência de busca para agências de marketing.
-              </span>
-            </div>
-            
-            <div className="flex space-x-6">
-              <span className="hover:text-white cursor-pointer hover:underline">Política de Privacidade</span>
-              <span className="hover:text-white cursor-pointer hover:underline">Termos de Uso</span>
-            </div>
-          </div>
-
-        </div>
-
-      </footer>
+      <SiteFooter onNavigate={handleScrollToSection} />
 
     </div>
   );

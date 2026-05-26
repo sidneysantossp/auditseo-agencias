@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://auditseo-agencias.vercel.app/sitemap.xml

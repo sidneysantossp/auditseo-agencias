@@ -154,6 +154,17 @@ const scenarioSolutions = [
   },
 ];
 
+const scenarioSolutionAnchors = [
+  "search-foundation",
+  "organic-activation",
+  "search-recovery",
+  "entity-authority",
+  "intent-content-architecture",
+  "geo-ai-readiness",
+  "seo-migration-risk-control",
+  "organic-evolution-cycle",
+];
+
 const offerMap = [
   ["Meu site nunca trouxe resultado.", "Organic Activation"],
   ["Nosso tráfego caiu e ninguém conseguiu recuperar.", "Search Recovery"],
@@ -342,7 +353,7 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
           />
           <div className="mt-16 space-y-8">
             {scenarioSolutions.map((solution, index) => (
-              <div key={solution.name}>
+              <div key={solution.name} id={scenarioSolutionAnchors[index]} className="scroll-mt-28">
                 <ScenarioSolutionCard solution={solution} index={index} />
               </div>
             ))}

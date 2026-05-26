@@ -5,6 +5,67 @@ interface SiteFooterProps {
   onNavigate: (targetId: string) => void;
 }
 
+const navigationLinks = [
+  ["Início", "/"],
+  ["Para Agências", "/para-agencias"],
+  ["Método S.I.G.N.A.L", "/metodo-signal"],
+  ["Soluções", "/solucoes"],
+  ["White-Label", "/white-label"],
+  ["GEO & IA", "/geo-ia"],
+  ["Diagnóstico", "/diagnostico"],
+];
+
+const solutionLinks = [
+  ["Projetos começando do zero", "/solucoes#search-foundation"],
+  ["Sites no ar sem tração", "/solucoes#organic-activation"],
+  ["Recuperação orgânica", "/solucoes#search-recovery"],
+  ["Autoridade de entidade", "/solucoes#entity-authority"],
+  ["Conteúdo por intenção", "/solucoes#intent-content-architecture"],
+  ["GEO & IA Readiness", "/solucoes#geo-ai-readiness"],
+  ["Migração e risco SEO", "/solucoes#seo-migration-risk-control"],
+  ["Evolução orgânica", "/solucoes#organic-evolution-cycle"],
+];
+
+const agencyLinks = [
+  ["Como funciona", "/para-agencias#como-funciona"],
+  ["Modelos de parceria", "/para-agencias#modelos-de-parceria"],
+  ["Diagnósticos para propostas", "/para-agencias#diagnosticos-para-propostas"],
+  ["Apoio em reuniões", "/para-agencias#apoio-em-reunioes"],
+  ["Materiais white-label", "/white-label#materiais-white-label"],
+  ["Diagnóstico interativo", "/diagnostico"],
+];
+
+const contentLinks = [
+  ["Blog", "/blog"],
+  ["Guias técnicos", "/guias"],
+  ["Estudos de busca com IA", "/estudos-busca-ia"],
+  ["GEO Readiness", "/guias/geo-readiness"],
+  ["Narrativa semântica", "/guias/narrativa-semantica"],
+  ["Search Intelligence", "/guias/search-intelligence"],
+];
+
+const footerLinkClass = "block text-[#f8f8f8]/72 transition-colors hover:text-[#b28453]";
+const whatsappHref = "https://wa.me/5500000000000"; // TODO: substituir pelo número oficial do WhatsApp comercial.
+
+function FooterColumn({ title, links }: { title: string; links: string[][] }) {
+  return (
+    <div>
+      <h5 className="mb-4 border-b border-[#b28453]/15 pb-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
+        {title}
+      </h5>
+      <ul className="space-y-2.5 text-xs leading-relaxed">
+        {links.map(([label, href]) => (
+          <li key={`${title}-${href}`}>
+            <a className={footerLinkClass} href={href}>
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function SiteFooter({ onNavigate }: SiteFooterProps) {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
@@ -22,37 +83,37 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
   };
 
   return (
-    <footer className="bg-[#11100f] text-[#f8f8f8] border-t border-[#b28453]/10">
-      <div className="bg-[#b28453] text-[#ffffff] py-12">
-        <div className="container mx-auto px-6 xl:px-12 max-w-[1320px]">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-8 text-left">
+    <footer className="border-t border-[#b28453]/10 bg-[#11100f] text-[#f8f8f8]">
+      <div className="bg-[#b28453] py-12 text-white">
+        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="min-w-0 max-w-2xl">
-              <h4 className="font-display text-lg sm:text-xl font-bold mb-2">
+              <h4 className="mb-2 max-w-[760px] font-display text-lg font-bold leading-snug sm:text-xl">
                 Receba insights sobre SEO, GEO e Search Intelligence para agências
               </h4>
-              <p className="text-white/80 text-xs sm:text-sm font-mono tracking-wide uppercase">
+              <p className="max-w-[760px] text-xs font-semibold uppercase tracking-[0.12em] text-white/80 sm:text-sm">
                 Tendências analíticas e bastidores do mercado orgânico diretamente no seu e-mail
               </p>
             </div>
 
-            <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <div className="flex w-full shrink-0 flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:w-auto">
               {newsletterSuccess ? (
-                <div className="bg-white/10 px-6 py-3 rounded-full text-white text-sm font-mono border border-white/20 whitespace-nowrap">
-                  Obrigado por assinar! Enviando insights em breve.
+                <div className="whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white">
+                  Obrigado por assinar. Enviando insights em breve.
                 </div>
               ) : (
-                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <form onSubmit={handleNewsletterSubmit} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <input
                     type="email"
                     value={newsletterEmail}
                     onChange={(event) => setNewsletterEmail(event.target.value)}
                     placeholder="Seu e-mail profissional"
-                    className="w-full bg-white text-[#11100f] px-6 py-3 rounded-full text-sm font-medium outline-none placeholder:text-gray-500 sm:w-[360px] lg:w-[390px]"
+                    className="w-full rounded-full bg-white px-6 py-3 text-sm font-medium text-[#11100f] outline-none placeholder:text-gray-500 sm:w-[390px] lg:w-[430px]"
                     required
                   />
                   <button
                     type="submit"
-                    className="bg-[#11100f] text-white px-6 py-3 rounded-full text-sm font-bold flex shrink-0 items-center justify-center gap-2 whitespace-nowrap hover:bg-[#e0d3c3] hover:text-[#11100f] transition-all cursor-pointer"
+                    className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#11100f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
                   >
                     <span>Inscrever-se</span>
                     <Send size={12} />
@@ -60,10 +121,10 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
                 </form>
               )}
 
-              <div className="hidden xl:flex items-center space-x-2 pl-4 border-l border-white/20">
+              <div className="hidden items-center border-l border-white/20 pl-4 xl:flex">
                 <button
                   onClick={() => onNavigate("diagnostico")}
-                  className="text-xs bg-white/20 border border-white/10 hover:bg-white text-white hover:text-black py-2.5 px-4 rounded-full transition-colors leading-none font-bold whitespace-nowrap"
+                  className="whitespace-nowrap rounded-full border border-white/10 bg-white/20 px-4 py-2.5 text-xs font-bold leading-none text-white transition-colors hover:bg-white hover:text-black"
                 >
                   Avaliar parceria
                 </button>
@@ -73,108 +134,69 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 xl:px-12 max-w-[1320px] py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 text-left">
-          <div className="col-span-2 md:col-span-3 lg:col-span-1 flex flex-col justify-start">
-            <div className="font-display text-2xl font-bold tracking-tight mb-3">
+      <div className="container mx-auto max-w-[1320px] px-6 py-20 xl:px-12">
+        <div className="grid gap-10 text-left sm:grid-cols-2 lg:grid-cols-[1.35fr_0.95fr_1.18fr_1.12fr_1.08fr_1fr]">
+          <div className="flex flex-col justify-start sm:col-span-2 lg:col-span-1">
+            <a href="/" className="mb-3 inline-flex w-fit font-display text-2xl font-bold tracking-tight">
               <span className="text-[#f8f8f8]">AUDIT</span>
               <span className="text-[#b28453]">SEO</span>
-            </div>
-            <span className="text-[10px] tracking-widest text-[#b28453] uppercase font-mono mb-4 block leading-none">
-              Search Intelligence Partner
+            </a>
+            <span className="mb-4 block font-mono text-[10px] uppercase leading-none tracking-[0.18em] text-[#b28453]">
+              SEARCH INTELLIGENCE PARTNER
             </span>
-            <p className="text-[#c9c9c9] text-xs leading-[1.6] max-w-sm">
-              Consultoria estratégica de SEO tradicional, GEO e inteligência de busca para agências de marketing digital que almejam blindar a carteira, reduzir inchaço orgânico CLT e se posicionar com alto padrão no mercado.
+            <p className="max-w-sm text-xs leading-[1.7] text-[#f8f8f8]/64">
+              Consultoria estratégica de SEO, GEO e inteligência de busca para agências de marketing digital que querem ampliar valor, retenção e evolução orgânica na carteira.
             </p>
           </div>
 
-          <div>
-            <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-              Navegação
-            </h5>
-            <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-              <li><button onClick={() => onNavigate("inicio")} className="hover:text-white transition-colors cursor-pointer text-left">Início</button></li>
-              <li><button onClick={() => onNavigate("agencias")} className="hover:text-white transition-colors cursor-pointer text-left">Para Agências</button></li>
-              <li><button onClick={() => onNavigate("signal")} className="hover:text-white transition-colors cursor-pointer text-left">Método S.I.G.N.A.L</button></li>
-              <li><button onClick={() => onNavigate("solucoes")} className="hover:text-white transition-colors cursor-pointer text-left">Soluções</button></li>
-              <li><button onClick={() => onNavigate("white-label")} className="hover:text-white transition-colors cursor-pointer text-left">White-Label</button></li>
-              <li><button onClick={() => onNavigate("geo-ia")} className="hover:text-white transition-colors cursor-pointer text-left">GEO & IA</button></li>
-              <li><button onClick={() => onNavigate("diagnostico")} className="hover:text-white transition-colors cursor-pointer text-left">Diagnóstico</button></li>
-            </ul>
-          </div>
+          <FooterColumn title="NAVEGAÇÃO" links={navigationLinks} />
+          <FooterColumn title="SOLUÇÕES" links={solutionLinks} />
+          <FooterColumn title="PARA AGÊNCIAS" links={agencyLinks} />
+          <FooterColumn title="CONTEÚDOS" links={contentLinks} />
 
           <div>
-            <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-              Soluções
+            <h5 className="mb-4 border-b border-[#b28453]/15 pb-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
+              FALE CONOSCO
             </h5>
-            <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-              <li><span className="block hover:text-white transition-colors">Auditoria White-Label</span></li>
-              <li><span className="block hover:text-white transition-colors">Roadmap Orgânico 90d</span></li>
-              <li><span className="block hover:text-white transition-colors">Consultoria Estratégica</span></li>
-              <li><span className="block hover:text-white transition-colors">Squad SEO para Agências</span></li>
-              <li><span className="block hover:text-white transition-colors">Otimização AI / GEO</span></li>
-              <li><span className="block hover:text-white transition-colors">SEO Local Integrado</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-              Para Agências
-            </h5>
-            <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-              <li><span className="block hover:text-white transition-colors">Como funciona</span></li>
-              <li><span className="block hover:text-white transition-colors">Modelos de entrega</span></li>
-              <li><span className="block hover:text-white transition-colors">Laudos para propostas</span></li>
-              <li><span className="block hover:text-white transition-colors">Apoio em reuniões</span></li>
-              <li><span className="block hover:text-white transition-colors">Materiais white-label</span></li>
-              <li><span className="block hover:text-white transition-colors font-semibold text-[#b28453]">Diagnóstico Online</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-              Conteúdos
-            </h5>
-            <ul className="space-y-2.5 text-xs text-[#c9c9c9]">
-              <li><span className="block hover:text-white transition-colors font-mono">Blog Oficial</span></li>
-              <li><span className="block hover:text-white transition-colors">Guias Técnicos</span></li>
-              <li><span className="block hover:text-white transition-colors">Estudos de Busca com IA</span></li>
-              <li><span className="block hover:text-white transition-colors font-mono uppercase text-[#b28453]">GEO_READINESS_v1</span></li>
-              <li><span className="block hover:text-white transition-colors">Narrativa Semântica</span></li>
-              <li><span className="block hover:text-white transition-colors">Search Intelligence</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-display text-[11px] font-mono tracking-widest text-[#b28453] uppercase mb-4 font-bold border-b border-[#b28453]/15 pb-2">
-              Fale Conosco
-            </h5>
-            <span className="text-[10px] text-[#c9c9c9]/60 block mb-2 font-mono">Conversar sobre Parceria?</span>
-            <ul className="space-y-2 text-xs font-semibold">
+            <span className="mb-3 block font-mono text-[10px] text-[#f8f8f8]/60">Converse sobre parceria</span>
+            <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="https://api.whatsapp.com/send?phone=5511999999999" target="_blank" rel="noopener noreferrer" className="text-[#b28453] hover:text-[#e0d3c3] transition-colors hover:underline">
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#b28453] transition-colors hover:text-[#e0d3c3] hover:underline"
+                >
                   WhatsApp Comercial
                 </a>
               </li>
-              <li className="text-[#f8f8f8] font-normal font-mono select-all">parceria@auditseo.com.br</li>
-              <li className="pt-2 text-[10px] text-[#c9c9c9] font-normal">
-                Atendimento executivo nacional de Segunda a Sexta.
+              <li>
+                <a href="mailto:parceria@auditseo.com.br" className="font-mono text-[#f8f8f8]/82 transition-colors hover:text-[#b28453]">
+                  parceria@auditseo.com.br
+                </a>
+              </li>
+              <li className="pt-2 text-[10px] leading-relaxed text-[#f8f8f8]/60">
+                Atendimento executivo nacional de segunda a sexta.
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 mt-16 flex flex-col md:flex-row justify-between items-center text-[#c9c9c9] text-xs gap-4">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#b28453]/14 pt-8 text-xs text-[#f8f8f8]/60 md:flex-row">
           <div className="flex flex-col items-center md:items-start">
             <span>© 2026 AUDITSEO. Todos os direitos reservados.</span>
-            <span className="text-[10px] text-[#c9c9c9]/40 mt-1 block">
-              Consultoria tática de SEO tradicional, GEO e inteligência de busca para agências de marketing.
+            <span className="mt-1 block text-[10px] text-[#f8f8f8]/42">
+              Search Intelligence, SEO, GEO e inteligência de busca para agências de marketing digital.
             </span>
           </div>
 
-          <div className="flex space-x-6">
-            <span className="hover:text-white cursor-pointer hover:underline">Política de Privacidade</span>
-            <span className="hover:text-white cursor-pointer hover:underline">Termos de Uso</span>
+          <div className="flex gap-6">
+            <a href="/politica-de-privacidade" className="transition-colors hover:text-[#b28453] hover:underline">
+              Política de Privacidade
+            </a>
+            <a href="/termos-de-uso" className="transition-colors hover:text-[#b28453] hover:underline">
+              Termos de Uso
+            </a>
           </div>
         </div>
       </div>

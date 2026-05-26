@@ -266,7 +266,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
         </div>
       </section>
 
-      <section className="bg-[#181716] py-24 md:py-32">
+      <section id="apoio-em-reunioes" className="scroll-mt-28 bg-[#181716] py-24 md:py-32">
         <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
           <SectionHeader
             eyebrow="Como atuamos"
@@ -287,7 +287,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section id="diagnosticos-para-propostas" className="scroll-mt-28 py-24 md:py-32">
         <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
           <SectionHeader
             align="center"
@@ -333,7 +333,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section id="modelos-de-parceria" className="scroll-mt-28 py-24 md:py-32">
         <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
           <SectionHeader align="center" eyebrow="Modelos" title="Escolha o modelo de parceria ideal para o estágio da sua agência" />
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -360,7 +360,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
         </div>
       </section>
 
-      <section id="como-funciona" className="py-24 md:py-32">
+      <section id="como-funciona" className="scroll-mt-28 py-24 md:py-32">
         <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
           <SectionHeader align="center" eyebrow="Operação" title="Como a parceria funciona na prática" />
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

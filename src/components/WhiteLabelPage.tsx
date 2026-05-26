@@ -251,7 +251,7 @@ export default function WhiteLabelPage({ onNavigate }: WhiteLabelPageProps) {
         </div>
       </section>
 
-      <section className="bg-[#11100f] py-24 md:py-32">
+      <section id="materiais-white-label" className="scroll-mt-28 bg-[#11100f] py-24 md:py-32">
         <div className="container mx-auto max-w-[1080px] px-6 text-center xl:px-12">
           <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">VISÃO WHITE-LABEL</span>
           <h2 className="mx-auto mt-6 max-w-4xl font-display text-[34px] font-bold leading-[1.12] tracking-[-0.03em] text-[#f8f8f8] md:text-[52px]">
