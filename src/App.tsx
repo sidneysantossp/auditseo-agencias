@@ -200,17 +200,21 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement("meta");
-    metaDescription.setAttribute("name", "description");
+    const setMeta = (selector: string, attributes: Record<string, string>) => {
+      const meta = document.querySelector(selector) || document.createElement("meta");
+      Object.entries(attributes).forEach(([key, value]) => meta.setAttribute(key, value));
+      if (!meta.parentElement) document.head.appendChild(meta);
+    };
+
     const routeMeta = routeMetadata[currentPath] || routeMetadata["/"];
 
     document.title = routeMeta.title;
-    metaDescription.setAttribute("content", routeMeta.description);
+    setMeta('meta[name="description"]', { name: "description", content: routeMeta.description });
+    setMeta('meta[property="og:title"]', { property: "og:title", content: routeMeta.title });
+    setMeta('meta[property="og:description"]', { property: "og:description", content: routeMeta.description });
+    setMeta('meta[name="twitter:title"]', { name: "twitter:title", content: routeMeta.title });
+    setMeta('meta[name="twitter:description"]', { name: "twitter:description", content: routeMeta.description });
     setActiveSection(routeMeta.activeSection || "");
-
-    if (!metaDescription.parentElement) {
-      document.head.appendChild(metaDescription);
-    }
   }, [currentPath]);
 
   useEffect(() => {
