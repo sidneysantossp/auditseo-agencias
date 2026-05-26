@@ -10,6 +10,9 @@ import FAQSection from "./components/FAQSection";
 import ParaAgenciasPage from "./components/ParaAgenciasPage";
 import MetodoSignalPage from "./components/MetodoSignalPage";
 import SolucoesPage from "./components/SolucoesPage";
+import WhiteLabelPage from "./components/WhiteLabelPage";
+import GeoIaPage from "./components/GeoIaPage";
+import DiagnosticoPage from "./components/DiagnosticoPage";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -48,6 +51,27 @@ export default function App() {
         "Soluções white-label de SEO, GEO, IA, autoridade de entidade e Search Intelligence para agências entregarem mais clareza, mensuração e evolução aos seus clientes."
       );
       setActiveSection("solucoes");
+    } else if (currentPath === "/white-label") {
+      document.title = "SEO White-Label para Agências | AUDITSEO";
+      metaDescription.setAttribute(
+        "content",
+        "Parceria white-label de SEO, GEO e Search Intelligence para agências entregarem inteligência orgânica aos clientes mantendo marca, relacionamento e protagonismo."
+      );
+      setActiveSection("white-label");
+    } else if (currentPath === "/geo-ia") {
+      document.title = "GEO e IA para Agências | Search Intelligence na Nova Busca | AUDITSEO";
+      metaDescription.setAttribute(
+        "content",
+        "GEO, IA e Search Intelligence para agências: prepare marcas para a nova busca com autoridade de entidade, dados estruturados, contexto, conteúdo e governança estratégica."
+      );
+      setActiveSection("geo-ia");
+    } else if (currentPath === "/diagnostico") {
+      document.title = "Diagnóstico Orgânico para Agências | AUDITSEO";
+      metaDescription.setAttribute(
+        "content",
+        "Diagnóstico interativo para agências identificarem oportunidades de SEO, GEO, autoridade e inteligência de busca na carteira de clientes."
+      );
+      setActiveSection("diagnostico");
     } else {
       document.title = "AUDITSEO | SEO, GEO, IA e Inteligência de Busca";
       metaDescription.setAttribute(
@@ -137,6 +161,36 @@ export default function App() {
       return;
     }
 
+    if (sectionId === "white-label") {
+      if (window.location.pathname !== "/white-label") {
+        window.history.pushState({}, "", "/white-label");
+        setCurrentPath("/white-label");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("white-label");
+      return;
+    }
+
+    if (sectionId === "geo-ia") {
+      if (window.location.pathname !== "/geo-ia") {
+        window.history.pushState({}, "", "/geo-ia");
+        setCurrentPath("/geo-ia");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("geo-ia");
+      return;
+    }
+
+    if (sectionId === "diagnostico") {
+      if (window.location.pathname !== "/diagnostico") {
+        window.history.pushState({}, "", "/diagnostico");
+        setCurrentPath("/diagnostico");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("diagnostico");
+      return;
+    }
+
     if (sectionId === "como-funciona" && currentPath === "/para-agencias") {
       const internalElement = document.getElementById(sectionId);
       if (internalElement) {
@@ -203,6 +257,33 @@ export default function App() {
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
         <Header onNavClick={handleScrollToSection} activeSection="solucoes" />
         <SolucoesPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/white-label") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="white-label" />
+        <WhiteLabelPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/geo-ia") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="geo-ia" />
+        <GeoIaPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/diagnostico") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="diagnostico" />
+        <DiagnosticoPage onNavigate={handleScrollToSection} />
       </div>
     );
   }
