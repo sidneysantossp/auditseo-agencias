@@ -7,15 +7,65 @@ import SignalMethod from "./components/SignalMethod";
 import SolutionsSection from "./components/SolutionsSection";
 import DiagnosticSection from "./components/DiagnosticSection";
 import FAQSection from "./components/FAQSection";
+import ParaAgenciasPage from "./components/ParaAgenciasPage";
+import MetodoSignalPage from "./components/MetodoSignalPage";
+import SolucoesPage from "./components/SolucoesPage";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("inicio");
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+
+  useEffect(() => {
+    const handlePopState = () => setCurrentPath(window.location.pathname);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const metaDescription = document.querySelector('meta[name="description"]') || document.createElement("meta");
+    metaDescription.setAttribute("name", "description");
+
+    if (currentPath === "/para-agencias") {
+      document.title = "SEO, GEO e Search Intelligence White-Label para Agências | AUDITSEO";
+      metaDescription.setAttribute(
+        "content",
+        "Parceria white-label de SEO, GEO, IA e inteligência de busca para agências reterem clientes, comprovarem resultados e expandirem carteira sem ampliar estrutura interna."
+      );
+      setActiveSection("agencias");
+    } else if (currentPath === "/metodo-signal") {
+      document.title = "Método S.I.G.N.A.L | SEO, GEO e Search Intelligence para Agências";
+      metaDescription.setAttribute(
+        "content",
+        "Conheça o Método S.I.G.N.A.L da AUDITSEO: metodologia white-label para agências estruturarem SEO, GEO, IA, autoridade de entidade e inteligência de busca em entregas mensuráveis."
+      );
+      setActiveSection("signal");
+    } else if (currentPath === "/solucoes") {
+      document.title = "Soluções de SEO, GEO e Search Intelligence para Agências | AUDITSEO";
+      metaDescription.setAttribute(
+        "content",
+        "Soluções white-label de SEO, GEO, IA, autoridade de entidade e Search Intelligence para agências entregarem mais clareza, mensuração e evolução aos seus clientes."
+      );
+      setActiveSection("solucoes");
+    } else {
+      document.title = "AUDITSEO | SEO, GEO, IA e Inteligência de Busca";
+      metaDescription.setAttribute(
+        "content",
+        "AUDITSEO estrutura SEO, GEO e inteligência de busca como uma camada white-label para agências de marketing digital."
+      );
+    }
+
+    if (!metaDescription.parentElement) {
+      document.head.appendChild(metaDescription);
+    }
+  }, [currentPath]);
 
   // Scroll handler to track and highlight active navigation tab
   useEffect(() => {
     const handleScroll = () => {
+      if (currentPath !== "/") return;
+
       const scrollPosition = window.scrollY + 200;
       const sections = [
         "inicio",
@@ -42,18 +92,81 @@ export default function App() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentPath]);
 
   // Soft scroll trigger
   const handleScrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 82, // height alignment offset matching the floating navbar
-        behavior: "smooth",
-      });
-      setActiveSection(sectionId);
+    const scrollToHomeSection = () => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 82, // height alignment offset matching the floating navbar
+          behavior: "smooth",
+        });
+        setActiveSection(sectionId);
+      }
+    };
+
+    if (sectionId === "agencias") {
+      if (window.location.pathname !== "/para-agencias") {
+        window.history.pushState({}, "", "/para-agencias");
+        setCurrentPath("/para-agencias");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("agencias");
+      return;
     }
+
+    if (sectionId === "signal") {
+      if (window.location.pathname !== "/metodo-signal") {
+        window.history.pushState({}, "", "/metodo-signal");
+        setCurrentPath("/metodo-signal");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("signal");
+      return;
+    }
+
+    if (sectionId === "solucoes") {
+      if (window.location.pathname !== "/solucoes") {
+        window.history.pushState({}, "", "/solucoes");
+        setCurrentPath("/solucoes");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("solucoes");
+      return;
+    }
+
+    if (sectionId === "como-funciona" && currentPath === "/para-agencias") {
+      const internalElement = document.getElementById(sectionId);
+      if (internalElement) {
+        window.scrollTo({
+          top: internalElement.offsetTop - 82,
+          behavior: "smooth",
+        });
+      }
+      return;
+    }
+
+    if (sectionId === "camadas-signal" && currentPath === "/metodo-signal") {
+      const internalElement = document.getElementById(sectionId);
+      if (internalElement) {
+        window.scrollTo({
+          top: internalElement.offsetTop - 82,
+          behavior: "smooth",
+        });
+      }
+      return;
+    }
+
+    if (currentPath !== "/") {
+      window.history.pushState({}, "", "/");
+      setCurrentPath("/");
+      window.setTimeout(scrollToHomeSection, 50);
+      return;
+    }
+
+    scrollToHomeSection();
   };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -66,6 +179,33 @@ export default function App() {
       }, 5000);
     }
   };
+
+  if (currentPath === "/para-agencias") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="agencias" />
+        <ParaAgenciasPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/metodo-signal") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="signal" />
+        <MetodoSignalPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/solucoes") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="solucoes" />
+        <SolucoesPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
@@ -1193,7 +1333,7 @@ export default function App() {
           <div className="container mx-auto px-6 xl:px-12 max-w-[1320px]">
             <div className="flex flex-col lg:flex-row justify-between items-center gap-8 text-left">
               
-              <div>
+              <div className="min-w-0 max-w-2xl">
                 <h4 className="font-display text-lg sm:text-xl font-bold mb-2">
                   Receba insights sobre SEO, GEO e Search Intelligence para agências
                 </h4>
@@ -1202,25 +1342,25 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
                 {newsletterSuccess ? (
-                  <div className="bg-white/10 px-6 py-3 rounded-full text-white text-sm font-mono border border-white/20">
+                  <div className="bg-white/10 px-6 py-3 rounded-full text-white text-sm font-mono border border-white/20 whitespace-nowrap">
                     Obrigado por assinar! Enviando insights em breve.
                   </div>
                 ) : (
-                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
+                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                     <input
                       type="email"
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="Seu e-mail profissional"
-                      className="bg-white text-[#11100f] px-6 py-3 rounded-full text-sm font-medium outline-none min-w-[260px] placeholder:text-gray-500"
+                      className="w-full bg-white text-[#11100f] px-6 py-3 rounded-full text-sm font-medium outline-none placeholder:text-gray-500 sm:w-[360px] lg:w-[390px]"
                       required
                     />
                     <button
                       id="newsletter-submit"
                       type="submit"
-                      className="bg-[#11100f] text-white px-6 py-3 rounded-full text-sm font-bold flex items-center justify-center space-x-1 hover:bg-[#e0d3c3] hover:text-[#11100f] transition-all cursor-pointer"
+                      className="bg-[#11100f] text-white px-6 py-3 rounded-full text-sm font-bold flex shrink-0 items-center justify-center gap-2 whitespace-nowrap hover:bg-[#e0d3c3] hover:text-[#11100f] transition-all cursor-pointer"
                     >
                       <span>Inscrever-se</span>
                       <Send size={12} />
@@ -1232,7 +1372,7 @@ export default function App() {
                   <button
                     id="foot-news-partner"
                     onClick={() => handleScrollToSection("diagnostico")}
-                    className="text-xs bg-white/20 border border-white/10 hover:bg-white text-white hover:text-black py-2.5 px-4 rounded-full transition-colors leading-none font-bold"
+                    className="text-xs bg-white/20 border border-white/10 hover:bg-white text-white hover:text-black py-2.5 px-4 rounded-full transition-colors leading-none font-bold whitespace-nowrap"
                   >
                     Avaliar parceria
                   </button>
