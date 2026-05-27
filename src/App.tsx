@@ -14,7 +14,7 @@ import WhiteLabelPage from "./components/WhiteLabelPage";
 import GeoIaPage from "./components/GeoIaPage";
 import DiagnosticoPage from "./components/DiagnosticoPage";
 import SiteFooter from "./components/SiteFooter";
-import BasePage, { BasePageConfig } from "./components/BasePage";
+import ContentPage from "./components/ContentPage";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string }> = {
   "/": {
@@ -62,133 +62,58 @@ const routeMetadata: Record<string, { title: string; description: string; active
   "/politica-de-privacidade": {
     title: "Política de Privacidade | AUDITSEO",
     description:
-      "Diretrizes de privacidade da AUDITSEO para uso do site, formulários, canais de contato e informações compartilhadas por agências.",
+      "Política de Privacidade da AUDITSEO sobre uso do site, formulários, canais de contato e informações compartilhadas por agências interessadas em parceria.",
   },
   "/termos-de-uso": {
     title: "Termos de Uso | AUDITSEO",
-    description: "Condições gerais de uso do site AUDITSEO, seus conteúdos, formulários e materiais informativos.",
+    description: "Termos de Uso do site AUDITSEO, seus conteúdos, formulários, materiais informativos e canais de contato.",
   },
   "/obrigado": {
     title: "Obrigado | AUDITSEO",
-    description: "Confirmação de solicitação enviada à AUDITSEO.",
+    description: "Solicitação recebida pela AUDITSEO.",
   },
   "/blog": {
     title: "Blog AUDITSEO | Search Intelligence para Agências",
-    description: "Conteúdos sobre SEO, GEO, inteligência de busca, autoridade de entidade e evolução orgânica para agências.",
+    description:
+      "Artigos estratégicos sobre SEO, GEO, IA, autoridade de entidade e inteligência de busca para agências de marketing digital.",
   },
   "/guias": {
-    title: "Guias Técnicos | AUDITSEO",
-    description: "Guias técnicos da AUDITSEO sobre SEO, GEO, autoridade e inteligência de busca para agências.",
+    title: "Guias Técnicos AUDITSEO | SEO, GEO e Search Intelligence para Agências",
+    description:
+      "Guias técnicos e estratégicos sobre GEO, narrativa semântica, autoridade de entidade e Search Intelligence para agências.",
   },
   "/estudos-busca-ia": {
     title: "Estudos de Busca com IA | AUDITSEO",
-    description: "Estudos sobre busca, respostas generativas, IA, descoberta, consideração e autoridade digital.",
+    description:
+      "Estudos e análises sobre como IA, AI Search, GEO e mecanismos de resposta estão mudando descoberta, autoridade e decisão digital.",
   },
   "/guias/geo-readiness": {
-    title: "GEO Readiness | AUDITSEO",
-    description: "Guia em desenvolvimento sobre preparação de marcas para ambientes generativos e nova busca.",
+    title: "GEO Readiness | Como preparar marcas para a nova busca | AUDITSEO",
+    description:
+      "Guia GEO Readiness da AUDITSEO: como preparar marcas para AI Search, respostas generativas, autoridade de entidade e nova busca.",
   },
   "/guias/narrativa-semantica": {
-    title: "Narrativa Semântica | AUDITSEO",
-    description: "Guia em desenvolvimento sobre contexto, autoridade, entidades e conteúdo para nova busca.",
+    title: "Narrativa Semântica e Autoridade de Entidade | AUDITSEO",
+    description:
+      "Entenda como narrativa semântica, entidade, contexto e autoridade ajudam marcas a serem melhor compreendidas por buscadores e IA.",
   },
   "/guias/search-intelligence": {
-    title: "Search Intelligence | AUDITSEO",
-    description: "Guia em desenvolvimento sobre a camada estratégica que conecta SEO, GEO, autoridade, dados e decisão.",
+    title: "Search Intelligence para Agências | AUDITSEO",
+    description:
+      "Search Intelligence é a camada que conecta SEO, GEO, dados, autoridade, conteúdo e decisão em uma entrega estratégica para agências.",
   },
 };
-
-const basePages: Record<string, BasePageConfig> = {
-  "/politica-de-privacidade": {
-    eyebrow: "Página institucional",
-    title: "Política de Privacidade",
-    text:
-      "Esta página apresenta as diretrizes de privacidade da AUDITSEO em relação ao uso do site, formulários, canais de contato e informações compartilhadas por agências interessadas em parceria.",
-    notice: "Conteúdo jurídico definitivo em revisão.",
-    sections: ["Informações coletadas", "Uso das informações", "Compartilhamento", "Segurança", "Contato"],
-    actions: [
-      { label: "Voltar para o início", targetId: "inicio" },
-      { label: "Falar com a AUDITSEO", targetId: "diagnostico" },
-    ],
-  },
-  "/termos-de-uso": {
-    eyebrow: "Página institucional",
-    title: "Termos de Uso",
-    text: "Esta página apresenta as condições gerais de uso do site AUDITSEO, seus conteúdos, formulários e materiais informativos.",
-    notice: "Conteúdo jurídico definitivo em revisão.",
-    sections: ["Uso do site", "Conteúdos e materiais", "Limitações", "Contato"],
-    actions: [
-      { label: "Voltar para o início", targetId: "inicio" },
-      { label: "Falar com a AUDITSEO", targetId: "diagnostico" },
-    ],
-  },
-  "/obrigado": {
-    eyebrow: "Solicitação recebida",
-    title: "Recebemos sua solicitação",
-    text: "Obrigado pelo interesse na AUDITSEO. Nossa equipe irá analisar as informações enviadas e retornar pelo canal informado.",
-    actions: [
-      { label: "Voltar para o início", targetId: "inicio" },
-      { label: "Conhecer o Método S.I.G.N.A.L", targetId: "signal" },
-    ],
-  },
-  "/blog": {
-    eyebrow: "Conteúdos",
-    title: "Blog AUDITSEO",
-    text:
-      "Conteúdos sobre SEO, GEO, inteligência de busca, autoridade de entidade e evolução orgânica para agências de marketing digital.",
-    cards: [
-      { title: "Em breve: artigos estratégicos para agências" },
-      { title: "Em breve: análises sobre nova busca" },
-      { title: "Em breve: guias práticos de Search Intelligence" },
-    ],
-    actions: [{ label: "Voltar para o início", targetId: "inicio" }],
-  },
-  "/guias": {
-    eyebrow: "Conteúdos",
-    title: "Guias técnicos",
-    text:
-      "Materiais estratégicos para ajudar agências a entenderem e posicionarem SEO, GEO, autoridade e inteligência de busca para seus clientes.",
-    cards: [
-      { title: "GEO Readiness", href: "/guias/geo-readiness" },
-      { title: "Narrativa Semântica", href: "/guias/narrativa-semantica" },
-      { title: "Search Intelligence", href: "/guias/search-intelligence" },
-    ],
-    actions: [{ label: "Voltar para o início", targetId: "inicio" }],
-  },
-  "/estudos-busca-ia": {
-    eyebrow: "Estudos",
-    title: "Estudos de busca com IA",
-    text:
-      "Análises e estudos sobre como a busca, as respostas generativas e os ambientes de IA estão influenciando descoberta, consideração e autoridade digital. Conteúdo completo será criado depois.",
-    actions: [
-      { label: "Voltar para o início", targetId: "inicio" },
-      { label: "Conhecer GEO & IA", targetId: "geo-ia" },
-    ],
-  },
-  "/guias/geo-readiness": {
-    eyebrow: "Guia em desenvolvimento",
-    title: "GEO Readiness",
-    text: "Guia em desenvolvimento sobre preparação de marcas para ambientes generativos, mecanismos de resposta e nova busca.",
-    actions: [
-      { label: "Conhecer GEO & IA", targetId: "geo-ia" },
-      { label: "Avaliar parceria estratégica", targetId: "diagnostico" },
-    ],
-  },
-  "/guias/narrativa-semantica": {
-    eyebrow: "Guia em desenvolvimento",
-    title: "Narrativa semântica",
-    text:
-      "Guia em desenvolvimento sobre como marcas podem organizar contexto, autoridade, entidades e conteúdo para serem melhor compreendidas por buscadores e ambientes de IA.",
-    actions: [{ label: "Conhecer Método S.I.G.N.A.L", targetId: "signal" }],
-  },
-  "/guias/search-intelligence": {
-    eyebrow: "Guia em desenvolvimento",
-    title: "Search Intelligence",
-    text: "Guia em desenvolvimento sobre a camada estratégica que conecta SEO, GEO, autoridade, dados e decisão na nova busca.",
-    actions: [{ label: "Conhecer soluções", targetId: "solucoes" }],
-  },
-};
-
+const contentRoutes = new Set([
+  "/politica-de-privacidade",
+  "/termos-de-uso",
+  "/obrigado",
+  "/blog",
+  "/guias",
+  "/estudos-busca-ia",
+  "/guias/geo-readiness",
+  "/guias/narrativa-semantica",
+  "/guias/search-intelligence",
+]);
 export default function App() {
   const [activeSection, setActiveSection] = useState("inicio");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -426,11 +351,11 @@ export default function App() {
     );
   }
 
-  if (basePages[currentPath]) {
+  if (contentRoutes.has(currentPath)) {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
         <Header onNavClick={handleScrollToSection} activeSection="" />
-        <BasePage page={basePages[currentPath]} onNavigate={handleScrollToSection} />
+        <ContentPage path={currentPath} onNavigate={handleScrollToSection} />
       </div>
     );
   }

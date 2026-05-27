@@ -36,7 +36,7 @@ const agencyLinks = [
 ];
 
 const contentLinks = [
-  ["Blog", "/blog"],
+  ["Blog Oficial", "/blog"],
   ["Guias técnicos", "/guias"],
   ["Estudos de busca com IA", "/estudos-busca-ia"],
   ["GEO Readiness", "/guias/geo-readiness"],
@@ -99,7 +99,7 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
             <div className="flex w-full shrink-0 flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:w-auto">
               {newsletterSuccess ? (
                 <div className="whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white">
-                  Obrigado por assinar. Enviando insights em breve.
+                  Obrigado por assinar. Seus insights foram registrados.
                 </div>
               ) : (
                 <form onSubmit={handleNewsletterSubmit} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
