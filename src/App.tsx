@@ -15,6 +15,7 @@ import GeoIaPage from "./components/GeoIaPage";
 import DiagnosticoPage from "./components/DiagnosticoPage";
 import SiteFooter from "./components/SiteFooter";
 import ContentPage from "./components/ContentPage";
+import BlogPage from "./components/BlogPage";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string }> = {
   "/": {
@@ -73,9 +74,9 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description: "Solicitação recebida pela AUDITSEO.",
   },
   "/blog": {
-    title: "Blog AUDITSEO | Search Intelligence para Agências",
+    title: "Blog AUDITSEO | SEO, GEO e Search Intelligence para Agências",
     description:
-      "Artigos estratégicos sobre SEO, GEO, IA, autoridade de entidade e inteligência de busca para agências de marketing digital.",
+      "Conteúdos estratégicos para donos de agências responderem dúvidas de clientes sobre SEO, GEO, IA, autoridade, tráfego, resultados e nova busca.",
   },
   "/guias": {
     title: "Guias Técnicos AUDITSEO | SEO, GEO e Search Intelligence para Agências",
@@ -107,7 +108,6 @@ const contentRoutes = new Set([
   "/politica-de-privacidade",
   "/termos-de-uso",
   "/obrigado",
-  "/blog",
   "/guias",
   "/estudos-busca-ia",
   "/guias/geo-readiness",
@@ -347,6 +347,15 @@ export default function App() {
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
         <Header onNavClick={handleScrollToSection} activeSection="diagnostico" />
         <DiagnosticoPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/blog") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="" />
+        <BlogPage onNavigate={handleScrollToSection} />
       </div>
     );
   }

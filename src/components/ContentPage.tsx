@@ -46,105 +46,6 @@ interface ContentPageProps {
 }
 
 const pages: Record<string, ContentPageData> = {
-  "/blog": {
-    eyebrow: "CONTEÚDOS PARA AGÊNCIAS",
-    title: "Blog AUDITSEO",
-    subheadline:
-      "Reflexões, análises e guias sobre a nova busca, SEO estratégico, GEO, IA, autoridade de entidade e evolução orgânica para agências de marketing digital.",
-    support:
-      "Conteúdos criados para ajudar agências a entender, posicionar e transformar a nova busca em valor estratégico para seus clientes.",
-    actions: [
-      { label: "Explorar guias técnicos", href: "/guias" },
-      { label: "Avaliar parceria estratégica", targetId: "diagnostico" },
-    ],
-    sections: [
-      {
-        eyebrow: "Destaques editoriais",
-        title: "Leituras centrais para a nova busca",
-        text: "Três portas de entrada para entender como a AUDITSEO organiza SEO, GEO, autoridade e inteligência de busca para agências.",
-        cards: [
-          {
-            title: "GEO & IA sem hype",
-            text: "Como agências podem falar sobre IA e nova busca sem prometer aparição garantida ou vender discurso vazio.",
-            href: "/geo-ia",
-            tag: "GEO & IA",
-          },
-          {
-            title: "Autoridade de entidade",
-            text: "Por que marcas precisam ser compreendidas como entidades confiáveis antes da decisão do cliente.",
-            href: "/guias/narrativa-semantica",
-            tag: "Autoridade",
-          },
-          {
-            title: "Search Intelligence",
-            text: "A camada estratégica que conecta SEO, GEO, dados, autoridade e decisão na nova era da busca.",
-            href: "/guias/search-intelligence",
-            tag: "Método",
-          },
-        ],
-      },
-      {
-        eyebrow: "Categorias",
-        title: "Temas que orientam a biblioteca AUDITSEO",
-        tone: "beige",
-        items: [
-          "SEO estratégico",
-          "GEO & IA",
-          "Autoridade de entidade",
-          "White-label para agências",
-          "Dados estruturados",
-          "Search Intelligence",
-          "Retenção e evolução orgânica",
-        ],
-      },
-      {
-        eyebrow: "Artigos iniciais",
-        title: "Pautas para decisores de agência",
-        text: "A base editorial da AUDITSEO foi desenhada para traduzir temas complexos em conversas comerciais mais claras para clientes finais.",
-        cards: [
-          {
-            title: "A nova busca não começa no clique",
-            text: "A decisão já pode ser influenciada por respostas, reputação, resumos e sinais públicos antes da visita ao site.",
-            tag: "Nova busca",
-          },
-          {
-            title: "Por que SEO tradicional não basta para clientes high-ticket",
-            text: "Mercados de decisão qualificada precisam organizar confiança, autoridade e validação antes da conversão.",
-            tag: "High-ticket",
-          },
-          {
-            title: "GEO não é aparecer no ChatGPT",
-            text: "A preparação para busca generativa começa na clareza de entidade, contexto, conteúdo e sinais consistentes.",
-            tag: "GEO",
-            href: "/guias/geo-readiness",
-          },
-          {
-            title: "Autoridade de entidade como infraestrutura de confiança",
-            text: "A marca precisa ser compreendida como opção confiável por buscadores, IAs e pessoas.",
-            tag: "Entidade",
-            href: "/guias/narrativa-semantica",
-          },
-          {
-            title: "Como agências podem vender inovação sem cair no hype de IA",
-            text: "Uma abordagem madura transforma curiosidade sobre IA em diagnóstico, roadmap e critério estratégico.",
-            tag: "IA responsável",
-            href: "/geo-ia",
-          },
-          {
-            title: "Search Intelligence: a nova camada estratégica da entrega orgânica",
-            text: "O conceito que une diagnóstico, intenção, autoridade, dados, GEO e evolução em uma entrega defensável.",
-            tag: "Search Intelligence",
-            href: "/guias/search-intelligence",
-          },
-        ],
-      },
-    ],
-    finalCta: {
-      title: "Quer transformar esses conceitos em entrega para seus clientes?",
-      text: "A AUDITSEO estrutura a inteligência orgânica nos bastidores para sua agência conduzir a conversa com mais clareza.",
-      actions: [{ label: "Avaliar parceria estratégica", targetId: "diagnostico" }],
-    },
-  },
   "/guias": {
     eyebrow: "BIBLIOTECA AUDITSEO",
     title: "Guias técnicos",
@@ -679,7 +580,7 @@ function ContentSection({ section }: { section: Section }) {
 }
 
 export default function ContentPage({ path, onNavigate }: ContentPageProps) {
-  const page = pages[path] || pages["/blog"];
+  const page = pages[path] || pages["/guias"];
 
   return (
     <main className="bg-[#11100f] text-[#f8f8f8]">
