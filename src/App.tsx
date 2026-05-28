@@ -76,7 +76,7 @@ const routeMetadata: Record<string, { title: string; description: string; active
   "/blog": {
     title: "Blog AUDITSEO | SEO, GEO e Search Intelligence para Agências",
     description:
-      "Conteúdos estratégicos para donos de agências responderem dúvidas de clientes sobre SEO, GEO, IA, autoridade, tráfego, resultados e nova busca.",
+      "Guias, análises e conteúdos práticos sobre SEO, GEO, IA, autoridade e inteligência de busca para empresas, profissionais, consultores e agências.",
   },
   "/guias": {
     title: "Guias Técnicos AUDITSEO | SEO, GEO e Search Intelligence para Agências",
