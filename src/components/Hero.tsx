@@ -27,7 +27,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
             
             {/* EYEBROW */}
             <span className="text-[#a69580] text-[11px] font-mono font-semibold tracking-[0.16em] uppercase mb-4 inline-block select-none opacity-90">
-              ORGANIC INNOVATION PARTNER
+              SEARCH INTELLIGENCE PARTNER
             </span>
 
             {/* HEADLINE PRINCIPAL */}
@@ -40,12 +40,12 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 maxWidth: "680px"
               }}
             >
-              SEO, GEO, IA e<br className="hidden md:inline" /> inteligência de<br className="hidden md:inline" /> busca
+              Como a IA está moldando a próxima era da busca orgânica
             </h1>
 
             {/* TEXT PARAGRAPH with increased margin on mobile to push CTA buttons down */}
             <p 
-              className="text-[#c9c9c9] text-base md:text-lg font-normal py-0 mb-14 md:mb-9"
+              className="text-[#c9c9c9] text-base md:text-lg font-normal py-0 mb-4"
               style={{
                 textAlign: "left",
                 letterSpacing: "-0.01em",
@@ -54,7 +54,20 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 maxWidth: "640px"
               }}
             >
-              Estruturamos SEO, GEO e IA como uma camada white-label para sua agência reter clientes, comprovar resultados e expandir a carteira sem ampliar a estrutura interna.
+              A AUDITSEO ajuda agências de marketing digital a transformarem SEO, GEO, IA e autoridade de entidade em uma entrega mais estratégica, mensurável e preparada para a nova busca.
+            </p>
+
+            <p 
+              className="text-[#e0d3c3]/80 text-base md:text-lg font-normal py-0 mb-14 md:mb-9"
+              style={{
+                textAlign: "left",
+                letterSpacing: "-0.01em",
+                wordSpacing: "normal",
+                lineHeight: "1.55",
+                maxWidth: "640px"
+              }}
+            >
+              A metodologia proprietária S.I.G.N.A.L interpreta sinais de busca, autoridade, IA e contexto para transformar complexidade orgânica em diagnóstico, prioridade e evolução estratégica.
             </p>
 
             {/* ACTION BUTTONS (Matching design style and border radius) */}
@@ -71,7 +84,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 onClick={() => onCtaClick("signal")}
                 className="border border-[#b28453]/45 text-[#f8f8f8] px-8 py-4 rounded-full text-base font-semibold tracking-wide transition-all duration-250 hover:bg-[#b28453]/10"
               >
-                Conhecer o método S.I.G.N.A.L
+                Conhecer a metodologia S.I.G.N.A.L
               </button>
             </div>
 
@@ -85,9 +98,15 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 wordSpacing: "normal"
               }}
             >
-              <span>White-label</span>
+              <span>SEO</span>
               <span className="text-[#b28453]/30 font-bold">·</span>
-              <span>Entrega Sob Medida</span>
+              <span>GEO</span>
+              <span className="text-[#b28453]/30 font-bold">·</span>
+              <span>IA</span>
+              <span className="text-[#b28453]/30 font-bold">·</span>
+              <span>Autoridade de entidade</span>
+              <span className="text-[#b28453]/30 font-bold">·</span>
+              <span>Search Intelligence</span>
             </div>
 
           </div>
