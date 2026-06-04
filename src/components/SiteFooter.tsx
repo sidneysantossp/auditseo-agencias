@@ -7,10 +7,10 @@ interface SiteFooterProps {
 
 const navigationLinks = [
   ["Início", "/"],
-  ["Para Agências", "/para-agencias"],
   ["Método S.I.G.N.A.L", "/metodo-signal"],
   ["Soluções", "/solucoes"],
-  ["White-Label", "/white-label"],
+  ["Parceria", "/parceria"],
+  ["Conteúdo", "/blog"],
   ["GEO & IA", "/geo-ia"],
   ["Diagnóstico", "/diagnostico"],
 ];
@@ -27,11 +27,11 @@ const solutionLinks = [
 ];
 
 const agencyLinks = [
-  ["Como funciona", "/para-agencias#como-funciona"],
-  ["Modelos de parceria", "/para-agencias#modelos-de-parceria"],
-  ["Diagnósticos para propostas", "/para-agencias#diagnosticos-para-propostas"],
-  ["Apoio em reuniões", "/para-agencias#apoio-em-reunioes"],
-  ["Materiais white-label", "/white-label#materiais-white-label"],
+  ["Como funciona", "/parceria#como-funciona"],
+  ["Modelos de parceria", "/parceria#modelos-de-parceria"],
+  ["Modelo white-label", "/parceria#modelo-white-label"],
+  ["AUDITSEO vs. alternativas", "/parceria#auditseo-vs-alternativas"],
+  ["Diagnósticos para propostas", "/diagnostico"],
   ["Diagnóstico interativo", "/diagnostico"],
 ];
 
@@ -126,7 +126,7 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
                   onClick={() => onNavigate("diagnostico")}
                   className="whitespace-nowrap rounded-full border border-white/10 bg-white/20 px-4 py-2.5 text-xs font-bold leading-none text-white transition-colors hover:bg-white hover:text-black"
                 >
-                  Avaliar parceria
+                  Diagnóstico
                 </button>
               </div>
             </div>
@@ -137,13 +137,13 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
       <div className="container mx-auto max-w-[1320px] px-6 py-20 xl:px-12">
         <div className="grid gap-10 text-left sm:grid-cols-2 lg:grid-cols-[1.35fr_0.95fr_1.18fr_1.12fr_1.08fr_1fr]">
           <div className="flex flex-col justify-start sm:col-span-2 lg:col-span-1">
-            <a href="/" className="mb-3 inline-flex w-fit font-display text-2xl font-bold tracking-tight">
-              <span className="text-[#f8f8f8]">AUDIT</span>
-              <span className="text-[#b28453]">SEO</span>
+            <a href="/" className="mb-4 inline-flex w-fit">
+              <img
+                src="/auditseo-logo.png"
+                alt="AUDITSEO - Search Intelligence Partner"
+                className="h-auto w-[240px] max-w-full object-contain"
+              />
             </a>
-            <span className="mb-4 block font-mono text-[10px] uppercase leading-none tracking-[0.18em] text-[#b28453]">
-              SEARCH INTELLIGENCE PARTNER
-            </span>
             <p className="max-w-sm text-xs leading-[1.7] text-[#f8f8f8]/64">
               Consultoria estratégica de SEO, GEO e inteligência de busca para agências de marketing digital que querem ampliar valor, retenção e evolução orgânica na carteira.
             </p>

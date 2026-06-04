@@ -19,12 +19,10 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
   }, []);
 
   const navItems = [
-    { label: "Para Agências", id: "agencias" },
     { label: "Método S.I.G.N.A.L", id: "signal" },
     { label: "Soluções", id: "solucoes" },
-    { label: "White-Label", id: "white-label" },
-    { label: "GEO & IA", id: "geo-ia" },
-    { label: "Diagnóstico", id: "diagnostico" },
+    { label: "Conteúdo", id: "conteudo" },
+    { label: "Parceria", id: "parceria" },
   ];
 
   const handleItemClick = (id: string) => {
@@ -46,19 +44,17 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
           {/* LOGO */}
           <div
             onClick={() => handleItemClick("inicio")}
-            className="cursor-pointer flex flex-col items-start select-none"
+            className="cursor-pointer flex items-center select-none"
           >
-            <div className="font-display text-xl md:text-2xl font-bold tracking-tight mb-1">
-              <span className="text-[#f8f8f8]">AUDIT</span>
-              <span className="text-[#b28453]">SEO</span>
-            </div>
-            <div className="border border-[#b28453]/40 rounded-full px-2.5 py-[3px] text-[7px] md:text-[8px] tracking-[0.15em] text-[#b28453] uppercase font-mono font-bold leading-none select-none">
-              Search Intelligence Partner
-            </div>
+            <img
+              src="/auditseo-logo.png"
+              alt="AUDITSEO - Search Intelligence Partner"
+              className="h-[38px] w-auto object-contain md:h-[46px]"
+            />
           </div>
 
           {/* DESKTOP NAV MENU */}
-          <nav className="hidden lg:flex items-center justify-between w-[640px] shrink-0">
+          <nav className="hidden lg:flex items-center justify-between w-[470px] shrink-0">
             {navItems.map((item) => (
               <button
                 id={`nav-btn-${item.id}`}
@@ -82,7 +78,7 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
               onClick={() => handleItemClick("diagnostico")}
               className="bg-[#b28453] text-[#ffffff] px-6 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] hover:-translate-y-0.5"
             >
-              Avaliar parceria
+              Diagnóstico
             </button>
           </div>
 
@@ -130,7 +126,7 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
             onClick={() => handleItemClick("diagnostico")}
             className="w-full bg-[#b28453] text-[#ffffff] py-4 rounded-full text-base font-bold text-center block"
           >
-            Avaliar parceria
+            Diagnóstico
           </button>
           <div className="text-center text-[#c9c9c9] text-xs font-mono">
             Search Intelligence Partner for Agencies

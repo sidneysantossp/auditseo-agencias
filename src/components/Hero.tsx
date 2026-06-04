@@ -40,34 +40,20 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 maxWidth: "680px"
               }}
             >
-              Como a IA está moldando a próxima era da busca orgânica
+              A inteligência de busca que sua agência precisa para vender SEO, GEO e IA sem montar um time interno
             </h1>
 
-            {/* TEXT PARAGRAPH with increased margin on mobile to push CTA buttons down */}
             <p 
-              className="text-[#c9c9c9] text-base md:text-lg font-normal py-0 mb-4"
+              className="text-[#e0d3c3] text-lg md:text-xl font-semibold py-0 mb-6"
               style={{
                 textAlign: "left",
-                letterSpacing: "-0.01em",
+                letterSpacing: "0.01em",
                 wordSpacing: "normal",
                 lineHeight: "1.55",
                 maxWidth: "640px"
               }}
             >
-              A AUDITSEO ajuda agências de marketing digital a transformarem SEO, GEO, IA e autoridade de entidade em uma entrega mais estratégica, mensurável e preparada para a nova busca.
-            </p>
-
-            <p 
-              className="text-[#e0d3c3]/80 text-base md:text-lg font-normal py-0 mb-14 md:mb-9"
-              style={{
-                textAlign: "left",
-                letterSpacing: "-0.01em",
-                wordSpacing: "normal",
-                lineHeight: "1.55",
-                maxWidth: "640px"
-              }}
-            >
-              A metodologia proprietária S.I.G.N.A.L interpreta sinais de busca, autoridade, IA e contexto para transformar complexidade orgânica em diagnóstico, prioridade e evolução estratégica.
+              Search Intelligence Partner for Agencies
             </p>
 
             {/* ACTION BUTTONS (Matching design style and border radius) */}
@@ -77,7 +63,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 onClick={() => onCtaClick("diagnostico")}
                 className="bg-[#b28453] text-[#ffffff] px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] cursor-pointer"
               >
-                Avaliar parceria estratégica
+                Diagnosticar minha carteira gratuitamente →
               </button>
               <button
                 id="hero-cta-method-new"

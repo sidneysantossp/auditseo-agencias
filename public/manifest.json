@@ -9,9 +9,9 @@
   "lang": "pt-BR",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/favicon-auditseo.png",
+      "sizes": "150x150",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

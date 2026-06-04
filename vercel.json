@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/para-agencias",
+      "destination": "/parceria",
+      "permanent": true
+    },
+    {
+      "source": "/white-label",
+      "destination": "/parceria",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -3,14 +3,14 @@ import { ArrowRight, CheckCircle2, ChevronRight, HelpCircle, Sparkles, Star, Tre
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import HomeConversionSections from "./components/HomeConversionSections";
 import SignalMethod from "./components/SignalMethod";
 import SolutionsSection from "./components/SolutionsSection";
 import DiagnosticSection from "./components/DiagnosticSection";
 import FAQSection from "./components/FAQSection";
-import ParaAgenciasPage from "./components/ParaAgenciasPage";
+import ParceriaPage from "./components/ParceriaPage";
 import MetodoSignalPage from "./components/MetodoSignalPage";
 import SolucoesPage from "./components/SolucoesPage";
-import WhiteLabelPage from "./components/WhiteLabelPage";
 import GeoIaPage from "./components/GeoIaPage";
 import DiagnosticoPage from "./components/DiagnosticoPage";
 import SiteFooter from "./components/SiteFooter";
@@ -24,11 +24,17 @@ const routeMetadata: Record<string, { title: string; description: string; active
       "Consultoria estratégica de SEO, GEO e inteligência de busca para agências que querem ampliar valor, retenção e evolução orgânica na carteira.",
     activeSection: "inicio",
   },
+  "/parceria": {
+    title: "Parceria White-Label para Agências | AUDITSEO",
+    description:
+      "Parceria white-label de SEO, GEO, IA e Search Intelligence para agências ampliarem portfólio, retenção e evolução orgânica sem montar time interno.",
+    activeSection: "parceria",
+  },
   "/para-agencias": {
     title: "Parceria Estratégica para Agências | AUDITSEO",
     description:
       "Parceria estratégica para agências incorporarem SEO, GEO e Search Intelligence white-label sem ampliar a operação interna.",
-    activeSection: "agencias",
+    activeSection: "parceria",
   },
   "/metodo-signal": {
     title: "Método S.I.G.N.A.L | Search Intelligence para Agências | AUDITSEO",
@@ -46,7 +52,7 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "SEO White-Label para Agências | AUDITSEO",
     description:
       "Parceria white-label de SEO, GEO e Search Intelligence para agências manterem marca, relacionamento e protagonismo diante do cliente.",
-    activeSection: "white-label",
+    activeSection: "parceria",
   },
   "/geo-ia": {
     title: "GEO e IA para Agências | AUDITSEO",
@@ -77,6 +83,7 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "Blog AUDITSEO | SEO, GEO e Search Intelligence para Agências",
     description:
       "Guias, análises e conteúdos práticos sobre SEO, GEO, IA, autoridade e inteligência de busca para empresas, profissionais, consultores e agências.",
+    activeSection: "conteudo",
   },
   "/guias": {
     title: "Guias Técnicos AUDITSEO | SEO, GEO e Search Intelligence para Agências",
@@ -123,6 +130,13 @@ export default function App() {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => {
+    if (currentPath === "/para-agencias" || currentPath === "/white-label") {
+      window.history.replaceState({}, "", "/parceria");
+      setCurrentPath("/parceria");
+    }
+  }, [currentPath]);
 
   useEffect(() => {
     const setMeta = (selector: string, attributes: Record<string, string>) => {
@@ -181,7 +195,7 @@ export default function App() {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(sectionId);
+            setActiveSection(sectionId === "agencias" || sectionId === "white-label" ? "parceria" : sectionId);
             break;
           }
         }
@@ -205,13 +219,33 @@ export default function App() {
       }
     };
 
-    if (sectionId === "agencias") {
-      if (window.location.pathname !== "/para-agencias") {
-        window.history.pushState({}, "", "/para-agencias");
-        setCurrentPath("/para-agencias");
+    if (sectionId === "conteudo") {
+      if (window.location.pathname !== "/blog") {
+        window.history.pushState({}, "", "/blog");
+        setCurrentPath("/blog");
       }
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("agencias");
+      setActiveSection("conteudo");
+      return;
+    }
+
+    if (sectionId === "parceria" || sectionId === "agencias" || sectionId === "white-label") {
+      const anchor = sectionId === "white-label" ? "#modelo-white-label" : "";
+      if (window.location.pathname !== "/parceria" || window.location.hash !== anchor) {
+        window.history.pushState({}, "", `/parceria${anchor}`);
+        setCurrentPath("/parceria");
+      }
+      window.setTimeout(() => {
+        if (anchor) {
+          const target = document.getElementById(anchor.slice(1));
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 82, behavior: "smooth" });
+            return;
+          }
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 50);
+      setActiveSection("parceria");
       return;
     }
 
@@ -235,16 +269,6 @@ export default function App() {
       return;
     }
 
-    if (sectionId === "white-label") {
-      if (window.location.pathname !== "/white-label") {
-        window.history.pushState({}, "", "/white-label");
-        setCurrentPath("/white-label");
-      }
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("white-label");
-      return;
-    }
-
     if (sectionId === "geo-ia") {
       if (window.location.pathname !== "/geo-ia") {
         window.history.pushState({}, "", "/geo-ia");
@@ -265,7 +289,7 @@ export default function App() {
       return;
     }
 
-    if (sectionId === "como-funciona" && currentPath === "/para-agencias") {
+    if (sectionId === "como-funciona" && currentPath === "/parceria") {
       const internalElement = document.getElementById(sectionId);
       if (internalElement) {
         window.scrollTo({
@@ -300,8 +324,17 @@ export default function App() {
   if (currentPath === "/para-agencias") {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
-        <Header onNavClick={handleScrollToSection} activeSection="agencias" />
-        <ParaAgenciasPage onNavigate={handleScrollToSection} />
+        <Header onNavClick={handleScrollToSection} activeSection="parceria" />
+        <ParceriaPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/parceria") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="parceria" />
+        <ParceriaPage onNavigate={handleScrollToSection} />
       </div>
     );
   }
@@ -327,8 +360,8 @@ export default function App() {
   if (currentPath === "/white-label") {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
-        <Header onNavClick={handleScrollToSection} activeSection="white-label" />
-        <WhiteLabelPage onNavigate={handleScrollToSection} />
+        <Header onNavClick={handleScrollToSection} activeSection="parceria" />
+        <ParceriaPage onNavigate={handleScrollToSection} />
       </div>
     );
   }
@@ -354,7 +387,7 @@ export default function App() {
   if (currentPath === "/blog") {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
-        <Header onNavClick={handleScrollToSection} activeSection="" />
+        <Header onNavClick={handleScrollToSection} activeSection="conteudo" />
         <BlogPage onNavigate={handleScrollToSection} />
       </div>
     );
@@ -377,6 +410,8 @@ export default function App() {
 
       {/* 2. HERO SECTION */}
       <Hero onCtaClick={handleScrollToSection} />
+
+      <HomeConversionSections onNavigate={handleScrollToSection} />
 
       {/* 3. FAIXA DE RESPIRO */}
       <section
@@ -406,8 +441,11 @@ export default function App() {
             </h2>
             <div className="w-[160px] h-[4px] bg-[#b28453] mt-6 mb-8" />
             <p className="text-[#c9c9c9] text-base md:text-lg lg:text-md font-normal leading-relaxed max-w-3xl">
-              Seu cliente ideal pesquisa no Google orgânico tradicional, compara resultados e localidade no Maps, lê extensos pareceres de avaliações externas, consome conteúdo temático denso, assiste a vídeos curtos explicativos práticos, faz perguntas diretas para assistentes de IA e toma grandes decisões movido por percepção consolidada de clareza e autoridade.
+              O cliente final pesquisa no Google, compara mapas, lê avaliações, consome conteúdo e faz perguntas para assistentes de IA antes de decidir. A busca deixou de ser um canal único e passou a ser um ecossistema de sinais.
             </p>
+            <a href="/blog" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#b28453] transition-colors hover:text-[#e0d3c3]">
+              Leia o artigo completo →
+            </a>
           </div>
 
           {/* Grid of 4 items */}
@@ -739,11 +777,14 @@ export default function App() {
             {/* Coluna esquerda */}
             <div className="lg:col-span-6 text-left">
               <p className="text-[#11100f] text-base md:text-lg leading-[1.7] mb-6">
-                Durante anos, dezenas de agências de marketing cresceram estruturadas com foco quase que exclusivo em mídia digital paga rápida, gestão de redes sociais operacionais, layouts institucionais de portfolios e redações genéricas de blog. Este modelo construiu base duradoura.
+                Durante anos, muitas agências cresceram apoiadas em mídia paga, social e conteúdo operacional. Esse modelo continua importante, mas já não responde sozinho à complexidade da nova busca.
               </p>
               <p className="text-[#11100f] text-base md:text-lg leading-[1.7] mb-8">
-                Contudo, o comportamento de busca do tomador de decisão final amadureceu e ficou extremamente polido. SEO deixou as barreiras de ser apenas uma mera checagem mecânica de palavras-chave avulsas ou tarefas técnicas isoladas de desenvolvedores freelancer: virou uma camada de peso conectando estratégia, reputação confiável e presença em canais.
+                SEO passou a conectar técnica, conteúdo, autoridade, reputação, dados estruturados e IA. O cliente espera direção, não apenas execução isolada.
               </p>
+              <a href="/guias/search-intelligence" className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#6d5132] transition-colors hover:text-[#11100f]">
+                Leia o guia completo →
+              </a>
 
               {/* Item destacado */}
               <div className="border-l-4 border-[#b28453] pl-6 pr-6 py-3 bg-[#f4eee5] rounded-r-lg shadow-sm">

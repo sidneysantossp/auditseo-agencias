@@ -61,6 +61,17 @@ const scenarioCards = [
   },
 ];
 
+const scenarioCardAnchors = [
+  "cenario-novo-projeto",
+  "cenario-sem-tracao",
+  "cenario-queda",
+  "cenario-autoridade",
+  "cenario-conteudo",
+  "cenario-geo",
+  "cenario-migracao",
+  "cenario-evolucao",
+];
+
 const scenarioSolutions = [
   {
     name: "Search Foundation",
@@ -332,7 +343,7 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
           />
           <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {scenarioCards.map((card, index) => (
-              <article key={card.title} className="min-h-[210px] rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
+              <article id={scenarioCardAnchors[index]} key={card.title} className="min-h-[210px] scroll-mt-28 rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
                 <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#6d5132]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -580,6 +591,9 @@ function ScenarioSolutionCard({ solution, index }: { solution: (typeof scenarioS
             {solution.name}
           </h3>
           <p className="mt-5 text-lg font-semibold leading-[1.45] text-[#e0d3c3]">{solution.scenario}</p>
+          <span className="mt-5 inline-flex rounded-full border border-[#b28453]/24 bg-[#b28453]/10 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#e0d3c3]">
+            Investimento inicial: a partir de R$ 2.500
+          </span>
           {solution.note ? (
             <p className="mt-6 rounded-[16px] border border-[#b28453]/24 bg-[#b28453]/10 px-5 py-4 text-sm leading-[1.65] text-[#e0d3c3]/82">
               {solution.note}
