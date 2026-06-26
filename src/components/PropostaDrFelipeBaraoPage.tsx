@@ -1,220 +1,176 @@
 import {
-  Activity,
   ArrowRight,
   BarChart3,
+  Calendar,
   CheckCircle2,
-  ClipboardCheck,
-  Compass,
-  FileText,
-  Gauge,
+  CircleDollarSign,
+  Eye,
   LineChart,
+  MessageCircle,
+  MousePointerClick,
+  Network,
   Search,
-  ShieldCheck,
+  Shield,
   Sparkles,
-  Stethoscope,
   Target,
+  UserRound,
 } from "lucide-react";
-
-type AccentCard = {
-  title: string;
-  description: string;
-};
 
 type ProposalPageProps = {
   onNavigate?: (targetId: string) => void;
 };
 
-const startingPoints: AccentCard[] = [
+const startCards = [
   {
+    icon: Sparkles,
     title: "Autoridade subutilizada",
-    description:
-      "Os sinais de confiança existem, mas ainda não estão organizados para sustentar diferenciação e decisão.",
+    text: "Os sinais de confiança existem, mas ainda não estão organizados para sustentar diferenciação e decisão.",
   },
   {
+    icon: Network,
     title: "Demanda fragmentada",
-    description:
-      "As páginas atuais não cobrem com clareza os diferentes momentos da pesquisa do paciente.",
+    text: "As páginas atuais não cobrem com clareza os diferentes momentos da pesquisa do paciente.",
   },
   {
+    icon: UserRound,
     title: "Experiência sem direção",
-    description:
-      "O visitante encontra informação, porém não percorre uma jornada objetiva até o agendamento.",
-  },
-  {
-    title: "Medição incompleta",
-    description:
-      "A evolução precisa chegar aos números que importam: impressões, cliques, tráfego e contatos.",
-  },
-];
-
-const outcomeLayers = [
-  {
-    label: "Visibilidade",
-    title: "Aparecer nas pesquisas certas",
-    text: "Cobertura progressiva para sintomas, doenças, exames, tratamentos e pesquisas de decisão.",
-  },
-  {
-    label: "Relevância",
-    title: "Ser escolhido no resultado",
-    text: "Páginas mais específicas, claras e alinhadas ao momento real da pesquisa do paciente.",
-  },
-  {
-    label: "Confiança",
-    title: "Demonstrar autoridade real",
-    text: "Credenciais, experiência, evidências e consistência de entidade sustentando a decisão.",
-  },
-  {
-    label: "Ação",
-    title: "Gerar contato e agendamento",
-    text: "Uma jornada com próximos passos objetivos: WhatsApp, telefone, formulário e consulta.",
-  },
-];
-
-const engines = [
-  {
-    icon: Search,
-    title: "Inteligência de demanda",
-    text: "Mapeamento de como os pacientes pesquisam: sintomas, dúvidas, comparações, tratamentos, urgências e busca pelo especialista.",
-  },
-  {
-    icon: Compass,
-    title: "Arquitetura de autoridade",
-    text: "Organização do site para que cada página tenha função clara e fortaleça a compreensão sobre quem é o Dr. Felipe e por que ele é referência.",
-  },
-  {
-    icon: Target,
-    title: "Experiência e conversão",
-    text: "Construção de uma navegação que conecta confiança, esclarecimento e ação com CTAs adequados a cada intenção.",
+    text: "O visitante encontra informação, porém não percorre uma jornada objetiva até o agendamento.",
   },
   {
     icon: BarChart3,
-    title: "Mensuração e aprendizado",
-    text: "Uso de GA4 e Search Console para identificar o que cresce, o que converte e onde a próxima oportunidade deve ser explorada.",
+    title: "Medição incompleta",
+    text: "A evolução precisa chegar aos números que importam: impressões, cliques, tráfego e contatos.",
   },
 ];
 
-const signalSteps = [
-  ["S", "Search Intelligence", "Onde existe demanda real, como ela muda e quais pesquisas possuem maior potencial clínico e comercial."],
-  ["I", "Intent Architecture", "Qual página deve responder a cada intenção e como o paciente avança da dúvida para a decisão."],
-  ["G", "Generative Presence", "Como tornar a autoridade compreensível e citável em buscas generativas e respostas com IA."],
-  ["N", "Notability & Entity", "Como consolidar a entidade Dr. Felipe Barão entre site, perfis, credenciais, publicações e referências externas."],
-  ["A", "Action Roadmap", "Qual movimento possui maior impacto neste momento, considerando dados, concorrência e oportunidade."],
-  ["L", "Learning Loop", "O que os dados ensinam e como transformar aprendizado em novas decisões e crescimento acumulado."],
-];
-
-const growthCycles = [
+const growthCards = [
   {
-    cycle: "Primeiro ciclo",
-    name: "Cobertura",
-    title: "Mais consultas e impressões",
-    text: "O Google passa a compreender melhor a estrutura, as entidades e os temas prioritários. O site amplia a quantidade de pesquisas em que pode aparecer.",
+    icon: Search,
+    title: "1. Aparecer para mais pesquisas relevantes",
+    text: "Reorganizamos o site para ampliar cobertura orgânica sobre sintomas, tratamentos e buscas ligadas à especialidade.",
   },
   {
-    cycle: "Ciclo de expansão",
-    name: "Aquisição",
-    title: "Mais cliques e tráfego",
-    text: "As páginas ganham relevância, conquistam posições mais competitivas e atraem usuários com maior proximidade dos tratamentos oferecidos.",
+    icon: MousePointerClick,
+    title: "2. Transformar impressões em cliques",
+    text: "Melhoramos títulos, propostas e páginas para aumentar a escolha do usuário nos resultados de busca.",
   },
   {
-    cycle: "Ciclo de maturidade",
-    name: "Conversão",
-    title: "Mais ações de valor",
-    text: "Com tráfego mais qualificado e jornada melhor estruturada, crescem as oportunidades de WhatsApp, telefone, formulário e agendamento.",
+    icon: MessageCircle,
+    title: "3. Transformar tráfego em oportunidades",
+    text: "A jornada do paciente passa a conduzir com mais clareza até WhatsApp, formulário e contato.",
+  },
+  {
+    icon: Shield,
+    title: "4. Consolidar autoridade médica",
+    text: "Formação, reputação, tecnologia e produção científica deixam de ser apenas informação e passam a sustentar decisão.",
   },
 ];
 
-const ecosystem = [
-  "Google orgânico: sintomas, doenças, exames, tratamentos, especialidades e pesquisas de decisão.",
-  "Busca local: proximidade, reputação, unidade, especialidade e intenção de consulta em São Paulo.",
-  "Busca generativa: AI Overviews, ChatGPT, Gemini e Perplexity interpretando conteúdos e sinais de entidade.",
-  "Busca de marca: crescimento das pesquisas por Dr. Felipe Barão, tratamentos e associação com autoridade vascular.",
-  "Autoridade externa: publicações, perfis médicos, referências institucionais, avaliações e menções qualificadas.",
+const signalCards = [
+  ["S", "Search Diagnosis", "Mapeamos visibilidade orgânica, lacunas temáticas, concorrentes e oportunidades reais de crescimento no ecossistema de busca.", Search],
+  ["I", "Intent Architecture", "Definimos qual página responde a cada intenção e como o paciente avança da dúvida para a decisão.", Target],
+  ["G", "Generative Presence", "Preparamos a marca para Google AI Overviews, ChatGPT, Gemini e outras buscas assistidas por IA.", Sparkles],
+  ["N", "Notability & Entity", "Consolidamos entidade, credenciais, reputação e sinais externos de autoridade do Dr. Felipe.", Shield],
+  ["A", "Action Roadmap", "Priorizamos os movimentos de maior impacto clínico, comercial e orgânico para o momento do projeto.", LineChart],
+  ["L", "Learning Loop", "Evoluímos continuamente com base em Search Console, Analytics e sinais reais de conversão.", BarChart3],
 ];
 
-const journey = [
+const metricCards = [
   {
-    stage: "Descoberta",
-    search: "Pesquisas sobre dor, inchaço, veias aparentes, circulação e sinais de alerta.",
-    goal: "Ampliar alcance qualificado.",
+    icon: Search,
+    title: "Google Search Console",
+    items: ["Impressões orgânicas", "Cliques", "CTR", "Consultas de pesquisa", "Páginas com crescimento"],
   },
   {
-    stage: "Consideração",
-    search: "Comparações entre laser, espuma, cirurgia, exames, recuperação e indicação.",
-    goal: "Reduzir insegurança e construir preferência.",
+    icon: BarChart3,
+    title: "Google Analytics",
+    items: ["Usuários orgânicos", "Páginas de entrada", "Tráfego qualificado", "Eventos de navegação", "Comportamento por página"],
   },
   {
-    stage: "Decisão",
-    search: "Busca por cirurgião vascular, angiologista, segunda opinião e tratamento em São Paulo.",
-    goal: "Transformar intenção em contato.",
-  },
-];
-
-const metrics = [
-  {
-    source: "Google Search Console",
-    items: ["Impressões, consultas, páginas, CTR e posição média.", "Novos termos e temas em crescimento.", "Evolução das buscas pelo nome do médico."],
-  },
-  {
-    source: "Google Analytics 4",
-    items: ["Usuários orgânicos, sessões e páginas de entrada.", "Navegação, páginas comerciais e interação com conteúdos.", "WhatsApp, telefone, formulário e demais eventos de contato."],
+    icon: Target,
+    title: "Conversões",
+    items: ["Cliques no WhatsApp", "Cliques em telefone", "Formulários enviados", "Oportunidades de contato", "Indicadores de geração de demanda"],
   },
 ];
 
-const operationModel = [
-  {
-    title: "Sem reuniões obrigatórias",
-    text: "Não haverá agenda mensal criada apenas para apresentação de tarefas. A comunicação será acionada quando houver decisão relevante.",
-  },
-  {
-    title: "Sem checklist como prova de valor",
-    text: "O trabalho será comprovado pela evolução das métricas e pela qualidade dos ativos construídos, não pelo volume de itens marcados como concluídos.",
-  },
-  {
-    title: "Validação médica objetiva",
-    text: "A participação do Dr. Felipe será solicitada somente quando um conteúdo exigir posicionamento clínico, revisão técnica ou informação específica.",
-  },
-  {
-    title: "Decisão orientada por dados",
-    text: "A prioridade poderá mudar sempre que Search Console, comportamento do usuário ou cenário competitivo revelarem oportunidade superior.",
-  },
+const flowItems = [
+  ["Impressões", Eye],
+  ["Cliques", MousePointerClick],
+  ["Tráfego qualificado", UserRound],
+  ["WhatsApp", MessageCircle],
 ];
 
-const comparisonRows = [
-  ["Palavras-chave isoladas", "Inteligência de demanda e intenção"],
-  ["Quantidade fixa de artigos", "Conteúdo definido por oportunidade e impacto"],
-  ["Relatório de tarefas", "Leitura de impressões, cliques, tráfego e ações"],
-  ["SEO restrito ao site", "Entidade integrada entre site, busca local, autoridade e IA"],
-  ["Reuniões para justificar operação", "Autonomia de gestão com comunicação por necessidade"],
-  ["Otimização pontual", "Sistema contínuo de aprendizado e crescimento"],
+const operationItems = [
+  ["Atuação contínua e estratégica", LineChart],
+  ["Sem reuniões mensais obrigatórias", Calendar],
+  ["Comunicação e validações apenas quando necessário", MessageCircle],
+  ["Ajustes guiados por Search Console, Analytics e conversões", BarChart3],
 ];
 
-const commitments = [
-  {
-    title: "Estratégia",
-    text: "Direção orientada por demanda, intenção, potencial comercial e dados reais de desempenho.",
-  },
-  {
-    title: "Execução",
-    text: "Condução das melhorias necessárias no ecossistema orgânico, incluindo frentes técnicas, editoriais, de experiência, entidade e conversão.",
-  },
-  {
-    title: "Evolução",
-    text: "Revisão contínua de prioridades conforme o domínio ganha tração, surgem novas consultas e as plataformas de busca evoluem.",
-  },
-  {
-    title: "Transparência",
-    text: "Acompanhamento pelos dados oficiais do Google e rastreamento das ações de contato configuradas no site.",
-  },
+const investmentItems = [
+  ["Investimento mensal", "R$ [VALOR]"],
+  ["Prazo inicial recomendado", "[6 ou 12 meses]"],
+  ["Início", "após aprovação e liberação dos acessos"],
+  ["KPIs acompanhados", "impressões, cliques, tráfego e WhatsApp"],
 ];
 
-const commercialRows = [
-  ["Implantação estratégica inicial", "A definir"],
-  ["Gestão estratégica mensal", "A definir"],
-  ["Prazo inicial recomendado", "A alinhar"],
-  ["Início previsto", "A alinhar"],
-  ["Vencimento mensal", "A alinhar"],
-  ["Validade desta proposta", "A alinhar"],
-];
+function ProposalTopbar() {
+  return (
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#b28453]/12 bg-[#11100f]/96 backdrop-blur-md">
+      <div className="mx-auto flex h-[82px] max-w-[1320px] items-center justify-between px-6 md:px-12">
+        <a href="/" className="inline-flex items-center">
+          <img
+            src="/auditseo-logo.png"
+            alt="AUDITSEO - Search Intelligence Partner"
+            className="h-[38px] w-auto object-contain md:h-[46px]"
+          />
+        </a>
+        <div className="hidden items-center gap-3 text-right md:flex">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#b28453]">
+            Proposta confidencial · Dr. Felipe Barão
+          </span>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function HeroConstellation() {
+  const nodes = [
+    "left-[10%] top-[36%]",
+    "left-[30%] top-[19%]",
+    "right-[28%] top-[26%]",
+    "right-[8%] top-[42%]",
+    "left-[20%] bottom-[18%]",
+    "right-[20%] bottom-[22%]",
+    "left-[48%] bottom-[7%]",
+  ];
+
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[540px]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_54%,rgba(178,132,83,0.22),transparent_34%)]" />
+      <div className="absolute left-[56%] top-[52%] h-[124px] w-[124px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[8px] border-[#b28453] shadow-[0_0_90px_rgba(178,132,83,0.45)]">
+        <div className="absolute bottom-[-36px] right-[-24px] h-14 w-5 rotate-[-42deg] rounded-full bg-[#b28453]" />
+        <div className="absolute inset-[30px] rounded-full bg-[#f8f8f8] shadow-[0_0_42px_rgba(248,248,248,0.9)]" />
+      </div>
+      <svg className="absolute inset-0 h-full w-full opacity-70" viewBox="0 0 540 540" fill="none">
+        <path d="M92 202 L166 112 L276 146 L388 104 L498 226 L392 330 L276 496 L112 438 L92 202 Z" stroke="#b28453" strokeOpacity="0.35" />
+        <path d="M166 112 L310 278 L498 226 M92 202 L310 278 L112 438 M276 146 L392 330" stroke="#b28453" strokeOpacity="0.22" />
+        <circle cx="310" cy="278" r="118" stroke="#b28453" strokeOpacity="0.14" />
+        <circle cx="310" cy="278" r="174" stroke="#b28453" strokeOpacity="0.1" />
+      </svg>
+      {nodes.map((position, index) => (
+        <span
+          key={position}
+          className={`absolute ${position} h-2.5 w-2.5 rounded-full bg-[#f8f8f8] shadow-[0_0_28px_rgba(248,248,248,0.9)]`}
+          style={{ opacity: index % 2 === 0 ? 0.95 : 0.68 }}
+        />
+      ))}
+      <span className="absolute right-[16%] top-[15%] h-12 w-12 rounded-full border border-[#b28453]/55 shadow-[0_0_36px_rgba(178,132,83,0.25)]" />
+      <span className="absolute bottom-[14%] left-[18%] h-10 w-10 rounded-full border border-[#b28453]/42 shadow-[0_0_32px_rgba(178,132,83,0.22)]" />
+    </div>
+  );
+}
 
 function SectionHeader({
   eyebrow,
@@ -228,486 +184,309 @@ function SectionHeader({
   dark?: boolean;
 }) {
   return (
-    <div className="mb-12 max-w-4xl">
-      <span className="mb-4 block font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#b28453]">
+    <div className="mb-10 max-w-4xl">
+      <span className="mb-5 block font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[#b28453]">
         {eyebrow}
       </span>
-      <h2 className={`font-display text-[34px] font-bold leading-[1.08] tracking-[-0.035em] md:text-[48px] ${dark ? "text-[#f8f8f8]" : "text-[#11100f]"}`}>
+      <h2 className={`font-display text-[38px] font-bold leading-[1.02] tracking-[-0.045em] md:text-[62px] ${dark ? "text-[#f8f8f8]" : "text-[#11100f]"}`}>
         {title}
       </h2>
-      {text && (
-        <p className={`mt-6 max-w-3xl text-base leading-[1.75] md:text-lg ${dark ? "text-[#f8f8f8]/72" : "text-[#11100f]/72"}`}>
-          {text}
-        </p>
-      )}
+      <div className="mt-7 h-[2px] w-[86px] bg-[#b28453]" />
+      {text && <p className={`mt-7 max-w-3xl text-base leading-[1.75] md:text-lg ${dark ? "text-[#f8f8f8]/72" : "text-[#11100f]/72"}`}>{text}</p>}
     </div>
   );
 }
 
-function ProposalConstellation() {
-  const points = [
-    ["Demanda", "left-[10%] top-[24%]"],
-    ["Autoridade", "right-[12%] top-[18%]"],
-    ["Experiência", "left-[8%] bottom-[24%]"],
-    ["Mensuração", "right-[8%] bottom-[22%]"],
-    ["IA", "left-[42%] top-[4%]"],
-    ["Contato", "left-[44%] bottom-[6%]"],
-  ];
-
+function DarkCard({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[480px]">
-      <div className="absolute inset-[9%] rounded-full border border-[#b28453]/15" />
-      <div className="absolute inset-[19%] rounded-full border border-[#b28453]/10" />
-      <div className="absolute left-1/2 top-1/2 h-[128px] w-[128px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b28453]/45 bg-[#171614] shadow-[0_0_80px_rgba(178,132,83,0.22)]">
-        <div className="flex h-full flex-col items-center justify-center text-center">
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#b28453]">AUDITSEO</span>
-          <span className="mt-2 text-xs font-semibold text-[#e0d3c3]">Search Growth</span>
-        </div>
-      </div>
-      <div className="absolute left-[50%] top-[50%] h-[1px] w-[38%] origin-left rotate-[28deg] bg-[#b28453]/20" />
-      <div className="absolute left-[50%] top-[50%] h-[1px] w-[38%] origin-left rotate-[146deg] bg-[#b28453]/20" />
-      <div className="absolute left-[50%] top-[50%] h-[1px] w-[40%] origin-left rotate-[-38deg] bg-[#b28453]/20" />
-      <div className="absolute left-[50%] top-[50%] h-[1px] w-[40%] origin-left rotate-[-154deg] bg-[#b28453]/20" />
-      {points.map(([label, position]) => (
-        <div key={label} className={`absolute ${position}`}>
-          <div className="rounded-full border border-[#b28453]/35 bg-[#11100f]/90 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#e0d3c3] shadow-[0_0_35px_rgba(178,132,83,0.18)]">
-            {label}
-          </div>
-        </div>
-      ))}
-      <div className="absolute left-[16%] top-[14%] h-1.5 w-1.5 rounded-full bg-[#e0d3c3]" />
-      <div className="absolute bottom-[17%] right-[21%] h-2 w-2 rounded-full bg-[#b28453]" />
-      <div className="absolute right-[29%] top-[34%] h-1 w-1 rounded-full bg-[#f8f8f8]/70" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(178,132,83,0.11),transparent_56%)]" />
+    <div
+      className={`relative overflow-hidden rounded-[24px] border border-[#b28453]/26 bg-[#11100f] p-6 shadow-[0_22px_70px_rgba(17,16,15,0.2)] ${className}`}
+    >
+      <div className="pointer-events-none absolute bottom-0 right-0 h-28 w-28 bg-[radial-gradient(circle,rgba(178,132,83,0.14),transparent_66%)]" />
+      {children}
+    </div>
+  );
+}
+
+function IconMedallion({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#b28453]/52 bg-[#b28453]/10 text-[#b28453] shadow-[0_0_28px_rgba(178,132,83,0.16)]">
+      {children}
     </div>
   );
 }
 
 export default function PropostaDrFelipeBaraoPage({ onNavigate }: ProposalPageProps) {
-  const contactMessage = encodeURIComponent(
-    "Olá, Sidney. Li a proposta de crescimento orgânico para o Dr. Felipe Barão e quero avançar na avaliação."
-  );
+  const contactMessage = encodeURIComponent("Olá, Sidney. Li a proposta do Dr. Felipe Barão e quero avançar na avaliação.");
 
   return (
     <main className="min-h-screen bg-[#11100f] text-[#f8f8f8]">
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#b28453]/10 bg-[#11100f]/95 backdrop-blur-md">
-        <div className="mx-auto flex h-[82px] max-w-[1320px] items-center justify-between px-6 md:px-12">
-          <a href="/" className="inline-flex items-center">
-            <img
-              src="/auditseo-logo.png"
-              alt="AUDITSEO - Search Intelligence Partner"
-              className="h-[38px] w-auto object-contain md:h-[46px]"
-            />
-          </a>
-          <div className="hidden items-center gap-3 md:flex">
-            <a href="#condicoes" className="rounded-full border border-[#b28453]/35 px-5 py-2.5 text-sm font-semibold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10">
-              Condições
-            </a>
-            <a
-              href={`https://wa.me/5511996384376?text=${contactMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#b28453] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#e0d3c3] hover:text-[#11100f]"
-            >
-              Falar com a AUDITSEO
-            </a>
-          </div>
-        </div>
-      </header>
+      <ProposalTopbar />
 
-      <section className="relative overflow-hidden bg-[#11100f] pb-20 pt-[130px] md:pb-28 md:pt-[160px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_24%,rgba(178,132,83,0.16),transparent_32%),radial-gradient(circle_at_8%_16%,rgba(224,211,195,0.08),transparent_26%)]" />
-        <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <span className="mb-5 inline-flex rounded-full border border-[#b28453]/25 bg-[#171614]/80 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#b28453]">
-              Proposta confidencial · Junho 2026
+      <section className="relative min-h-screen overflow-hidden bg-[#11100f] pt-[132px]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,rgba(178,132,83,0.18),transparent_34%),radial-gradient(circle_at_14%_18%,rgba(224,211,195,0.06),transparent_28%)]" />
+        <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_center,#e0d3c3_1px,transparent_1px)] [background-size:28px_28px]" />
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-132px)] max-w-[1320px] grid-cols-1 items-center gap-10 px-6 pb-20 md:px-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <span className="mb-7 block font-mono text-[11px] font-bold uppercase tracking-[0.19em] text-[#b28453]">
+              Proposta confidencial · Dr. Felipe Barão
             </span>
-            <h1 className="font-display text-[44px] font-bold leading-[1.02] tracking-[-0.045em] text-[#f8f8f8] md:text-[72px]">
-              Proposta de crescimento orgânico e autoridade digital
+            <h1 className="font-display text-[48px] font-black uppercase leading-[1.02] tracking-[-0.055em] text-[#f8f8f8] md:text-[78px]">
+              Proposta de crescimento orgânico <span className="text-[#b28453]">e autoridade digital</span>
             </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-[1.65] text-[#e0d3c3] md:text-xl">
+            <div className="mt-8 h-[2px] w-[118px] bg-[#b28453]" />
+            <p className="mt-9 max-w-xl text-lg leading-[1.65] text-[#f8f8f8]/78 md:text-xl">
               Uma nova operação de busca para transformar autoridade médica em visibilidade, tráfego qualificado e oportunidades de consulta.
             </p>
-            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-[#b28453]/20 bg-[#171614]/80 p-5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Preparada para</span>
-                <p className="mt-2 font-display text-2xl font-bold text-[#f8f8f8]">Dr. Felipe Barão</p>
-              </div>
-              <div className="rounded-2xl border border-[#b28453]/20 bg-[#171614]/80 p-5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Especialidade</span>
-                <p className="mt-2 font-display text-2xl font-bold text-[#f8f8f8]">Cirurgia vascular · São Paulo</p>
-              </div>
-            </div>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-11 flex flex-col gap-4 sm:flex-row">
               <a
-                href="#condicoes"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#e0d3c3] hover:text-[#11100f]"
+                href="#modelo"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#b28453]/55 bg-[#11100f]/75 px-7 py-4 text-base font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453] hover:text-white"
               >
-                Ver condições da proposta
-                <ArrowRight size={17} />
-              </a>
-              <a
-                href="#estrategia"
-                className="inline-flex items-center justify-center rounded-full border border-[#b28453]/45 px-7 py-4 text-base font-semibold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-              >
-                Entender a estratégia
+                Metodologia S.I.G.N.A.L
+                <ArrowRight size={16} />
               </a>
             </div>
-            <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.14em] text-[#f8f8f8]/50">
-              Search Intelligence · SEO · GEO · IA · Autoridade médica
-            </p>
           </div>
-          <div className="lg:col-span-5">
-            <ProposalConstellation />
+          <div className="lg:col-span-6">
+            <HeroConstellation />
           </div>
         </div>
+        <div className="absolute bottom-12 left-1/2 h-px w-[82%] -translate-x-1/2 bg-gradient-to-r from-[#b28453]/0 via-[#b28453]/80 to-[#e0d3c3]/0" />
       </section>
 
-      <section id="estrategia" className="bg-[#11100f] py-20 md:py-28">
+      <section className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
         <div className="mx-auto max-w-[1320px] px-6 md:px-12">
           <SectionHeader
-            eyebrow="01 · Ponto de partida"
-            title="A autoridade já existe. O desafio é transformar essa autoridade em aquisição."
-            text="Este projeto não parte do zero. Formação, experiência clínica, produção científica, reputação e estrutura já formam uma base de autoridade que poucos profissionais possuem. O desafio está em organizar esses sinais em uma presença digital proporcional ao valor profissional."
+            dark={false}
+            eyebrow="Ponto de partida"
+            title="Dr. Felipe, este projeto não parte do zero."
+            text="Sua formação, experiência clínica, produção científica, reputação e estrutura já formam uma base de autoridade que poucos profissionais possuem. O desafio está em transformar essa autoridade em uma presença digital proporcional ao seu valor profissional."
           />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {startingPoints.map((item, index) => (
-              <article key={item.title} className="rounded-[24px] border border-[#b28453]/18 bg-[#171614] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
-                <span className="font-mono text-xs font-bold text-[#b28453]">0{index + 1}</span>
-                <h3 className="mt-5 font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/68">{item.description}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 rounded-[28px] border border-[#b28453]/25 bg-[#0f0f0e] p-7 md:p-9">
-            <p className="font-display text-2xl font-semibold leading-snug text-[#e0d3c3]">
+
+          <div className="mb-10 flex flex-col gap-6 rounded-[28px] border border-[#b28453]/38 bg-[#efe3d4] p-7 md:flex-row md:items-center md:p-9">
+            <IconMedallion>
+              <Target size={28} />
+            </IconMedallion>
+            <p className="max-w-4xl font-display text-2xl font-bold leading-snug text-[#11100f] md:text-3xl">
               O problema atual não é a falta de conteúdo. É a falta de um sistema capaz de organizar autoridade, capturar demanda e conduzir o paciente até o contato.
             </p>
           </div>
-        </div>
-      </section>
 
-      <section className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            dark={false}
-            eyebrow="02 · Objetivo da parceria"
-            title="Construir um canal orgânico de aquisição de pacientes."
-            text="A operação será conduzida para ampliar progressivamente a presença do Dr. Felipe nas pesquisas relacionadas às especialidades, sintomas, exames e tratamentos, transformando visibilidade em tráfego qualificado e oportunidades mensuráveis de contato."
-          />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {outcomeLayers.map((item) => (
-              <div key={item.label} className="rounded-[24px] border border-[#b28453]/20 bg-[#f4eee5] p-6 shadow-[0_18px_48px_rgba(17,16,15,0.08)]">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{item.label}</span>
-                <h3 className="mt-4 font-display text-xl font-bold text-[#11100f]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-[1.65] text-[#11100f]/70">{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {["Impressões e cobertura de pesquisas", "Cliques e tráfego orgânico", "WhatsApp e oportunidades"].map((item, index) => (
-              <div key={item} className="rounded-2xl bg-[#11100f] p-6 text-[#f8f8f8]">
-                <span className="font-mono text-xs font-bold text-[#b28453]">{index + 1}º indicador</span>
-                <p className="mt-3 font-display text-xl font-semibold">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            eyebrow="03 · Como a AUDITSEO gera resultado"
-            title="Quatro motores trabalhando como um único sistema."
-            text="O crescimento orgânico acontece quando demanda, autoridade, experiência e mensuração deixam de operar separadamente."
-          />
-          <div className="grid gap-5 md:grid-cols-2">
-            {engines.map((item) => {
-              const Icon = item.icon;
+          <div className="grid gap-6 md:grid-cols-2">
+            {startCards.map((card) => {
+              const Icon = card.icon;
               return (
-                <article key={item.title} className="group rounded-[28px] border border-[#b28453]/18 bg-[#171614] p-7 transition-transform duration-300 hover:-translate-y-1">
-                  <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full border border-[#b28453]/40 bg-[#b28453]/10 text-[#b28453]">
-                    <Icon size={22} />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-[1.75] text-[#f8f8f8]/70">{item.text}</p>
-                </article>
+                <DarkCard key={card.title} className="min-h-[220px]">
+                  <IconMedallion>
+                    <Icon size={24} />
+                  </IconMedallion>
+                  <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{card.title}</h3>
+                  <div className="my-4 h-[2px] w-12 bg-[#b28453]" />
+                  <p className="max-w-md text-base leading-[1.65] text-[#f8f8f8]/68">{card.text}</p>
+                </DarkCard>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <div className="rounded-[32px] border border-[#b28453]/25 bg-[#171614] p-7 md:p-12">
-            <SectionHeader
-              eyebrow="04 · Metodologia proprietária"
-              title="S.I.G.N.A.L. - Search Intelligence para crescimento contínuo."
-              text="A metodologia organiza o projeto em seis dimensões conectadas. Na prática, a estratégia não fica presa ao plano inicial: ela aprende com consultas, páginas que ganham tração e ações que conduzem o usuário ao contato."
-            />
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {signalSteps.map(([letter, title, text]) => (
-                <div key={letter} className="rounded-[22px] border border-[#b28453]/16 bg-[#11100f] p-6">
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 font-display text-xl font-bold text-[#b28453]">
-                    {letter}
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-[#f8f8f8]">{title}</h3>
-                  <p className="mt-3 text-sm leading-[1.65] text-[#f8f8f8]/66">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            dark={false}
-            eyebrow="05 · Evolução esperada"
-            title="O crescimento será percebido em camadas."
-            text="Não apresentamos promessa artificial de posição. Apresentamos uma trajetória de maturação com sinais objetivos acompanhados no Google Search Console e Google Analytics."
-          />
-          <div className="grid gap-5 lg:grid-cols-3">
-            {growthCycles.map((item) => (
-              <article key={item.name} className="rounded-[28px] border border-[#b28453]/20 bg-[#f4eee5] p-7">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{item.cycle}</span>
-                <h3 className="mt-5 font-display text-3xl font-bold text-[#11100f]">{item.name}</h3>
-                <p className="mt-2 font-semibold text-[#b28453]">{item.title}</p>
-                <p className="mt-5 text-sm leading-[1.75] text-[#11100f]/70">{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            eyebrow="06 · Ecossistema de busca"
-            title="Presença além da lista tradicional de resultados."
-            text="O paciente pode descobrir um especialista em diferentes superfícies. A estratégia precisa construir uma entidade consistente em todas elas, sem fragmentar autoridade."
-          />
-          <div className="grid gap-4 lg:grid-cols-5">
-            {ecosystem.map((item, index) => (
-              <div key={item} className="rounded-[24px] border border-[#b28453]/18 bg-[#171614] p-5">
-                <span className="font-mono text-xs font-bold text-[#b28453]">0{index + 1}</span>
-                <p className="mt-5 text-sm leading-[1.65] text-[#f8f8f8]/72">{item}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-9 rounded-[28px] border border-[#b28453]/25 bg-[#0f0f0e] p-7">
-            <p className="text-base leading-[1.75] text-[#e0d3c3]">
-              A presença em IA não será tratada como pacote de perguntas frequentes. Ela será consequência de uma base forte: conteúdo autoral, autoria médica, referências, consistência de entidade, cobertura temática e reconhecimento externo.
+          <div className="mt-10 flex items-start gap-5 border-t border-[#b28453]/35 pt-8">
+            <CheckCircle2 className="mt-1 shrink-0 text-[#b28453]" size={28} />
+            <p className="max-w-4xl text-lg leading-[1.7] text-[#11100f]/76">
+              A proposta da AUDITSEO é assumir essa transformação de ponta a ponta, com foco no resultado percebido nos dados - e não na exposição de uma lista mensal de tarefas.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            eyebrow="07 · Do tráfego à oportunidade"
-            title="Cada acesso precisa ter um próximo passo lógico."
-            text="O novo sistema não buscará apenas mais visitantes. Ele será desenhado para atrair pessoas em diferentes níveis de consciência e conduzi-las até uma ação compatível com o momento da pesquisa."
-          />
-          <div className="grid gap-5 lg:grid-cols-3">
-            {journey.map((item) => (
-              <article key={item.stage} className="rounded-[28px] border border-[#b28453]/18 bg-[#171614] p-7">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{item.stage}</span>
-                <p className="mt-5 text-sm leading-[1.75] text-[#f8f8f8]/72">{item.search}</p>
-                <div className="mt-6 rounded-2xl bg-[#b28453]/10 p-4 text-sm font-semibold text-[#e0d3c3]">{item.goal}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            dark={false}
-            eyebrow="08 · Mensuração"
-            title="O cliente acompanhará o que realmente importa."
-            text="A evolução ficará registrada nas plataformas oficiais de mensuração. A leitura executiva observará a conexão entre impressões, CTR, usuários, páginas e ações de contato."
-          />
-          <div className="grid gap-6 lg:grid-cols-2">
-            {metrics.map((metric) => (
-              <article key={metric.source} className="rounded-[28px] border border-[#b28453]/20 bg-[#11100f] p-8 text-[#f8f8f8]">
-                <h3 className="font-display text-2xl font-bold">{metric.source}</h3>
-                <ul className="mt-6 space-y-4">
-                  {metric.items.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-[1.6] text-[#f8f8f8]/72">
-                      <CheckCircle2 className="mt-0.5 shrink-0 text-[#b28453]" size={17} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            eyebrow="09 · Modelo de operação"
-            title="Alta autonomia. Baixa sobrecarga para o cliente."
-            text="A AUDITSEO assumirá a gestão estratégica da presença orgânica, com autonomia para analisar, priorizar e conduzir a evolução do projeto."
-          />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {operationModel.map((item) => (
-              <article key={item.title} className="rounded-[24px] border border-[#b28453]/18 bg-[#171614] p-6">
-                <h3 className="font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/68">{item.text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            <div className="rounded-[24px] border border-[#b28453]/20 bg-[#0f0f0e] p-7">
-              <h3 className="font-display text-2xl font-bold text-[#e0d3c3]">A AUDITSEO assume</h3>
-              <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/70">
-                Estratégia, análise, priorização, direcionamento técnico e editorial, otimização do ecossistema, mensuração e evolução contínua.
-              </p>
-            </div>
-            <div className="rounded-[24px] border border-[#b28453]/20 bg-[#0f0f0e] p-7">
-              <h3 className="font-display text-2xl font-bold text-[#e0d3c3]">O cliente disponibiliza</h3>
-              <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/70">
-                Acessos necessários, informações comerciais corretas e validação médica quando solicitada.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            dark={false}
-            eyebrow="10 · Diferencial"
-            title="Não é a continuidade do SEO que o cliente decidiu encerrar."
-            text="A operação foi desenhada para superar o modelo baseado em pacotes fixos, produção genérica e prestação de contas por atividade."
-          />
-          <div className="overflow-hidden rounded-[28px] border border-[#b28453]/20 bg-[#11100f] text-[#f8f8f8]">
-            <div className="grid grid-cols-2 border-b border-[#b28453]/20 bg-[#171614] p-5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-              <span>Modelo tradicional</span>
-              <span>Modelo AUDITSEO</span>
-            </div>
-            {comparisonRows.map(([before, after]) => (
-              <div key={before} className="grid grid-cols-1 gap-3 border-b border-[#b28453]/10 p-5 text-sm md:grid-cols-2">
-                <span className="text-[#f8f8f8]/58">{before}</span>
-                <span className="font-semibold text-[#e0d3c3]">{after}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-20 md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            eyebrow="11 · Compromisso da parceria"
-            title="Gestão integral do crescimento orgânico."
-            text="O valor da parceria está na capacidade de diagnosticar, decidir, executar, medir e adaptar continuamente o projeto - sem reduzir a operação a uma quantidade pré-definida de tarefas."
-          />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {commitments.map((item) => (
-              <article key={item.title} className="rounded-[24px] border border-[#b28453]/18 bg-[#171614] p-6">
-                <h3 className="font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/68">{item.text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-9 rounded-[28px] border border-[#b28453]/25 bg-[#0f0f0e] p-7">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/35 text-[#b28453]">
-              <ShieldCheck size={21} />
-            </div>
-            <h3 className="font-display text-2xl font-bold text-[#e0d3c3]">Compromisso responsável</h3>
-            <p className="mt-4 text-sm leading-[1.75] text-[#f8f8f8]/70">
-              A AUDITSEO não promete posições garantidas ou resultados artificiais. O compromisso é aplicar estratégia, conhecimento, execução e aprendizagem contínua para construir a melhor evolução possível dentro da concorrência, do histórico do domínio e do comportamento dos mecanismos de busca.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="condicoes" className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
-        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
-          <SectionHeader
-            dark={false}
-            eyebrow="12 · Condições comerciais"
-            title="Investimento para a operação de crescimento."
-            text="Os campos comerciais ficam reservados para definição final antes da aprovação. A condição de início considera formalização, liberação dos acessos necessários e configuração de mensuração."
-          />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {commercialRows.map(([label, value]) => (
-              <div key={label} className="rounded-[24px] border border-[#b28453]/20 bg-[#f4eee5] p-6">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{label}</span>
-                <p className="mt-4 font-display text-2xl font-bold text-[#11100f]">{value}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {[
-              ["Condição de início", "Aprovação da proposta, formalização e liberação dos acessos necessários."],
-              ["Mensuração", "Google Search Console, Google Analytics 4 e eventos de contato configurados no ecossistema."],
-              ["Comunicação", "Assíncrona e objetiva, com acionamento quando houver validação, decisão ou informação necessária."],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-[24px] bg-[#11100f] p-6 text-[#f8f8f8]">
-                <h3 className="font-display text-xl font-bold text-[#e0d3c3]">{title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/70">{text}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-7 text-xs leading-[1.7] text-[#11100f]/58">
-            Observação: valores de investimento não incluem mídia paga, ferramentas contratadas diretamente pelo cliente ou fornecedores externos não previstos no acordo.
-          </p>
         </div>
       </section>
 
       <section className="relative overflow-hidden bg-[#11100f] py-20 md:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(178,132,83,0.15),transparent_34%)]" />
-        <div className="relative z-10 mx-auto max-w-[1080px] px-6 text-center md:px-12">
-          <span className="mb-5 inline-flex rounded-full border border-[#b28453]/25 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#b28453]">
-            Encerramento
-          </span>
-          <h2 className="font-display text-[38px] font-bold leading-[1.08] tracking-[-0.04em] text-[#f8f8f8] md:text-[62px]">
-            A autoridade já existe. Agora ela precisa gerar demanda.
-          </h2>
-          <p className="mx-auto mt-7 max-w-3xl text-lg leading-[1.75] text-[#e0d3c3]">
-            O projeto possui uma vantagem decisiva: a autoridade profissional, a experiência e os ativos de confiança já existem. A oportunidade está em organizar tudo isso para que Google, sistemas de inteligência artificial e pacientes reconheçam essa autoridade com clareza.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(circle_at_center,#e0d3c3_1px,transparent_1px)] [background-size:30px_30px]" />
+        <div className="relative z-10 mx-auto max-w-[1320px] px-6 md:px-12">
+          <SectionHeader
+            eyebrow="Como o crescimento será gerado"
+            title="A estratégia não será medida por tarefas. Será percebida em visibilidade, tráfego e demanda."
+          />
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {growthCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <DarkCard key={card.title} className="min-h-[250px] p-8">
+                  <IconMedallion>
+                    <Icon size={28} />
+                  </IconMedallion>
+                  <h3 className="font-display text-2xl font-bold leading-tight text-[#f8f8f8]">{card.title}</h3>
+                  <div className="my-5 h-[2px] w-12 bg-[#b28453]" />
+                  <p className="text-base leading-[1.7] text-[#f8f8f8]/70">{card.text}</p>
+                </DarkCard>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 flex flex-col gap-6 rounded-[28px] border border-[#b28453]/32 bg-[#171614] p-7 md:flex-row md:items-center md:p-9">
+            <IconMedallion>
+              <LineChart size={28} />
+            </IconMedallion>
+            <p className="max-w-4xl text-xl leading-[1.55] text-[#e0d3c3] md:text-2xl">
+              Mais do que SEO tradicional, a proposta cria um <strong className="text-[#b28453]">sistema contínuo de aquisição, autoridade e conversão</strong> para a nova era da busca.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="modelo" className="bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
+        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
+          <SectionHeader
+            dark={false}
+            eyebrow="Metodologia proprietária"
+            title="Método S.I.G.N.A.L"
+            text="Clareza estratégica para transformar autoridade médica em crescimento mensurável. A metodologia organiza diagnóstico, intenção, presença generativa, autoridade e evolução contínua."
+          />
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {signalCards.map(([letter, title, text, Icon]) => (
+              <DarkCard key={String(letter)} className="min-h-[280px]">
+                <IconMedallion>
+                  <Icon size={25} />
+                </IconMedallion>
+                <h3 className="font-display text-xl font-bold text-[#f8f8f8]">
+                  {letter} - {title}
+                </h3>
+                <div className="my-4 h-[2px] w-12 bg-[#b28453]" />
+                <p className="text-sm leading-[1.75] text-[#f8f8f8]/68">{text}</p>
+              </DarkCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#11100f] py-20 md:py-28">
+        <div className="mx-auto max-w-[1320px] px-6 md:px-12">
+          <SectionHeader
+            eyebrow="Indicadores de acompanhamento"
+            title="Sem checklist. Sem reunião mensal. Com evolução visível nos dados."
+          />
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {metricCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <DarkCard key={card.title} className="p-8">
+                  <IconMedallion>
+                    <Icon size={27} />
+                  </IconMedallion>
+                  <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{card.title}</h3>
+                  <div className="my-5 h-[2px] w-12 bg-[#b28453]" />
+                  <ul className="space-y-4">
+                    {card.items.map((item) => (
+                      <li key={item} className="flex gap-3 text-base text-[#f8f8f8]/70">
+                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#b28453]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </DarkCard>
+              );
+            })}
+          </div>
+
+          <div className="my-12 grid gap-5 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-center">
+            {flowItems.map(([label, Icon], index) => (
+              <div key={String(label)} className="contents">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#171614] text-[#b28453] shadow-[0_0_42px_rgba(178,132,83,0.2)]">
+                    <Icon size={34} />
+                  </div>
+                  <span className="mt-4 font-display text-xl font-bold text-[#b28453]">{label}</span>
+                </div>
+                {index < flowItems.length - 1 && <span className="hidden text-center text-3xl text-[#b28453]/75 md:block">→</span>}
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-6 rounded-[28px] border border-[#b28453]/32 bg-[#171614] p-7 md:flex-row md:items-center md:p-9">
+            <IconMedallion>
+              <Sparkles size={28} />
+            </IconMedallion>
+            <p className="max-w-4xl text-xl leading-[1.55] text-[#e0d3c3] md:text-2xl">
+              No início, o crescimento tende a aparecer primeiro em <strong className="text-[#b28453]">impressões e cobertura temática</strong>. Com a maturidade do projeto, esse avanço migra para <strong className="text-[#b28453]">cliques, tráfego qualificado e contatos</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#e0d3c3] py-20 text-[#11100f] md:py-28">
+        <div className="absolute right-[8%] top-[9%] hidden h-64 w-64 opacity-45 lg:block">
+          <HeroConstellation />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1320px] px-6 md:px-12">
+          <SectionHeader
+            dark={false}
+            eyebrow="Modelo de parceria"
+            title="O cliente não precisa acompanhar tarefas. Precisa acompanhar evolução."
+          />
+
+          <div className="grid gap-7 lg:grid-cols-2">
+            <DarkCard className="p-8 md:p-10">
+              <IconMedallion>
+                <Target size={27} />
+              </IconMedallion>
+              <h3 className="font-display text-3xl font-bold text-[#b28453]">Como a operação funciona</h3>
+              <div className="mt-8 space-y-6">
+                {operationItems.map(([label, Icon]) => (
+                  <div key={String(label)} className="flex items-center gap-5 border-b border-[#b28453]/18 pb-5 last:border-b-0 last:pb-0">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#b28453]/34 text-[#b28453]">
+                      <Icon size={22} />
+                    </div>
+                    <span className="text-lg leading-snug text-[#f8f8f8]/82">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+
+            <DarkCard className="p-8 md:p-10">
+              <IconMedallion>
+                <CircleDollarSign size={27} />
+              </IconMedallion>
+              <h3 className="font-display text-3xl font-bold text-[#b28453]">Investimento e estrutura</h3>
+              <div className="mt-8 space-y-0">
+                {investmentItems.map(([label, value]) => (
+                  <div key={label} className="grid gap-2 border-b border-[#b28453]/18 py-5 first:pt-0 last:border-b-0">
+                    <span className="text-sm uppercase tracking-[0.12em] text-[#f8f8f8]/55">{label}</span>
+                    <strong className="text-xl text-[#e0d3c3]">{value}</strong>
+                  </div>
+                ))}
+              </div>
+            </DarkCard>
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-5xl flex-col gap-6 rounded-[28px] border border-[#b28453]/35 bg-[#efe3d4] p-7 md:flex-row md:items-center md:p-8">
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#11100f] text-[#b28453]">
+              <Target size={34} />
+            </div>
+            <p className="text-xl leading-[1.55] text-[#11100f]/78">
+              O objetivo desta proposta não é vender uma lista de entregas. <strong className="text-[#11100f]">É construir um ativo digital capaz de ampliar a presença do Dr. Felipe e transformar visibilidade em demanda qualificada.</strong>
+            </p>
+          </div>
+
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center">
             <a
               href={`https://wa.me/5511996384376?text=${contactMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#e0d3c3] hover:text-[#11100f]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-base font-bold text-white transition-colors hover:bg-[#11100f]"
             >
-              Conversar sobre aprovação
-              <ArrowRight size={17} />
+              Avançar com a proposta
+              <ArrowRight size={18} />
             </a>
-            <a
-              href="mailto:contato@auditseo.com.br?subject=Proposta%20AUDITSEO%20-%20Dr.%20Felipe%20Bar%C3%A3o"
-              className="inline-flex items-center justify-center rounded-full border border-[#b28453]/45 px-7 py-4 text-base font-semibold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-            >
-              Enviar retorno por e-mail
-            </a>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#11100f]/50">
+              AUDITSEO · Search Intelligence Partner
+            </span>
           </div>
-          <div className="mx-auto mt-12 max-w-2xl rounded-[28px] border border-[#b28453]/20 bg-[#171614]/70 p-7 text-left">
-            <p className="font-display text-xl font-bold text-[#f8f8f8]">Sidney Santos</p>
-            <p className="mt-2 text-sm text-[#f8f8f8]/65">Fundador e estrategista de Search Intelligence · AUDITSEO</p>
-            <div className="mt-5 grid gap-2 text-sm text-[#e0d3c3] sm:grid-cols-3">
-              <span>+55 (11) 99638-4376</span>
-              <span>contato@auditseo.com.br</span>
-              <span>auditseo.com.br</span>
-            </div>
-          </div>
-          <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.16em] text-[#f8f8f8]/42">
-            Esta proposta é confidencial e destinada exclusivamente ao Dr. Felipe Barão.
-          </p>
         </div>
       </section>
     </main>
