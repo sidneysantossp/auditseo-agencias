@@ -16,8 +16,10 @@ import DiagnosticoPage from "./components/DiagnosticoPage";
 import SiteFooter from "./components/SiteFooter";
 import ContentPage from "./components/ContentPage";
 import BlogPage from "./components/BlogPage";
+import SidneySantosPage from "./components/SidneySantosPage";
+import PropostaDrFelipeBaraoPage from "./components/PropostaDrFelipeBaraoPage";
 
-const routeMetadata: Record<string, { title: string; description: string; activeSection?: string }> = {
+const routeMetadata: Record<string, { title: string; description: string; activeSection?: string; robots?: string }> = {
   "/": {
     title: "AUDITSEO | Search Intelligence Partner para Agências",
     description:
@@ -85,6 +87,30 @@ const routeMetadata: Record<string, { title: string; description: string; active
       "Guias, análises e conteúdos práticos sobre SEO, GEO, IA, autoridade e inteligência de busca para empresas, profissionais, consultores e agências.",
     activeSection: "conteudo",
   },
+  "/autor/sidney-santos": {
+    title: "Sidney Santos — Especialista em SEO e Search Intelligence | AUDITSEO",
+    description:
+      "Sidney Santos atua com SEO desde 2009 e é fundador da AUDITSEO, consultoria de Search Intelligence especializada no apoio estratégico a agências.",
+    activeSection: "conteudo",
+  },
+  "/sidney-santos": {
+    title: "Sidney Santos — Especialista em SEO e Search Intelligence | AUDITSEO",
+    description:
+      "Sidney Santos atua com SEO desde 2009 e é fundador da AUDITSEO, consultoria de Search Intelligence especializada no apoio estratégico a agências.",
+    activeSection: "conteudo",
+  },
+  "/propostas/dr-felipe-barao": {
+    title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
+    description:
+      "Proposta confidencial da AUDITSEO para crescimento orgânico, autoridade digital e Search Intelligence do Dr. Felipe Barão.",
+    robots: "noindex,nofollow",
+  },
+  "/proposta/dr-felipe-barao": {
+    title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
+    description:
+      "Proposta confidencial da AUDITSEO para crescimento orgânico, autoridade digital e Search Intelligence do Dr. Felipe Barão.",
+    robots: "noindex,nofollow",
+  },
   "/guias": {
     title: "Guias Técnicos AUDITSEO | SEO, GEO e Search Intelligence para Agências",
     description:
@@ -136,6 +162,10 @@ export default function App() {
       window.history.replaceState({}, "", "/parceria");
       setCurrentPath("/parceria");
     }
+    if (currentPath === "/sidney-santos") {
+      window.history.replaceState({}, "", "/autor/sidney-santos");
+      setCurrentPath("/autor/sidney-santos");
+    }
   }, [currentPath]);
 
   useEffect(() => {
@@ -153,6 +183,7 @@ export default function App() {
     setMeta('meta[property="og:description"]', { property: "og:description", content: routeMeta.description });
     setMeta('meta[name="twitter:title"]', { name: "twitter:title", content: routeMeta.title });
     setMeta('meta[name="twitter:description"]', { name: "twitter:description", content: routeMeta.description });
+    setMeta('meta[name="robots"]', { name: "robots", content: routeMeta.robots || "index,follow" });
     setActiveSection(routeMeta.activeSection || "");
   }, [currentPath]);
 
@@ -393,6 +424,23 @@ export default function App() {
     );
   }
 
+  if (currentPath === "/autor/sidney-santos" || currentPath === "/sidney-santos") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="conteudo" />
+        <SidneySantosPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/propostas/dr-felipe-barao" || currentPath === "/proposta/dr-felipe-barao") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <PropostaDrFelipeBaraoPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
   if (contentRoutes.has(currentPath)) {
     return (
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
@@ -454,7 +502,7 @@ export default function App() {
               {
                 num: "01",
                 title: "Google e Busca Orgânica",
-                desc: "Onde o ranqueamento tradicional e a relevância sistêmica continuam decisivos para etapas iniciais de descoberta, consideração e consideração de marca.",
+                desc: "Onde o ranqueamento tradicional e a relevância sistêmica continuam decisivos para descoberta, consideração e validação da marca.",
                 svg: (
                   <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
                     <circle cx="11" cy="11" r="8" />
@@ -467,7 +515,7 @@ export default function App() {
               {
                 num: "02",
                 title: "SEO Local e Mapas",
-                desc: "Filar de extrema importância para empresas dependentes de relevância regional, intenção comercial imediata e tomadas de decisão próximas da conversão fisica.",
+                desc: "Pilar essencial para empresas dependentes de relevância regional, intenção comercial imediata e decisões próximas da conversão física.",
                 svg: (
                   <svg className="luxury-vector absolute right-[32px] bottom-[28px] w-[42px] h-[42px] opacity-[0.55] text-[#b28453] stroke-[#b28453] stroke-[1.4] transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none">
                     <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" strokeLinecap="round" strokeLinejoin="round" />
@@ -622,7 +670,7 @@ export default function App() {
             </h2>
             <div className="w-[160px] h-[4px] bg-[#b28453] mt-6 mb-8" />
             <p className="text-[#c9c9c9] text-base md:text-lg leading-relaxed max-w-3xl">
-              Donos e sócios de agências experientes já perceberam que SEO, GEO e inteligência de mapas deixaram de ser itens operacionais secundários de baixo value. Eles determinam diretamente o valor do contrato comercial, retenção a longo prazo, escopo estruturado, autoridade de marca e novas fontes lucrativas de receita.
+              Donos e sócios de agências experientes já perceberam que SEO, GEO e inteligência de mapas deixaram de ser itens operacionais secundários de baixo valor percebido. Eles determinam diretamente o valor do contrato comercial, retenção a longo prazo, escopo estruturado, autoridade de marca e novas fontes lucrativas de receita.
             </p>
           </div>
 
@@ -836,7 +884,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Entity & Authority Layer Section */}
+      {/* Camada de entidade e autoridade */}
       <section
         id="entity-authority-layer"
         className="bg-[#11100f] text-[#f8f8f8] py-24 md:py-32 relative overflow-hidden"
@@ -850,7 +898,7 @@ export default function App() {
             {/* Coluna Esquerda: Texto Editorial/Consultivo */}
             <div className="lg:col-span-6 text-left">
               <span className="text-[#b28453] text-[13px] tracking-[0.15em] font-mono font-bold uppercase mb-4 block">
-                ENTITY & AUTHORITY LAYER
+                CAMADA DE ENTIDADE E AUTORIDADE
               </span>
               <h2 className="font-display text-[32px] sm:text-[40px] md:text-[46px] font-bold text-[#f8f8f8] leading-[1.15] tracking-tight mb-6">
                 Autoridade de entidade: a base invisível da nova busca
@@ -1184,7 +1232,7 @@ export default function App() {
                 num: "01",
                 title: "Diagnóstico Avulso",
                 subtitle: "Para tomadas de decisão cirúrgicas e auditorias de urgência.",
-                desc: "Recomendado para momentos decisivos nos quais sua agência necessita de uma ótica profundamente estratégica antes de formatar propostas, renovar contas frias de longa data ou contornar crises. Entregamos documentação mapeando problemas táticos, oportunidades e planos executivos de 90 dias estruturados com rigor.",
+                desc: "Recomendado para momentos decisivos nos quais sua agência precisa de uma leitura estratégica antes de formatar propostas, renovar contas com risco de cancelamento ou baixa percepção de valor, ou contornar crises. Entregamos documentação mapeando problemas táticos, oportunidades e planos executivos de 90 dias estruturados com rigor.",
                 icon: <FileText size={20} className="text-[#b28453]" />
               },
               {
@@ -1270,7 +1318,7 @@ export default function App() {
                   "Redação produz posts genéricos que não geram autoridade semântica",
                   "Relatórios mensais cheios de dados e gráficos soltos sem clareza",
                   "Cliente final frustrado sem entender os próximos passos práticos",
-                  "Agência de marketing insegura de comercializar projetos orgânicos de vulto",
+                  "Agência de marketing insegura para comercializar projetos orgânicos mais estratégicos",
                   "Operação interna sobrecarregada, apagando incêndios constantemente",
                   "Decisões de metas orientadas meramente por achismos de palavras"
                 ].map((item, idx) => (
@@ -1391,7 +1439,7 @@ export default function App() {
                 num: "05",
                 label: "ROADMAP",
                 title: "Roadmaps Práticos",
-                desc: "Linhas cronológicas que resolvem o gargalo de 'oque' escrever ou alterar, gerando cronogramas limpos de acompanhamento.",
+                desc: "Linhas cronológicas que resolvem o gargalo de 'o que' escrever ou alterar, gerando cronogramas limpos de acompanhamento.",
                 svg: (
                   <svg className="absolute bottom-4 right-4 w-10 h-10 stroke-[0.75] text-[#b28453] opacity-10 group-hover:opacity-25 transition-all duration-300 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <rect x="3" y="4" width="18" height="18" rx="2" />

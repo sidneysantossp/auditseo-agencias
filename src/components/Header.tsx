@@ -129,7 +129,7 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
             Diagnóstico
           </button>
           <div className="text-center text-[#c9c9c9] text-xs font-mono">
-            Search Intelligence Partner for Agencies
+            Search Intelligence Partner para Agências
           </div>
         </div>
       </div>

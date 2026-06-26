@@ -19,7 +19,7 @@ export default function FAQSection() {
     {
       id: "faq-3",
       question: "Minha agência já tem equipe de conteúdo. Ainda faz sentido?",
-      answer: "Faz total sentido. Muitas agências produzem conteúdo que não gera tráfego qualificado porque carecem de 'Inteligência de Intenção' e 'Autoridade Semântica'. A AUDITSEO entra na camada estratégica para direcionar o que deve ser escrito, as tags semânticas ideias, as estruturas e os ganchos que o Google e os mecanismos de busca com IA priorizam."
+      answer: "Faz total sentido. Muitas agências produzem conteúdo que não gera tráfego qualificado porque carecem de inteligência de intenção e autoridade semântica. A AUDITSEO entra na camada estratégica para direcionar o que deve ser escrito, as estruturas semânticas adequadas e os ganchos que o Google e os mecanismos de busca com IA priorizam."
     },
     {
       id: "faq-4",

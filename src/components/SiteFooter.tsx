@@ -37,6 +37,7 @@ const agencyLinks = [
 
 const contentLinks = [
   ["Blog Oficial", "/blog"],
+  ["Sidney Santos", "/autor/sidney-santos"],
   ["Guias técnicos", "/guias"],
   ["Estudos de busca com IA", "/estudos-busca-ia"],
   ["GEO Readiness", "/guias/geo-readiness"],

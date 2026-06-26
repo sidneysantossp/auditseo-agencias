@@ -9,6 +9,31 @@
       "source": "/white-label",
       "destination": "/parceria",
       "permanent": true
+    },
+    {
+      "source": "/sidney-santos",
+      "destination": "/autor/sidney-santos",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/propostas/dr-felipe-barao",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/proposta/dr-felipe-barao",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "rewrites": [

@@ -178,7 +178,7 @@ export default function HomeConversionSections({ onNavigate }: HomeConversionSec
           />
           <div className="rounded-[26px] border border-[#11100f]/12 bg-[#11100f] p-8 text-[#f8f8f8] shadow-[0_24px_80px_rgba(17,16,15,0.22)]">
             <div className="grid gap-4 sm:grid-cols-2">
-              {["Search Diagnosis", "Intent Mapping", "GEO & AI Readiness", "Narrative Authority"].map((item) => (
+              {["Diagnóstico de busca", "Mapeamento de intenção", "GEO e IA", "Autoridade narrativa"].map((item) => (
                 <div key={item} className="rounded-[18px] border border-[#b28453]/20 bg-white/[0.03] p-5">
                   <Layers3 className="mb-4 h-5 w-5 text-[#b28453]" />
                   <p className="font-display text-lg font-bold">{item}</p>

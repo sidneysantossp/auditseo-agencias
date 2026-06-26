@@ -1,4 +1,5 @@
 import SiteFooter from "./SiteFooter";
+import AuthorBio from "./AuthorBio";
 
 interface Action {
   label: string;
@@ -44,6 +45,14 @@ interface ContentPageProps {
   path: string;
   onNavigate: (targetId: string) => void;
 }
+
+const editorialContentPaths = new Set([
+  "/guias",
+  "/estudos-busca-ia",
+  "/guias/geo-readiness",
+  "/guias/narrativa-semantica",
+  "/guias/search-intelligence",
+]);
 
 const pages: Record<string, ContentPageData> = {
   "/guias": {
@@ -623,6 +632,8 @@ export default function ContentPage({ path, onNavigate }: ContentPageProps) {
           <ContentSection section={section} />
         </div>
       ))}
+
+      {editorialContentPaths.has(path) ? <AuthorBio dark /> : null}
 
       {page.finalCta ? (
         <section className="bg-[#11100f] px-6 py-24 md:py-32 xl:px-12">

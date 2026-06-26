@@ -213,7 +213,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
               <div className="rounded-[8px] border border-[#b28453]/25 bg-[#181716]/90 p-6 shadow-2xl shadow-black/40">
                 <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Partner Layer</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Camada de parceria</p>
                     <h2 className="mt-2 font-display text-2xl font-bold">Sua agência mantém o relacionamento.</h2>
                   </div>
                   <ShieldCheck className="h-9 w-9 text-[#b28453]" />
@@ -222,7 +222,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
                   A AUDITSEO estrutura a inteligência orgânica por trás da entrega.
                 </p>
                 <div className="mt-8 grid grid-cols-2 gap-3">
-                  {["SEO técnico", "GEO & IA", "Entity Layer", "Roadmap 90d"].map((item) => (
+                  {["SEO técnico", "GEO & IA", "Camada de entidade", "Roadmap 90 dias"].map((item) => (
                     <div key={item} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold text-[#f8f8f8]">
                       {item}
                     </div>
@@ -312,7 +312,7 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
               <SectionHeader
-                eyebrow="Entity & Authority Layer"
+                eyebrow="Camada de entidade e autoridade"
                 title="Autoridade de entidade: a camada invisível da nova busca"
                 text="Na nova busca, não basta publicar mais conteúdos. Marcas precisam organizar os sinais que fazem com que sejam reconhecidas como entidades claras, associadas ao contexto certo e validadas como opções confiáveis antes da decisão do cliente."
               />

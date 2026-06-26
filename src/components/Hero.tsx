@@ -53,7 +53,20 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 maxWidth: "640px"
               }}
             >
-              Search Intelligence Partner for Agencies
+              Search Intelligence Partner para Agências
+            </p>
+
+            <p
+              className="text-[#c9c9c9] text-sm md:text-base font-normal py-0 mb-6"
+              style={{
+                textAlign: "left",
+                letterSpacing: "-0.01em",
+                wordSpacing: "normal",
+                lineHeight: "1.55",
+                maxWidth: "640px"
+              }}
+            >
+              Inteligência de busca, SEO, ambientes generativos e autoridade digital.
             </p>
 
             {/* ACTION BUTTONS (Matching design style and border radius) */}

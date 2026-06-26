@@ -11,20 +11,20 @@ export default function SolutionsSection({ onCtaClick }: SolutionsSectionProps) 
       icon: <Search className="w-6 h-6 text-[#b28453]" />,
       title: "Auditoria SEO/GEO White-Label",
       description: "Diagnóstico completo de visibilidade para sua agência de marketing apresentar ao cliente final direto sob a própria marca. Inclui análise semântica técnica profunda, conteúdo, competidores, score de menções em IA e plano consultivo de curto prazo.",
-      ideal: "Fechar novos contratos recorrentes, renovar contas frias e justificar expansão comercial de escopo das contas atuais."
+      ideal: "Fechar novos contratos recorrentes, renovar contas com baixa percepção de valor e justificar expansão comercial de escopo das contas atuais."
     },
     {
       id: "sol-2",
       icon: <ClipboardList className="w-6 h-6 text-[#b28453]" />,
       title: "Plano Estratégico Orgânico 90 dias",
-      description: "Roadmap prático e estruturado de forma minuciosa para organizar as próximas ações urgentes de SEO tradicional, otimizações estruturais estruturadas, produção de conteúdo estratégico e visibilidade nos ambientes gerativos de IA.",
+      description: "Roadmap prático para organizar as próximas ações de SEO, otimizações estruturais, produção de conteúdo estratégico e visibilidade em ambientes generativos de IA.",
       ideal: "Transformar auditorias complexas e insights em execução prática clara focada em resultados no curto prazo."
     },
     {
       id: "sol-3",
       icon: <Compass className="w-6 h-6 text-[#b28453]" />,
       title: "Consultoria Estratégica",
-      description: "Apoio consultivo recorrente tático para priorização ágil de tarefas de engenhosidade de busca, revisão detalhada de entregas de redatores, homologação técnica e direcionamento executivo do time operacional.",
+      description: "Apoio consultivo recorrente para priorização de tarefas de inteligência de busca, revisão de entregas de conteúdo, homologação técnica e direcionamento executivo do time operacional.",
       ideal: "Agências que já possuem equipe de redatores ou programadores, mas carecem de know-how especializado sênior de busca."
     },
     {
@@ -32,12 +32,12 @@ export default function SolutionsSection({ onCtaClick }: SolutionsSectionProps) 
       icon: <Users className="w-6 h-6 text-[#b28453]" />,
       title: "Squad SEO para Agências",
       description: "A AUDITSEO atua diretamente nos bastidores como uma extensão especializada do time de busca da agência, apoiando o planejamento tático mensal, análises avançadas de indexação, sitemap e monitoramento analítico estrutural.",
-      ideal: "Agências que buscam comercializar de imediato projetos robustos de busca sem os altos gargalos de inchaço CLT."
+      ideal: "Agências que buscam comercializar projetos orgânicos mais estratégicos sem ampliar a estrutura interna."
     },
     {
       id: "sol-5",
       icon: <Cpu className="w-6 h-6 text-[#b28453]" />,
-      title: "Entity & Authority Strategy (AI & GEO)",
+      title: "Estratégia de autoridade de entidade (IA e GEO)",
       description: "Estratégia para organizar clareza de entidade, dados estruturados, conteúdo semântico, reputação e sinais de confiança que fortalecem a presença orgânica da marca em buscadores tradicionais e ambientes de IA.",
       ideal: "Clientes high-ticket que dependem de confiança, autoridade e validação estratégica robusta antes da decisão de compra."
     },

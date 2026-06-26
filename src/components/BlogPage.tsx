@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, BookOpen, BriefcaseBusiness, Compass, GraduationCap, Search, Sparkles, UserRound } from "lucide-react";
 import SiteFooter from "./SiteFooter";
+import AuthorBio from "./AuthorBio";
 
 interface BlogPageProps {
   onNavigate: (targetId: string) => void;
@@ -433,6 +434,8 @@ export default function BlogPage({ onNavigate }: BlogPageProps) {
           </div>
         </div>
       </section>
+
+      <AuthorBio dark />
 
       <section className="bg-[#11100f] px-6 py-24 md:py-32 xl:px-12">
         <div className="mx-auto max-w-[1240px]">
