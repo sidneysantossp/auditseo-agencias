@@ -2,9 +2,11 @@ import { CornerDownRight, Compass, Network, Award, Milestone, Lightbulb } from "
 
 interface SignalMethodProps {
   onCtaClick: (targetId: string) => void;
+  ctaText?: string;
+  subtitleText?: string;
 }
 
-export default function SignalMethod({ onCtaClick }: SignalMethodProps) {
+export default function SignalMethod({ onCtaClick, ctaText, subtitleText }: SignalMethodProps) {
   const steps = [
     {
       letter: "S",
@@ -67,7 +69,7 @@ export default function SignalMethod({ onCtaClick }: SignalMethodProps) {
           </h2>
           <div className="w-[140px] h-[4px] bg-[#b28453] mt-6 mb-8" />
           <p className="text-[#2a2927] text-base md:text-lg lg:text-xl font-normal max-w-3xl leading-[1.6]">
-            Clareza estratégica para transmitir direção. Nosso papel não é acumular relatórios complexos impossíveis de ler. É simplificar a busca em decisões acionáveis e transparentes que a sua agência consegue comercializar e justificar.
+            {subtitleText || "Clareza estratégica para transmitir direção. Nosso papel não é acumular relatórios complexos impossíveis de ler. É simplificar a busca em decisões acionáveis e transparentes que a sua agência consegue comercializar e justificar."}
           </p>
         </div>
 
@@ -199,7 +201,7 @@ export default function SignalMethod({ onCtaClick }: SignalMethodProps) {
             onClick={() => onCtaClick("diagnostico")}
             className="bg-[#11100f] text-[#ffffff] px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 hover:bg-[#b28453] hover:text-[#ffffff] cursor-pointer"
           >
-            Quero aplicar o método S.I.G.N.A.L na minha agência
+            {ctaText || "Quero aplicar o método S.I.G.N.A.L na minha agência"}
           </button>
         </div>
 

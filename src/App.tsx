@@ -18,9 +18,16 @@ import ContentPage from "./components/ContentPage";
 import BlogPage from "./components/BlogPage";
 import SidneySantosPage from "./components/SidneySantosPage";
 import PropostaDrFelipeBaraoPage from "./components/PropostaDrFelipeBaraoPage";
+import ConsultoriaPage from "./components/ConsultoriaPage";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string; robots?: string }> = {
   "/": {
+    title: "Consultoria de SEO e Search Intelligence para Empresas | AUDITSEO",
+    description:
+      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem crescer o tráfego orgânico, aparecer em IA e ter previsibilidade de vendas. Diagnóstico gratuito.",
+    activeSection: "inicio",
+  },
+  "/seo-para-agencias": {
     title: "AUDITSEO | Search Intelligence Partner para Agências",
     description:
       "Consultoria estratégica de SEO, GEO e inteligência de busca para agências que querem ampliar valor, retenção e evolução orgânica na carteira.",
@@ -135,6 +142,12 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "Search Intelligence para Agências | AUDITSEO",
     description:
       "Search Intelligence é a camada que conecta SEO, GEO, dados, autoridade, conteúdo e decisão em uma entrega estratégica para agências.",
+  },
+  "/consultoria": {
+    title: "Consultoria de SEO e Search Intelligence para Empresas | AUDITSEO",
+    description:
+      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem crescer o tráfego orgânico, aparecer em IA e ter previsibilidade de vendas. Diagnóstico gratuito.",
+    activeSection: "inicio",
   },
 };
 const contentRoutes = new Set([
@@ -429,6 +442,23 @@ export default function App() {
       <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
         <Header onNavClick={handleScrollToSection} activeSection="conteudo" />
         <SidneySantosPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
+
+  if (currentPath === "/" || currentPath === "/consultoria") {
+    const consultoriaHeaderNav = (sectionId: string) => {
+      if (sectionId === "diagnostico") {
+        const el = document.getElementById("form-contato");
+        if (el) window.scrollTo({ top: el.offsetTop - 82, behavior: "smooth" });
+        return;
+      }
+      handleScrollToSection(sectionId);
+    };
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={consultoriaHeaderNav} activeSection="" />
+        <ConsultoriaPage onNavigate={consultoriaHeaderNav} />
       </div>
     );
   }
