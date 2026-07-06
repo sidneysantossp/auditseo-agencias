@@ -12,7 +12,7 @@ const navigationLinks = [
   ["Parceria", "/parceria"],
   ["Conteúdo", "/blog"],
   ["GEO & IA", "/geo-ia"],
-  ["Diagnóstico", "/diagnostico"],
+  ["Para Agências", "/seo-para-agencias"],
 ];
 
 const solutionLinks = [
@@ -46,7 +46,7 @@ const contentLinks = [
 ];
 
 const footerLinkClass = "block text-[#f8f8f8]/72 transition-colors hover:text-[#b28453]";
-const whatsappHref = "https://wa.me/5500000000000"; // TODO: substituir pelo número oficial do WhatsApp comercial.
+const whatsappHref = "https://wa.me/5511996384376";
 
 function FooterColumn({ title, links }: { title: string; links: string[][] }) {
   return (

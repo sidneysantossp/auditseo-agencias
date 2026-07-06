@@ -23,6 +23,7 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
     { label: "Soluções", id: "solucoes" },
     { label: "Conteúdo", id: "conteudo" },
     { label: "Parceria", id: "parceria" },
+    { label: "Para Agências", href: "/seo-para-agencias" },
   ];
 
   const handleItemClick = (id: string) => {
@@ -54,32 +55,44 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
           </div>
 
           {/* DESKTOP NAV MENU */}
-          <nav className="hidden lg:flex items-center justify-between w-[470px] shrink-0">
-            {navItems.map((item) => (
-              <button
-                id={`nav-btn-${item.id}`}
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className={`text-[14px] font-medium tracking-wide transition-colors cursor-pointer duration-250 ${
-                  activeSection === item.id
-                    ? "text-[#b28453]"
-                    : "text-[#c9c9c9] hover:text-[#b28453]"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+          <nav className="hidden lg:flex items-center justify-between w-[560px] shrink-0">
+            {navItems.map((item) =>
+              "href" in item ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-[14px] font-medium tracking-wide transition-colors duration-250 text-[#c9c9c9] hover:text-[#b28453]"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <button
+                  id={`nav-btn-${item.id}`}
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  className={`text-[14px] font-medium tracking-wide transition-colors cursor-pointer duration-250 ${
+                    activeSection === item.id
+                      ? "text-[#b28453]"
+                      : "text-[#c9c9c9] hover:text-[#b28453]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              )
+            )}
           </nav>
 
           {/* RIGHT CTA BUTTON */}
           <div className="hidden lg:block">
-            <button
+            <a
               id="header-cta"
-              onClick={() => handleItemClick("diagnostico")}
-              className="bg-[#b28453] text-[#ffffff] px-6 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] hover:-translate-y-0.5"
+              href="https://wa.me/5511996384376"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#b28453] text-[#ffffff] px-6 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] hover:-translate-y-0.5"
             >
-              Diagnóstico
-            </button>
+              Agendar uma Reunião
+            </a>
           </div>
 
           {/* MOBILE MENU TOGGLE */}
@@ -104,32 +117,48 @@ export default function Header({ onNavClick, activeSection }: HeaderProps) {
         }`}
       >
         <div className="flex flex-col space-y-5 text-left mt-4">
-          {navItems.map((item, idx) => (
-            <button
-              id={`mobile-nav-${item.id}`}
-              key={item.id}
-              onClick={() => handleItemClick(item.id)}
-              className="text-[#f8f8f8] text-2xl font-semibold hover:text-[#b28453] text-left transition-all duration-300 border-b border-[#b28453]/10 pb-3 block"
-              style={{ transitionDelay: `${idx * 40}ms` }}
-            >
-              <div className="flex justify-between items-center">
-                <span>{item.label}</span>
-                <ArrowRight size={18} className="text-[#b28453]" />
-              </div>
-            </button>
-          ))}
+          {navItems.map((item, idx) =>
+            "href" in item ? (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-[#f8f8f8] text-2xl font-semibold hover:text-[#b28453] text-left transition-all duration-300 border-b border-[#b28453]/10 pb-3 block"
+                style={{ transitionDelay: `${idx * 40}ms` }}
+              >
+                <div className="flex justify-between items-center">
+                  <span>{item.label}</span>
+                  <ArrowRight size={18} className="text-[#b28453]" />
+                </div>
+              </a>
+            ) : (
+              <button
+                id={`mobile-nav-${item.id}`}
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className="text-[#f8f8f8] text-2xl font-semibold hover:text-[#b28453] text-left transition-all duration-300 border-b border-[#b28453]/10 pb-3 block"
+                style={{ transitionDelay: `${idx * 40}ms` }}
+              >
+                <div className="flex justify-between items-center">
+                  <span>{item.label}</span>
+                  <ArrowRight size={18} className="text-[#b28453]" />
+                </div>
+              </button>
+            )
+          )}
         </div>
 
         <div className="pb-12 space-y-4">
-          <button
+          <a
             id="mobile-drawer-cta"
-            onClick={() => handleItemClick("diagnostico")}
+            href="https://wa.me/5511996384376"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full bg-[#b28453] text-[#ffffff] py-4 rounded-full text-base font-bold text-center block"
           >
-            Diagnóstico
-          </button>
+            Agendar uma Reunião
+          </a>
           <div className="text-center text-[#c9c9c9] text-xs font-mono">
-            Search Intelligence Partner para Agências
+            Search Intelligence Partner para Empresas
           </div>
         </div>
       </div>
