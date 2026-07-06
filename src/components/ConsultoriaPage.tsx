@@ -68,7 +68,7 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               <span className="text-[#a69580] text-[11px] font-mono font-semibold tracking-[0.16em] uppercase mb-4 opacity-90">CONSULTORIA DE SEARCH INTELLIGENCE</span>
               <h1 className="font-display font-bold text-[#f8f8f8] mb-8" style={{ fontSize: "clamp(48px, 4.8vw, 72px)", lineHeight: "1.04", letterSpacing: "-0.045em", maxWidth: "720px" }}>
-                A inteligência de busca que posiciona sua marca onde seus clientes estão comprando.
+                A inteligência de busca que posiciona sua marca além do Google.
               </h1>
               <p className="text-[#e0d3c3] text-lg md:text-xl font-semibold mb-8" style={{ maxWidth: "690px", lineHeight: "1.55", letterSpacing: "-0.01em" }}>
                 Uma metodologia proprietária em SEO, GEO e IA para colocar sua empresa no topo dos motores de busca e das respostas de Inteligência Artificial. Mais tráfego qualificado, previsibilidade e vendas.
