@@ -40,33 +40,20 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 maxWidth: "680px"
               }}
             >
-              A inteligência de busca que sua agência precisa para vender SEO, GEO e IA sem montar um time interno
+              Search Intelligence Partner para Agências
             </h1>
 
             <p 
-              className="text-[#e0d3c3] text-lg md:text-xl font-semibold py-0 mb-6"
-              style={{
-                textAlign: "left",
-                letterSpacing: "0.01em",
-                wordSpacing: "normal",
-                lineHeight: "1.55",
-                maxWidth: "640px"
-              }}
-            >
-              Search Intelligence Partner para Agências
-            </p>
-
-            <p
-              className="text-[#c9c9c9] text-sm md:text-base font-normal py-0 mb-6"
+              className="text-[#e0d3c3] text-lg md:text-xl font-semibold py-0 mb-8"
               style={{
                 textAlign: "left",
                 letterSpacing: "-0.01em",
                 wordSpacing: "normal",
                 lineHeight: "1.55",
-                maxWidth: "640px"
+                maxWidth: "690px"
               }}
             >
-              Inteligência de busca, SEO, ambientes generativos e autoridade digital.
+              A infraestrutura White Label perfeita para sua agência vender, reter e escalar serviços de SEO, GEO e IA de forma enxuta e previsível.
             </p>
 
             {/* ACTION BUTTONS (Matching design style and border radius) */}
