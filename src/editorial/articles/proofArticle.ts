@@ -1,0 +1,70 @@
+import { ArticleData } from "../types";
+import { SIDNEY_AUTHOR, AUDIT_PUBLISHER } from "../registry";
+
+export const articleV3Proof: ArticleData = {
+  id: "AUDITSEO-ARTICLE-V3-PROOF",
+  slug: "/internal/article-v3-proof",
+  title: "Article Design System V3 — rota de prova da fundação editorial",
+  subtitle: "Demonstração interna de layout, contratos, navegação e blocos editoriais reutilizáveis. Este conteúdo não representa uma publicação final.",
+  description: "Rota interna de validação do Article Design System V3 da AUDITSEO.",
+  status: "DRAFT",
+  type: "DOCUMENTATION_NOTE",
+  cluster: "EDITORIAL_FOUNDATION",
+  secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE", "ENTITY_AUTHORITY"],
+  author: SIDNEY_AUTHOR,
+  publisher: AUDIT_PUBLISHER,
+  datePublished: "2026-08-12",
+  dateModified: "2026-08-12",
+  readingTime: "12 min",
+  featuredImage: {
+    src: "/images/guides/proof/featured.webp",
+    alt: "Composição abstrata de uma pessoa conectada a conhecimento, pesquisa e relações organizacionais.",
+    width: 1200,
+    height: 630,
+  },
+  parent: { title: "Fundação editorial", href: "/internal/article-v3-proof" },
+  related: [],
+  evidence: ["A rota demonstra componentes e contratos; não é evidência de resultado de busca."],
+  commercialRelation: { title: "Diagnóstico estratégico", href: "/diagnostico" },
+  topicGraph: {
+    id: "AUDITSEO-ARTICLE-V3-PROOF",
+    type: "DOCUMENTATION_NOTE",
+    cluster: "EDITORIAL_FOUNDATION",
+    secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE", "ENTITY_AUTHORITY"],
+    primaryEntity: "Article Design System V3",
+    relatedEntities: ["AUDITSEO", "Sidney Santos", "Canonical Entity Registry"],
+    status: "DRAFT",
+  },
+  sections: [
+    {
+      id: "foundation-overview",
+      title: "1. O que esta rota valida",
+      level: 2,
+      content: `<p>Esta rota interna existe para validar a infraestrutura compartilhada antes da recuperação de qualquer conteúdo editorial público. O objetivo é verificar se a página consegue sustentar uma experiência long-form com hero editorial, imagem destacada, leitura progressiva, índice ativo, sidebar sticky e blocos semânticos reutilizáveis.</p><p>O texto é deliberadamente demonstrativo. Ele não deve ser interpretado como um novo guia, um case ou uma publicação do cluster de Entity Authority.</p>`,
+    },
+    {
+      id: "contract-overview",
+      title: "2. Contratos antes de conteúdo",
+      level: 2,
+      content: `<p>O contrato de artigo concentra identidade, status, cluster, autoria, publisher, imagem destacada, relações do Topic Graph e seções. Com isso, a arquitetura editorial deixa de depender de URLs soltas e passa a ter um modelo único para validação.</p><p>O mesmo contrato também permite que a publicação seja bloqueada quando o asset físico não existe ou quando a relação canônica de autoria não está definida.</p>`,
+    },
+    {
+      id: "navigation-behavior",
+      title: "3. Comportamentos de navegação",
+      level: 2,
+      content: `<p>A barra dourada abaixo da navbar acompanha o progresso real da página da esquerda para a direita. O índice identifica a seção ativa durante a leitura, enquanto a sidebar permanece sticky e não cria um segundo contexto de rolagem.</p><p>Em telas menores, o índice é convertido para um painel expansível. O corpo continua sendo o único contexto de scroll.</p>`,
+    },
+    {
+      id: "semantic-blocks",
+      title: "4. Blocos editoriais semânticos",
+      level: 2,
+      content: `<p>Definition Box, Evidence Block, Framework e Decision Matrix são componentes de apresentação, não atalhos para inventar evidência. Cada bloco precisa receber conteúdo compatível com o contrato editorial e respeitar a distinção entre documentação, observação, teste, inferência e recomendação.</p>`,
+    },
+    {
+      id: "validation-gate",
+      title: "5. Gate de validação da fundação",
+      level: 2,
+      content: `<p>A fundação só avança quando build, TypeScript, lint, HTTP, asset, canonical entities, accessibility básica e comportamento responsivo estiverem validados. O próximo passo permanece bloqueado até a aprovação desta base.</p>`,
+    },
+  ],
+};

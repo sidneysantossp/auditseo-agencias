@@ -19,6 +19,7 @@ import BlogPage from "./components/BlogPage";
 import SidneySantosPage from "./components/SidneySantosPage";
 import PropostaDrFelipeBaraoPage from "./components/PropostaDrFelipeBaraoPage";
 import ConsultoriaPage from "./components/ConsultoriaPage";
+import ArticleProofPage from "./components/article/ArticleProofPage";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string; robots?: string }> = {
   "/": {
@@ -148,6 +149,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description:
       "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem crescer o tráfego orgânico, aparecer em IA e ter previsibilidade de vendas. Diagnóstico gratuito.",
     activeSection: "inicio",
+  },
+  "/internal/article-v3-proof": {
+    title: "Article Design System V3 Proof | AUDITSEO",
+    description: "Rota de prova interna para validação do Article Design System V3.",
+    robots: "noindex,nofollow",
   },
 };
 const contentRoutes = new Set([
@@ -444,6 +450,10 @@ export default function App() {
         <SidneySantosPage onNavigate={handleScrollToSection} />
       </div>
     );
+  }
+
+  if (currentPath === "/internal/article-v3-proof") {
+    return <ArticleProofPage onNavigate={handleScrollToSection} />;
   }
 
   if (currentPath === "/" || currentPath === "/consultoria") {
