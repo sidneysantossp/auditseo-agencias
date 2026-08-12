@@ -20,6 +20,10 @@ import SidneySantosPage from "./components/SidneySantosPage";
 import PropostaDrFelipeBaraoPage from "./components/PropostaDrFelipeBaraoPage";
 import ConsultoriaPage from "./components/ConsultoriaPage";
 import ArticleProofPage from "./components/article/ArticleProofPage";
+import ResearchHubPage from "./components/research/ResearchHubPage";
+import ResearchItemPage from "./components/research/ResearchItemPage";
+import { researchItems } from "./editorial/researchRegistry";
+import { generateResearchHubSchema, generateResearchSchema } from "./editorial/researchSchema";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string; robots?: string }> = {
   "/": {
@@ -125,9 +129,27 @@ const routeMetadata: Record<string, { title: string; description: string; active
       "Guias técnicos e estratégicos sobre GEO, narrativa semântica, autoridade de entidade e Search Intelligence para agências.",
   },
   "/estudos-busca-ia": {
-    title: "Estudos de Busca com IA | AUDITSEO",
+    title: "Search Intelligence Lab | Estudos de Busca com IA | AUDITSEO",
     description:
-      "Estudos e análises sobre como IA, AI Search, GEO e mecanismos de resposta estão mudando descoberta, autoridade e decisão digital.",
+      "Hub de observações, experimentos e análises da AUDITSEO sobre busca, inteligência artificial, entidades, relações e atributos.",
+  },
+  "/estudos-busca-ia/reconhecimento-de-entidade-por-contexto": {
+    title: "Por que o Google reconhece uma pessoa para um tema e praticamente a ignora para outro? | AUDITSEO",
+    description: "Observação do Search Intelligence Lab sobre reconhecimento de entidade por contexto temático, ruído de homônimos e associação profissional.",
+  },
+  "/estudos-busca-ia/entidade-correta-atributo-incorreto-ai-search": {
+    title: "Quando a IA reconhece a entidade certa, mas recupera o atributo errado | AUDITSEO",
+    description: "Observação do Search Intelligence Lab sobre resolução correta de entidade e relação com recuperação incorreta de atributos temporais.",
+  },
+  "/estudos-busca-ia/construcao-deliberada-de-entidade-profissional-sidney-santos": {
+    title: "Construção deliberada de uma entidade profissional na web | AUDITSEO",
+    description: "Registro interno DRAFT do experimento de construção deliberada de uma entidade profissional na web.",
+    robots: "noindex,nofollow",
+  },
+  "/estudos-busca-ia/impacto-da-autoridade-de-entidade-nos-ai-overviews": {
+    title: "O Impacto da Autoridade de Entidade nos AI Overviews | AUDITSEO",
+    description: "Registro interno de migração pendente sobre análise histórica de autoridade de entidade e AI Overviews.",
+    robots: "noindex,nofollow",
   },
   "/guias/geo-readiness": {
     title: "GEO Readiness | Como preparar marcas para a nova busca | AUDITSEO",
@@ -203,6 +225,20 @@ export default function App() {
     setMeta('meta[name="twitter:title"]', { name: "twitter:title", content: routeMeta.title });
     setMeta('meta[name="twitter:description"]', { name: "twitter:description", content: routeMeta.description });
     setMeta('meta[name="robots"]', { name: "robots", content: routeMeta.robots || "index,follow" });
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    canonical.setAttribute("href", `${window.location.origin}${currentPath}`);
+    if (!canonical.parentElement) document.head.appendChild(canonical);
+    const oldResearchSchema = document.querySelector('script[data-research-schema="true"]');
+    oldResearchSchema?.remove();
+    const researchItem = researchItems.find((item) => item.route === currentPath);
+    if (currentPath === "/estudos-busca-ia" || researchItem) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.dataset.researchSchema = "true";
+      script.textContent = currentPath === "/estudos-busca-ia" ? generateResearchHubSchema(researchItems, window.location.origin) : generateResearchSchema(researchItem!, window.location.origin);
+      document.head.appendChild(script);
+    }
     setActiveSection(routeMeta.activeSection || "");
   }, [currentPath]);
 
@@ -454,6 +490,15 @@ export default function App() {
 
   if (currentPath === "/internal/article-v3-proof") {
     return <ArticleProofPage onNavigate={handleScrollToSection} />;
+  }
+
+  if (currentPath === "/estudos-busca-ia") {
+    return <ResearchHubPage onNavigate={handleScrollToSection} />;
+  }
+
+  const researchItem = researchItems.find((item) => item.route === currentPath);
+  if (researchItem) {
+    return <ResearchItemPage item={researchItem} onNavigate={handleScrollToSection} />;
   }
 
   if (currentPath === "/" || currentPath === "/consultoria") {
