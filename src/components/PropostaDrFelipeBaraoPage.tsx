@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -201,8 +202,9 @@ function DarkCard({
   children,
   className = "",
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
+  key?: string;
 }) {
   return (
     <div
@@ -214,7 +216,7 @@ function DarkCard({
   );
 }
 
-function IconMedallion({ children }: { children: React.ReactNode }) {
+function IconMedallion({ children }: { children: ReactNode }) {
   return (
     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#b28453]/52 bg-[#b28453]/10 text-[#b28453] shadow-[0_0_28px_rgba(178,132,83,0.16)]">
       {children}
