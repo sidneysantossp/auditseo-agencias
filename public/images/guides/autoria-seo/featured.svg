@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f0e0d"/>
+  <circle cx="600" cy="315" r="240" fill="url(#authorship-glow)" opacity="0.12"/>
+  <g opacity="0.4" stroke="#b28453" stroke-width="1.5">
+    <circle cx="600" cy="315" r="120" stroke-dasharray="6 6"/>
+    <circle cx="600" cy="315" r="220"/>
+  </g>
+  <circle cx="600" cy="315" r="50" fill="#171614" stroke="#b28453" stroke-width="3"/>
+  <g transform="translate(600, 315)">
+    <circle cx="0" cy="-180" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+    <circle cx="156" cy="-90" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+    <circle cx="156" cy="90" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+    <circle cx="0" cy="180" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+    <circle cx="-156" cy="90" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+    <circle cx="-156" cy="-90" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+  </g>
+  <defs>
+    <radialGradient id="authorship-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#b28453"/>
+      <stop offset="100%" stop-color="#11100f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

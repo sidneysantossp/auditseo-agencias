@@ -24,6 +24,7 @@ export const entityConsistencyArticle: ArticleData = {
   },
   parent: { title: "Autoridade de Entidade", href: "/guias/entity-authority" },
   previous: { title: "Desambiguação de Entidades", href: "/guias/desambiguacao-de-entidades" },
+  next: { title: "Autoria em SEO: como conectar conteúdo, especialista e organização", href: "/guias/autoria-seo" },
   related: [
     { title: "Desambiguação de Entidades", href: "/guias/desambiguacao-de-entidades", tag: "Guia" },
     { title: "Entity Home", href: "/guias/entity-home", tag: "Guia" },
@@ -40,6 +41,7 @@ export const entityConsistencyArticle: ArticleData = {
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Google AI Overviews"],
     parent: "/guias/entity-authority",
     previous: "/guias/desambiguacao-de-entidades",
+    next: "/guias/autoria-seo",
     evidenceLinks: ["AUDITSEO-OBS-002"],
     commercialRelation: "/diagnostico",
     status: "PUBLISHED",

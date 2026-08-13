@@ -195,6 +195,10 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "Entity Consistency: quando informações conflitantes fragmentam uma identidade | AUDITSEO",
     description: "Guia profundo sobre consistência de entidades em SEO e AI Search: análise de conflitos factuais, divergências temporais e unificação.",
   },
+  "/guias/autoria-seo": {
+    title: "Autoria em SEO: como conectar conteúdo, especialista e organização | AUDITSEO",
+    description: "Guia profundo sobre autoria em SEO: a transição da byline visual para a arquitetura de entidades, conectando autores, corpus de conhecimento e organizações.",
+  },
 };
 const contentRoutes = new Set([
   "/politica-de-privacidade",
