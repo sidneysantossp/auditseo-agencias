@@ -22,7 +22,9 @@ import ConsultoriaPage from "./components/ConsultoriaPage";
 import ArticleProofPage from "./components/article/ArticleProofPage";
 import ResearchHubPage from "./components/research/ResearchHubPage";
 import ResearchItemPage from "./components/research/ResearchItemPage";
+import ArticleItemPage from "./components/article/ArticleItemPage";
 import { researchItems } from "./editorial/researchRegistry";
+import { articles } from "./editorial/articleRegistry";
 import { generateResearchHubSchema, generateResearchSchema } from "./editorial/researchSchema";
 
 const routeMetadata: Record<string, { title: string; description: string; activeSection?: string; robots?: string }> = {
@@ -176,6 +178,22 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "Article Design System V3 Proof | AUDITSEO",
     description: "Rota de prova interna para validação do Article Design System V3.",
     robots: "noindex,nofollow",
+  },
+  "/guias/o-que-e-entidade-seo": {
+    title: "O que é uma entidade em SEO? | AUDITSEO",
+    description: "Guia completo sobre entidades em SEO: como o Google e a IA resolvem identidades, distinguem nomes de conceitos e estruturam relações.",
+  },
+  "/guias/entity-home": {
+    title: "Entity Home: por que uma entidade precisa de uma fonte canônica clara | AUDITSEO",
+    description: "Guia estratégico sobre Entity Home: a importância de centralizar a identidade, biografia, atributos e conexões em uma URL canônica controlada.",
+  },
+  "/guias/desambiguacao-de-entidades": {
+    title: "Desambiguação de Entidades: como separar nomes iguais em grafos | AUDITSEO",
+    description: "Guia técnico sobre desambiguação de entidades em SEO e AI Search: como combater o ruído de homônimos através de contexto e relações.",
+  },
+  "/guias/consistencia-de-entidade": {
+    title: "Entity Consistency: quando informações conflitantes fragmentam uma identidade | AUDITSEO",
+    description: "Guia profundo sobre consistência de entidades em SEO e AI Search: análise de conflitos factuais, divergências temporais e unificação.",
   },
 };
 const contentRoutes = new Set([
@@ -499,6 +517,11 @@ export default function App() {
   const researchItem = researchItems.find((item) => item.route === currentPath);
   if (researchItem) {
     return <ResearchItemPage item={researchItem} onNavigate={handleScrollToSection} />;
+  }
+
+  const articleItem = articles.find((art) => art.slug === currentPath);
+  if (articleItem) {
+    return <ArticleItemPage article={articleItem} onNavigate={handleScrollToSection} />;
   }
 
   if (currentPath === "/" || currentPath === "/consultoria") {

@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f0e0d"/>
+  <circle cx="600" cy="315" r="260" fill="url(#gold-hub)" opacity="0.18"/>
+  <rect x="530" y="245" width="140" height="140" rx="20" fill="#171614" stroke="#b28453" stroke-width="3"/>
+  <circle cx="600" cy="315" r="30" fill="#b28453" opacity="0.8"/>
+  <g stroke="#b28453" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 4">
+    <line x1="530" y1="315" x2="320" y2="315"/>
+    <line x1="670" y1="315" x2="880" y2="315"/>
+    <line x1="600" y1="245" x2="600" y2="120"/>
+    <line x1="600" y1="385" x2="600" y2="510"/>
+  </g>
+  <circle cx="320" cy="315" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+  <circle cx="880" cy="315" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+  <circle cx="600" cy="120" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+  <circle cx="600" cy="510" r="22" fill="#171614" stroke="#e0d3c3" stroke-width="2"/>
+  <defs>
+    <radialGradient id="gold-hub" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#b28453"/>
+      <stop offset="100%" stop-color="#11100f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
