@@ -24,6 +24,7 @@ export const entityCorroborationArticle: ArticleData = {
   },
   parent: { title: "Autoridade de Entidade", href: "/guias/entity-authority" },
   previous: { title: "Autoria em SEO: como conectar conteúdo, especialista e organização", href: "/guias/autoria-seo" },
+  next: { title: "AI Search: como a inteligência artificial está mudando a busca", href: "/guias/ai-search" },
   related: [
     { title: "O que é uma entidade em SEO", href: "/guias/o-que-e-entidade-seo", tag: "Guia" },
     { title: "Entity Home", href: "/guias/entity-home", tag: "Guia" },
@@ -43,6 +44,7 @@ export const entityCorroborationArticle: ArticleData = {
     relatedEntities: ["Sidney Santos", "AUDITSEO", "External Sources", "Trust Signals"],
     parent: "/guias/entity-authority",
     previous: "/guias/autoria-seo",
+    next: "/guias/ai-search",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
     commercialRelation: "/diagnostico",
     status: "PUBLISHED",
@@ -100,7 +102,7 @@ export const entityCorroborationArticle: ArticleData = {
       id: "corroboracao-ai-search",
       title: "9. Corroboração no horizonte do AI Search",
       level: 2,
-      content: `<p>Em ambientes de busca generativa, a corroboração externa ganha um peso crítico. Quando um sistema precisa representar uma pessoa ou organização, ele sintetiza informações vindas de um ecossistema distribuído. A representação externa da marca dita como a IA irá descrever seus atributos e relações.</p><p>Como vimos nas observações do Lab, a resposta final da IA reflete a densidade e a consistência do ecossistema. Se a corroboração é fraca ou conflitante, a resposta gerada será ambígua ou incorreta. Portanto, a gestão de corroboração é, na prática, a gestão da identidade pública da organização perante a inteligência artificial.</p>`,
+      content: `<p>Em ambientes de busca generativa, a corroboração externa ganha um peso crítico. Quando um sistema precisa representar uma pessoa ou organização, ele sintetiza informações vindas de um ecossistema distribuído. A representação externa da marca dita como a IA irá descrever seus atributos e relações.</p><p>Como vimos nas observações do Lab, a resposta final da IA refle a densidade e a consistência do ecossistema. Se a corroboração é fraca ou conflitante, a resposta gerada será ambígua ou incorreta. Portanto, a gestão de corroboração é, na prática, a gestão da identidade pública da organização perante a inteligência artificial.</p>`,
     },
     {
       id: "conclusao-fechamento-cluster",
@@ -115,8 +117,8 @@ export const entityCorroborationArticle: ArticleData = {
       answer: "Declaração é o que a própria entidade afirma sobre si mesma em seus canais oficiais. Corroboração é quando fontes externas e independentes sustentam esses mesmos fatos e relações."
     },
     {
-      question: "Uma menção sem link conta como corroboração?",
-      answer: "Sim. Para o grafo de conhecimento, a sustentação de um fato ou relação é mais importante do que a presença de um hyperlink, embora o link facilite a descoberta e a navegação."
+      question: "Qual a relação entre corroboração e AI Search?",
+      answer: "Sistemas de IA baseiam a representação e os atributos de uma entidade na densidade e consistência das fontes externas que corroboram sua identidade na web aberta."
     },
     {
       question: "O que é um Corroboration Gap?",

@@ -119,6 +119,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
       "Proposta confidencial da AUDITSEO para crescimento orgânico, autoridade digital e Search Intelligence do Dr. Felipe Barão.",
     robots: "noindex,nofollow",
   },
+  "/guias/ai-search": {
+    title: "AI Search: Como a Inteligência Artificial Está Mudando a Busca | AUDITSEO",
+    description: "Guia canônico da AUDITSEO sobre AI Search, descoberta generativa, representação de entidades e Search Intelligence.",
+    activeSection: "guias",
+  },
   "/proposta/dr-felipe-barao": {
     title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
     description:
