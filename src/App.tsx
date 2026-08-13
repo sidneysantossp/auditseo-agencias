@@ -199,6 +199,10 @@ const routeMetadata: Record<string, { title: string; description: string; active
     title: "Autoria em SEO: como conectar conteúdo, especialista e organização | AUDITSEO",
     description: "Guia profundo sobre autoria em SEO: a transição da byline visual para a arquitetura de entidades, conectando autores, corpus de conhecimento e organizações.",
   },
+  "/guias/corroboracao-de-entidade": {
+    title: "Corroboração de Entidade: quando outras fontes sustentam quem você é | AUDITSEO",
+    description: "Guia completo sobre corroboração de entidades em SEO e AI Search: a distinção entre declaração e corroboração, taxonomia de fontes externas e auditoria de gaps.",
+  },
 };
 const contentRoutes = new Set([
   "/politica-de-privacidade",

@@ -42,7 +42,7 @@ export const autoriaSeoArticle: ArticleData = {
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Entity Home", "Knowledge Graph"],
     parent: "/guias/entity-authority",
     previous: "/guias/consistencia-de-entidade",
-    next: "PLANNED",
+    next: "/guias/corroboracao-de-entidade",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
     commercialRelation: "/diagnostico",
     status: "PUBLISHED",
