@@ -24,6 +24,7 @@ export const aiCitationsAttributionArticle: ArticleData = {
   },
   parent: { title: "AI Search", href: "/guias/ai-search" },
   previous: { title: "Recuperação de Informação em AI Search", href: "/guias/recuperacao-de-informacao-ai-search" },
+  next: { title: "Como Medir Visibilidade em AI Search", href: "/guias/medir-visibilidade-ai-search" },
   related: [
     { title: "AI Search", href: "/guias/ai-search", tag: "Guia" },
     { title: "AI Overviews", href: "/guias/ai-overviews", tag: "Guia" },

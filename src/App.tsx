@@ -139,6 +139,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description: "Entenda como analisar fontes, citations, mentions e atribuição em respostas generativas sem confundir o que aparece na interface com o mecanismo interno de seleção.",
     activeSection: "guias",
   },
+  "/guias/medir-visibilidade-ai-search": {
+    title: "Como Medir Visibilidade em AI Search: Métricas e Observabilidade | AUDITSEO",
+    description: "Entenda como mensurar presença, acurácia de representação e estabilidade em AI Search sem recorrer a scores arbitrários.",
+    activeSection: "guias",
+  },
   "/proposta/dr-felipe-barao": {
     title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
     description:
