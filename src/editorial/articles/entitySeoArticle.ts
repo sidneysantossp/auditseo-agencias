@@ -22,7 +22,7 @@ export const entitySeoArticle: ArticleData = {
     width: 1200,
     height: 630,
   },
-  parent: { title: "Autoridade de Entidade", href: "/guias/entity-authority" },
+  parent: { title: "Autoridade de Entidade", href: "/guias/o-que-e-entidade-seo" },
   next: { title: "Entity Home: por que uma entidade precisa de uma fonte canônica clara", href: "/guias/entity-home" },
   related: [
     { title: "Entity Home", href: "/guias/entity-home", tag: "Guia" },
@@ -38,7 +38,7 @@ export const entitySeoArticle: ArticleData = {
     secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE", "AI_SEARCH"],
     primaryEntity: "Entidade (SEO)",
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Google Search", "AI Overviews"],
-    parent: "/guias/entity-authority",
+    parent: "/guias/o-que-e-entidade-seo",
     next: "/guias/entity-home",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
     commercialRelation: "/diagnostico",

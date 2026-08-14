@@ -22,7 +22,7 @@ export const entityDisambiguationArticle: ArticleData = {
     width: 1200,
     height: 630,
   },
-  parent: { title: "Autoridade de Entidade", href: "/guias/entity-authority" },
+  parent: { title: "Autoridade de Entidade", href: "/guias/o-que-e-entidade-seo" },
   previous: { title: "Entity Home", href: "/guias/entity-home" },
   next: { title: "Entity Consistency", href: "/guias/consistencia-de-entidade" },
   related: [
@@ -39,7 +39,7 @@ export const entityDisambiguationArticle: ArticleData = {
     secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE", "AI_SEARCH"],
     primaryEntity: "Desambiguação de Entidades",
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Google Knowledge Graph"],
-    parent: "/guias/entity-authority",
+    parent: "/guias/o-que-e-entidade-seo",
     previous: "/guias/entity-home",
     next: "/guias/consistencia-de-entidade",
     evidenceLinks: ["AUDITSEO-OBS-001"],

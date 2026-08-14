@@ -22,7 +22,7 @@ export const autoriaSeoArticle: ArticleData = {
     width: 1200,
     height: 630,
   },
-  parent: { title: "Autoridade de Entidade", href: "/guias/entity-authority" },
+  parent: { title: "Autoridade de Entidade", href: "/guias/o-que-e-entidade-seo" },
   previous: { title: "Entity Consistency: quando informações conflitantes fragmentam uma identidade", href: "/guias/consistencia-de-entidade" },
   related: [
     { title: "O que é uma entidade em SEO", href: "/guias/o-que-e-entidade-seo", tag: "Guia" },
@@ -40,7 +40,7 @@ export const autoriaSeoArticle: ArticleData = {
     secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE", "AI_SEARCH"],
     primaryEntity: "Autoria (SEO)",
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Entity Home", "Knowledge Graph"],
-    parent: "/guias/entity-authority",
+    parent: "/guias/o-que-e-entidade-seo",
     previous: "/guias/consistencia-de-entidade",
     next: "/guias/corroboracao-de-entidade",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
