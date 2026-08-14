@@ -17,7 +17,7 @@
 | Local / remote sync no pre-gate | **PASS** |
 | R10 persistida | **PASS** |
 
-A fase R11 partiu exatamente do HEAD remoto confirmado após o closeout de R10. O primary remote não foi usado como fonte editorial paralela.
+A fase R11 partiu exatamente do HEAD remoto confirmado após o closeout de R10. O primary remote não foi usado como fonte editorial paralela. A implementação e o QA foram persistidos no commit `f5e83fe63c204e594cd1c264638e08515f1f4de6`; após o push, `backup/main` apontou para o mesmo hash.
 
 ## 2. R10 Audit First
 
