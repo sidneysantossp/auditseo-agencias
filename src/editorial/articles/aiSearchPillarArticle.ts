@@ -24,13 +24,17 @@ export const aiSearchPillarArticle: ArticleData = {
   },
   parent: { title: "AI Search", href: "/guias/ai-search" },
   previous: { title: "Corroboração de Entidade", href: "/guias/corroboracao-de-entidade" },
-  next: { title: "Citações e Atribuição em Respostas de IA", href: "/guias/citacoes-e-fontes-em-ai-search" },
+  next: { title: "AI Overviews", href: "/guias/ai-overviews" },
   related: [
+    { title: "AI Overviews", href: "/guias/ai-overviews", tag: "Supporting #007" },
+    { title: "Recuperação de Informação em AI Search", href: "/guias/recuperacao-de-informacao-ai-search", tag: "Supporting #008" },
+    { title: "Citações e Atribuição em Respostas de IA", href: "/guias/citacoes-e-fontes-em-ai-search", tag: "Supporting #009" },
+    { title: "Como Medir Visibilidade em AI Search", href: "/guias/medir-visibilidade-ai-search", tag: "Supporting #010" },
     { title: "Entity Authority", href: "/guias/o-que-e-entidade-seo", tag: "Guia" },
     { title: "Search Intelligence Lab", href: "/estudos-busca-ia", tag: "Lab" },
   ],
   evidence: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
-  commercialRelation: { title: "Autoridade de Entidade", href: "/solucoes/autoridade-de-entidade" },
+  commercialRelation: { title: "Diagnóstico de Autoridade e AI Search", href: "/diagnostico" },
   topicGraph: {
     id: "AUDITSEO-PILLAR-AI-SEARCH-001",
     type: "GUIDE",
@@ -40,9 +44,9 @@ export const aiSearchPillarArticle: ArticleData = {
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Search Intelligence", "Entity Authority", "AI Overviews"],
     parent: "/guias/ai-search",
     previous: "/guias/corroboracao-de-entidade",
-    next: "/guias/citacoes-e-fontes-em-ai-search",
+    next: "/guias/ai-overviews",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
-    commercialRelation: "/solucoes/autoridade-de-entidade",
+    commercialRelation: "/diagnostico",
     status: "PUBLISHED",
   },
   sections: [
@@ -182,7 +186,7 @@ Evitamos dogmas do tipo "use schema e será citado" ou "Entity Home garante AI O
       level: 2,
       content: `Este Pillar estabelece a fundação conceitual e metodológica para o ecossistema de AI Search da AUDITSEO. Nosso roadmap prevê a expansão gradual com supporting contents dedicados a AI Overviews (#007), recuperação de informação e RAG (#008), análise de citações e fontes (#009) e medição de visibilidade (#010).
 
-Para agências e empresas que desejam auditar como suas marcas, entidades e atributos estão sendo representados em ecossistemas de busca generativa, convidamos a conhecer nossa solução comercial de [Autoridade de Entidade](/solucoes/autoridade-de-entidade) ou a explorar nossos estudos empíricos no [Search Intelligence Lab](/estudos-busca-ia).`,
+Para agências e empresas que desejam auditar como suas marcas, entidades e atributos estão sendo representados em ecossistemas de busca generativa, convidamos a conhecer nossa solução comercial de [Diagnóstico de Autoridade e AI Search](/diagnostico) ou a explorar nossos estudos empíricos no [Search Intelligence Lab](/estudos-busca-ia).`,
     },
   ],
   faq: [
