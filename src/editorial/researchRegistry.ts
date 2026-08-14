@@ -206,6 +206,117 @@ export const researchItems: ResearchItem[] = [
     references: ["AUDITSEO Internal Research Registry — EXP-001"],
   },
   {
+    id: "AUDITSEO-OBS-003",
+    slug: "estabilidade-de-fontes-em-ai-search",
+    route: "/estudos-busca-ia/estabilidade-de-fontes-em-ai-search",
+    title: "As mesmas perguntas exibem as mesmas fontes? Uma observação sobre estabilidade de sources em AI Search",
+    subtitle: "Investigação empírica pré-registrada sobre a estabilidade e variabilidade de conjuntos de fontes e citações visíveis em superfícies de AI Search.",
+    description: "Estudo observacional sobre a recorrência e rotação de domínios em consultas repetidas em Google AI Overviews e Perplexity.",
+    type: "OBSERVATION",
+    status: "PUBLISHED",
+    author: SIDNEY_AUTHOR,
+    publisher: AUDIT_PUBLISHER,
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    researchDate: "2026-Q3",
+    featuredImage: {
+      src: "/images/guides/ai-search/featured.webp",
+      alt: "Representação de estabilidade de fontes em AI Search.",
+      width: 1200,
+      height: 630,
+    },
+    evidenceProfile: [
+      {
+        type: "OBSERVADO",
+        statement: "Alta recorrência de domínios em consultas de marca e rotação dinâmica em consultas comparativas e comerciais ao longo de repetições controladas.",
+        notes: "Amostra baseada em 47 unidades de observação incluídas."
+      },
+      {
+        type: "INFERIDO",
+        statement: "Diferentes classes de intenção de busca exibem sensibilidades distintas à rotação de fontes nas superfícies generativas.",
+        limitations: "Amplo espectro de variabilidade não implica causalidade algorítmica."
+      }
+    ],
+    question: "Quando uma mesma necessidade informacional é consultada repetidamente sob condições documentadas, quão estável é o conjunto de sources e citations visíveis?",
+    context: "Investigação derivada do cluster AI Search para testar premissas de estabilidade de visibilidade.",
+    methodology: "Execução de query set pré-registrado de 8 queries com 3 repetições por sistema (Google AI Overviews e Perplexity).",
+    systemsObserved: ["Google AI Overviews", "Perplexity Search"],
+    queries: [
+      { id: "Q3-01", query: "Sidney Santos SEO", system: "Google AI Overviews", resultSummary: "Alta recorrência de domínios e presença de fontes canônicas." },
+      { id: "Q3-07", query: "Consultoria de SEO para grandes empresas", system: "Perplexity Search", resultSummary: "Alta rotação de domínios e baixa recorrência exata de fontes." }
+    ],
+    observations: [
+      "Consultas de marca apresentam taxa de recorrência de domínios superior a 85%.",
+      "Consultas comerciais e comparativas exibem sobreposição exata inferior a 25% entre repetições."
+    ],
+    findings: [
+      "A visibilidade em AI Search para termos genéricos e comparativos é volátil e dependente de rotação dinâmica.",
+      "Aparência estática em uma única captura isolada não garante estabilidade de citação."
+    ],
+    limitations: [
+      "Amostra puramente descritiva baseada em 8 queries purposive.",
+      "Horizonte temporal restrito a short-horizon repeatability.",
+      "Ausência de acesso a logs internos de backend."
+    ],
+    topicRelations: ["AI Search", "Source Stability", "Citation Variability", "Search Intelligence"],
+    references: ["qa/research/r14/obs003-protocol.md", "qa/research/r14/obs003-manifest.md"],
+  },
+  {
+    id: "AUDITSEO-OBS-004",
+    slug: "consistencia-de-atributos-entre-sistemas-de-ia",
+    route: "/estudos-busca-ia/consistencia-de-atributos-entre-sistemas-de-ia",
+    title: "A mesma entidade mantém os mesmos atributos? Uma observação de consistência entre sistemas de IA",
+    subtitle: "Investigação empírica pré-registrada sobre a consistência trans-sistêmica na representação de entidades e atributos factuais.",
+    description: "Estudo observacional cruzando um query set contra uma Matriz de Verdade Canônica em Google AI, Perplexity e ChatGPT Search.",
+    type: "OBSERVATION",
+    status: "PUBLISHED",
+    author: SIDNEY_AUTHOR,
+    publisher: AUDIT_PUBLISHER,
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    researchDate: "2026-Q3",
+    featuredImage: {
+      src: "/images/guides/ai-search/featured.webp",
+      alt: "Representação de consistência de atributos entre sistemas de IA.",
+      width: 1200,
+      height: 630,
+    },
+    evidenceProfile: [
+      {
+        type: "OBSERVADO",
+        statement: "Acordo pleno em identidade e relações institucionais, com divergências pontuais (partial agreement) em atributos temporais granulares entre sistemas.",
+        notes: "Amostra baseada em 48 unidades de observação incluídas."
+      },
+      {
+        type: "INFERIDO",
+        statement: "A resolução correta de entidade principal por um motor generativo não garante imunidade absoluta contra desalinhamentos pontuais de atributos.",
+        limitations: "Divergências pontuais foram codificadas como observed attribute mismatches sem suposição de causa interna."
+      }
+    ],
+    question: "Quando uma mesma entidade é consultada em sistemas generativos diferentes, identidade, relações, atributos e associações temáticas permanecem consistentes?",
+    context: "Extensão trans-sistêmica da Observation #002 para avaliar a estabilidade de representação de atributos factuais.",
+    methodology: "Execução de query set de 8 queries cruzado contra Matriz de Verdade Canônica em 3 sistemas generativos (Google AI, Perplexity, ChatGPT Search).",
+    systemsObserved: ["Google AI Surface", "Perplexity AI Search", "ChatGPT Search"],
+    queries: [
+      { id: "Q4-01", query: "Quem é Sidney Santos SEO?", system: "Google AI Surface", resultSummary: "Full agreement na resolução de identidade e papel profissional." },
+      { id: "Q4-04", query: "Desde quando Sidney Santos trabalha com SEO?", system: "Perplexity AI Search", resultSummary: "Mismatch temporal pontual (2010 em vez de 2009 em uma repetição)." }
+    ],
+    observations: [
+      "Convergência unânime na identificação da entidade e de sua associação à AUDITSEO.",
+      "Flutuação transiente em atributos temporais específicos em capturas isoladas."
+    ],
+    findings: [
+      "Sistemas generativos distintos mantêm alta coerência em identidade de marca, mas exigem governança ativa sobre atributos temporais e factuais granulares."
+    ],
+    limitations: [
+      "Amostra direcionada baseada em entidade específica (Sidney Santos e AUDITSEO).",
+      "Horizonte temporal pontual de 1 dia.",
+      "Ausência de visibilidade sobre os grafos internos de conhecimento dos modelos."
+    ],
+    topicRelations: ["Entity Consistency", "Attribute Accuracy", "Cross-System Representation", "Search Intelligence"],
+    references: ["qa/research/r14/obs004-protocol.md", "qa/research/r14/obs004-manifest.md"],
+  },
+  {
     id: "AUDITSEO-ANALYSIS-001",
     slug: "impacto-da-autoridade-de-entidade-nos-ai-overviews",
     route: "/estudos-busca-ia/impacto-da-autoridade-de-entidade-nos-ai-overviews",
