@@ -24,7 +24,7 @@ export const aiSearchPillarArticle: ArticleData = {
   },
   parent: { title: "AI Search", href: "/guias/ai-search" },
   previous: { title: "Corroboração de Entidade", href: "/guias/corroboracao-de-entidade" },
-  next: { title: "AI Overviews", href: "/guias/ai-overviews" },
+  next: { title: "Recuperação de Informação em AI Search", href: "/guias/recuperacao-de-informacao-ai-search" },
   related: [
     { title: "Entity Authority", href: "/guias/entity-authority", tag: "Guia" },
     { title: "Search Intelligence Lab", href: "/estudos-busca-ia", tag: "Lab" },
@@ -40,7 +40,7 @@ export const aiSearchPillarArticle: ArticleData = {
     relatedEntities: ["Sidney Santos", "AUDITSEO", "Search Intelligence", "Entity Authority", "AI Overviews"],
     parent: "/guias/ai-search",
     previous: "/guias/corroboracao-de-entidade",
-    next: "/guias/ai-overviews",
+    next: "/guias/recuperacao-de-informacao-ai-search",
     evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
     commercialRelation: "/solucoes/autoridade-de-entidade",
     status: "PUBLISHED",

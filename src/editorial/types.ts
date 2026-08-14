@@ -55,7 +55,7 @@ export interface ArticleData {
   subtitle: string;
   description: string;
   status: "DRAFT" | "REVIEW" | "PUBLISHED" | "ARCHIVED";
-  type: "EXPERIMENT" | "STUDY" | "BENCHMARK" | "ANALYSIS" | "OBSERVATION" | "DOCUMENTATION_NOTE" | "CASE" | "GUIDE";
+  type: "EXPERIMENT" | "STUDY" | "BENCHMARK" | "ANALYSIS" | "OBSERVATION" | "DOCUMENTATION_NOTE" | "CASE" | "GUIDE" | "SUPPORTING";
   cluster: string;
   secondaryClusters: string[];
   author: AuthorRef;

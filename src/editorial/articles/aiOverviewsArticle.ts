@@ -24,6 +24,7 @@ export const aiOverviewsArticle: ArticleData = {
   },
   parent: { title: "AI Search", href: "/guias/ai-search" },
   previous: { title: "AI Search: como a inteligência artificial está mudando a busca", href: "/guias/ai-search" },
+  next: { title: "Recuperação de Informação em AI Search", href: "/guias/recuperacao-de-informacao-ai-search" },
   related: [
     { title: "AI Search", href: "/guias/ai-search", tag: "Guia" },
     { title: "Entity Authority", href: "/guias/entity-authority", tag: "Guia" },

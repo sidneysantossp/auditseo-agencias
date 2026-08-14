@@ -129,6 +129,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description: "Entenda o que são AI Overviews, como observar respostas, entidades, fontes e resultados e quais limites existem ao analisar visibilidade na busca generativa.",
     activeSection: "guias",
   },
+  "/guias/recuperacao-de-informacao-ai-search": {
+    title: "Recuperação de Informação em AI Search: Fontes, Contexto e RAG | AUDITSEO",
+    description: "Entenda como pensar retrieval, RAG, grounding, fontes e contexto em AI Search sem confundir conceitos técnicos com mecanismos internos não documentados.",
+    activeSection: "guias",
+  },
   "/proposta/dr-felipe-barao": {
     title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
     description:
