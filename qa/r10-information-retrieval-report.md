@@ -16,7 +16,7 @@
 | Remote HEAD no pre-gate | `6f8334af63c10d3f5ced52aeeaf7898284184b90` |
 | Local / remote sync no pre-gate | **PASS** |
 
-A fonte canônica operacional permaneceu o repositório de recovery. O primary remote não foi usado como fonte editorial paralela.
+A fonte canônica operacional permaneceu o repositório de recovery. O primary remote não foi usado como fonte editorial paralela. A implementação foi persistida no commit `8546af3f2c15a43309940d7971e0c5a52d20408e`; após o push, o remote `backup/main` apontou para o mesmo hash.
 
 ## 2. Publication Contract
 
