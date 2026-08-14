@@ -6,6 +6,7 @@ import { entityConsistencyArticle } from "./articles/entityConsistencyArticle";
 import { autoriaSeoArticle } from "./articles/autoriaSeoArticle";
 import { entityCorroborationArticle } from "./articles/entityCorroborationArticle";
 import { aiSearchPillarArticle } from "./articles/aiSearchPillarArticle";
+import { aiOverviewsArticle } from "./articles/aiOverviewsArticle";
 
 export const articles: ArticleData[] = [
   entitySeoArticle,
@@ -15,4 +16,5 @@ export const articles: ArticleData[] = [
   autoriaSeoArticle,
   entityCorroborationArticle,
   aiSearchPillarArticle,
+  aiOverviewsArticle,
 ];

@@ -124,6 +124,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description: "Guia canônico da AUDITSEO sobre AI Search, descoberta generativa, representação de entidades e Search Intelligence.",
     activeSection: "guias",
   },
+  "/guias/ai-overviews": {
+    title: "AI Overviews: Como a Busca Generativa Está Mudando a SERP | AUDITSEO",
+    description: "Entenda o que são AI Overviews, como observar respostas, entidades, fontes e resultados e quais limites existem ao analisar visibilidade na busca generativa.",
+    activeSection: "guias",
+  },
   "/proposta/dr-felipe-barao": {
     title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
     description:

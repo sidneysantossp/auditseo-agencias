@@ -1,0 +1,199 @@
+import { ArticleData } from "../types";
+import { SIDNEY_AUTHOR, AUDIT_PUBLISHER } from "../registry";
+
+export const aiOverviewsArticle: ArticleData = {
+  id: "AUDITSEO-ARTICLE-AISEARCH-007",
+  slug: "/guias/ai-overviews",
+  title: "AI Overviews: como a busca generativa muda a experiência da SERP",
+  subtitle: "AI Overviews introduzem uma camada de síntese generativa nas páginas de resultados. Entenda como o ecossistema combina recuperação e IA, por que presença não é representação correta e como auditar superfícies sem cair em mitos de otimização.",
+  description: "Guia canônico da AUDITSEO sobre AI Overviews, cobrindo o modelo de camadas SERP, observação de citações, distinção entre fontes e a governança de evidências.",
+  status: "PUBLISHED",
+  type: "GUIDE",
+  cluster: "AI_SEARCH",
+  secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE"],
+  author: SIDNEY_AUTHOR,
+  publisher: AUDIT_PUBLISHER,
+  datePublished: "2026-08-13",
+  dateModified: "2026-08-13",
+  readingTime: "18 min",
+  featuredImage: {
+    src: "/images/guides/ai-overviews/featured.webp",
+    alt: "Representação visual de uma experiência de busca combinando resposta generativa, fontes e resultados tradicionais.",
+    width: 1200,
+    height: 630,
+  },
+  parent: { title: "AI Search", href: "/guias/ai-search" },
+  previous: { title: "AI Search: como a inteligência artificial está mudando a busca", href: "/guias/ai-search" },
+  related: [
+    { title: "AI Search", href: "/guias/ai-search", tag: "Guia" },
+    { title: "Entity Authority", href: "/guias/entity-authority", tag: "Guia" },
+    { title: "Entity Home", href: "/guias/entity-home", tag: "Guia" },
+    { title: "Search Intelligence", href: "/guias/search-intelligence", tag: "Guia" },
+    { title: "SEO", href: "/guias/seo", tag: "Guia" },
+    { title: "Método S.I.G.N.A.L", href: "/metodo-signal", tag: "Método" },
+    { title: "Search Intelligence Lab", href: "/estudos-busca-ia", tag: "Lab" },
+  ],
+  evidence: ["AUDITSEO-OBS-001: Reconhecimento de entidade por contexto temático", "AUDITSEO-OBS-002: Atributos temporais em AI Overviews"],
+  commercialRelation: { title: "Diagnóstico de Autoridade e AI Search", href: "/diagnostico" },
+  topicGraph: {
+    id: "AUDITSEO-ARTICLE-AISEARCH-007",
+    type: "GUIDE",
+    cluster: "AI_SEARCH",
+    secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE"],
+    primaryEntity: "AI Overviews",
+    relatedEntities: ["Sidney Santos", "AUDITSEO", "Google Search", "RAG", "SERP"],
+    parent: "/guias/ai-search",
+    previous: "/guias/ai-search",
+    evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
+    commercialRelation: "/diagnostico",
+    status: "PUBLISHED",
+  },
+  sections: [
+    {
+      id: "introducao",
+      title: "1. A introdução da camada generativa na SERP",
+      level: 2,
+      content: `<p>Quando o ecossistema de busca orgânica começou a integrar resumos gerados por inteligência artificial — popularizados como <strong>AI Overviews</strong> —, a rotina de análise de profissionais de SEO sofreu uma mudança profunda. Durante décadas, a página de resultados (SERP) operou como um diretório estruturado de links azuis, títulos, descrições e rich snippets. Com a chegada das experiências generativas, o topo da página passou a exibir um bloco narrativo sintetizado, construído para responder diretamente à intenção do usuário antes mesmo de qualquer navegação tradicional [1] [3].</p><p>Para mim, a premissa central que orienta nossa análise na AUDITSEO é direta:</p><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\"><strong>AI Overviews não eliminam a SERP tradicional. Elas adicionam uma nova camada de síntese e representação que precisa ser analisada junto com resultados, fontes, entidades e experiência do usuário.</strong></blockquote><p>Quando uma SERP apresenta uma resposta generativa, o objeto da análise deixa de ser somente o ranking de documentos estáticos e passa a incluir também a própria resposta gerada. Isso exige novas ferramentas metodológicas, separando o que é documentado pelas plataformas, o que é observado em campo e o que permanece no campo das hipóteses não comprovadas.</p>`,
+    },
+    {
+      id: "o-que-sao-ai-overviews",
+      title: "2. O que são AI Overviews e como funcionam?",
+      level: 2,
+      content: `<p>Do ponto de vista técnico documentado, as <strong>AI Overviews</strong> são funcionalidades integradas às páginas de resultados que utilizam técnicas avançadas de inteligência artificial para resumir informações complexas, agrupar conceitos e fornecer pontos de partida para exploração adicional [1] [2]. Elas não operam por meio de um "índice de IA" isolado; pelo contrário, são enraizadas nos sistemas centrais de ranking e qualidade do motor de busca [1].</p><p>Dois pilares técnicos sustentam esse funcionamento:</p><ul class=\"space-y-3\"><li><strong>Retrieval-Augmented Generation (RAG):</strong> Uma técnica de aterramento (grounding) que utiliza os sistemas tradicionais de indexação para recuperar páginas web atualizadas e relevantes, alimentando o modelo para que ele produza uma resposta apoiada em evidências externas [1].</li><li><strong>Query Fan-out:</strong> O disparo concorrente de subconsultas correlacionadas pelo modelo para abranger diferentes facetas, sub-tópicos e perspectivas de uma busca complexa, permitindo recuperar um conjunto mais amplo e diverso de fontes de apoio [1] [2].</li></ul><p>Compreender esses mecanismos afasta a ilusão de que existe um algoritmo separado ou um truque mágico de otimização exclusivo para inteligência artificial. O que alimenta o sistema continua sendo a acessibilidade, a indexabilidade e a relevância das páginas presentes no índice central [1] [2].</p>`,
+    },
+    {
+      id: "modelo-serp-generative-layer",
+      title: "3. O Modelo SERP + Generative Layer da AUDITSEO",
+      level: 2,
+      content: `<p>Para estruturar o monitoramento de tráfego e visibilidade, desenvolvemos o <strong>AUDITSEO SERP + Generative Layer Model</strong>. Este modelo conceitual descreve como o fluxo de informação opera desde a entrada da consulta até a decisão de clique do usuário:</p><div class=\"bg-neutral-900 border border-neutral-800 p-6 my-6 rounded-lg font-mono text-sm text-neutral-300\">Query → SERP Index Lookup → Generative Layer Synthesis (AIO) → Source Candidates / Citations / Follow-up → Traditional Results & Carousels → User Decision / Click → Destination Page</div><p>Neste fluxo, a resposta generativa atua como um intermediário editorial e visual. Ela pode absorver grande parte da atenção do usuário, alterando as taxas de clique (CTR) dos resultados orgânicos tradicionais [4]. No entanto, ela também expande a diversidade de domínios expostos, permitindo que sites que não ocupavam a primeira posição absoluta apareçam como fontes citadas no rodapé ou corpo do resumo [2].</p>`,
+    },
+    {
+      id: "distincoes-criticas",
+      title: "4. Distinções críticas: Source vs. Citation vs. Mention vs. Attribution",
+      level: 2,
+      content: `<p>Um dos maiores focos de confusão no mercado de SEO e GEO (Generative Engine Optimization) é a troca de conceitos fundamentais. Na AUDITSEO, estabelecemos separações rígidas para evitar falsas premissas:</p><ul class=\"space-y-3\"><li><strong>Source (Fonte):</strong> A página web recuperada pelo sistema de indexação e utilizada como insumo para a recuperação e síntese [1].</li><li><strong>Citation (Citação):</strong> A exibição explícita de um link, ícone ou nota de rodapé no resumo generativo que remete à origem da informação.</li><li><strong>Mention (Menção):</strong> A citação nominal de uma marca ou entidade no texto gerado, sem necessariamente conter um hyperlink de redirecionamento.</li><li><strong>Attribution (Atribuição):</strong> A conexão lógica estabelecida pelo modelo entre a declaração redigida e a origem dos dados que a sustentam.</li></ul><p>Além disso, destacamos três equívocos conceituais perigosos que não encontram respaldo empírico:</p><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\"><strong>Presence ≠ Correct Representation</strong><br/>A marca aparecer na resposta não significa que seus atributos, liderança ou contexto foram descritos corretamente.</blockquote><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\"><strong>Citation ≠ Authority</strong><br/>Ser citado em um AI Overview é um evento contextual de recuperação, não um atestado permanente de autoridade editorial perene.</blockquote><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\"><strong>Ranking ≠ Source Selection</strong><br/>Estar na primeira posição orgânica clássica aumenta a probabilidade de recuperação, mas não garante exclusividade ou presença obrigatória na camada generativa.</blockquote>`,
+    },
+    {
+      id: "ai-overview-observation-framework",
+      title: "5. AI Overview Observation Framework",
+      level: 2,
+      content: `<p>Para auditar o comportamento de uma AI Overview de forma sistemática, utilizamos o **AI Overview Observation Framework**. Cada registro de inteligência de busca deve conter as seguintes dimensões observáveis:</p><div class=\"overflow-x-auto my-6\"><table class=\"w-full text-left border-collapse text-sm\"><thead><tr class=\"border-b border-neutral-800 text-amber-500\"><th class=\"p-3\">Dimensão</th><th class=\"p-3\">Parâmetro de Registro</th></tr></thead><tbody><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Contexto da Consulta</td><td class=\"p-3\">Query, Data, System, Surface, Locale, Device, Account / Session State</td></tr><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Presença do Resumo</td><td class=\"p-3\">AI Overview Present? (Sim / Não) e Answer Summary completo</td></tr><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Representação de Entidade</td><td class=\"p-3\">Entity Present?, Correct Entity?, Organization Association, Attributes, Topic Association</td></tr><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Fontes e Citações</td><td class=\"p-3\">Sources listadas, Citações explícitas, Links de apoio associados</td></tr><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Resultados Tradicionais</td><td class=\"p-3\">Comportamento concomitante dos links orgânicos e carrosséis</td></tr><tr class=\"border-b border-neutral-800\"><td class=\"p-3 font-semibold\">Notas e Limites</td><td class=\"p-3\">Restrições metodológicas e volatilidade observada</td></tr></tbody></table></div><p>Ressaltamos que <em>uma única observação não equivale a um padrão estável</em>. A volatilidade das respostas generativas exige campanhas de monitoramento longitudinal.</p>`,
+    },
+    {
+      id: "representation-accuracy-model",
+      title: "6. Representation Accuracy Model",
+      level: 2,
+      content: `<p>Quando uma entidade é mencionada em um AI Overview, a análise não pode se resumir a um contador binário de "apareceu / não apareceu". Aplicamos o **Representation Accuracy Model** para auditar a qualidade da síntese:</p><ul class=\"space-y-3\"><li><strong>Entity:</strong> Correta / Incorreta / Incerta. A IA identificou a entidade exata?</li><li><strong>Relation:</strong> Correta / Incorreta / Parcial / N/A. As conexões institucionais (ex: especialista à organização) foram preservadas?</li><li><strong>Attribute:</strong> Correto / Incorreto / Parcial / Desconhecido. Dados factuais (datas, locais, escopo) correspondem à realidade?</li><li><strong>Topic:</strong> Correto / Incorreto / Incerto. A associação temática está alinhada ao cluster de conhecimento?</li><li><strong>Source:</strong> Presente / Ausente / N/A. Há citação da fonte canônica proprietária?</li></ul><p>Como demonstramos na <a href=\"/estudos-busca-ia/entidade-correta-atributo-incorreto-ai-search\">Observação #002</a> do nosso Lab, é perfeitamente possível que o sistema reconheça a entidade correta e a relação institucional, mas recupere um atributo temporal incorreto [AUDITSEO-OBS-002].</p>`,
+    },
+    {
+      id: "traditional-serp-continuity",
+      title: "A SERP tradicional continua sendo parte do mesmo ambiente",
+      level: 2,
+      content: `<p>O bloco generativo pode ocupar uma posição privilegiada na interface, mas não deve ser analisado como se tivesse apagado o restante da SERP. Links orgânicos, anúncios, painéis de conhecimento, imagens, vídeos, mapas, caixas de perguntas e filtros continuam formando a experiência de busca. Em muitos casos, a AI Overview funciona como uma camada de entrada: resume o tema, oferece fontes para aprofundamento e coexiste com resultados que respondem a intenções diferentes.</p><p>Essa continuidade é importante porque a mesma página pode produzir efeitos distintos em cada camada. Um documento pode aparecer em uma posição orgânica sem ser uma fonte visível do resumo. Um domínio pode ser mostrado como apoio no resumo e não ocupar o primeiro resultado tradicional. Uma entidade pode ser mencionada na resposta enquanto a página de destino aparece apenas depois de uma expansão ou de um clique de fonte. O registro precisa manter essas ocorrências separadas.</p><p>Por isso, não considero adequado substituir relatórios de ranking por um suposto indicador único de “visibilidade em IA”. A mudança exige uma matriz de observações que relacione presença, fonte, citação, posição tradicional, tipo de consulta e interação possível. Essa matriz pode orientar decisões de conteúdo e arquitetura sem fingir que uma superfície volátil pode ser resumida em um número universal.</p>`,
+    },
+    {
+      id: "sources-entities-attributes",
+      title: "Como fontes, entidades e atributos entram na análise",
+      level: 2,
+      content: `<p>Quando leio uma resposta generativa, procuro primeiro as entidades e as relações antes de avaliar o tom do texto. A entidade pode ser uma pessoa, organização, produto, local, tema ou evento. A relação explica como ela aparece: fundador de, associado a, localizado em, alternativa a ou responsável por. O atributo adiciona a informação verificável: data, função, localização, escopo, preço, característica ou marco temporal. Essa decomposição torna visível onde está o erro.</p><p>Uma resposta pode ter um resumo plausível e, ainda assim, combinar a organização correta com um atributo que pertence a outro momento, outra entidade ou outra fonte. Também pode citar uma página verdadeira para uma afirmação que a página não sustenta de modo explícito. A análise não deve transformar uma citação em prova automática de concordância entre a fonte e todas as frases do bloco. O que pode ser observado é a relação entre a informação exibida, o link apresentado e a página quando ela é aberta.</p><p>Essa é a razão de o modelo de representação usar estados de correto, incorreto, parcial, incerto, presente e ausente. A linguagem não cria precisão; o registro precisa admitir quando não é possível validar um campo. Em uma auditoria, “não observável” é uma conclusão metodológica melhor do que uma classificação forçada.</p>`,
+    },
+    {
+      id: "measurement-without-arbitrary-score",
+      title: "Medição: visibilidade sem transformar a incerteza em score",
+      level: 2,
+      content: `<p>Medir AI Overviews não significa fabricar um placar de autoridade, citação ou probabilidade. Um instrumento útil pode acompanhar dimensões separadas: presença da resposta na consulta; presença da entidade; correção da entidade e da relação; precisão dos atributos; associação temática; fontes visíveis; citações visíveis; posição nos resultados tradicionais; e estabilidade entre repetições. Cada dimensão deve conservar o contexto da observação e as limitações da amostra.</p><p>O modelo T0 → Repeat → T1 ajuda a identificar estabilidade sem prometer causalidade. Se a mesma consulta exibe fontes diferentes em momentos diferentes, isso é uma variação observada. Se uma página foi alterada e depois apareceu como fonte, existe uma sequência temporal que pode justificar uma pesquisa. Não existe, apenas com essa sequência, prova de que a mudança causou a seleção. A causalidade exigiria desenho de teste, controle de condições e escala de observações que não fazem parte desta fase.</p><p>Essa disciplina protege a operação contra duas distorções. A primeira é tratar uma vitória visual como resultado comercial sem verificar cliques, conversões e qualidade da sessão. A segunda é tratar ausência de citação como fracasso técnico sem conhecer a ativação, o contexto da consulta ou a disponibilidade do produto. A função de Search Intelligence é conectar sinais observáveis às decisões, não preencher o desconhecido com uma pontuação de aparência científica. Essa cautela preserva a utilidade prática da análise aplicada.</p>`,
+    },
+    {
+      id: "answer-as-observable-object",
+      title: "A resposta generativa como novo objeto observável",
+      level: 2,
+      content: `<p>Uma posição orgânica é relativamente simples de registrar: consulta, data, dispositivo, URL, posição aproximada e características visíveis da SERP. Uma resposta generativa exige uma coleta mais rica porque ela reúne texto, entidades, atributos, fontes, citações, expansão de consulta e resultados que podem mudar dentro da mesma superfície. O texto não é apenas um novo snippet; é uma camada editorial que merece ser capturada em sua forma e em seu contexto.</p><p>Na prática, isso significa preservar a resposta completa — sem resumir apenas a frase favorável à marca — e registrar onde uma fonte aparece, se o link está associado a uma afirmação específica, se uma entidade foi mencionada explicitamente e se os resultados tradicionais continuam presentes. Também significa registrar a ausência: uma consulta sem AI Overview é um estado observável, não uma falha que autoriza uma explicação improvisada.</p><p>Essa mudança de objeto é importante para agências. A análise deixa de perguntar somente “qual é a posição?” e passa a perguntar “qual informação foi sintetizada, quais entidades foram associadas, de que fontes veio o suporte visível e como a experiência convida o usuário a continuar?”. Nenhuma dessas perguntas, isoladamente, substitui a medição de tráfego e conversão. Elas ampliam o que precisa ser documentado para que uma mudança de comportamento possa ser discutida com precisão.</p>`,
+    },
+    {
+      id: "source-citation-mention-attribution",
+      title: "Source, citation, mention e attribution: quatro eventos diferentes",
+      level: 2,
+      content: `<p>Uma fonte pode ser utilizada sem que apareça como citação visível. Uma marca pode ser mencionada sem que o sistema mostre um link para o domínio oficial. Uma citação pode apontar para uma página relacionada sem demonstrar que cada frase do resumo foi atribuída a ela. E uma atribuição lógica pode ser plausível para o leitor sem ser verificável a partir da interface. Por isso, a taxonomia precisa ser mantida mesmo quando os termos são usados de forma intercambiável no mercado.</p><p>Eu registro <strong>source</strong> quando identifico a página ou domínio apresentado como apoio; <strong>citation</strong> quando existe um apontamento explícito na interface; <strong>mention</strong> quando a entidade ou marca aparece nominalmente; e <strong>attribution</strong> quando consigo relacionar uma afirmação à fonte indicada pelo sistema. Se essa relação não pode ser observada, registro a incerteza em vez de preencher a lacuna com uma suposição.</p><p>Essa distinção também evita uma conclusão comum, mas frágil: “foi citado, logo é autoridade”. Citação é um evento de interface e de recuperação em determinado contexto. Autoridade é um conceito mais amplo, dependente de consistência, reconhecimento, qualidade, finalidade e acurácia ao longo do tempo. O vínculo entre esses elementos deve ser investigado, não presumido.</p>`,
+    },
+    {
+      id: "observation-protocol",
+      title: "Como transformar uma captura em observação auditável",
+      level: 2,
+      content: `<p>Uma captura de tela isolada é útil como evidência visual, mas ainda é um registro incompleto. Para se tornar uma observação auditável, ela precisa ser acompanhada por um protocolo que permita a outra pessoa reconstruir o contexto. Eu começo definindo o query set e a classe de cada consulta; registro data e hora, sistema, superfície, locale, dispositivo, conta e estado de sessão; preservo a resposta integral e identifico o que estava visível sem inferir o que ficou fora da viewport.</p><p>Em seguida, separo quatro camadas de anotação. A primeira é descritiva: o que a interface mostrou. A segunda é classificatória: entidade, relação, atributo, tópico, fonte e citação. A terceira é comparativa: o que mudou em relação à observação anterior. A quarta é interpretativa: qual hipótese merece pesquisa e qual recomendação é segura mesmo sem afirmar causalidade. Esse encadeamento impede que uma opinião apareça disfarçada de dado.</p><p>O mesmo protocolo precisa ser repetido quando a intenção é comparar T0, Repeat e T1. Se a consulta, locale, sessão ou dispositivo mudarem, a diferença deve ser marcada como uma mudança de condição. Caso contrário, a volatilidade da superfície pode ser confundida com efeito de conteúdo, autoridade ou estrutura técnica.</p>`,
+    },
+    {
+      id: "control-vs-non-control",
+      title: "7. Control vs. Non-Control: o que podemos gerenciar",
+      level: 2,
+      content: `<p>Para orientar agências e equipes corporativas com responsabilidade técnica, dividimos o ecossistema entre o que está sob nosso controle e o que pertence à dinâmica algorítmica da plataforma:</p><div class=\"grid md:grid-cols-2 gap-6 my-6\"><div class=\"bg-neutral-900 border border-neutral-800 p-6 rounded-lg\"><h3 class=\"text-amber-500 font-bold mb-3\">Controlled Foundations (O que controlamos)</h3><ul class=\"space-y-2 text-sm text-neutral-300\"><li>Rastreabilidade (Crawlability) e indexação [1] [2].</li><li>Acessibilidade técnica e velocidade de carregamento [1].</li><li>Criação de conteúdo útil, original e centrado em pessoas (People-First) [1].</li><li>Clareza semântica e estruturação de dados canônicos [1].</li><li>Autoria verificada e consistência de atributos institucionais.</li><li>Controles de pré-visualização (robots.txt, nosnippet) [2].</li></ul></div><div class=\"bg-neutral-900 border border-neutral-800 p-6 rounded-lg\"><h3 class=\"text-amber-500 font-bold mb-3\">Non-Control (O que não controlamos)</h3><ul class=\"space-y-2 text-sm text-neutral-300\"><li>Ativação dinâmica da AI Overview em determinada consulta [2].</li><li>Redação exata, tom e síntese da resposta gerada.</li><li>Seleção algorítmica específica de fontes por consulta [1].</li><li>Ordenação de exibição dos links de citação.</li><li>Atualizações e mudanças estruturais no produto de busca.</li></ul></div></div><p>As <em>Controlled Foundations</em> não garantem inclusão automática em AI Overviews, mas representam o alicerce indispensável para que o motor de busca possa acessar, compreender e recuperar o conteúdo com segurança [1] [2].</p>`,
+    },
+    {
+      id: "claim-audit",
+      title: "8. Claim Audit: separando fatos de mitos de mercado",
+      level: 2,
+      content: `<p>O mercado de consultoria digital é frequentemente permeado por mitos sobre como aparecer em buscas generativas. Submetemos as afirmações mais comuns ao nosso crivo de <strong>Evidence Governance</strong>:</p><ul class=\"space-y-4\"><li><strong>Mito 1: "Schema estruturado garante citação em AI Overviews."</strong><br/><em>Classificação:</em> <strong>UNSUPPORTED</strong>. A documentação oficial do Google e as diretrizes técnicas confirmam que não há nenhum schema.org especial ou obrigatório para AI Overviews [1] [2]. O schema ajuda na clareza semântica, mas não é passaporte de citação.</li><li><strong>Mito 2: "Textos mais longos aumentam a probabilidade de citação."</strong><br/><em>Classificação:</em> <strong>CONTEXT-DEPENDENT</strong>. Estudos empíricos de estrutura demonstram que o posicionamento precoce da resposta (front-loading) é muito mais determinante do que o volume total de palavras [4].</li><li><strong>Mito 3: "Arquivos LLMS.txt ou marcações proprietárias de IA são necessários."</strong><br/><em>Classificação:</em> <strong>UNSUPPORTED</strong>. O Google Search explicitamente não utiliza arquivos LLMS.txt em suas buscas [1].</li><li><strong>Mito 4: "Entity Authority garante menção perpétua."</strong><br/><em>Classificação:</em> <strong>NEEDS EVIDENCE</strong>. A autoridade de entidade fortalece o grafo de conhecimento, mas a seleção de fontes em RAG é dinâmica e sensível ao escopo da consulta [1].</li></ul>`,
+    },
+    {
+      id: "evidence-boundary",
+      title: "9. Evidence Boundary e Research Questions",
+      level: 2,
+      content: `<p>Para manter rigor metodológico absoluto, estabelecemos claramente as fronteiras do nosso conhecimento atual sobre AI Overviews:</p><div class=\"space-y-4 my-6\"><div class=\"bg-neutral-900 border border-neutral-800 p-5 rounded-lg\"><h4 class=\"text-amber-500 font-bold mb-2\">O que sabemos (Documentado e Observado)</h4><p class=\"text-sm text-neutral-300\">As AIO utilizam RAG e query fan-out sobre o índice central de busca [1] [2]. Citações tendem a se concentrar nos primeiros 30% das páginas referenciadas [4]. Plataformas como YouTube, Wikipedia e domínios institucionais lideram o volume de citações globais.</p></div><div class=\"bg-neutral-900 border border-neutral-800 p-5 rounded-lg\"><h4 class=\"text-amber-500 font-bold mb-2\">O que estamos investigando (Planned Research Questions)</h4><p class=\"text-sm text-neutral-300\"><strong>RQ-AI-001:</strong> Quão estável é a presença das mesmas fontes em AI Overviews ao repetir um query set longitudinalmente? <br/><strong>RQ-AI-003:</strong> Quais tipologias de fontes dominam diferentes classes de consultas informacionais vs. transacionais?</p></div><div class=\"bg-neutral-900 border border-neutral-800 p-5 rounded-lg\"><h4 class=\"text-amber-500 font-bold mb-2\">O que ainda não sabemos (Limites Metodológicos)</h4><p class=\"text-sm text-neutral-300\">Os pesos algorítmicos exatos de seleção de fontes em tempo de execução, a causalidade isolada de sinais de engajamento na geração de resumos e o mecanismo interno completo de síntese de linguagem dos modelos proprietários.</p></div></div>`,
+    },
+    {
+      id: "limitations-of-observation",
+      title: "Limitações de observação: o que uma interface não revela",
+      level: 2,
+      content: `<p>Uma AI Overview é uma janela parcial para um sistema muito mais amplo. A interface pode mostrar um resumo e alguns links, mas não expõe todos os documentos recuperados, todas as subconsultas, os pesos de cada sinal, a ordem interna das etapas ou o motivo exato pelo qual uma fonte foi escolhida. Mesmo quando a resposta parece estável, não podemos concluir que o mecanismo subjacente ficou estável.</p><p>Há ainda limitações operacionais: disponibilidade pode variar por país, idioma, dispositivo, conta, sessão, atualização do produto e classe de consulta. Uma pesquisa repetida em condições diferentes não é uma réplica limpa. Um clique em uma fonte abre outra superfície, com seu próprio contexto e sua própria atualização. Uma resposta pode ser condensada, expandida ou substituída por resultados tradicionais antes que o registro seja concluído.</p><p>Por essa razão, a auditoria deve declarar o limite da observação ao lado do resultado. “Fonte visível nesta sessão” é uma afirmação diferente de “fonte escolhida em todos os casos”. “A entidade foi representada corretamente neste query set” é diferente de “o sistema conhece a entidade de modo universal”. A precisão da linguagem é parte do método, porque impede que um recorte local seja vendido como descrição completa do produto.</p><p>O limite também define o que não faremos nesta fase. Não criaremos novas Observations, não inventaremos experimentos, não convertiremos relatos de terceiros em causalidade e não publicaremos uma fórmula para aparecer em AI Overviews. As perguntas sobre estabilidade e tipologia de fontes permanecem planejadas para pesquisa futura, com método e amostra definidos antes de qualquer conclusão.</p>`,
+    },
+    {
+      id: "search-intelligence-analysis",
+      title: "10. Como eu analisaria uma AI Overview",
+      level: 2,
+      content: `<p>Minha leitura de uma AI Overview começa pela disciplina de <strong><a href=\"/guias/search-intelligence\">Search Intelligence</a></strong>, não pela tentativa de adivinhar um peso algorítmico. O protocolo editorial AUDITSEO segue sete movimentos: <strong>OBSERVE</strong> a superfície real; <strong>CAPTURE</strong> consulta, contexto, resposta e fontes; <strong>CLASSIFY</strong> cada afirmação como documentada, observada, testada, inferida ou recomendada; <strong>COMPARE</strong> consultas e sessões; <strong>INTERPRET</strong> presença, representação e atribuição; <strong>DECIDE</strong> quais fundamentos controláveis merecem atenção; e <strong>RE-MEASURE</strong> depois de um intervalo definido.</p><p>O registro precisa separar três momentos: <strong>T0</strong>, a observação inicial com query, data, sistema, superfície, locale, dispositivo e estado da sessão; <strong>Repeat</strong>, a repetição do mesmo protocolo sem alterar artificialmente o contexto; e <strong>T1</strong>, a nova leitura após um intervalo ou mudança explicitamente documentada. Sem essa separação, uma alteração casual pode ser confundida com efeito de uma intervenção.</p>`,
+    },
+    {
+      id: "query-class-model",
+      title: "11. Query Class Model: a classe da consulta altera o que deve ser observado",
+      level: 2,
+      content: `<p>Também classifico a consulta antes de interpretar a resposta. Consultas <strong>informacionais</strong> pedem definição, contexto ou explicação; consultas <strong>navegacionais</strong> buscam uma entidade, marca ou destino específico; consultas <strong>comparativas</strong> colocam alternativas lado a lado; consultas <strong>transacionais</strong> sinalizam intenção de ação; e consultas <strong>locais</strong> combinam necessidade com lugar. Essa taxonomia não é uma promessa de comportamento do Google: ela é uma lente editorial para comparar superfícies sem misturar intenções diferentes.</p><p>Para cada classe, registro se a resposta generativa altera o resumo da questão, quais entidades e atributos são destacados, quais fontes aparecem, como os resultados tradicionais permanecem visíveis e qual tipo de follow-up é sugerido. Uma observação de consulta informacional não deve ser usada como prova sobre consultas locais ou transacionais.</p>`,
+    },
+    {
+      id: "decision-tree",
+      title: "12. AI Overview Decision Tree",
+      level: 2,
+      content: `<p>O fluxo decisório abaixo evita transformar um único resultado em recomendação causal:</p><div class=\"bg-neutral-900 border border-neutral-800 p-6 my-6 rounded-lg font-mono text-sm text-neutral-300 whitespace-pre-wrap\">AI Overview presente?\n├─ Não → Registrar ausência, classe da consulta e resultados tradicionais. Não inferir penalização.\n└─ Sim → A resposta foi capturada integralmente?\n   ├─ Não → Marcar observação incompleta e interromper interpretação de fonte.\n   └─ Sim → Entidade e relação estão corretas?\n      ├─ Não → Classificar problema de representação e investigar desambiguação.\n      └─ Sim → Atributos e tópico estão corretos?\n         ├─ Não / parcial → Registrar risco factual sem atribuir causalidade.\n         └─ Sim → Fontes e citações estão visíveis? Registrar presença sem convertê-la em autoridade.\n            → Repetir em T0 / Repeat / T1 antes de recomendar mudança.</div>`,
+    },
+    {
+      id: "entity-authority-bridge",
+      title: "13. Entity Authority como ponte de análise, não como garantia de inclusão",
+      level: 2,
+      content: `<p>AI Overviews tornam a qualidade da representação de entidades um objeto observável. Por isso, o cluster de <strong>Entity Authority</strong> funciona como uma ponte de análise: <a href=\"/guias/entity-authority\">Autoridade de Entidade</a> organiza o território; <a href=\"/guias/entity-home\">Entity Home</a> ajuda a localizar a fonte canônica controlada; <a href=\"/guias/desambiguacao-de-entidades\">Desambiguação</a> ajuda a perguntar se o sistema encontrou a entidade correta; <a href=\"/guias/consistencia-de-entidade\">Consistência</a> orienta a conferência de atributos; <a href=\"/guias/autoria-seo\">Autoria</a> torna explícita a relação entre conhecimento, especialista e organização; e <a href=\"/guias/corroboracao-de-entidade\">Corroboração</a> permite mapear referências externas.</p><p>Essas camadas são fundamentos editoriais e técnicos que podemos auditar. Elas não foram apresentadas aqui como fatores comprovados de inclusão, citação ou ordenação em AI Overviews. A observação #001 mostra a relevância analítica do contexto para desambiguação; a observação #002 mostra que uma entidade e uma relação podem estar corretas enquanto um atributo permanece incorreto. Em ambos os casos, mantemos a fronteira entre evidência e hipótese.</p>`,
+    },
+    {
+      id: "referencias",
+      title: "14. Referências e classificação da evidência",
+      level: 2,
+      content: `<p>As referências abaixo sustentam os claims sensíveis do artigo e devem ser lidas em conjunto com suas limitações. As fontes oficiais documentam o funcionamento e os requisitos públicos; os estudos de terceiros são observações amostrais e não descrevem pesos internos do Google; as observações do Lab são evidências proprietárias contextualizadas, não experimentos novos desta fase.</p><ol class=\"space-y-3 list-decimal list-inside\"><li><a href=\"https://developers.google.com/search/docs/fundamentals/ai-optimization-guide\" target=\"_blank\" rel=\"noreferrer\">Google Search Central — Optimizing your website for generative AI features on Google Search</a> — DOCUMENTADO.</li><li><a href=\"https://developers.google.com/search/docs/appearance/ai-features\" target=\"_blank\" rel=\"noreferrer\">Google Search Central — AI features and your website</a> — DOCUMENTADO.</li><li><a href=\"https://support.google.com/websearch/answer/14901683\" target=\"_blank\" rel=\"noreferrer\">Google Search Help — Find information in faster & easier ways with AI Overviews</a> — DOCUMENTADO.</li><li><a href=\"https://cxl.com/blog/google-ai-overview-citation-sources/\" target=\"_blank\" rel=\"noreferrer\">CXL — Where Google AI Overviews pull their answers from: What 100 citations reveal</a> — OBSERVADO, com amostra e método próprios.</li><li><a href=\"https://surferseo.com/blog/ai-citation-report/\" target=\"_blank\" rel=\"noreferrer\">Surfer — AI Citation Report 2025</a> — OBSERVADO, com dataset proprietário e limitações de representatividade.</li></ol>`,
+    },
+    {
+      id: "conclusao",
+      title: "15. Conclusão: navegando na nova fronteira da SERP",
+      level: 2,
+      content: `<p>A chegada das AI Overviews não invalida os princípios fundamentais da <a href=\"/guias/seo\">otimização orgânica</a>; ela os eleva a um patamar de exigência superior. O trabalho de Search Intelligence em ecossistemas generativos não consiste em buscar atalhos algorítmicos, mas em auditar a exatidão da representação, estruturar o conhecimento com clareza e monitorar o comportamento das superfícies com rigor empírico [1] [2].</p><p>Para agências e empresas que desejam auditar a presença e a acurácia de suas marcas em ambientes de busca generativa, convidamos a conhecer nossa solução de [Diagnóstico de Autoridade](/diagnostico) ou a explorar as investigações empíricas em andamento no [Search Intelligence Lab](/estudos-busca-ia).</p><p>O ponto de partida não é prometer uma posição na camada generativa. É construir uma base rastreável, publicar informação útil, manter identidade e atributos coerentes e observar como diferentes consultas fazem a entidade aparecer, desaparecer ou ser descrita. Esse trabalho permite que a próxima decisão seja tomada a partir de registros comparáveis, e não de uma captura isolada ou de uma narrativa de mercado que confunde presença com controle.</p>`,
+    },
+  ],
+  faq: [
+    {
+      question: "AI Overviews eliminam a necessidade de SEO tradicional?",
+      answer: "Não. AI Overviews são alimentadas diretamente pelo índice central de busca e utilizam técnicas de RAG sobre páginas web tradicionais. Os fundamentos de indexabilidade, crawling e conteúdo de qualidade continuam sendo pré-requisitos essenciais [1] [2]."
+    },
+    {
+      question: "É preciso criar arquivos especiais como LLMS.txt para aparecer em AI Overviews?",
+      answer: "Não. Documentações oficiais do Google esclarecem que arquivos LLMS.txt ou marcações proprietárias de IA não são utilizados pelo buscador para exibir conteúdo em AI Overviews [1]."
+    },
+    {
+      question: "O que é o efeito 'ski ramp' nas citações de AI Overviews?",
+      answer: "É o padrão observado em estudos de citação (como o da CXL) onde mais de 55% das referências utilizadas pelas AI Overviews provêm dos primeiros 30% do conteúdo da página, demonstrando a importância de posicionar respostas claras logo no início do texto [4]."
+    }
+  ],
+};

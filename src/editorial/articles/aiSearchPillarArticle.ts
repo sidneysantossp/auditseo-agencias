@@ -1,42 +1,55 @@
 import { ArticleData } from "../types";
+import { SIDNEY_AUTHOR, AUDIT_PUBLISHER } from "../registry";
 
 export const aiSearchPillarArticle: ArticleData = {
   id: "AUDITSEO-PILLAR-AI-SEARCH-001",
-  slug: "ai-search",
-  route: "/guias/ai-search",
+  slug: "/guias/ai-search",
   title: "AI Search: como a inteligência artificial está mudando a busca e a descoberta de informação",
   subtitle: "AI Search amplia a descoberta orgânica para ambientes em que sistemas podem recuperar, combinar e sintetizar informações em respostas generativas. Entenda como observar presença, representação, fontes, citações e consistência sem confundir hipótese com funcionamento interno comprovado.",
   description: "Guia canônico da AUDITSEO sobre AI Search, cobrindo a evolução das experiências generativas, o modelo editorial de análise, a ponte com Entity Authority e a disciplina de Evidence Governance.",
-  author: {
-    name: "Sidney Santos",
-    role: "Fundador e Head de Search Intelligence",
-    url: "/autor/sidney-santos",
-  },
-  publishedAt: "2026-08-13",
-  updatedAt: "2026-08-13",
-  readingTime: "16 min de leitura",
-  featuredImage: "/images/guides/ai-search/featured.webp",
-  featuredImageAlt: "Representação abstrata de nós de conhecimento e síntese em inteligência artificial",
-  cluster: "AI Search",
-  primaryEntity: "AI Search",
-  relatedEntities: [
-    "Sidney Santos",
-    "AUDITSEO",
-    "Search Intelligence",
-    "Entity Authority",
-    "AI Overviews",
-    "Retrieval-Augmented Generation",
-  ],
-  parent: "/guias/ai-search",
-  previous: "/guias/corroboracao-de-entidade",
-  next: "/guias/ai-overviews",
-  evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
-  commercialRelation: "/solucoes/autoridade-de-entidade",
   status: "PUBLISHED",
+  type: "GUIDE",
+  cluster: "AI_SEARCH",
+  secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE"],
+  author: SIDNEY_AUTHOR,
+  publisher: AUDIT_PUBLISHER,
+  datePublished: "2026-08-13",
+  dateModified: "2026-08-13",
+  readingTime: "16 min",
+  featuredImage: {
+    src: "/images/guides/ai-search/featured.webp",
+    alt: "Representação abstrata de nós de conhecimento e síntese em inteligência artificial",
+    width: 1200,
+    height: 630,
+  },
+  parent: { title: "AI Search", href: "/guias/ai-search" },
+  previous: { title: "Corroboração de Entidade", href: "/guias/corroboracao-de-entidade" },
+  next: { title: "AI Overviews", href: "/guias/ai-overviews" },
+  related: [
+    { title: "Entity Authority", href: "/guias/entity-authority", tag: "Guia" },
+    { title: "Search Intelligence Lab", href: "/estudos-busca-ia", tag: "Lab" },
+  ],
+  evidence: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
+  commercialRelation: { title: "Autoridade de Entidade", href: "/solucoes/autoridade-de-entidade" },
+  topicGraph: {
+    id: "AUDITSEO-PILLAR-AI-SEARCH-001",
+    type: "GUIDE",
+    cluster: "AI_SEARCH",
+    secondaryClusters: ["SEO", "SEARCH_INTELLIGENCE"],
+    primaryEntity: "AI Search",
+    relatedEntities: ["Sidney Santos", "AUDITSEO", "Search Intelligence", "Entity Authority", "AI Overviews"],
+    parent: "/guias/ai-search",
+    previous: "/guias/corroboracao-de-entidade",
+    next: "/guias/ai-overviews",
+    evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
+    commercialRelation: "/solucoes/autoridade-de-entidade",
+    status: "PUBLISHED",
+  },
   sections: [
     {
       id: "introducao",
       title: "A mudança no objeto observado: de links a respostas sintéticas",
+      level: 2,
       content: `Durante muito tempo, acompanhar busca orgânica significava observar documentos, posições, snippets e páginas de resultado. Esse modelo continua relevante e constitui a base operacional do SEO tradicional.
 
 Mas quando uma interface passa a produzir uma resposta sintética antes, ao lado ou no lugar de parte dos resultados tradicionais, o objeto da análise muda. Já não queremos observar apenas qual URL apareceu, mas também qual entidade foi representada, quais atributos apareceram, que organização foi associada, quais fontes foram apresentadas e se essa representação permanece consistente ao repetir a observação.
@@ -46,6 +59,7 @@ Para mim, esta é uma das mudanças mais interessantes de AI Search: ela não el
     {
       id: "o-que-e-ai-search",
       title: "O que é AI Search?",
+      level: 2,
       content: `Para estruturar nossa análise, definimos **AI Search** de maneira operacional através do nosso modelo editorial:
 
 > **AI Search é o conjunto de experiências de busca e descoberta em que sistemas utilizam recursos de inteligência artificial para interpretar consultas, recuperar informações, sintetizar respostas, organizar fontes ou representar entidades em formatos que vão além da lista tradicional de resultados.**
@@ -55,6 +69,7 @@ Essa definição organiza o território editorial da AUDITSEO. Ela não represen
     {
       id: "nao-existe-uma-unica-ai-search",
       title: "Não existe uma única AI Search: o mapa de superfícies observáveis",
+      level: 2,
       content: `Um dos erros mais comuns ao analisar a busca generativa é tratá-la como um bloco monolítico. Na prática, observamos múltiplos ambientes com comportamentos divergentes:
 
 1. **Google AI Overviews**: Resumos generativos integrados na SERP tradicional, acompanhados de carrosséis de fontes visíveis e links orgânicos concomitantes.
@@ -67,6 +82,7 @@ Tratar todos esses sistemas como se obedecessem a um único comportamento de ran
     {
       id: "busca-tradicional-vs-experiencia-generativa",
       title: "Busca tradicional vs. experiência generativa: continuidade e expansão",
+      level: 2,
       content: `Eu não vejo AI Search como uma substituição limpa e imediata do SEO tradicional. Vejo como uma expansão do conjunto de superfícies que precisamos monitorar e compreender.
 
 Enquanto a SERP tradicional organiza documentos por relevância algorítmica e exibe links, títulos e snippets estruturados, a experiência generativa agrupa múltiplos fluxos: ela pode recuperar documentos, extrair passagens, combiná-las em um texto coeso, associar entidades a Sidney Santos ou à AUDITSEO e exibir fontes de apoio. 
@@ -76,6 +92,7 @@ No entanto, os fundamentos técnicos da web continuam operando. O rastreamento (
     {
       id: "search-intelligence",
       title: "Por que olhar AI Search através de Search Intelligence",
+      level: 2,
       content: `Na AUDITSEO, abordamos esse território através do método de **Search Intelligence**, que fundamenta nossa governança de evidências:
 
 - **Observe**: Monitorar o comportamento real das superfícies de busca sem viés de torcida.
@@ -91,6 +108,7 @@ Começamos sempre pela observação empírica dos fatos antes de ditar qualquer 
     {
       id: "modelo-editorial-auditseo",
       title: "O Modelo Editorial AUDITSEO de AI Search",
+      level: 2,
       content: `Para organizar a análise de como a informação flui em ambientes generativos, estruturamos o **Modelo Editorial AUDITSEO**. 
 
 > *Este modelo organiza a análise editorial da AUDITSEO. Ele não afirma representar a arquitetura interna proprietária de nenhuma plataforma específica.*
@@ -108,6 +126,7 @@ Começamos sempre pela observação empírica dos fatos antes de ditar qualquer 
     {
       id: "entity-authority-bridge",
       title: "A ponte com Entity Authority: representação vs. presença",
+      level: 2,
       content: `O mini-cluster anterior de **Entity Authority** estabeleceu que a visibilidade em sistemas modernos depende de como uma entidade está estruturada na web. No contexto de AI Search, essa fundação se conecta diretamente à análise de representação:
 
 - **Entity**: Quem ou o que está sendo representado na resposta.
@@ -122,6 +141,7 @@ Um dos aprendizados mais críticos de nossa pesquisa é que **Entity Presence** 
     {
       id: "framework-de-representacao",
       title: "O Framework de Representação de Entidades em AI Search",
+      level: 2,
       content: `Para auditar o comportamento de respostas generativas em relação a uma entidade, utilizamos o seguinte framework de verificação:
 
 - **Entity Found?** (Sim / Não) — A entidade foi localizada ou mencionada pelo sistema?
@@ -135,16 +155,18 @@ Um dos aprendizados mais críticos de nossa pesquisa é que **Entity Presence** 
     {
       id: "evidencia-do-lab",
       title: "Evidências empíricas do Search Intelligence Lab",
+      level: 2,
       content: `Nossas análises são lastreadas por investigações reais publicadas no **Search Intelligence Lab**:
 
-- **Observation #001** (`/estudos-busca-ia/reconhecimento-de-entidade-por-contexto`): Demonstra como a alteração de contexto temático influencia diretamente a desambiguação correta de uma entidade por sistemas de recuperação e IA.
-- **Observation #002** (`/estudos-busca-ia/entidade-correta-atributo-incorreto-ai-search`): Analisa o fenômeno crítico em que a IA reconhece perfeitamente a entidade e a organização, mas recupera um atributo temporal conflitante (2009 vs. 2013).
+- **Observation #001** (/estudos-busca-ia/reconhecimento-de-entidade-por-contexto): Demonstra como a alteração de contexto temático influencia diretamente a desambiguação correta de uma entidade por sistemas de recuperação e IA.
+- **Observation #002** (/estudos-busca-ia/entidade-correta-atributo-incorreto-ai-search): Analisa o fenômeno crítico em que a IA reconhece perfeitamente a entidade e a organização, mas recupera um atributo temporal conflitante (2009 vs. 2013).
 
 Esses registros provam que a presença visível em um resumo gerado por IA exige monitoramento contínuo da acurácia semântica.`,
     },
     {
       id: "o-que-nao-sabemos",
       title: "O que não sabemos: limites metodológicos e mitos",
+      level: 2,
       content: `Em consonância com nossa política de *Evidence Governance*, é essencial declarar abertamente os limites do que é possível afirmar sobre AI Search:
 
 - **Não conhecemos os pesos internos** de ranqueamento, indexação ou seleção de fontes dos modelos proprietários.
@@ -157,12 +179,13 @@ Evitamos dogmas do tipo "use schema e será citado" ou "Entity Home garante AI O
     {
       id: "conclusao-e-proximos-passos",
       title: "Próximos passos no ecossistema de AI Search",
+      level: 2,
       content: `Este Pillar estabelece a fundação conceitual e metodológica para o ecossistema de AI Search da AUDITSEO. Nosso roadmap prevê a expansão gradual com supporting contents dedicados a AI Overviews (#007), recuperação de informação e RAG (#008), análise de citações e fontes (#009) e medição de visibilidade (#010).
 
 Para agências e empresas que desejam auditar como suas marcas, entidades e atributos estão sendo representados em ecossistemas de busca generativa, convidamos a conhecer nossa solução comercial de [Autoridade de Entidade](/solucoes/autoridade-de-entidade) ou a explorar nossos estudos empíricos no [Search Intelligence Lab](/estudos-busca-ia).`,
     },
   ],
-  faqs: [
+  faq: [
     {
       question: "AI Search substitui o SEO tradicional?",
       answer: "Não. AI Search expande a descoberta orgânica para interfaces generativas, mas os fundamentos técnicos de crawling, indexação, acessibilidade e estruturação semântica continuam essenciais para que os sistemas acessem o conteúdo.",
