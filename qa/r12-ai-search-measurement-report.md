@@ -18,7 +18,7 @@
 | Local / remote sync no pre-gate | **PASS** |
 | R11 persistida | **PASS** |
 
-O trabalho R12 partiu do HEAD remoto confirmado após o closeout R11. O primary remote não foi usado como fonte editorial paralela.
+O trabalho R12 partiu do HEAD remoto confirmado após o closeout R11. O primary remote não foi usado como fonte editorial paralela. A implementação e o QA foram persistidos no commit `004985a8e2591112564e43b185da67139d1d0fb2`; após o push, `backup/main` apontou para o mesmo hash.
 
 ## 2. Publication Contract
 
