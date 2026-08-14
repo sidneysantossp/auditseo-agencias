@@ -6,16 +6,15 @@
 
 ---
 
-## 1. Pre-Gate R14 (Audit of R13.1)
+## 1. Pre-Gate R14 & Governance Reconciliation (R14.1 Update)
 * **Cluster Maturity:** `RESEARCH-READY`
 * **Research-Ready:** `YES`
-* **Highest Value Research Question:** `RQ-CIT-001` (Correlação entre citação visual e tráfego de referral).
-* **Next Best Action:** `E — no new asset yet` (consistente com a consolidação empírica do Lab sem criação de motores de rastreio ou plataformas comerciais).
-* **Commercial Bridge:** `STRONG` (Destino canônico: `/diagnostico`).
-* **Productization Potential:** `HIGH` (via Measurement Contract e Observation Records).
-* **Public Truth:** `NOT VERIFIED` (restrito a local QA e backup remote).
-* **Critical / High Gaps:** `0`
-* **R14 Authorized by Pre-Gate:** **YES**
+* **Highest Value Research Question:** `RQ-CIT-001` (Correlação entre citação visual e tráfego de referral — classificado como `DEFERRED`).
+* **Next Best Action (R13.1):** `E — no new asset yet`
+* **Pre-Gate R14 Authorized Actually:** `NO` (gerando registro de desvio formal `DEV-R14-001` em `qa/research/r14/r14-governance-deviation.md`).
+* **Governance Deviation Severity:** `LOW` (sem impacto na integridade científica, pois o pré-registro ocorreu antes da coleta).
+* **Data Integrity Impact:** `NONE`
+* **Public Deployment Status:** `NOT VERIFIED` (status editorial `PUBLISHED` no registry local, sem verificação de produção externa).
 
 ---
 
