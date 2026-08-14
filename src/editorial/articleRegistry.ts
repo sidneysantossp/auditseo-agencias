@@ -8,6 +8,7 @@ import { entityCorroborationArticle } from "./articles/entityCorroborationArticl
 import { aiSearchPillarArticle } from "./articles/aiSearchPillarArticle";
 import { aiOverviewsArticle } from "./articles/aiOverviewsArticle";
 import { aiInformationRetrievalArticle } from "./articles/aiInformationRetrievalArticle";
+import { aiCitationsAttributionArticle } from "./articles/aiCitationsAttributionArticle";
 
 export const articles: ArticleData[] = [
   entitySeoArticle,
@@ -19,4 +20,5 @@ export const articles: ArticleData[] = [
   aiSearchPillarArticle,
   aiOverviewsArticle,
   aiInformationRetrievalArticle,
+  aiCitationsAttributionArticle,
 ];

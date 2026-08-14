@@ -1,0 +1,238 @@
+import { ArticleData } from "../types";
+import { SIDNEY_AUTHOR, AUDIT_PUBLISHER } from "../registry";
+
+export const aiCitationsAttributionArticle: ArticleData = {
+  id: "AUDITSEO-ARTICLE-AISEARCH-009",
+  slug: "/guias/citacoes-e-fontes-em-ai-search",
+  title: "Citações e atribuição em respostas de IA: o que conseguimos observar",
+  subtitle: "Como analisar citations, fontes, menções e atribuição em respostas generativas sem confundir eventos de interface com o mecanismo interno de seleção. Entenda os estados observáveis, a diferença para backlinks e os limites da análise externa.",
+  description: "Guia canônico da AUDITSEO sobre citações, fontes e atribuição em AI Search, separando source, citation, mention e attribution com rigor metodológico.",
+  status: "PUBLISHED",
+  type: "SUPPORTING",
+  cluster: "AI_SEARCH",
+  secondaryClusters: ["SEARCH_INTELLIGENCE", "ENTITY_AUTHORITY", "SEO"],
+  author: SIDNEY_AUTHOR,
+  publisher: AUDIT_PUBLISHER,
+  datePublished: "2026-08-14",
+  dateModified: "2026-08-14",
+  readingTime: "18 min",
+  featuredImage: {
+    src: "/images/guides/citacoes-e-fontes-em-ai-search/featured.webp",
+    alt: "Representação visual de uma resposta generativa conectada a múltiplas fontes e relações de atribuição.",
+    width: 1200,
+    height: 630,
+  },
+  parent: { title: "AI Search", href: "/guias/ai-search" },
+  previous: { title: "Recuperação de Informação em AI Search", href: "/guias/recuperacao-de-informacao-ai-search" },
+  related: [
+    { title: "AI Search", href: "/guias/ai-search", tag: "Guia" },
+    { title: "AI Overviews", href: "/guias/ai-overviews", tag: "Guia" },
+    { title: "Recuperação de Informação", href: "/guias/recuperacao-de-informacao-ai-search", tag: "Guia" },
+    { title: "Search Intelligence", href: "/guias/search-intelligence", tag: "Guia" },
+  ],
+  evidence: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
+  commercialRelation: { title: "Diagnóstico de Autoridade e AI Search", href: "/diagnostico" },
+  topicGraph: {
+    id: "AUDITSEO-ARTICLE-AISEARCH-009",
+    type: "SUPPORTING",
+    cluster: "AI_SEARCH",
+    secondaryClusters: ["SEARCH_INTELLIGENCE", "ENTITY_AUTHORITY", "SEO"],
+    primaryEntity: "Citations and Attribution",
+    relatedEntities: ["Source", "Citation", "Mention", "Attribution", "Sidney Santos"],
+    parent: "/guias/ai-search",
+    previous: "/guias/recuperacao-de-informacao-ai-search",
+    evidenceLinks: ["AUDITSEO-OBS-001", "AUDITSEO-OBS-002"],
+    commercialRelation: "/diagnostico",
+    status: "PUBLISHED",
+  },
+  sections: [
+    {
+      id: "introducao",
+      title: "1. Introdução: o que a interface exibe e o que ela oculta",
+      level: 2,
+      content: `<p>Imagine uma resposta generativa apresentada na página de resultados de uma plataforma de busca ou assistente conversacional. No topo da tela, um texto coeso sintetiza conceitos complexos, acompanhado por três cards de fontes visíveis ou notas de rodapé numeradas [1] [2]. Diante dessa cena, a tentação do mercado é imediata: tratar os links exibidos como um ranking tradicional, assumindo que aparecer ali significa que a plataforma realizou um voto de confiança, transferiu autoridade ou coroou o domínio como a principal referência do setor.</p><p>No entanto, a governança de evidências da AUDITSEO adota uma premissa fundamental:</p><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\"><strong>Uma fonte aparecer em uma resposta generativa é um evento observável de interface. Isso não nos dá acesso automático ao motivo da seleção, ao peso da fonte, ao conjunto completo de documentos recuperados ou à contribuição exata daquela fonte para a geração.</strong></blockquote><p>Neste guia, desdobramos as diferenças entre <strong>source</strong>, <strong>citation</strong>, <strong>mention</strong> e <strong>attribution</strong>, examinamos por que citation não é backlink e estruturamos modelos analíticos para investigar superfícies sem cair em mitos de otimização.</p>`,
+    },
+    {
+      id: "definitions",
+      title: "2. Source vs. Citation vs. Mention vs. Attribution",
+      level: 2,
+      content: `<p>Um dos maiores problemas nas discussões de SEO e IA é o uso intercambiável de termos que descrevem fenômenos completamente diferentes na interface e na pipeline. Para manter rigor analítico, definimos quatro objetos distintos:</p><ul class=\"space-y-3 my-4\"><li><strong>Source (Fonte):</strong> O documento, página, domínio ou recurso apresentado ou associado à resposta em determinada interface [1].</li><li><strong>Citation (Citação):</strong> A referência explícita (como nota de rodapé, link ou card) apresentada ao usuário que associa parte da resposta a uma fonte identificável [2].</li><li><strong>Mention (Menção):</strong> A aparição nominal ou identificável de uma marca, pessoa, organização, produto ou entidade dentro do texto gerado, podendo ocorrer com ou sem link ou citação [3].</li><li><strong>Attribution (Atribuição):</strong> A relação observável em que uma afirmação, trecho ou ideia é apresentada como associada a determinada fonte, autor, organização ou referência.</li></ul><p>Confundir uma menção sem link com uma citação oficial ou supor que toda fonte citada é a única base de conhecimento do modelo gera leituras equivocadas sobre a presença digital das marcas.</p>`,
+    },
+    {
+      id: "five-observable-states",
+      title: "3. O Modelo de Cinco Estados Observáveis",
+      level: 2,
+      content: `<p>Para classificar o que capturamos em campo, estruturamos o <strong>AUDITSEO Five Observable States Model</strong>, que categoriza a presença de entidades e fontes nas respostas:</p><ol class=\"space-y-3 list-decimal list-inside my-4\"><li><strong>Estado A — Entity Mentioned, Source Absent:</strong> A marca ou entidade é citada no texto gerado, mas nenhum domínio oficial ou externo aparece como link de apoio na interface.</li><li><strong>Estado B — Entity Mentioned, Official Source Present:</strong> A entidade aparece no texto e o domínio oficial da organização é exibido como fonte ou citação visível.</li><li><strong>Estado C — Entity Mentioned, Third-Party Source Present:</strong> A entidade é citada, mas as fontes visíveis pertencem a terceiros (imprensa, diretórios, agregadores ou fóruns), sem link direto para o site oficial.</li><li><strong>Estado D — Source Present, Entity Not Central:</strong> Uma fonte institucional aparece na interface, mas a organização não é o tema central da resposta gerada.</li><li><strong>Estado E — Source + Citation + Explicit Attribution:</strong> A resposta exibe citação visível, link oficial e atribuição clara vinculando a claim à fonte original.</li></ol><p>Esses estados são descritivos e analíticos; não existe uma progressão linear automática ou garantia de conversão entre eles.</p>`,
+    },
+    {
+      id: "citation-not-authority",
+      title: "4. Citation ≠ Authority e Citation ≠ Endorsement",
+      level: 2,
+      content: `<p>Um mito persistente no ecossistema de marketing é a crença de que ser citado por uma inteligência artificial equivale a um atestado de autoridade máxima ou recomendação endossada. Quando uma plataforma exibe uma citação, ela está indicando que aquela referência foi considerada relevante para compor o contexto da resposta segundo os critérios da consulta e da pipeline [1] [2].</p><p>Isso não prova automaticamente que o motor considera o site um especialista indiscutível, nem que a plataforma está endossando comercialmente os produtos daquela empresa. Uma página pode ser citada por conter dados tabulares claros sobre um tema técnico, mesmo que a marca seja desconhecida do público geral. Separar o uso utilitário da fonte do endosso de marca é indispensável para evitar falsas expectativas estratégicas.</p>`,
+    },
+    {
+      id: "citation-not-backlink",
+      title: "5. Citation ≠ Backlink e Citation ≠ Link Equity",
+      level: 2,
+      content: `<p>Com frequência, o mercado tenta importar conceitos consolidados do SEO clássico para o ambiente de IA, tratando citations como se fossem "backlinks 2.0". Essa analogia falha por motivos estruturais fundamentais:</p><ul class=\"space-y-3 my-4\"><li><strong>Backlink Tradicional:</strong> Um hiperlink inserido no código HTML de uma página web por um autor, persistente no documento e utilizado historicamente como sinal de conectividade e fluxo de PageRank.</li><li><strong>Citation em Resposta Generativa:</strong> Um elemento dinâmico renderizado na interface de um assistente ou motor de busca, condicionado à consulta específica do usuário, podendo aparecer, desaparecer ou mudar entre sessões.</li></ul><p>Presumir que uma citação em IA transfere "link equity" ou funciona como um voto permanente de ranking é ignorar a volatilidade das superfícies generativas e a ausência de documentação corroborando essa mecânica.</p>`,
+    },
+    {
+      id: "source-order-and-concentration",
+      title: "6. Source Order, Concentration e Volatility",
+      level: 2,
+      content: `<p>Outro ponto crítico na análise de superfícies é a interpretação da ordem e da concentração das fontes. Ver a fonte A na primeira posição dos cards de apoio não significa necessariamente que ela possui maior peso interno que a fonte B; a ordenação pode refletir critérios de interface, diversidade de domínios ou agrupamento temático [1] [2].</p><p>Da mesma forma, <strong>Source Concentration</strong> descreve se as citações de uma resposta vêm de um único domínio ou de múltiplos domínios independentes. Alta concentração não indica superioridade qualitativa automática, assim como volatilidade de fontes (mudanças nas citações entre consultas semanticamente próximas) reflete a sensibilidade do sistema ao contexto da query, e não instabilidade de autoridade do site.</p>`,
+    },
+    {
+      id: "answer-source-alignment",
+      title: "7. AUDITSEO Answer-Source Alignment Model",
+      level: 2,
+      content: `<p>Para avaliar se a fonte exibida realmente sustenta o que a resposta afirma, utilizamos o <strong>AUDITSEO Answer-Source Alignment Model</strong>, classificado qualitativamente em:</p><ul class=\"space-y-3 my-4\"><li><strong>Directly Aligned:</strong> O conteúdo da fonte sustenta de forma direta e inequívoca a claim apresentada na resposta.</li><li><strong>Partially Aligned:</strong> A fonte aborda o tema, mas a claim específica é uma extrapolação ou síntese parcial do documento.</li><li><strong>Weakly Aligned:</strong> A relação entre a fonte e a afirmação é tangencial ou frágil.</li><li><strong>Conflicting:</strong> A fonte apresenta dados ou conclusões divergentes do que a resposta afirma.</li><li><strong>Unclear / Not Assessable:</strong> A fonte não está acessível ou o alinhamento não pode ser verificado externamente.</li></ul><p>Esse modelo permite auditar a qualidade da atribuição sem recorrer a scores numéricos arbitrários.</p>`,
+    },
+    {
+      id: "bridges-to-entity-authority",
+      title: "8. Conexões com Entity Authority e Search Intelligence",
+      level: 2,
+      content: `<p>A análise de citações e fontes conecta-se diretamente aos demais pilares da AUDITSEO. A <a href=\"/guias/entity-home\">Entity Home</a> atua como fonte controlada de identidade e contexto, enquanto a <a href=\"/guias/desambiguacao-de-entidades\">Desambiguação</a> e a <a href=\"/guias/consistencia-de-entidade\">Consistência</a> ajudam a compreender como o ecossistema lida com homônimos e conflitos de atributos. As observações <a href=\"/estudos-busca-ia/reconhecimento-de-entidade-por-contexto\">#001</a> e <a href=\"/estudos-busca-ia/entidade-correta-atributo-incorreto-ai-search\">#002</a> do <a href=\"/estudos-busca-ia\">Search Intelligence Lab</a> demonstram que uma entidade reconhecida corretamente pode vir acompanhada de atributos incorretos ou representações sensíveis ao contexto, reforçando que citação e acurácia não são garantias automáticas.</p>`,
+    },
+    {
+      id: "myth-audit",
+      title: "9. Afirmações sobre citações em IA que eu trataria com cautela",
+      level: 2,
+      content: `<p>Muitas narrativas de mercado sobre citações em IA carecem de sustentação metodológica:</p><ul class=\"space-y-3 my-4\"><li><strong>“Citation é o novo backlink.”</strong> — Unsupported. Mecanismos e persistência são totalmente distintos.</li><li><strong>“Ser citado significa que a IA confia na marca.”</strong> — Unsupported. Trata-se de uso contextual de evidência, e não de endosso moral.</li><li><strong>“Schema aumenta citation probability.”</strong> — Needs Evidence. Dados estruturados ajudam na interpretação, mas não garantem citação.</li><li><strong>“Quanto mais citações, melhor o ranking.”</strong> — Not Established. Superfícies generativas não operam com contagem de citações como fator de ranqueamento linear.</li></ul><p>Separar o que é observável na interface do que é suposto na arquitetura interna é o diferencial de uma análise madura.</p>`,
+    },
+    {
+      id: "citation-retrieval-boundary",
+      title: "10. Citation ≠ Retrieval Trace",
+      level: 2,
+      content: `<p>O artigo anterior do cluster já estabeleceu a fronteira entre uma fonte visível e o conjunto completo de informação potencialmente recuperada. Aqui, essa fronteira recebe uma consequência prática: <strong>contar citações na interface não é contar candidatos de retrieval</strong>. Uma resposta pode mostrar cinco links quando muitos outros documentos foram considerados, ou exibir uma fonte representativa depois de um processo que envolveu consultas auxiliares e documentos que não foram apresentados ao usuário.</p><p>O número de citations visíveis também não nos informa quantos trechos foram efetivamente usados, qual fonte sustentou qual sentença ou qual documento foi descartado. Em algumas superfícies, uma mesma fonte pode ser anexada a uma resposta ampla; em outras, a referência pode aparecer junto de um trecho específico. Essa diferença de granularidade precisa ser registrada antes de qualquer comparação.</p><p>Assim, a observação adequada é: <em>cinco citations foram exibidas para esta resposta, nesta superfície, nesta data e nesta query</em>. A formulação inadequada seria: <em>cinco documentos foram recuperados e tiveram o mesmo peso</em>. A primeira frase descreve o output. A segunda inventa o pipeline.</p>`,
+    },
+    {
+      id: "cited-source-knowledge",
+      title: "11. Cited Source ≠ Only Knowledge Source",
+      level: 2,
+      content: `<p>Uma source visível pode fazer parte do contexto externo, do material de grounding ou de uma camada de apresentação de referências. Entretanto, a resposta também pode refletir conhecimento paramétrico, outras fontes não exibidas, sínteses de múltiplos documentos, memória de conversa ou processos específicos da plataforma. A interface geralmente não oferece uma decomposição causal que permita atribuir cada palavra a um único documento.</p><p>Essa indeterminação é particularmente importante quando uma resposta mistura fatos verificáveis, contexto histórico e uma recomendação. A source exibida pode sustentar apenas a primeira parte; o restante pode ter sido sintetizado ou completado por outra camada. Atribuir toda a resposta à primeira citation seria uma forma de over-attribution.</p><blockquote class=\"border-l-4 border-amber-500 pl-4 my-4 italic text-neutral-300\">Uma citation me diz que uma fonte apareceu. Ela não me entrega o raciocínio interno que levou até ali.</blockquote><p>O procedimento responsável é decompor a resposta em claims e testar o alinhamento de cada uma com o conteúdo acessível da source. Quando não for possível, a classificação deve ser <strong>NOT ASSESSABLE</strong>, e não uma inferência de que a página foi a origem exclusiva do conhecimento.</p>`,
+    },
+    {
+      id: "entity-source-matrix",
+      title: "12. Entity Presence ≠ Source Presence",
+      level: 2,
+      content: `<p>Entity visibility e source visibility representam dimensões distintas. Uma empresa pode ser mencionada no texto sem que seu domínio oficial seja exibido. Uma página pode aparecer como source porque contém um fato relevante, enquanto a marca associada não é o objeto central da resposta. A ausência de um link oficial não equivale à ausência da entidade no conhecimento representado pela resposta.</p><table class=\"w-full text-sm my-6 border-collapse\"><thead><tr><th class=\"text-left border-b border-neutral-700 p-2\">Dimensão</th><th class=\"text-left border-b border-neutral-700 p-2\">Valores observáveis</th><th class=\"text-left border-b border-neutral-700 p-2\">O que não permite concluir</th></tr></thead><tbody><tr><td class=\"border-b border-neutral-800 p-2\">Entity present?</td><td class=\"border-b border-neutral-800 p-2\">Yes / No</td><td class=\"border-b border-neutral-800 p-2\">Não permite concluir que a entidade foi recuperada como source.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Official source present?</td><td class=\"border-b border-neutral-800 p-2\">Yes / No</td><td class=\"border-b border-neutral-800 p-2\">Não permite concluir que a fonte oficial causou a menção.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Third-party source present?</td><td class=\"border-b border-neutral-800 p-2\">Yes / No</td><td class=\"border-b border-neutral-800 p-2\">Não permite concluir que terceiros são sempre superiores.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Citation present?</td><td class=\"border-b border-neutral-800 p-2\">Yes / No</td><td class=\"border-b border-neutral-800 p-2\">Não permite concluir autoridade ou endosso.</td></tr><tr><td class=\"p-2\">Attribution present?</td><td class=\"p-2\">Yes / No</td><td class=\"p-2\">Não permite concluir que a atribuição é correta sem conferir o conteúdo.</td></tr></tbody></table><p>Essa matriz é descritiva. Ela não cria uma hierarquia automática entre estados nem transforma presença em um KPI. Seu valor está em impedir que entity mention, official source e explicit attribution sejam colapsados em uma única variável.</p>`,
+    },
+    {
+      id: "source-taxonomy",
+      title: "13. Official, Controlled e Independent Sources",
+      level: 2,
+      content: `<p>Uma fonte pode ser classificada pela relação que mantém com a entidade mencionada, sem que a categoria seja convertida em uma nota de qualidade universal:</p><ul class=\"space-y-3 my-4\"><li><strong>Official owned source:</strong> página controlada pela própria organização, como site institucional, documentação ou perfil oficial.</li><li><strong>Controlled external source:</strong> presença externa em que a organização possui algum controle editorial ou operacional, como um perfil verificado, uma publicação assinada ou uma base administrada.</li><li><strong>Independent external source:</strong> veículo, especialista, comunidade, diretório, marketplace ou publicação que não é controlado pela organização.</li></ul><p>Uma source independente pode fornecer contexto que o site oficial não apresenta, mas isso não a torna automaticamente mais confiável. Da mesma forma, uma página oficial pode ter informação desatualizada. O trabalho de attribution accuracy exige conferir o conteúdo concreto, a data, o autor, a relação com a entidade e a compatibilidade com a claim, não aplicar uma regra simplista de origem.</p><p>A <a href=\"/guias/corroboracao-de-entidade\">corroboração de entidade</a> ajuda a analisar se informações compatíveis aparecem em diferentes pontos do ecossistema. Ela não é um citation factor comprovado. A <a href=\"/guias/autoria-seo\">autoria</a> pode ser observada quando uma fonte possui autor identificável; isso não significa que author schema ou expert author gerem citation. A <a href=\"/guias/entity-home\">Entity Home</a> permanece uma fonte controlada de identidade, não uma citation anchor.</p>`,
+    },
+    {
+      id: "attribution-accuracy",
+      title: "14. Attribution Accuracy e Answer-Source Alignment",
+      level: 2,
+      content: `<p>Uma citação pode estar presente e, ainda assim, a atribuição ser imprecisa. Por isso, a pergunta não deve ser apenas <em>qual source apareceu?</em>, mas também <em>o que exatamente essa source sustenta?</em> O framework de <strong>Attribution Accuracy</strong> propõe cinco perguntas operacionais:</p><ol class=\"space-y-3 list-decimal list-inside my-4\"><li>A source apresentada realmente sustenta a claim?</li><li>A claim foi atribuída à organização correta?</li><li>O conteúdo citado contém informação compatível, atual e no contexto correto?</li><li>A source pertence à entidade mencionada ou apenas fala sobre ela?</li><li>Existe mismatch entre o texto da resposta e o que o documento diz?</li></ol><p>Para classificar a relação, o <strong>AUDITSEO Answer-Source Alignment Model</strong> utiliza estados qualitativos: <strong>DIRECTLY ALIGNED</strong>, quando a fonte apoia claramente a claim; <strong>PARTIALLY ALIGNED</strong>, quando apoia apenas parte; <strong>WEAKLY ALIGNED</strong>, quando a relação é tangencial; <strong>CONFLICTING</strong>, quando há contradição; <strong>UNCLEAR</strong>, quando o conteúdo está indisponível; e <strong>NOT ASSESSABLE</strong>, quando não há base suficiente para verificar.</p><p>O modelo é uma classificação editorial externa. Não é uma representação do score interno da plataforma e não deve ser reduzido a uma escala de 0 a 100.</p>`,
+    },
+    {
+      id: "claim-source-mapping",
+      title: "15. Claim Map: da afirmação à fonte visível",
+      level: 2,
+      content: `<p>Quando a resposta possui citações explícitas, o pesquisador pode construir um <strong>Claim Map</strong>. O fluxo é simples, mas não trivial:</p><pre class=\"bg-neutral-950 border border-neutral-800 rounded-lg p-4 my-6 overflow-x-auto\">ANSWER CLAIM\n↓\nVISIBLE CITATION\n↓\nSOURCE CONTENT\n↓\nALIGNMENT CLASSIFICATION\n↓\nATTRIBUTION ACCURACY\n↓\nLIMITATIONS</pre><p>Para cada claim relevante, registramos a entidade, o atributo, a source visível, se a citation está presente, a classificação de alinhamento, a precisão factual e as limitações. Se a resposta disser que uma empresa foi fundada em determinado ano e o link exibido trouxer apenas uma descrição de produto, a relação é no máximo parcialmente alinhada. Se o link abrir uma página indisponível, a classificação correta é não assessable.</p><p>Esse método não demonstra que a source causou a claim. Ele demonstra apenas se existe compatibilidade observável entre output e documento acessível. A diferença parece pequena, mas é a fronteira entre auditoria de atribuição e ficção sobre provenance interna.</p>`,
+    },
+    {
+      id: "citation-typology",
+      title: "16. Citation Typology e Source Role",
+      level: 2,
+      content: `<p>Para organizar observações sem sugerir que as plataformas usam estas classes internamente, a AUDITSEO propõe uma <strong>Editorial Analysis Taxonomy</strong>. Uma citation pode ser classificada pelo papel aparente que desempenha:</p><table class=\"w-full text-sm my-6 border-collapse\"><thead><tr><th class=\"text-left border-b border-neutral-700 p-2\">Tipo editorial</th><th class=\"text-left border-b border-neutral-700 p-2\">Função observável</th><th class=\"text-left border-b border-neutral-700 p-2\">Cuidado</th></tr></thead><tbody><tr><td class=\"border-b border-neutral-800 p-2\">Supporting citation</td><td class=\"border-b border-neutral-800 p-2\">Apoia a resposta como um todo ou um bloco de contexto.</td><td class=\"border-b border-neutral-800 p-2\">Não prova que sustentou cada frase.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Factual citation</td><td class=\"border-b border-neutral-800 p-2\">Acompanha um fato verificável.</td><td class=\"border-b border-neutral-800 p-2\">A fonte pode estar desatualizada.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Definitional citation</td><td class=\"border-b border-neutral-800 p-2\">É associada a uma definição ou conceito.</td><td class=\"border-b border-neutral-800 p-2\">Não converte a fonte em autoridade universal.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Comparative citation</td><td class=\"border-b border-neutral-800 p-2\">Acompanha contraste entre produtos, serviços ou entidades.</td><td class=\"border-b border-neutral-800 p-2\">Comparação pode não ser completa.</td></tr><tr><td class=\"p-2\">Official / third-party corroborative</td><td class=\"p-2\">Conecta uma afirmação a fonte oficial ou independente.</td><td class=\"p-2\">A categoria descreve o papel, não a qualidade.</td></tr></tbody></table><p>Complementarmente, classificamos a source como <strong>Source of Fact</strong>, <strong>Source of Definition</strong>, <strong>Source of Example</strong>, <strong>Source of Comparison</strong>, <strong>Source of Organization Information</strong> ou <strong>Source of Product Information</strong>. Esses rótulos tornam o dataset legível sem criar uma suposta taxonomia interna de LLMs.</p>`,
+    },
+    {
+      id: "diversity-concentration-volatility",
+      title: "17. Source Diversity, Concentration, Repetition e Volatility",
+      level: 2,
+      content: `<p>O conjunto de sources de uma resposta pode ser observado por diferentes ângulos. <strong>Source diversity</strong> descreve o número de domínios únicos, os tipos de fonte e a proporção entre fontes oficiais e externas. <strong>Source concentration</strong> descreve a diferença entre cinco citations vindas de um único domínio e cinco citations vindas de cinco domínios.</p><p>Essas medidas são estados descritivos. Diversidade não significa qualidade e concentração não significa manipulação. Um tema regulatório pode depender naturalmente de poucos órgãos oficiais; um tema cultural pode apresentar múltiplos veículos e fontes comunitárias. A interpretação depende da query, do mercado, da data e da superfície.</p><p><strong>Source repetition</strong> observa se o mesmo domínio aparece em queries, datas ou sistemas diferentes. <strong>Source stability</strong> descreve a repetição de um conjunto ou subconjunto em observações comparáveis. Uma única aparição não é presença estável. <strong>Source volatility</strong> registra mudanças entre observações e deve considerar alterações de query, tempo, locale, sessão, sistema e interface.</p><p>Em nenhum desses casos usamos contagem como citation score, trust score ou authority score. O objetivo é capturar padrões para investigação, não transformar um recorte observacional em ranking.</p>`,
+    },
+    {
+      id: "citation-observation-framework",
+      title: "18. AUDITSEO Citation Observation Framework",
+      level: 2,
+      content: `<p>Uma investigação externa de citations começa pela captura do contexto. O framework principal da AUDITSEO registra:</p><table class=\"w-full text-sm my-6 border-collapse\"><thead><tr><th class=\"text-left border-b border-neutral-700 p-2\">Campo</th><th class=\"text-left border-b border-neutral-700 p-2\">Por que registrar</th></tr></thead><tbody><tr><td class=\"border-b border-neutral-800 p-2\">Query, system, surface, date, locale</td><td class=\"border-b border-neutral-800 p-2\">Delimita o evento e evita comparação de contextos diferentes.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Session / account state</td><td class=\"border-b border-neutral-800 p-2\">Registra personalização e estado da sessão quando observáveis.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Answer summary</td><td class=\"border-b border-neutral-800 p-2\">Permite mapear claims e representação de entidade.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Entity / organization mentioned</td><td class=\"border-b border-neutral-800 p-2\">Separa presença nominal de presença de source.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Official / third-party sources</td><td class=\"border-b border-neutral-800 p-2\">Registra taxonomia de origem sem juízo de qualidade.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Visible citation count / unique domains</td><td class=\"border-b border-neutral-800 p-2\">Descreve a interface e a concentração observada.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">Attribution / alignment / entity representation</td><td class=\"p-2\">Permite avaliar precisão e contexto da resposta.</td></tr></tbody></table><p>O registro termina com notas e limitações. Se um campo não puder ser observado, ele deve ser preenchido como desconhecido, não como zero. A ausência de fonte visível não é prova de ausência de recuperação; é ausência de evento de interface observável naquela captura.</p>`,
+    },
+    {
+      id: "source-claim-entity-maps",
+      title: "19. Source Map, Claim Map e Entity Map",
+      level: 2,
+      content: `<p>O <strong>Source Map</strong> descreve cada domínio e URL, source type, associação com entidade, official ou external, query, date, system, citation presente e alignment. O <strong>Claim Map</strong> relaciona a afirmação da resposta à entidade, ao atributo, à source visível, à citation, à classificação de alinhamento, à acurácia e às limitações. O <strong>Entity Map</strong> conecta pessoas, organizações, produtos, serviços, tópicos, domínios, autores e publishers.</p><p>Esses mapas cumprem funções diferentes. O Source Map é orientado ao documento. O Claim Map é orientado à afirmação. O Entity Map é orientado às relações e à representação. Juntos, permitem observar que uma resposta menciona uma organização, cita uma página de terceiro e atribui a ela um atributo que o documento não sustenta.</p><pre class=\"bg-neutral-950 border border-neutral-800 rounded-lg p-4 my-6 overflow-x-auto\">SOURCE MAP: domain | url | type | entity | official/external | query | date | system | citation | alignment\nCLAIM MAP: claim | entity | attribute | visible source | citation | alignment | accuracy | limits\nENTITY MAP: person | organization | product | service | topic | source domain | author | publisher</pre><p>Mapear não é afirmar provenance interna. É construir um artefato de comparação que torna o raciocínio auditável.</p>`,
+    },
+    {
+      id: "citation-evidence-levels",
+      title: "20. Citation Evidence Levels sem ranking",
+      level: 2,
+      content: `<p>Para comunicar proximidade da evidência sem criar uma métrica de performance, usamos níveis qualitativos:</p><ol class=\"space-y-3 list-decimal list-inside my-4\"><li><strong>Level 0 — Entity Only:</strong> a entidade aparece, mas não há source ou citation visível.</li><li><strong>Level 1 — Source Visible:</strong> uma source é apresentada na interface.</li><li><strong>Level 2 — Citation Visible:</strong> existe referência explícita e identificável.</li><li><strong>Level 3 — Claim-Source Alignment Observed:</strong> foi possível conferir alinhamento entre uma claim e o conteúdo da source.</li><li><strong>Level 4 — Platform-Documented Attribution Behavior:</strong> a própria plataforma documenta a relação observada.</li></ol><p>Os níveis não representam autoridade, qualidade, confiança, ranking ou probabilidade de conversão. Uma resposta Level 4 pode descrever um comportamento documentado de interface sem dizer por que uma determinada fonte foi selecionada. Uma resposta Level 1 pode ser perfeitamente útil, embora não permita avaliar attribution accuracy.</p>`,
+    },
+    {
+      id: "search-intelligence-workflow",
+      title: "21. Como eu investigaria citations em AI Search",
+      level: 2,
+      content: `<p>Minha abordagem começa antes da otimização. Eu não partiria de uma lista de técnicas para ser citado; partiria de uma pergunta de observação. O workflow é:</p><pre class=\"bg-neutral-950 border border-neutral-800 rounded-lg p-4 my-6 overflow-x-auto\">QUERY SET\n↓\nCAPTURE\n↓\nSOURCE MAP\n↓\nCLAIM MAP\n↓\nENTITY MAP\n↓\nREPEAT\n↓\nCOMPARE\n↓\nCLASSIFY\n↓\nINTERPRET</pre><p>Primeiro definimos um conjunto de queries comparáveis e registramos system, surface, locale, date e estado de sessão. Depois capturamos resposta, links, cards, mentions e contextos. A seguir, mapeamos sources, claims e entities separadamente. Apenas após repetir observações em condições comparáveis podemos descrever recorrência ou volatilidade.</p><p>O verbo final é interpretar, não provar. Se a mesma source aparece em três capturas, isso é uma observação de repetição. Não é prova de que a plataforma confia mais nela, nem de que o domínio tem authority score superior. A inferência deve permanecer na escala que o dado suporta.</p>`,
+    },
+    {
+      id: "source-citation-observability",
+      title: "22. AUDITSEO Source-Citation Observability Model",
+      level: 2,
+      content: `<p>O modelo de observabilidade organiza o caminho analítico sem fingir ser uma arquitetura de sistema:</p><pre class=\"bg-neutral-950 border border-neutral-800 rounded-lg p-4 my-6 overflow-x-auto\">ANSWER\n↓\nENTITY\n↓\nMENTION\n↓\nVISIBLE SOURCE\n↓\nVISIBLE CITATION\n↓\nATTRIBUTION\n↓\nCLAIM-SOURCE ALIGNMENT\n↓\nREPEAT OBSERVATION</pre><p>Em uma captura, podemos observar a resposta, reconhecer uma entidade, identificar uma mention, localizar uma source e verificar se existe citation. Podemos então conferir attribution e alignment quando o documento estiver acessível. O que não aparece nessa sequência é o conjunto de candidatos, a ordem interna de seleção, o peso da source ou os documentos descartados. Por isso, o modelo é explicitamente chamado de <strong>AUDITSEO Source-Citation Observability Model</strong>, um instrumento editorial de análise externa.</p>`,
+    },
+    {
+      id: "citation-decision-model",
+      title: "23. Citation Decision Model e Evidence Governance",
+      level: 2,
+      content: `<p>Quando alguém afirma que uma plataforma citou uma source por um determinado motivo, aplicamos uma árvore de decisão:</p><pre class=\"bg-neutral-950 border border-neutral-800 rounded-lg p-4 my-6 overflow-x-auto\">CLAIM: “Platform X cites source Y because Z.”\n↓\nZ É OFICIALMENTE DOCUMENTADO?\n├─ SIM → DOCUMENTADO.\n└─ NÃO\n   ↓\n   EXISTE TESTE CONTROLADO?\n   ├─ SIM → TESTADO, DENTRO DO PROTOCOLO.\n   └─ NÃO\n      ↓\n      A APARIÇÃO DA SOURCE É OBSERVÁVEL?\n      ├─ SIM → OBSERVADO.\n      └─ NÃO → UNKNOWN.</pre><p>Mesmo quando a aparição é observada, a causa permanece <strong>UNKNOWN</strong> se não houver documentação ou teste controlado. O vocabulário de Evidence Governance preserva cinco classes: <strong>DOCUMENTADO</strong>, quando a plataforma ou literatura sustenta; <strong>OBSERVADO</strong>, quando o evento foi capturado; <strong>TESTADO</strong>, quando existe protocolo controlado; <strong>INFERIDO</strong>, quando uma interpretação é explicitamente derivada; e <strong>RECOMENDADO</strong>, quando a orientação é uma prática controlável sem promessa causal.</p><p>As Observations #001 e #002 continuam <strong>OBSERVADO</strong>. Elas ajudam a enquadrar representação de entidade e mismatch de atributos, mas não demonstram qual source causou determinado erro.</p>`,
+    },
+    {
+      id: "context-and-business-impact",
+      title: "24. Menção, contexto e possíveis impactos de negócio",
+      level: 2,
+      content: `<p>Uma citation ou mention não deve ser considerada automaticamente positiva. A marca pode ser recomendada, criticada, comparada, mencionada de forma neutra ou excluída de uma recomendação. Não aprofundamos sentiment scoring nesta fase, mas registramos o contexto semântico para evitar que a contagem de aparições seja lida como valor comercial.</p><p>Alguns cenários merecem classificação separada: official source cited; third-party source cited; brand mention without link; wrong attribute with source; competitor cited; brand absent; multiple external sources; official source absent. Cada cenário pode ter implicações potenciais para discovery, percepção de confiança, pesquisa de marca, comparação e entendimento comercial, mas não deve ser quantificado sem dados de comportamento, conversão ou pesquisa com usuários.</p><p>Uma empresa pode ser recomendada sem que seu domínio oficial apareça. Uma source pode ser citada sem que a marca seja recomendada. Atribuir impacto depende de contexto, intenção, jornada e mercado. O output é evidência do output, não automaticamente evidência de performance comercial.</p>`,
+    },
+    {
+      id: "controlled-foundations",
+      title: "25. O que podemos controlar — e o que não podemos",
+      level: 2,
+      content: `<p>Não há uma tática legítima que garanta citation. O que uma organização pode controlar são fundações: informação factual clara, identidade canônica, conteúdo original e útil, autoria identificável, clareza de fontes, acessibilidade técnica, consistência distribuída, dados estruturados quando suportados, corroboração externa e qualidade editorial.</p><p>Essas práticas melhoram a legibilidade e a coerência da entidade; não comandam a seleção de uma source em uma resposta específica. A documentação do Google informa que não existem requisitos adicionais ou schema especial para aparecer em AI Overviews ou AI Mode [5]. A documentação do ChatGPT explica que Search pode exibir citations e que a disponibilidade depende da superfície e do uso de busca [6]. A documentação do Perplexity descreve citations clicáveis em suas respostas [7]. Nenhuma dessas páginas autoriza a promessa de citation guarantee.</p><p>Não controlamos seleção exata, renderização da citation, ordem dos cards, número de citations, visibilidade da source, wording da resposta, mudanças de sistema ou experimentos de interface. O planejamento de uma auditoria precisa respeitar essa assimetria.</p>`,
+    },
+    {
+      id: "evidence-boundary",
+      title: "26. Evidence Boundary: o que vemos e o que não sabemos",
+      level: 2,
+      content: `<p>Uma boa análise torna seus limites legíveis:</p><table class=\"w-full text-sm my-6 border-collapse\"><thead><tr><th class=\"text-left border-b border-neutral-700 p-2\">Camada</th><th class=\"text-left border-b border-neutral-700 p-2\">Conteúdo</th></tr></thead><tbody><tr><td class=\"border-b border-neutral-800 p-2\">O que vemos</td><td class=\"border-b border-neutral-800 p-2\">Mentions, sources, citations, links, attribution aparente e answer.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">O que comparamos</td><td class=\"border-b border-neutral-800 p-2\">Observações repetidas, overlap de sources, recorrência de domínio e claim alignment.</td></tr><tr><td class=\"border-b border-neutral-800 p-2\">O que inferimos com cautela</td><td class=\"border-b border-neutral-800 p-2\">Associações descritivas entre contexto, source, entidade e resposta.</td></tr><tr><td class=\"p-2\">O que não sabemos</td><td class=\"p-2\">Pesos internos, retrieval trace completo, conjunto de candidatos, motivo da citation, lógica exata de attribution e sources descartadas.</td></tr></tbody></table><p>Esta fronteira impede que uma auditoria de interface se transforme em uma narrativa causal. Também protege o cliente de recomendações baseadas em mecanismos que ninguém fora da plataforma consegue verificar.</p>`,
+    },
+    {
+      id: "planned-research",
+      title: "27. Planned Research Questions e limites desta fase",
+      level: 2,
+      content: `<p>As questões abaixo são úteis para a expansão futura do Search Intelligence, mas permanecem planejadas e não foram executadas neste artigo:</p><ul class=\"space-y-3 my-4\"><li><strong>RQ-CIT-001:</strong> Quão estável é o conjunto de sources visíveis para uma mesma query ao longo de observações repetidas?</li><li><strong>RQ-CIT-002:</strong> Quão frequentemente uma citation visível possui alinhamento direto com a claim que aparenta sustentar?</li><li><strong>RQ-CIT-003:</strong> Como a combinação entre official sources e independent external sources varia por classe de query?</li><li><strong>RQ-CIT-004:</strong> Uma reformulação semanticamente próxima da mesma necessidade informacional altera o conjunto de sources visíveis?</li></ul><p><strong>NEW OBSERVATIONS = 0</strong>, <strong>NEW EXPERIMENTS = 0</strong> e <strong>NEW RESEARCH ITEMS = 0</strong>. A única saída autorizada para uma dúvida emergente é registrá-la como planned research question. Não criamos citation score, GEO score, trust score, dashboard ou sistema de tracking.</p><p>O #010 — Como medir visibilidade em AI Search — permanece planejado. Este artigo prepara a linguagem de source e attribution sem absorver sua metodologia completa de measurement.</p>`,
+    },
+    {
+      id: "references",
+      title: "28. Referências e documentação consultada",
+      level: 2,
+      content: `<p>As referências são usadas para claims específicos e não como prova universal de comportamento:</p><ol class=\"space-y-3 list-decimal list-inside my-4\"><li><a href=\"https://developers.google.com/search/docs/appearance/ai-features\" target=\"_blank\" rel=\"noreferrer\">Google Search Central — AI features and your website</a>. Documenta AI Overviews, AI Mode, links de apoio, query fan-out e limites de elegibilidade do Google.</li><li><a href=\"https://help.openai.com/articles/9237897-chatgpt-search\" target=\"_blank\" rel=\"noreferrer\">OpenAI Help Center — ChatGPT Search</a>. Documenta inline citations, painel Sources e características específicas da busca no ChatGPT.</li><li><a href=\"https://www.perplexity.ai/hub/blog/getting-started-with-perplexity\" target=\"_blank\" rel=\"noreferrer\">Perplexity — Getting started with Perplexity</a>. Documenta a apresentação de sources e citations clicáveis na experiência descrita pela plataforma.</li><li><a href=\"/guias/recuperacao-de-informacao-ai-search\">AUDITSEO — Recuperação de Informação em AI Search</a>. Estabelece a distinção entre retrieval, generation, grounding, citation e retrieval trace.</li></ol><p>As referências de plataforma foram acessadas em 14 de agosto de 2026. Interfaces e documentações mudam; por isso, cada claim deve ser revalidado quando uma nova versão do produto for analisada.</p>`,
+    },
+    {
+      id: "conclusao",
+      title: "10. Conclusão: a análise rigorosa de fontes e atribuição",
+      level: 2,
+      content: `<p>Analisar citações e atribuição em respostas de IA exige disciplina intelectual. Em vez de buscar atalhos para manipular interfaces, a postura recomendada é auditar o que é visível, compreender os limites da observação externa e fortalecer as fundações controladas da marca.</p><p>O registro correto preserva a query, a superfície, a data, a fonte exibida, a claim analisada e a limitação que permanece. Essa disciplina permite comparar observações sem prometer uma causalidade que o output não contém. O valor do trabalho está em tornar a incerteza explícita e em separar a representação pública da explicação interna que ainda não podemos verificar.</p><p>Para agências e empresas que desejam entender como suas fontes e menções aparecem em ambientes generativos, conheça nossa solução de <a href=\"/diagnostico\">Diagnóstico de Autoridade</a> ou explore as investigações empíricas em andamento no <a href=\"/estudos-busca-ia\">Search Intelligence Lab</a>.</p>`,
+    },
+  ],
+  faq: [
+    {
+      question: "Citação em resposta de IA equivale a backlink?",
+      answer: "Não. Backlinks são links permanentes em páginas web, enquanto citações em respostas generativas são referências de interface geradas dinamicamente para cada consulta."
+    },
+    {
+      question: "Toda fonte citada é a única base utilizada pela IA?",
+      answer: "Não. A interface exibe fontes visíveis de apoio, mas a resposta pode incorporar conhecimento paramétrico do modelo e outros dados recuperados que não aparecem discriminados em notas de rodapé."
+    },
+    {
+      question: "O que é o Answer-Source Alignment Model?",
+      answer: "É um framework editorial da AUDITSEO para classificar qualitativamente se a fonte exibida realmente sustenta as afirmações presentes na resposta gerada."
+    }
+  ],
+};

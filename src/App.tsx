@@ -134,6 +134,11 @@ const routeMetadata: Record<string, { title: string; description: string; active
     description: "Entenda como pensar retrieval, RAG, grounding, fontes e contexto em AI Search sem confundir conceitos técnicos com mecanismos internos não documentados.",
     activeSection: "guias",
   },
+  "/guias/citacoes-e-fontes-em-ai-search": {
+    title: "Citações em AI Search: Fontes, Menções e Atribuição em Respostas de IA | AUDITSEO",
+    description: "Entenda como analisar fontes, citations, mentions e atribuição em respostas generativas sem confundir o que aparece na interface com o mecanismo interno de seleção.",
+    activeSection: "guias",
+  },
   "/proposta/dr-felipe-barao": {
     title: "Proposta de Crescimento Orgânico para Dr. Felipe Barão | AUDITSEO",
     description:

@@ -24,6 +24,7 @@ export const aiInformationRetrievalArticle: ArticleData = {
   },
   parent: { title: "AI Search", href: "/guias/ai-search" },
   previous: { title: "AI Overviews: Como a Busca Generativa Está Mudando a SERP", href: "/guias/ai-overviews" },
+  next: { title: "Citações e Atribuição em Respostas de IA", href: "/guias/citacoes-e-fontes-em-ai-search" },
   related: [
     { title: "AI Search", href: "/guias/ai-search", tag: "Guia" },
     { title: "AI Overviews", href: "/guias/ai-overviews", tag: "Guia" },
