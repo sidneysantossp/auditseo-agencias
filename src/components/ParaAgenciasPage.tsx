@@ -1,529 +1,229 @@
+import React from "react";
 import {
   ArrowRight,
   BarChart3,
-  BrainCircuit,
-  CheckCircle2,
-  ChevronRight,
-  ClipboardCheck,
-  Compass,
-  FileText,
-  Layers3,
-  LineChart,
-  Network,
-  ShieldCheck,
-  Sparkles,
+  Search,
+  Zap,
+  Shield,
   Target,
   Users,
-  XCircle,
+  MessageCircle,
+  Mail,
   FlaskConical,
 } from "lucide-react";
-import SiteFooter from "./SiteFooter";
 
-interface ParaAgenciasPageProps {
-  onNavigate: (targetId: string) => void;
-}
-
-const painPoints = [
-  {
-    title: "A agência já tem relacionamento com o cliente",
-    text: "Mas nem sempre tem tempo, senioridade ou equipe especializada para estruturar uma entrega orgânica avançada.",
-  },
-  {
-    title: "O cliente quer inovação",
-    text: "Mas inovação não pode ser apenas discurso sobre IA. Precisa virar diagnóstico, plano, execução orientada e mensuração.",
-  },
-  {
-    title: "A operação precisa escalar",
-    text: "Mas contratar especialistas, validar ferramentas e montar time interno nem sempre faz sentido no momento da agência.",
-  },
-  {
-    title: "A entrega precisa ser defendida",
-    text: "Relatórios soltos não bastam. O cliente precisa enxergar direção, evolução e próximos passos.",
-  },
-];
-
-const howWeEnter = [
-  ["Diagnóstico white-label", "Analisamos site, conteúdo, concorrentes, SEO técnico, dados estruturados, autoridade e sinais de presença em IA."],
-  ["Estratégia e priorização", "Organizamos o que fazer primeiro, o que tem maior impacto e quais ações sustentam crescimento e percepção de valor."],
-  ["Roadmap de entrega", "Transformamos análise em plano prático, com etapas, prioridades, responsáveis e próximos movimentos."],
-  ["Materiais para apresentação", "Sua agência pode usar relatórios, diagnósticos e apresentações com sua própria marca."],
-  ["Apoio em bastidores", "Apoiamos sua agência com validação técnica, revisão estratégica e direcionamento para reuniões importantes."],
-  ["Evolução e mensuração", "Acompanhamos sinais, aprendizados, oportunidades e evolução para fortalecer retenção e próximos ciclos."],
-];
-
-const deliverables = [
-  ["Diagnóstico de Visibilidade Orgânica", "Onde a marca aparece, onde não aparece e quais oportunidades estão sendo perdidas."],
-  ["Análise de Autoridade de Entidade", "Como a marca é compreendida por buscadores, IAs e usuários a partir de seus sinais públicos."],
-  ["SEO Técnico e On-page Estratégico", "Correções, estrutura, conteúdo, headings, indexação, arquitetura e páginas prioritárias."],
-  ["Dados Estruturados e Schema Markup", "Organização técnica dos sinais para ajudar buscadores a interpretar serviços, organização, FAQ, páginas e entidades."],
-  ["Generative Search Architecture", "Análise de como a marca pode ser melhor compreendida em ambientes generativos e mecanismos de resposta."],
-  ["Roadmap Orgânico 90 dias", "Plano claro de execução com prioridades, impacto esperado e próximos passos."],
-];
-
-const entityLayer = [
-  ["Clareza de entidade", "Quem é a marca, o que oferece, onde atua e para quem é relevante."],
-  ["Contexto semântico", "Como páginas, conteúdos e serviços se conectam com intenção de busca e jornada de decisão."],
-  ["Sinais de confiança", "Provas, avaliações, especialistas, diferenciais, cases, menções e reputação."],
-  ["Dados estruturados", "Schema Markup coerente com o conteúdo visível e com a realidade da marca."],
-  ["Presença pública", "Consistência entre site, Google Business Profile, redes, diretórios e menções externas."],
-  ["Interpretação por IA", "Como a marca pode ser lida, entendida e considerada em ambientes generativos."],
-];
-
-const partnershipModels = [
-  ["Diagnóstico Avulso White-Label", "Para agências que precisam avaliar uma oportunidade, defender renovação ou abrir conversa com um cliente específico."],
-  ["Consultoria Estratégica Recorrente", "Para agências que já têm equipe, mas precisam de direção, validação e priorização especializada."],
-  ["Squad SEO/GEO White-Label", "Para agências que querem ampliar carteira e entregar mais sem contratar novos times."],
-  ["Projeto Estratégico 90 dias", "Para clientes da agência que precisam de um plano intensivo de busca, autoridade, conteúdo e mensuração."],
-];
-
-const fitList = [
-  "você já atende clientes que perguntam sobre Google, SEO, conteúdo ou IA;",
-  "você quer oferecer uma entrega orgânica mais estratégica sem contratar especialistas agora;",
-  "você precisa fortalecer retenção com diagnósticos e próximos passos mais claros;",
-  "você quer transformar SEO/GEO em uma nova frente de valor;",
-  "você prefere manter o relacionamento com o cliente e ter uma retaguarda especializada nos bastidores;",
-  "você quer entregar inovação real sem depender de discurso genérico sobre IA.",
-];
-
-const notFitList = [
-  "você procura apenas execução barata de tarefas SEO;",
-  "você quer prometer resultados garantidos sem diagnóstico;",
-  "você não quer envolver estratégia, dados ou mensuração;",
-  "você prefere entregar relatórios genéricos em vez de direção estratégica;",
-  "você busca apenas volume de conteúdo sem análise de intenção, autoridade e contexto.",
-];
-
-const processSteps = [
-  ["1", "Conversa de encaixe", "Entendemos sua agência, carteira, tipos de cliente, dores e oportunidades."],
-  ["2", "Escolha do modelo", "Definimos se faz mais sentido diagnóstico avulso, consultoria, squad ou projeto estratégico."],
-  ["3", "Diagnóstico inicial", "Analisamos os sinais orgânicos, técnicos, semânticos, competitivos e de autoridade do cliente."],
-  ["4", "Estratégia e roadmap", "Organizamos prioridades e entregáveis em um plano claro."],
-  ["5", "Entrega white-label", "Sua agência recebe materiais que podem ser apresentados com sua marca."],
-  ["6", "Acompanhamento e evolução", "Apoiamos os próximos ciclos com mensuração, aprendizados e novas oportunidades."],
-];
-
-const backstageItems = [
-  "diagnóstico executivo",
-  "mapa de oportunidades",
-  "análise de concorrentes",
-  "análise de autoridade de entidade",
-  "auditoria técnica e on-page",
-  "análise de dados estruturados",
-  "roadmap 90 dias",
-  "apresentação white-label",
-  "recomendações priorizadas",
-  "acompanhamento estratégico",
-];
-
-const faqs = [
-  ["A AUDITSEO aparece para meu cliente?", "Não. A parceria pode ser totalmente white-label."],
-  ["Vocês disputam minha conta?", "Não. O relacionamento e a frente comercial seguem com sua agência."],
-  ["Minha agência precisa ter equipe de SEO?", "Não necessariamente. Podemos atuar como retaguarda estratégica ou complementar sua equipe atual."],
-  ["Posso começar com apenas um cliente?", "Sim. A parceria pode começar com um diagnóstico ou projeto pontual."],
-  ["Vocês prometem aparecer em IA?", "Não prometemos aparição garantida. Estruturamos os sinais que aumentam clareza, autoridade e capacidade de interpretação da marca em buscadores e ambientes generativos."],
-  ["Preciso vender isso como SEO?", "Não necessariamente. A entrega pode ser posicionada como Search Intelligence, estratégia orgânica, GEO, autoridade digital ou inovação em busca."],
-];
-
-function SectionHeader({
-  eyebrow,
-  title,
-  text,
-  align = "left",
+export default function ParaAgenciasPage({
+  onNavigate,
 }: {
-  eyebrow?: string;
-  title: string;
-  text?: string;
-  align?: "left" | "center";
+  onNavigate: (id: string) => void;
 }) {
   return (
-    <div className={`${align === "center" ? "mx-auto text-center items-center" : "items-start"} flex max-w-4xl flex-col`}>
-      {eyebrow && (
-        <span className="mb-4 text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453] font-mono">
-          {eyebrow}
-        </span>
-      )}
-      <h2 className="font-display text-[34px] sm:text-[42px] md:text-[52px] font-bold leading-[1.08] text-[#f8f8f8]">
-        {title}
-      </h2>
-      {text && <p className="mt-6 text-base md:text-lg leading-[1.7] text-[#c9c9c9]">{text}</p>}
-    </div>
-  );
-}
-
-function PrimaryButton({ children, onClick }: { children: string; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e0d3c3] hover:text-[#11100f]"
-    >
-      {children}
-      <ArrowRight size={16} />
-    </button>
-  );
-}
-
-export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) {
-  return (
-    <div className="bg-[#11100f] text-[#f8f8f8] font-sans selection:bg-[#b28453] selection:text-white">
-      <main>
-        <section className="relative overflow-hidden pt-[130px] md:pt-[160px] pb-20 md:pb-28">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(178,132,83,0.16),transparent_34%),linear-gradient(135deg,rgba(224,211,195,0.05),transparent_42%)]" />
-          <div className="container relative z-10 mx-auto max-w-[1320px] px-6 xl:px-12">
-            <div className="grid items-center gap-12 lg:grid-cols-12">
-              <div className="lg:col-span-8">
-                <span className="mb-5 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-                  PARCERIA WHITE-LABEL PARA AGÊNCIAS
-                </span>
-                <h1
-                  className="font-display font-bold text-[#f8f8f8]"
-                  style={{
-                    fontSize: "clamp(48px, 5vw, 72px)",
-                    lineHeight: 1.04,
-                    letterSpacing: "-0.045em",
-                    maxWidth: "760px",
-                  }}
-                >
-                  Search Intelligence e <br className="hidden md:inline" />
-                  GEO white-label para sua agência
-                </h1>
-                <p
-                  className="mt-10"
-                  style={{
-                    color: "rgba(248,248,248,0.74)",
-                    fontSize: "clamp(18px, 1.4vw, 22px)",
-                    lineHeight: 1.55,
-                    maxWidth: "680px",
-                  }}
-                >
-                  A AUDITSEO atua nos bastidores para estruturar diagnósticos, roadmaps e entregas baseadas em evidências para os clientes da sua agência — sem ampliar sua estrutura interna.
-                </p>
-                <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-                  <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
-                  <button
-                    onClick={() => onNavigate("como-funciona")}
-                    className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-                  >
-                    Ver como funciona
-                  </button>
-                </div>
-                <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
-                  White-label · Diagnóstico estratégico · Roadmap · Evidências
-                </p>
-              </div>
-
-              <div className="lg:col-span-4">
-                <div className="rounded-[8px] border border-[#b28453]/25 bg-[#181716]/90 p-6 shadow-2xl shadow-black/40">
-                  <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Camada de parceria</p>
-                      <h2 className="mt-2 font-display text-2xl font-bold">Sua agência mantém o relacionamento.</h2>
-                    </div>
-                    <ShieldCheck className="h-9 w-9 text-[#b28453]" />
-                  </div>
-                  <p className="text-lg leading-[1.6] text-[#e0d3c3]">
-                    A AUDITSEO estrutura a inteligência orgânica por trás da entrega.
-                  </p>
-                  <div className="mt-8 grid grid-cols-2 gap-3">
-                    {["SEO técnico", "Generative Search", "Camada de entidade", "Roadmap 90 dias"].map((item) => (
-                      <div key={item} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold text-[#f8f8f8]">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-y border-[#b28453]/10 bg-[#181716] py-20 md:py-24">
-          <div className="container mx-auto max-w-[1120px] px-6 text-center xl:px-12">
-            <SectionHeader
-              align="center"
-              eyebrow="Mudança de mercado"
-              title="O mercado mudou. A entrega orgânica também precisa mudar."
-              text="Clientes já não avaliam presença digital apenas por posts, anúncios ou posições isoladas no Google. Eles pesquisam, comparam, consultam IAs, analisam autoridade, reputação e sinais de confiança antes de tomar uma decisão."
-            />
-            <p className="mx-auto mt-8 max-w-4xl text-base md:text-lg leading-[1.7] text-[#e0d3c3]">
-              Para as agências, isso cria uma nova oportunidade: transformar SEO, GEO, dados estruturados, autoridade de entidade e inteligência de busca em uma entrega estratégica, recorrente e percebida como inovação.
+    <div className="min-h-screen bg-[#11100f] font-sans selection:bg-[#b28453] selection:text-white">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-[160px] pb-24 md:pt-[200px] md:pb-32">
+        <div className="container mx-auto max-w-[1120px] px-6">
+          <div className="relative z-10 max-w-3xl">
+            <span className="mb-6 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#b28453]">
+              Search Intelligence para Agências
+            </span>
+            <h1 className="font-display text-[56px] font-bold leading-[1.05] tracking-[-0.03em] text-[#f8f8f8] md:text-[84px]">
+              O braço de <span className="text-[#b28453]">inteligência</span> da sua operação orgânica.
+            </h1>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#f8f8f8]/60 md:text-xl">
+              Não somos uma agência de SEO. Somos a camada técnica e estratégica que sustenta agências de alta performance em um cenário de busca generativa.
             </p>
-          </div>
-        </section>
-
-        <section className="py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <SectionHeader
-              eyebrow="Dor operacional"
-              title="O desafio não é apenas vender SEO. É sustentar uma entrega estratégica sem aumentar a estrutura."
-            />
-            <div className="mt-14 grid gap-5 md:grid-cols-2">
-              {painPoints.map((item) => (
-                <div key={item.title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                  <AlertIcon />
-                  <h3 className="mt-5 font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="apoio-em-reunioes" className="scroll-mt-28 bg-[#181716] py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <SectionHeader
-              eyebrow="Como atuamos"
-              title="Entramos como a camada estratégica de Search Intelligence da sua agência"
-              text="Sem disputar relacionamento, sem aparecer para o cliente final e sem exigir que sua agência monte uma operação interna complexa."
-            />
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {howWeEnter.map(([title, text], index) => (
-                <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-7 transition-colors hover:border-[#b28453]/55">
-                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-[8px] bg-[#b28453]/12 text-[#b28453]">
-                    {index % 3 === 0 ? <FileText size={22} /> : index % 3 === 1 ? <Compass size={22} /> : <Layers3 size={22} />}
-                  </div>
-                  <h3 className="font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="diagnosticos-para-propostas" className="scroll-mt-28 py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <SectionHeader
-              align="center"
-              eyebrow="Oferta vendável"
-              title="Uma nova entrega orgânica para sua agência apresentar aos clientes"
-              text="Não é apenas SEO tradicional. É uma camada estruturada de busca, autoridade, dados e inteligência aplicada."
-            />
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {deliverables.map(([title, text]) => (
-                <div key={title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                  <CheckCircle2 className="h-6 w-6 text-[#b28453]" />
-                  <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-              <div className="lg:col-span-5">
-                <SectionHeader
-                  eyebrow="Camada de entidade e autoridade"
-                  title="Autoridade de entidade: a camada invisível da nova busca"
-                  text="Na nova busca, não basta publicar mais conteúdos. Marcas precisam organizar os sinais que fazem com que sejam reconhecidas como entidades claras, associadas ao contexto certo e validadas como opções confiáveis antes da decisão do cliente."
-                />
-                <p className="mt-6 text-base leading-[1.7] text-[#e0d3c3]">
-                  A AUDITSEO ajuda sua agência a estruturar essa camada conectando SEO semântico, dados estruturados, reputação, conteúdo estratégico, presença externa e inteligência de busca.
-                </p>
-              </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:col-span-7">
-                {entityLayer.map(([title, text]) => (
-                  <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-6">
-                    <Network className="h-5 w-5 text-[#b28453]" />
-                    <h3 className="mt-4 font-display text-lg font-bold">{title}</h3>
-                    <p className="mt-3 text-sm leading-[1.6] text-[#c9c9c9]">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#11100f] py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <div className="rounded-[24px] border border-[#b28453]/30 bg-white/[0.02] p-8 md:p-12">
-              <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-                <div className="lg:col-span-7">
-                  <div className="flex items-center gap-3 text-[#b28453]">
-                    <FlaskConical size={20} />
-                    <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em]">Search Intelligence Lab</span>
-                  </div>
-                  <h2 className="mt-6 font-display text-[32px] md:text-[48px] font-bold leading-[1.1] text-[#f8f8f8]">
-                    Baseamos nossa estratégia em <span className="text-[#b28453]">evidências observadas</span>
-                  </h2>
-                  <p className="mt-8 text-lg leading-[1.6] text-[#c9c9c9]">
-                    No Search Intelligence Lab, realizamos experimentos contínuos para entender como buscadores e IAs interpretam marcas, entidades e autoridade. Sua agência utiliza essa inteligência de ponta para sustentar entregas seguras e inovadoras.
-                  </p>
-                  <div className="mt-10">
-                    <button
-                      onClick={() => onNavigate("/estudos-busca-ia/reconhecimento-de-entidade-por-contexto")}
-                      className="group flex items-center gap-3 text-sm font-bold text-[#b28453] transition-colors hover:text-[#e0d3c3]"
-                    >
-                      Ver Estudo Lab #001: Reconhecimento de Entidade
-                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                    </button>
-                  </div>
-                </div>
-                <div className="lg:col-span-5">
-                  <div className="relative rounded-[16px] border border-[#b28453]/20 bg-[#181716] p-8 overflow-hidden">
-                    <div className="absolute top-0 right-0 p-4 opacity-10">
-                      <FlaskConical size={120} />
-                    </div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Observation #001</p>
-                    <h3 className="mt-4 font-display text-xl font-bold">Por que o Google reconhece uma pessoa para um tema e praticamente a ignora para outro?</h3>
-                    <p className="mt-4 text-sm leading-[1.6] text-[#c9c9c9]">
-                      Análise sobre reconhecimento de entidade por contexto temático, ruído de homônimos e associação profissional.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="modelos-de-parceria" className="scroll-mt-28 py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <SectionHeader align="center" eyebrow="Modelos" title="Escolha o modelo de parceria ideal para o estágio da sua agência" />
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {partnershipModels.map(([title, text]) => (
-                <div key={title} className="flex rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                  <div className="flex flex-col">
-                    <Target className="h-6 w-6 text-[#b28453]" />
-                    <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                    <p className="mt-4 flex-1 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-                    <button onClick={() => onNavigate("diagnostico")} className="mt-7 inline-flex items-center gap-2 text-left text-sm font-bold text-[#b28453] hover:text-[#e0d3c3]">
-                      Quero avaliar este modelo <ChevronRight size={16} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#181716] py-24 md:py-32">
-          <div className="container mx-auto grid max-w-[1320px] gap-8 px-6 md:grid-cols-2 xl:px-12">
-            <FitPanel title="Essa parceria faz sentido para sua agência se..." items={fitList} icon="check" />
-            <FitPanel title="Essa parceria talvez não seja para sua agência se..." items={notFitList} icon="x" />
-          </div>
-        </section>
-
-        <section id="como-funciona" className="scroll-mt-28 py-24 md:py-32">
-          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-            <SectionHeader align="center" eyebrow="Operação" title="Como a parceria funciona na prática" />
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {processSteps.map(([step, title, text]) => (
-                <div key={step} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b28453] font-display text-lg font-bold text-white">
-                    {step}
-                  </span>
-                  <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
-          <div className="container mx-auto grid max-w-[1320px] gap-12 px-6 lg:grid-cols-12 xl:px-12">
-            <div className="lg:col-span-5">
-              <SectionHeader
-                eyebrow="Bastidores"
-                title="O que sua agência recebe nos bastidores"
-                text="Entregáveis pensados para apoiar venda, renovação, retenção e direção estratégica sem expor a retaguarda da AUDITSEO para o cliente final."
-              />
-            </div>
-            <div className="lg:col-span-7">
-              <div className="rounded-[8px] border border-[#b28453]/20 bg-[#11100f] p-6 md:p-8">
-                <div className="mb-8 grid gap-4 md:grid-cols-3">
-                  {[
-                    ["Diagnóstico", "Executivo"],
-                    ["Prioridades", "12 ações"],
-                    ["Roadmap", "90 dias"],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-5">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8c8275]">{label}</p>
-                      <p className="mt-2 font-display text-2xl font-bold text-[#e0d3c3]">{value}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {backstageItems.map((item) => (
-                    <div key={item} className="flex items-center gap-3 rounded-[8px] border border-white/10 bg-[#181716] p-4 text-sm text-[#c9c9c9]">
-                      <ClipboardCheck className="h-4 w-4 shrink-0 text-[#b28453]" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 md:py-32">
-          <div className="container mx-auto max-w-[1120px] px-6 xl:px-12">
-            <SectionHeader align="center" eyebrow="Objeções" title="Dúvidas comuns antes de iniciar uma parceria" />
-            <div className="mt-12 divide-y divide-white/10 rounded-[8px] border border-[#b28453]/20 bg-[#181716]">
-              {faqs.map(([question, answer]) => (
-                <div key={question} className="p-6 md:p-8">
-                  <h3 className="font-display text-lg font-bold text-[#f8f8f8]">{question}</h3>
-                  <p className="mt-3 text-sm leading-[1.7] text-[#c9c9c9]">{answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#b28453] py-20 text-white md:py-24">
-          <div className="container mx-auto max-w-[1080px] px-6 text-center xl:px-12">
-            <h2 className="font-display text-[34px] sm:text-[44px] md:text-[56px] font-bold leading-[1.08]">
-              Quer transformar busca, autoridade e IA em uma entrega real para os clientes da sua agência?
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-base md:text-lg leading-[1.7] text-white/85">
-              Vamos avaliar se a AUDITSEO pode atuar nos bastidores da sua operação como parceira white-label de SEO, GEO e inteligência de busca.
-            </p>
-            <div className="mt-9">
+            <div className="mt-12 flex flex-wrap gap-5">
               <button
                 onClick={() => onNavigate("diagnostico")}
-                className="inline-flex items-center gap-2 rounded-full bg-[#11100f] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
               >
-                Avaliar parceria estratégica
-                <ArrowRight size={16} />
+                Iniciar Diagnóstico
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </button>
+              <button
+                onClick={() => onNavigate("solucoes")}
+                className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-8 py-4 text-sm font-bold text-[#f8f8f8] transition-all hover:bg-white/[0.08]"
+              >
+                Conhecer Soluções
               </button>
             </div>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70">
-              A primeira conversa é para entender sua agência, sua carteira e o melhor modelo de parceria.
-            </p>
           </div>
-        </section>
-      </main>
+        </div>
 
-      <SiteFooter onNavigate={onNavigate} />
+        {/* Abstract background element */}
+        <div className="absolute top-0 right-0 -mr-24 -mt-24 h-[600px] w-[600px] rounded-full bg-[#b28453]/5 blur-[120px]" />
+      </section>
+
+      {/* The Problem Section */}
+      <section className="border-y border-white/5 bg-white/[0.01] py-24 md:py-32">
+        <div className="container mx-auto max-w-[1120px] px-6">
+          <div className="grid gap-16 lg:grid-cols-2">
+            <div>
+              <h2 className="font-display text-[40px] font-bold leading-[1.1] tracking-[-0.02em] text-[#f8f8f8] md:text-[56px]">
+                Por que agências <span className="text-[#b28453]">travam</span> no orgânico?
+              </h2>
+              <p className="mt-6 text-lg text-[#f8f8f8]/50">
+                O SEO tradicional de checklists e volumes de busca não é mais suficiente para sustentar contratos high-ticket.
+              </p>
+            </div>
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/5 bg-[#11100f] p-8">
+                <div className="mb-4 text-[#b28453]">
+                  <BarChart3 size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-[#f8f8f8]">Escala vs. Qualidade</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#f8f8f8]/40">
+                  A pressão por volume de conteúdo muitas vezes sacrifica a autoridade e a intenção real da busca.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/5 bg-[#11100f] p-8">
+                <div className="mb-4 text-[#b28453]">
+                  <Search size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-[#f8f8f8]">Opacidade Técnica</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#f8f8f8]/40">
+                  Dificuldade em diagnosticar quedas bruscas ou falta de tração em projetos complexos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section id="solucoes" className="py-24 md:py-32">
+        <div className="container mx-auto max-w-[1120px] px-6">
+          <div className="mb-20 text-center">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#b28453]">Como atuamos</span>
+            <h2 className="mt-6 font-display text-[48px] font-bold leading-[1.1] tracking-[-0.02em] text-[#f8f8f8] md:text-[64px]">
+              Soluções sob demanda para o seu time.
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <SolutionCard
+              icon={<Zap size={24} />}
+              title="Search Foundation"
+              description="Estruturação da base orgânica para novos projetos, garantindo que o site nasça com os sinais corretos de autoridade."
+            />
+            <SolutionCard
+              icon={<Shield size={24} />}
+              title="Search Recovery"
+              description="Investigação técnica profunda para projetos que perderam visibilidade, focada em reconstruir a confiança do buscador."
+            />
+            <SolutionCard
+              icon={<Target size={24} />}
+              title="Generative Search Architecture"
+              description="Preparação de entidades e ativos digitais para o novo paradigma de busca baseada em IA e respostas generativas."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Lab Section */}
+      <section className="relative overflow-hidden border-t border-white/5 bg-white/[0.02] py-24 md:py-32">
+        <div className="container mx-auto max-w-[1120px] px-6">
+          <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#b28453]/20 bg-[#b28453]/5 px-4 py-2">
+                <FlaskConical size={18} className="text-[#b28453]" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-[#b28453]">Search Intelligence Lab</span>
+              </div>
+              <h2 className="font-display text-[42px] font-bold leading-[1.1] tracking-[-0.02em] text-[#f8f8f8] md:text-[56px]">
+                Ciência aplicada aos <span className="text-[#b28453]">fenômenos</span> da busca.
+              </h2>
+              <p className="mt-8 text-lg leading-relaxed text-[#f8f8f8]/60">
+                O Lab conduz observações e testes documentados sobre fenômenos observáveis em busca e sistemas generativos. Não presumimos o funcionamento interno dos algoritmos; nós documentamos o que conseguimos observar e testar.
+              </p>
+              
+              <div className="mt-10 rounded-2xl border border-[#b28453]/10 bg-[#11100f] p-8">
+                <span className="font-mono text-[10px] font-bold text-[#b28453]">AUDITSEO-OBS-001</span>
+                <h3 className="mt-3 text-xl font-bold text-[#f8f8f8]">Por que o Google reconhece uma pessoa para um tema e praticamente a ignora para outro?</h3>
+                <p className="mt-4 text-sm leading-relaxed text-[#f8f8f8]/40">
+                  Nossa observação inicial sobre reconhecimento de entidade por contexto temático demonstra como a consistência de sinais afeta a visibilidade de uma entidade em diferentes tópicos.
+                </p>
+                <a 
+                  href="/estudos-busca-ia/reconhecimento-de-entidade-por-contexto"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate("/estudos-busca-ia/reconhecimento-de-entidade-por-contexto");
+                  }}
+                  className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#b28453] hover:text-[#e0d3c3]"
+                >
+                  Ver Observação Completa
+                  <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="grid gap-4">
+                <div className="rounded-xl border border-white/5 bg-[#11100f] p-6">
+                  <h4 className="font-bold text-[#f8f8f8]">Observações Documentadas</h4>
+                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Fenômenos reais capturados em SERPs e interfaces generativas.</p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-[#11100f] p-6">
+                  <h4 className="font-bold text-[#f8f8f8]">Testes de Sinais</h4>
+                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Verificação de como mudanças em dados estruturados e menções afetam o contexto.</p>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-[#11100f] p-6">
+                  <h4 className="font-bold text-[#f8f8f8]">Zero Alucinação</h4>
+                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Todas as nossas recomendações são baseadas em evidências observáveis, não em suposições.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-24 md:py-40">
+        <div className="container mx-auto max-w-[1120px] px-6 text-center">
+          <h2 className="font-display text-[48px] font-bold leading-[1.1] tracking-[-0.02em] text-[#f8f8f8] md:text-[72px]">
+            Vamos elevar a barra da sua <span className="text-[#b28453]">entrega</span>?
+          </h2>
+          <p className="mx-auto mt-8 max-w-2xl text-lg text-[#f8f8f8]/50">
+            Se a sua agência busca profundidade técnica e segurança estratégica para projetos complexos, precisamos conversar.
+          </p>
+          <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <a
+              href="https://wa.me/5511996384376"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full bg-[#b28453] px-10 py-5 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+            >
+              <MessageCircle size={18} />
+              Falar pelo WhatsApp
+            </a>
+            <a
+              href="mailto:parceria@auditseo.com.br"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-10 py-5 text-sm font-bold text-[#f8f8f8] transition-all hover:bg-white/[0.08]"
+            >
+              <Mail size={18} />
+              Contato por E-mail
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
 
-function FitPanel({ title, items, icon }: { title: string; items: string[]; icon: "check" | "x" }) {
+function SolutionCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
   return (
-    <div className="rounded-[8px] border border-[#b28453]/20 bg-[#11100f] p-7 md:p-9">
-      <h2 className="font-display text-2xl md:text-3xl font-bold text-[#f8f8f8]">{title}</h2>
-      <ul className="mt-8 space-y-4">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-[1.7] text-[#c9c9c9]">
-            {icon === "check" ? (
-              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#b28453]" />
-            ) : (
-              <XCircle className="mt-1 h-4 w-4 shrink-0 text-[#8c8275]" />
-            )}
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function AlertIcon() {
-  return (
-    <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-[#b28453]/12 text-[#b28453]">
-      <BarChart3 size={22} />
+    <div className="group rounded-3xl border border-white/5 bg-white/[0.02] p-10 transition-all duration-300 hover:border-[#b28453]/30 hover:bg-white/[0.04]">
+      <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#b28453]/10 text-[#b28453] transition-colors group-hover:bg-[#b28453] group-hover:text-white">
+        {icon}
+      </div>
+      <h3 className="text-2xl font-bold text-[#f8f8f8]">{title}</h3>
+      <p className="mt-4 leading-relaxed text-[#f8f8f8]/40">{description}</p>
     </div>
   );
 }

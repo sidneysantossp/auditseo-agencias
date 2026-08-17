@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, ReactNode } from "react";
 import {
   ArrowRight,
   ChevronLeft,
@@ -14,8 +14,8 @@ import {
 
 interface DiagnosticResult {
   solution: string;
-  scenario: string;
-  risk: string;
+  declared: string;
+  inferred: string;
   opportunity: string;
   auditseo: string;
   evidence?: {
@@ -30,7 +30,6 @@ const scenarios = [
     title: "Projeto começando do zero",
     text: "Site novo, marca nova ou presença orgânica ainda inexistente.",
     solution: "Search Foundation",
-    resultScenario: "Projeto novo com risco de nascer sem base orgânica clara.",
     opportunity:
       "Criar uma fundação estratégica de busca antes que arquitetura, conteúdo e entidade sejam definidos sem critério.",
     auditseo:
@@ -45,7 +44,6 @@ const scenarios = [
     title: "Site no ar, mas sem tração",
     text: "O projeto existe, mas nunca conseguiu gerar crescimento orgânico relevante.",
     solution: "Organic Activation",
-    resultScenario: "Projeto estagnado com baixa clareza estratégica.",
     opportunity:
       "Reposicionar a conversa com um diagnóstico de ativação orgânica e um roadmap de evolução.",
     auditseo:
@@ -60,7 +58,6 @@ const scenarios = [
     title: "Projeto que crescia e despencou",
     text: "Já houve tráfego ou visibilidade, mas depois aconteceu uma queda difícil de recuperar.",
     solution: "Search Recovery",
-    resultScenario: "Projeto em perda de visibilidade com causa ainda pouco clara.",
     opportunity:
       "Transformar a queda em uma conversa técnica e estratégica sobre reconstrução de relevância, autoridade e confiança.",
     auditseo:
@@ -71,7 +68,6 @@ const scenarios = [
     title: "Cliente high-ticket",
     text: "A decisão depende de confiança, autoridade, reputação e validação pública.",
     solution: "Entity Authority",
-    resultScenario: "Cliente com alto valor de decisão e dependência de confiança antes da compra.",
     opportunity:
       "Criar uma frente de autoridade de entidade para sustentar reputação, contexto e validação pública.",
     auditseo:
@@ -86,7 +82,6 @@ const scenarios = [
     title: "Conteúdo sem retorno",
     text: "Existe produção, mas falta conexão com intenção, jornada e decisão.",
     solution: "Intent Content Architecture",
-    resultScenario: "Produção orgânica com volume, mas pouca direção estratégica.",
     opportunity:
       "Reposicionar conteúdo como arquitetura de intenção, não como calendário de publicações.",
     auditseo:
@@ -101,7 +96,6 @@ const scenarios = [
     title: "Cliente perguntando sobre IA/GEO",
     text: "A empresa quer entender nova busca, ChatGPT, Gemini, AI Overviews ou respostas generativas.",
     solution: "Generative Search Architecture",
-    resultScenario: "Cliente com necessidade de estruturação de contexto e sinais de entidade para sistemas de busca modernos.",
     opportunity:
       "Transformar a curiosidade sobre IA em uma proposta de arquitetura de contexto e sinais consistentes.",
     auditseo:
@@ -116,7 +110,6 @@ const scenarios = [
     title: "Redesign, migração ou expansão",
     text: "O site será refeito, migrado ou terá nova estrutura de páginas.",
     solution: "SEO Migration & Risk Control",
-    resultScenario: "Mudança estrutural com risco de perda orgânica se não houver governança de busca.",
     opportunity:
       "Criar uma camada de proteção orgânica para preservar sinais existentes e preparar crescimento futuro.",
     auditseo:
@@ -127,7 +120,6 @@ const scenarios = [
     title: "Manutenção de liderança",
     text: "O cliente já é líder ou tem bons resultados e quer se manter no topo.",
     solution: "Search Intelligence & Evolution",
-    resultScenario: "Liderança de mercado com necessidade de evolução contínua de sinais.",
     opportunity:
       "Manter a relevância através de monitoramento avançado de sinais, autoridade e novos paradigmas de busca.",
     auditseo:
@@ -136,23 +128,23 @@ const scenarios = [
 ];
 
 const bottleneckOptions = [
-  "Dificuldade técnica/implementação",
-  "Falta de clareza na estratégia",
-  "Produção de conteúdo ineficiente",
-  "Baixa autoridade/reputação",
-  "Queda de tráfego sem explicação",
-  "Pressão do cliente por resultados",
-  "Dúvidas sobre IA e Busca Generativa",
-  "Processos de migração ou redesign",
+  { id: "tech", title: "Dificuldade técnica/implementação" },
+  { id: "strategy", title: "Falta de clareza na estratégia" },
+  { id: "content", title: "Produção de conteúdo ineficiente" },
+  { id: "authority", title: "Baixa autoridade/reputação" },
+  { id: "drop", title: "Queda de tráfego sem explicação" },
+  { id: "pressure", title: "Pressão do cliente por resultados" },
+  { id: "ai", title: "Dúvidas sobre IA e Busca Generativa" },
+  { id: "migration", title: "Processos de migração ou redesign" },
 ];
 
 const objectiveOptions = [
-  "Recuperar tráfego perdido",
-  "Gerar leads/vendas qualificadas",
-  "Construir autoridade de marca",
-  "Preparar para busca generativa (IA)",
-  "Escalar produção de conteúdo",
-  "Garantir segurança em migração",
+  { id: "recovery", title: "Recuperar tráfego perdido" },
+  { id: "leads", title: "Gerar leads/vendas qualificadas" },
+  { id: "brand", title: "Construir autoridade de marca" },
+  { id: "ai", title: "Preparar para busca generativa (IA)" },
+  { id: "scale", title: "Escalar produção de conteúdo" },
+  { id: "safety", title: "Garantir segurança em migração" },
 ];
 
 const urgencyOptions = [
@@ -165,8 +157,6 @@ const urgencyOptions = [
 export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: string) => void }) {
   const [step, setStep] = useState(1);
   const [selections, setSelections] = useState<Record<string, string>>({});
-  const [isScanning, setIsScanning] = useState(false);
-  const [scanProgress, setScanProgress] = useState(0);
   const [result, setResult] = useState<DiagnosticResult | null>(null);
 
   const steps = [
@@ -194,48 +184,33 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
 
   const handleSelect = (optionId: string) => {
     const currentStepId = steps[step - 1].id;
-    setSelections((prev) => ({ ...prev, [currentStepId]: optionId }));
+    const newSelections = { ...selections, [currentStepId]: optionId };
+    setSelections(newSelections);
 
     if (step < steps.length) {
       setStep(step + 1);
     } else {
-      startScan();
+      buildDiagnosticResult(newSelections);
     }
   };
 
-  const startScan = () => {
-    setIsScanning(true);
-    setScanProgress(0);
-  };
+  const buildDiagnosticResult = (currentSelections: Record<string, string>) => {
+    const scenario = scenarios.find((s) => s.id === currentSelections.scenario) || scenarios[0];
+    const urgency = urgencyOptions.find((u) => u.id === currentSelections.urgency) || urgencyOptions[0];
+    const bottleneck = bottleneckOptions.find((b) => b.id === currentSelections.bottlenecks)?.title || "Não especificado";
+    const objective = objectiveOptions.find((o) => o.id === currentSelections.objectives)?.title || "Não especificado";
 
-  useEffect(() => {
-    if (!isScanning) return;
-
-    const interval = setInterval(() => {
-      setScanProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsScanning(false);
-            buildDiagnosticResult();
-          }, 500);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [isScanning]);
-
-  const buildDiagnosticResult = () => {
-    const scenario = scenarios.find((s) => s.id === selections.scenario) || scenarios[0];
-    const risk = urgencyOptions.find((u) => u.id === selections.urgency)?.text || "Avaliação de risco necessária.";
+    // Epistemic labels logic:
+    // Declared: The raw inputs from the user
+    const declared = `${scenario.title}. Gargalo: ${bottleneck}. Objetivo: ${objective}.`;
+    
+    // Inferred: Strategic risk assessment based on scenario + urgency
+    const inferred = `Risco estratégico avaliado como ${urgency.title} baseado no cenário de ${scenario.solution}.`;
 
     setResult({
       solution: scenario.solution,
-      scenario: scenario.resultScenario,
-      risk,
+      declared,
+      inferred,
       opportunity: scenario.opportunity,
       auditseo: scenario.auditseo,
       evidence: scenario.evidence,
@@ -246,7 +221,6 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
     setStep(1);
     setSelections({});
     setResult(null);
-    setIsScanning(false);
   };
 
   const goBack = () => {
@@ -261,7 +235,7 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
   return (
     <div className="min-h-screen bg-[#11100f] pt-[120px] pb-20 font-sans selection:bg-[#b28453] selection:text-white">
       <div className="container mx-auto max-w-[1120px] px-6">
-        {!result && !isScanning ? (
+        {!result ? (
           <div className="mx-auto max-w-3xl">
             <div className="mb-12">
               <div className="mb-6 flex items-center gap-4">
@@ -288,19 +262,19 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
               {step === 2 &&
                 bottleneckOptions.map((opt) => (
                   <OptionCard
-                    key={opt}
-                    title={opt}
-                    onClick={() => handleSelect(opt)}
-                    selected={selections.bottlenecks === opt}
+                    key={opt.id}
+                    title={opt.title}
+                    onClick={() => handleSelect(opt.id)}
+                    selected={selections.bottlenecks === opt.id}
                   />
                 ))}
               {step === 3 &&
                 objectiveOptions.map((opt) => (
                   <OptionCard
-                    key={opt}
-                    title={opt}
-                    onClick={() => handleSelect(opt)}
-                    selected={selections.objectives === opt}
+                    key={opt.id}
+                    title={opt.title}
+                    onClick={() => handleSelect(opt.id)}
+                    selected={selections.objectives === opt.id}
                   />
                 ))}
               {step === 4 &&
@@ -323,34 +297,21 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
               </div>
             )}
           </div>
-        ) : isScanning ? (
-          <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-            <div className="relative mb-12 h-32 w-32">
-              <div className="absolute inset-0 animate-ping rounded-full bg-[#b28453]/20" />
-              <div className="relative flex h-full w-full items-center justify-center rounded-full border-2 border-[#b28453]/30 bg-[#11100f]">
-                <span className="font-display text-2xl font-bold text-[#b28453]">{scanProgress}%</span>
-              </div>
-            </div>
-            <h2 className="font-display text-3xl font-bold text-[#f8f8f8]">Processando Diagnóstico</h2>
-            <p className="mt-4 max-w-md text-[#f8f8f8]/60">
-              Correlacionando cenário, gargalos e objetivos com o Método S.I.G.N.A.L e evidências do Lab.
-            </p>
-          </div>
         ) : (
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <div className="mb-10">
                 <span className="font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#b28453]">Diagnóstico Concluído</span>
                 <h2 className="mt-6 font-display text-[48px] font-bold leading-[1.1] tracking-[-0.02em] md:text-[72px]">
-                  Sua agência precisa de <span className="text-[#b28453]">{result?.solution}</span>
+                  Sua agência precisa de <span className="text-[#b28453]">{result.solution}</span>
                 </h2>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
-                <ResultBlock title="Declarado pelo usuário" text={result!.scenario} icon={<Users size={18} />} />
-                <ResultBlock title="Inferido" text={result!.risk} icon={<LineChart size={18} />} />
-                <ResultBlock title="Recomendado" text={result!.opportunity} icon={<Zap size={18} />} />
-                {result?.evidence && (
+                <ResultBlock title="Declarado pelo usuário" text={result.declared} icon={<Users size={18} />} />
+                <ResultBlock title="Inferido" text={result.inferred} icon={<LineChart size={18} />} />
+                <ResultBlock title="Recomendado" text={result.opportunity} icon={<Zap size={18} />} />
+                {result.evidence && (
                   <ResultBlock
                     title="Evidência de apoio"
                     text={result.evidence.text}
@@ -367,7 +328,7 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
               <div className="mt-8">
                 <ResultBlock
                   title="Como a AUDITSEO pode atuar"
-                  text={result!.auditseo}
+                  text={result.auditseo}
                   icon={<Target size={18} />}
                 />
               </div>
@@ -489,8 +450,10 @@ const ResultBlock: React.FC<ResultBlockProps> = ({
           <a
             href={link.path}
             onClick={(e) => {
-              e.preventDefault();
-              onNavigate(link.path);
+              if (link.path.startsWith("/")) {
+                e.preventDefault();
+                onNavigate(link.path);
+              }
             }}
             className="group inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#b28453] transition-colors hover:text-[#e0d3c3]"
           >
