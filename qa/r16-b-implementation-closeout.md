@@ -29,7 +29,7 @@ A Fase R16-B foi executada com sucesso sob a supervisão do **GPT AUDITSEO**. O 
 
 ## 3. Build & Test Verification
 *   **Build Status:** `PASS` (`vite build` e esbuild concluídos com sucesso sem erros de TypeScript ou bundle).
-*   **Git Commit SHA:** `[PENDING_SHA]` (Persistido no branch de feature `fix/r16b-claims` para revisão).
+*   **Git Commit SHA:** `68e6aa8c09dfb9048ae38a92455f321903ea05fa` (Persistido no branch de feature `fix/r16b-claims` para revisão).
 
 ---
 
