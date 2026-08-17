@@ -665,20 +665,20 @@ export default function NeuralSearchBrain() {
 
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[#b28453]/15 pt-3">
               <div>
-                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Densidade de Sinal</div>
-                <div className="text-[12px] font-mono font-semibold text-[#b28453]">94.2% (Ótimo)</div>
+                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Arquitetura</div>
+                <div className="text-[12px] font-mono font-semibold text-[#b28453]">Generativa</div>
               </div>
               <div>
-                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Pontos Conectados</div>
-                <div className="text-[12px] font-mono font-semibold text-[#b28453]">46 Nós Ativos</div>
+                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Governança</div>
+                <div className="text-[12px] font-mono font-semibold text-[#b28453]">Evidências</div>
               </div>
               <div>
-                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Latência Média</div>
-                <div className="text-[12px] font-mono font-semibold text-[#e0d3c3]">&lt; 12ms</div>
+                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Metodologia</div>
+                <div className="text-[12px] font-mono font-semibold text-[#e0d3c3]">SIGNAL</div>
               </div>
               <div>
-                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Camada Estratégica</div>
-                <div className="text-[12px] font-mono font-semibold text-[#e0d3c3]">White-Label L1</div>
+                <div className="text-[8px] font-mono tracking-wider text-[#e0d3c3]/50 uppercase">Ambiente</div>
+                <div className="text-[12px] font-mono font-semibold text-[#e0d3c3]">Auditado</div>
               </div>
             </div>
           </div>
