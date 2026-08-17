@@ -17,7 +17,7 @@ Este relatório consolida as ações corretivas finais para a Fase R16-B, sanand
 
 ## 2. SHAs Verificáveis (Branch: fix/r16b-remediation)
 
--   **Topo da Branch (Relatório Final):** `[PENDING_PUSH]`
+-   **Topo da Branch (Relatório Final):** `51bcefd3683f04b5a582f504fd7b925ca0354f96`
 -   **Patch de Código Final (CTAs & Labels):** `4238604b1f82bcba440791d721f006606c93c73b`
 
 ## 3. Verificação Técnica
