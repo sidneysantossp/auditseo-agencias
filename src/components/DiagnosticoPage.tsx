@@ -1,43 +1,54 @@
-import { FormEvent, useEffect, useMemo, useRef, useState, type MutableRefObject, type ReactNode } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import {
-  AlertTriangle,
-  ArrowRight,
-  CheckCircle2,
-  ChevronLeft,
-  CircleDot,
-  Compass,
-  Layers3,
-  RefreshCw,
   Search,
-  Send,
-  ShieldCheck,
-  Sparkles,
-  BookOpen,
   Target,
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  FileText,
+  Zap,
+  ShieldCheck,
+  Globe,
+  Database,
+  Users,
+  LineChart,
+  CircleDot,
   ExternalLink,
 } from "lucide-react";
+import Header from "./Header";
 import SiteFooter from "./SiteFooter";
 
-interface DiagnosticoPageProps {
-  onNavigate: (targetId: string) => void;
+interface Answers {
+  scenario: string;
+  bottlenecks: string[];
+  objective: string;
+  urgency: string;
 }
 
-type StepKey = "scenario" | "objective" | "bottlenecks" | "clientPressure" | "urgency";
-type Answers = {
-  scenario?: string;
-  objective?: string;
-  bottlenecks: string[];
-  clientPressure?: string;
-  urgency?: string;
-};
-
-const heroNodes = [
-  { label: "Cenário", x: 30, y: 18 },
-  { label: "Objetivo", x: 72, y: 20 },
-  { label: "Gargalo", x: 86, y: 50 },
-  { label: "Risco", x: 66, y: 82 },
-  { label: "Solução", x: 32, y: 82 },
-  { label: "Próximo passo", x: 14, y: 50 },
+const steps = [
+  {
+    id: "scenario",
+    title: "Qual o cenário do projeto?",
+    description: "Selecione a situação que melhor descreve o momento atual do cliente na agência.",
+  },
+  {
+    id: "bottlenecks",
+    title: "Onde estão os principais gargalos?",
+    description: "Quais dificuldades técnicas ou estratégicas impedem o avanço do projeto?",
+  },
+  {
+    id: "objective",
+    title: "Qual o objetivo principal?",
+    description: "O que a agência ou o cliente espera resolver com prioridade?",
+  },
+  {
+    id: "urgency",
+    title: "Qual o nível de urgência?",
+    description: "Como a agência percebe a pressão por resultados ou definições?",
+  },
 ];
 
 const scenarios = [
@@ -148,496 +159,285 @@ const scenarios = [
   },
   {
     id: "evolution",
-    title: "Cliente recorrente sem percepção de evolução",
-    text: "A conta continua ativa, mas precisa de novos argumentos e próximos passos.",
-    solution: "Organic Evolution Cycle",
-    resultScenario: "Conta recorrente com risco de parecer rotina sem evolução visível.",
+    title: "Manutenção de liderança",
+    text: "O cliente já é líder ou tem bons resultados e quer se manter no topo.",
+    solution: "Search Intelligence & Evolution",
+    resultScenario: "Liderança de mercado com necessidade de evolução contínua de sinais.",
     opportunity:
-      "Transformar dados, aprendizados e oportunidades em ciclos claros de evolução estratégica.",
+      "Manter a relevância através de monitoramento avançado de sinais, autoridade e novos paradigmas de busca.",
     auditseo:
-      "Atuamos no acompanhamento de sinais, consultas, páginas, concorrentes, autoridade, aprendizados e próximos movimentos.",
+      "Atuamos no monitoramento de SERP, sinais de entidade, concorrência, tendências de busca generativa e evolução técnica.",
     evidence: {
-      text: "Método S.I.G.N.A.L: O ciclo de evolução constante da inteligência de busca.",
-      path: "/metodo-signal",
+      text: "Guia Search Intelligence: Protocolos de evolução e monitoramento de sinais.",
+      path: "/guias/search-intelligence",
     },
   },
 ];
 
-const objectives = [
-  "Abrir uma nova proposta",
-  "Defender uma renovação",
-  "Recuperar confiança do cliente",
-  "Expandir ticket",
-  "Criar uma frente de inovação",
-  "Reduzir dependência do time interno",
-  "Dar clareza para uma conta estratégica",
-  "Reposicionar SEO dentro da entrega",
+const bottleneckOptions = [
+  "Dificuldade técnica/implementação",
+  "Falta de clareza na estratégia",
+  "Produção de conteúdo ineficiente",
+  "Baixa autoridade/reputação",
+  "Queda de tráfego sem explicação",
+  "Pressão do cliente por resultados",
+  "Dúvidas sobre IA e Busca Generativa",
+  "Processos de migração ou redesign",
 ];
 
-const bottlenecks = [
-  "SEO técnico",
-  "Arquitetura do site",
-  "Conteúdo",
-  "Autoridade",
-  "Dados estruturados",
-  "Reputação",
-  "Concorrência",
-  "IA/GEO",
-  "Migração/redesign",
-  "Falta de diagnóstico",
-  "Falta de próximos passos claros",
-  "Baixa percepção de valor",
-];
-
-const clientPressures = [
-  "Mais tráfego",
-  "Mais leads",
-  "Provar resultado",
-  "Entender IA",
-  "Melhorar autoridade",
-  "Superar concorrentes",
-  "Recuperar queda",
-  "Saber o que fazer agora",
-  "Justificar investimento",
-  "Ver evolução no contrato",
+const objectiveOptions = [
+  "Recuperar tráfego perdido",
+  "Gerar leads/vendas qualificadas",
+  "Construir autoridade de marca",
+  "Preparar para busca generativa (IA)",
+  "Escalar produção de conteúdo",
+  "Garantir segurança em migração",
 ];
 
 const urgencyOptions = [
-  { id: "low", title: "Baixa", text: "ainda é uma oportunidade" },
-  { id: "medium", title: "Média", text: "já existe cobrança ou dúvida" },
-  { id: "high", title: "Alta", text: "pode impactar renovação ou confiança" },
-  { id: "critical", title: "Crítica", text: "a conta está em risco ou travada" },
+  { id: "critical", title: "Crítica", text: "Risco de perda de contrato ou queda severa." },
+  { id: "high", title: "Alta", text: "Pressão por definições e resultados rápidos." },
+  { id: "medium", title: "Média", text: "Planejamento para o próximo ciclo." },
+  { id: "low", title: "Baixa", text: "Exploração de novas oportunidades." },
 ];
 
-const howItWorks = [
-  ["Escolha o cenário", "Identifique o tipo de projeto que está na sua carteira."],
-  ["Defina o objetivo", "Informe o que sua agência quer destravar: proposta, retenção, recuperação, expansão ou inovação."],
-  ["Aponte os gargalos", "Selecione onde o projeto parece estar travado."],
-  ["Receba uma direção", "Veja qual solução AUDITSEO pode fazer sentido para esse cenário."],
-];
-
-const trustCards = [
-  ["Sem promessa automática", "O diagnóstico não garante resultado, ranking ou aparição em IA."],
-  ["Sem exposição do cliente", "A URL do cliente é opcional e pode ser compartilhada apenas se fizer sentido."],
-  ["Com leitura estratégica", "A AUDITSEO usa o resultado como ponto de partida para avaliar o cenário com mais profundidade."],
-];
-
-export default function DiagnosticoPage({ onNavigate }: DiagnosticoPageProps) {
-  const scanRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.dataset.pageSchema = "diagnostico";
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebPage",
-          name: "Diagnóstico Orgânico para Agências | AUDITSEO",
-          url: `${window.location.origin}/diagnostico`,
-          description:
-            "Diagnóstico interativo para agências identificarem oportunidades de SEO, GEO, autoridade e inteligência de busca na carteira de clientes.",
-        },
-        {
-          "@type": "Service",
-          name: "Diagnóstico de oportunidade orgânica para agências",
-          provider: { "@type": "Organization", name: "AUDITSEO" },
-          serviceType: "Search Intelligence, SEO, GEO e autoridade de entidade",
-        },
-        {
-          "@type": "ItemList",
-          name: "Cenários de diagnóstico orgânico",
-          itemListElement: scenarios.map((scenario, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: scenario.title,
-            description: scenario.solution,
-          })),
-        },
-      ],
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
-
-  const scrollToScan = () => {
-    const target = scanRef.current || document.getElementById("organic-opportunity-scan");
-    if (!target) return;
-    window.scrollTo({ top: target.offsetTop - 82, behavior: "smooth" });
-  };
-
-  return (
-    <main className="bg-[#11100f] text-[#f8f8f8]">
-      <style>{`
-        @keyframes diagnosticNodeFloat {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(0, -9px, 0); }
-        }
-
-        @keyframes diagnosticCorePulse {
-          0%, 100% { opacity: 0.9; filter: drop-shadow(0 0 26px rgba(178,132,83,0.24)); }
-          50% { opacity: 1; filter: drop-shadow(0 0 44px rgba(178,132,83,0.42)); }
-        }
-
-        @keyframes diagnosticParticle {
-          0%, 100% { opacity: 0.12; transform: translate3d(0, 0, 0); }
-          50% { opacity: 0.42; transform: translate3d(7px, -10px, 0); }
-        }
-
-        @keyframes diagnosticLine {
-          from { stroke-dashoffset: 120; }
-          to { stroke-dashoffset: 0; }
-        }
-      `}</style>
-
-      <section id="diagnostico" className="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-[112px] md:pb-20 md:pt-[128px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_35%,rgba(178,132,83,0.17),transparent_35%),linear-gradient(135deg,rgba(224,211,195,0.045),transparent_44%)]" />
-        <div className="container relative z-10 mx-auto max-w-[1320px] px-6 xl:px-12">
-          <div className="grid items-center gap-14 lg:grid-cols-12 xl:gap-16">
-            <div className="lg:col-span-6">
-              <span className="mb-5 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-                DIAGNÓSTICO PARA AGÊNCIAS
-              </span>
-              <h1 className="max-w-[780px] font-display text-[clamp(54px,5.4vw,82px)] font-bold leading-[1.02] tracking-[-0.045em] text-[#f8f8f8]">
-                Descubra qual oportunidade orgânica existe na sua carteira
-              </h1>
-              <p className="mt-8 max-w-[720px] text-[clamp(18px,1.35vw,22px)] leading-[1.55] text-[rgba(248,248,248,0.76)]">
-                Responda algumas perguntas rápidas e veja qual cenário seu cliente está enfrentando, qual risco isso cria para a agência e qual solução AUDITSEO pode ser estruturada nos bastidores.
-              </p>
-              <p className="mt-[22px] max-w-[640px] text-[16px] leading-[1.5] text-[#e0d3c3]/[0.78]">
-                Não é um formulário. É uma leitura estratégica para identificar onde sua agência pode destravar, recuperar ou evoluir uma conta.
-              </p>
-              <div className="mt-11 flex flex-col gap-4 sm:flex-row">
-                <PrimaryButton onClick={scrollToScan}>Iniciar diagnóstico</PrimaryButton>
-                <button
-                  onClick={() => {
-                    const target = document.getElementById("como-funciona-diagnostico");
-                    if (target) window.scrollTo({ top: target.offsetTop - 82, behavior: "smooth" });
-                  }}
-                  className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-                >
-                  Ver como funciona
-                </button>
-              </div>
-              <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
-                Leva menos de 3 minutos · Sem compromisso · Pensado para agências
-              </p>
-            </div>
-            <div className="lg:col-span-6">
-              <DiagnosticHeroVisual />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1120px] px-6 text-center xl:px-12">
-          <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">VISÃO AUDITSEO</span>
-          <h2 className="mx-auto mt-5 max-w-5xl font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] text-[#f8f8f8] md:text-[54px]">
-            O problema nem sempre é falta de SEO. Às vezes é falta de{" "}
-            <span className="text-[#b28453]">leitura do cenário</span>.
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-4xl gap-7 text-lg leading-[1.75] text-[#f8f8f8]/70 md:text-xl">
-            <p>
-              Projetos orgânicos podem estar em estágios completamente diferentes. Alguns precisam nascer com a base correta. Outros precisam{" "}
-              <span className="text-[#b28453]">destravar tração</span>. Alguns precisam{" "}
-              <span className="text-[#b28453]">recuperar visibilidade</span> perdida. Outros precisam{" "}
-              <span className="text-[#b28453]">construir autoridade</span> antes da decisão do cliente.
-            </p>
-            <p>Tratar todos esses casos com a mesma entrega reduz a estratégia a uma lista de tarefas.</p>
-            <p className="font-display text-2xl font-bold leading-[1.4] text-[#e0d3c3]">
-              O diagnóstico existe para identificar o cenário certo antes de propor a <span className="text-[#b28453]">solução certa</span>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="como-funciona-diagnostico" className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            center
-            eyebrow="Como funciona"
-            title="Como o diagnóstico funciona"
-            text="Uma experiênica rápida para transformar uma dor genérica em uma hipótese estratégica."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {howItWorks.map(([title, text], index) => (
-              <div key={index} className="rounded-2xl border border-[#b28453]/20 bg-white/40 p-7 shadow-sm">
-                <span className="font-mono text-xs font-bold text-[#b28453]">0{index + 1}</span>
-                <h4 className="mt-4 font-display text-xl font-bold">{title}</h4>
-                <p className="mt-3 text-sm leading-[1.6] text-[#11100f]/70">{text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {trustCards.map(([title, text], index) => (
-              <div key={index} className="flex items-start gap-4 rounded-2xl border border-[#b28453]/15 bg-white/25 p-6">
-                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453]">
-                  <CheckCircle2 size={16} />
-                </div>
-                <div>
-                  <h4 className="text-[15px] font-bold">{title}</h4>
-                  <p className="mt-2 text-xs leading-[1.6] text-[#11100f]/60">{text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <OpportunityScan scanRef={scanRef} onNavigate={onNavigate} />
-
-      <SiteFooter onNavigate={onNavigate} />
-    </main>
-  );
-}
-
-function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HTMLElement | null>; onNavigate: (id: string) => void }) {
-  const [stepIndex, setStepIndex] = useState(0);
-  const [answers, setAnswers] = useState<Answers>({ bottlenecks: [] });
+export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: string) => void }) {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState<Answers>({
+    scenario: "",
+    bottlenecks: [],
+    objective: "",
+    urgency: "",
+  });
   const [showResult, setShowResult] = useState(false);
-  const [contact, setContact] = useState({ name: "", agency: "", email: "", whatsapp: "", agencySite: "", clientUrl: "", context: "" });
   const [formSent, setFormSent] = useState(false);
-  const refEl = useRef<HTMLElement | null>(null);
+  const [contact, setContact] = useState({
+    name: "",
+    agency: "",
+    whatsapp: "",
+    email: "",
+    agencySite: "",
+    clientUrl: "",
+    context: "",
+  });
 
-  useEffect(() => {
-    if (scanRef) scanRef.current = refEl.current;
-  }, [scanRef]);
+  const activeStep = steps[currentStep];
 
-  const steps = [
-    {
-      key: "scenario",
-      title: "Qual é o cenário atual desse projeto?",
-      subtitle: "Escolha a opção que melhor descreve o momento do cliente.",
-      options: scenarios,
-    },
-    {
-      key: "objective",
-      title: "O que sua agência quer destravar com esse cliente?",
-      subtitle: "O diagnóstico será orientado para este objetivo comercial.",
-      options: objectives.map((obj) => ({ id: obj.toLowerCase().replace(/ /g, "-"), title: obj })),
-    },
-    {
-      key: "bottlenecks",
-      title: "Onde você sente que o projeto está travado?",
-      subtitle: "Selecione um ou mais gargalos identificados.",
-      options: bottlenecks.map((b) => ({ id: b.toLowerCase().replace(/ /g, "-"), title: b })),
-    },
-    {
-      key: "clientPressure",
-      title: "Qual é a maior pressão do cliente hoje?",
-      subtitle: "O que ele mais cobra nas reuniões?",
-      options: clientPressures.map((p) => ({ id: p.toLowerCase().replace(/ /g, "-"), title: p })),
-    },
-    {
-      key: "urgency",
-      title: "Qual é o nível de urgência desse caso?",
-      subtitle: "Isso ajuda a priorizar a profundidade da resposta.",
-      options: urgencyOptions,
-    },
-  ];
-
-  const activeStep = steps[stepIndex];
-  const progress = ((stepIndex + 1) / steps.length) * 100;
-  const canAdvance = activeStep.key === "bottlenecks" ? answers.bottlenecks.length > 0 : !!answers[activeStep.key as StepKey];
-
-  const updateAnswer = (key: string, value: string) => {
-    if (key === "bottlenecks") {
-      setAnswers((prev) => {
-        const current = prev.bottlenecks;
-        if (current.includes(value)) return { ...prev, bottlenecks: current.filter((v) => v !== value) };
-        return { ...prev, bottlenecks: [...current, value] };
-      });
-    } else {
-      setAnswers((prev) => ({ ...prev, [key]: value }));
-    }
+  const handleScenarioSelect = (id: string) => {
+    setAnswers({ ...answers, scenario: id });
+    setCurrentStep(1);
   };
 
-  const keepScanInView = () => {
-    if (refEl.current) {
-      window.scrollTo({ top: refEl.current.offsetTop - 82, behavior: "smooth" });
+  const handleBottleneckToggle = (option: string) => {
+    const current = [...answers.bottlenecks];
+    const index = current.indexOf(option);
+    if (index > -1) {
+      current.splice(index, 1);
+    } else {
+      current.push(option);
     }
+    setAnswers({ ...answers, bottlenecks: current });
   };
 
-  const goNext = () => {
-    if (stepIndex < steps.length - 1) {
-      setStepIndex(stepIndex + 1);
-      keepScanInView();
-    } else {
-      setShowResult(true);
-      setTimeout(() => {
-        const res = document.getElementById("diagnostic-result");
-        if (res) window.scrollTo({ top: res.offsetTop - 100, behavior: "smooth" });
-      }, 100);
-    }
+  const handleObjectiveSelect = (option: string) => {
+    setAnswers({ ...answers, objective: option });
+    setCurrentStep(3);
+  };
+
+  const handleUrgencySelect = (id: string) => {
+    setAnswers({ ...answers, urgency: id });
+    setShowResult(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const goBack = () => {
-    if (stepIndex > 0) setStepIndex(stepIndex - 1);
-    setShowResult(false);
-    keepScanInView();
+    if (currentStep > 0) setCurrentStep(currentStep - 1);
   };
 
   const resetScan = () => {
-    setStepIndex(0);
+    setAnswers({ scenario: "", bottlenecks: [], objective: "", urgency: "" });
+    setCurrentStep(0);
     setShowResult(false);
-    setAnswers({ bottlenecks: [] });
     setFormSent(false);
   };
 
-  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setFormSent(true);
   };
 
-  const result = useMemo(() => buildDiagnosticResult(answers), [answers]);
+  const result = showResult ? buildDiagnosticResult(answers) : null;
 
   return (
-    <section id="organic-opportunity-scan" ref={refEl} className="relative overflow-hidden bg-[#11100f] py-24 md:py-32">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(178,132,83,0.10),transparent_32%)]" />
-      <div className="container relative z-10 mx-auto max-w-[1240px] px-6 xl:px-12">
-        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-4xl">
-            <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Organic Opportunity Scan</span>
-            <h2 className="mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] text-[#f8f8f8] md:text-[54px]">
-              Faça uma leitura rápida do cenário orgânico do cliente
-            </h2>
-            <p className="mt-6 max-w-3xl text-base leading-[1.75] text-[#f8f8f8]/66 md:text-lg">
-              A experiência entrega uma hipótese estratégica antes de pedir qualquer contato.
-            </p>
-          </div>
-          <div className="rounded-full border border-[#b28453]/25 bg-[#171614] px-5 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#e0d3c3]">
-            menos de 3 minutos
-          </div>
-        </div>
+    <div className="min-h-screen bg-[#11100f] text-[#f8f8f8] font-sans selection:bg-[#b28453] selection:text-white">
+      <Header onNavClick={onNavigate} activeSection="diagnostico" />
 
-        <div className="overflow-hidden rounded-[30px] border border-[#b28453]/28 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] shadow-[0_30px_90px_rgba(0,0,0,0.40),inset_0_1px_0_rgba(255,255,255,0.04)]">
-          <div className="border-b border-[#b28453]/16 p-6 md:p-8">
-            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-              <div>
-                <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-                  {showResult ? "Resultado gerado" : `Etapa ${stepIndex + 1} de ${steps.length}`}
-                </p>
-                <p className="mt-2 text-sm leading-[1.6] text-[#f8f8f8]/58">
-                  {showResult ? "Você já tem uma direção inicial para conduzir a conversa." : "Selecione a opção que melhor representa o caso."}
-                </p>
-              </div>
-              <div className="h-2 w-full overflow-hidden rounded-full bg-white/8 md:w-[320px]">
-                <div className="h-full rounded-full bg-[#b28453] transition-all duration-500" style={{ width: `${progress}%` }} />
-              </div>
-            </div>
-          </div>
-
+      <main className="relative pt-32 pb-24">
+        <div className="container mx-auto px-6">
           {!showResult ? (
-            <div className="p-6 md:p-10">
-              <div className="min-h-[120px]">
-                <h3 className="font-display text-3xl font-bold leading-[1.12] text-[#f8f8f8] md:text-5xl">{activeStep.title}</h3>
-                {activeStep.subtitle ? <p className="mt-4 text-base leading-[1.7] text-[#f8f8f8]/64">{activeStep.subtitle}</p> : null}
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-12">
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#b28453]">
+                    Passo {currentStep + 1} de {steps.length}
+                  </span>
+                  <div className="h-[1px] flex-1 bg-[#b28453]/20" />
+                </div>
+                <h2 className="mt-6 font-display text-[42px] font-bold leading-[1.1] tracking-[-0.02em] md:text-[64px]">
+                  {activeStep.title}
+                </h2>
+                <p className="mt-6 text-lg leading-[1.6] text-[#f8f8f8]/60">{activeStep.description}</p>
               </div>
 
-              <div className={`mt-10 grid gap-4 ${activeStep.key === "scenario" ? "md:grid-cols-2 xl:grid-cols-4" : "md:grid-cols-2 xl:grid-cols-4"}`}>
-                {activeStep.options.map((option) => {
-                  const selected =
-                    activeStep.key === "bottlenecks"
-                      ? answers.bottlenecks.includes(option.id)
-                      : (answers as any)[activeStep.key] === option.id;
-
-                  return (
+              {currentStep === 0 && (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {scenarios.map((scenario) => (
                     <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => updateAnswer(activeStep.key, option.id)}
-                      className={`group min-h-[150px] rounded-[22px] border p-5 text-left transition-all duration-300 hover:-translate-y-1 ${
-                        selected
-                          ? "border-[#b28453]/70 bg-[#b28453]/14 shadow-[0_0_42px_rgba(178,132,83,0.16)]"
-                          : "border-[#b28453]/18 bg-white/[0.025] hover:border-[#b28453]/42"
-                      }`}
+                      key={scenario.id}
+                      onClick={() => handleScenarioSelect(scenario.id)}
+                      className="group relative flex flex-col items-start rounded-[24px] border border-[#b28453]/15 bg-white/[0.02] p-8 text-left transition-all hover:border-[#b28453]/40 hover:bg-[#b28453]/5"
                     >
-                      <div className="mb-5 flex items-center justify-between gap-4">
-                        <span className={`flex h-9 w-9 items-center justify-center rounded-full border text-xs font-bold ${selected ? "border-[#b28453] bg-[#b28453] text-white" : "border-[#b28453]/35 text-[#b28453]"}`}>
-                          {selected ? <CheckCircle2 size={16} /> : <CircleDot size={15} />}
-                        </span>
+                      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453] transition-colors group-hover:bg-[#b28453] group-hover:text-white">
+                        <ChevronRight size={24} />
                       </div>
-                      <h4 className="font-display text-xl font-bold leading-[1.18] text-[#f8f8f8]">{option.title}</h4>
-                      {(option as any).text ? <p className="mt-4 text-sm leading-[1.6] text-[#f8f8f8]/60">{(option as any).text}</p> : null}
+                      <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{scenario.title}</h3>
+                      <p className="mt-3 text-sm leading-[1.6] text-[#f8f8f8]/50">{scenario.text}</p>
                     </button>
-                  );
-                })}
-              </div>
+                  ))}
+                </div>
+              )}
 
-              <div className="mt-10 flex flex-col justify-between gap-4 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={goBack}
-                  disabled={stepIndex === 0}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#b28453]/30 px-6 py-3 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10 disabled:cursor-not-allowed disabled:opacity-35"
-                >
-                  <ChevronLeft size={16} />
-                  Voltar
-                </button>
-                <button
-                  type="button"
-                  onClick={goNext}
-                  disabled={!canAdvance}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-3 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f] disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  {stepIndex === steps.length - 1 ? "Ver diagnóstico" : "Avançar"}
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div id="diagnostic-result" className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="p-6 md:p-10">
-                <div className="rounded-[26px] border border-[#b28453]/30 bg-[#11100f]/72 p-7 md:p-9">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Resultado instantâneo</span>
-                  <h3 className="mt-5 font-display text-3xl font-bold leading-[1.1] text-[#f8f8f8] md:text-5xl">{result.solution}</h3>
-                  <p className="mt-5 text-base leading-[1.7] text-[#f8f8f8]/66">{result.nextStep}</p>
-
-                  <div className="mt-9 grid gap-5">
-                    <ResultBlock title="DECLARADO PELO USUÁRIO" text={result.scenario} icon={<Search size={17} />} />
-                    <ResultBlock title="INFERIDO" text={result.risk} icon={<AlertTriangle size={17} />} />
-                    <ResultBlock title="RECOMENDADO" text={result.opportunity} icon={<Sparkles size={17} />} />
-                    {result.evidence && (
-                      <ResultBlock
-                        title="EVIDÊNCIA DE APOIO"
-                        text={result.evidence.text}
-                        icon={<BookOpen size={17} />}
-                        link={{ text: "Ver referência", onClick: () => onNavigate(result.evidence!.path) }}
-                      />
-                    )}
-                    <ResultBlock title="COMO A AUDITSEO PODE ATUAR" text={result.auditseo} icon={<Target size={17} />} />
-                  </div>
-
-                  <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                    <button
-                      type="button"
-                      onClick={goBack}
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-[#b28453]/30 px-6 py-3 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-                    >
-                      <ChevronLeft size={16} />
-                      Ajustar respostas
+              {currentStep === 1 && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {bottleneckOptions.map((option) => {
+                    const selected = answers.bottlenecks.includes(option);
+                    return (
+                      <button
+                        key={option}
+                        onClick={() => handleBottleneckToggle(option)}
+                        className={`flex items-center gap-4 rounded-[18px] border p-5 text-left transition-all ${
+                          selected ? "border-[#b28453] bg-[#b28453]/10 text-[#f8f8f8]" : "border-[#b28453]/15 bg-white/[0.02] text-[#f8f8f8]/60 hover:border-[#b28453]/40"
+                        }`}
+                      >
+                        <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border ${selected ? "bg-[#b28453] border-[#b28453]" : "border-[#b28453]/30"}`}>
+                          {selected && <CheckCircle2 size={14} className="text-white" />}
+                        </div>
+                        <span className="text-sm font-bold">{option}</span>
+                      </button>
+                    );
+                  })}
+                  <div className="mt-8 flex justify-between sm:col-span-2">
+                    <button onClick={goBack} className="flex items-center gap-2 text-sm font-bold text-[#f8f8f8]/60 hover:text-[#b28453]">
+                      <ChevronLeft size={18} /> Voltar
                     </button>
                     <button
-                      type="button"
-                      onClick={resetScan}
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-[#b28453]/30 px-6 py-3 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
+                      onClick={() => setCurrentStep(2)}
+                      disabled={answers.bottlenecks.length === 0}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f] disabled:opacity-30"
                     >
-                      Refazer diagnóstico
+                      Continuar <ArrowRight size={18} />
                     </button>
                   </div>
                 </div>
+              )}
+
+              {currentStep === 2 && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {objectiveOptions.map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => handleObjectiveSelect(option)}
+                      className="rounded-[18px] border border-[#b28453]/15 bg-white/[0.02] p-6 text-left font-bold text-[#f8f8f8]/80 transition-all hover:border-[#b28453]/40 hover:bg-[#b28453]/5"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                  <div className="mt-8 flex sm:col-span-2">
+                    <button onClick={goBack} className="flex items-center gap-2 text-sm font-bold text-[#f8f8f8]/60 hover:text-[#b28453]">
+                      <ChevronLeft size={18} /> Voltar
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {currentStep === 3 && (
+                <div className="grid gap-4">
+                  {urgencyOptions.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => handleUrgencySelect(option.id)}
+                      className="flex flex-col rounded-[22px] border border-[#b28453]/15 bg-white/[0.02] p-8 text-left transition-all hover:border-[#b28453]/40 hover:bg-[#b28453]/5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{option.title}</h3>
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#b28453]/30">
+                          <CircleDot size={15} />
+                        </span>
+                      </div>
+                      <p className="mt-3 text-sm text-[#f8f8f8]/50">{option.text}</p>
+                    </button>
+                  ))}
+                  <div className="mt-8 flex">
+                    <button onClick={goBack} className="flex items-center gap-2 text-sm font-bold text-[#f8f8f8]/60 hover:text-[#b28453]">
+                      <ChevronLeft size={18} /> Voltar
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="grid gap-8 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <div className="mb-10">
+                  <span className="font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#b28453]">Diagnóstico Concluído</span>
+                  <h2 className="mt-6 font-display text-[48px] font-bold leading-[1.1] tracking-[-0.02em] md:text-[72px]">
+                    Sua agência precisa de <span className="text-[#b28453]">{result?.solution}</span>
+                  </h2>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <ResultBlock title="Declarado pelo usuário" text={result!.scenario} icon={<Users size={18} />} />
+                  <ResultBlock title="Inferido" text={result!.risk} icon={<LineChart size={18} />} />
+                  <ResultBlock title="Recomendado" text={result!.opportunity} icon={<Zap size={18} />} />
+                  {result?.evidence && (
+                    <ResultBlock
+                      title="Evidência de apoio"
+                      text={result.evidence.text}
+                      icon={<ShieldCheck size={18} />}
+                      link={{
+                        text: "Ver referência",
+                        path: result.evidence.path,
+                      }}
+                      onNavigate={onNavigate}
+                    />
+                  )}
+                </div>
+
+                <div className="mt-8">
+                  <ResultBlock
+                    title="Como a AUDITSEO pode atuar"
+                    text={result!.auditseo}
+                    icon={<Target size={18} />}
+                  />
+                </div>
+
+                <div className="mt-12 flex flex-wrap gap-4">
+                  <button
+                    onClick={goBack}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#b28453]/30 px-6 py-3 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
+                  >
+                    <ChevronLeft size={16} /> Ajustar respostas
+                  </button>
+                  <button
+                    onClick={resetScan}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#b28453]/30 px-6 py-3 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
+                  >
+                    Refazer diagnóstico
+                  </button>
+                </div>
               </div>
 
-              <div className="border-t border-[#b28453]/16 bg-[#0f0f0e] p-6 md:p-10 lg:border-l lg:border-t-0">
+              <div className="border-t border-[#b28453]/16 bg-[#0f0f0e] p-6 md:p-10 lg:border-l lg:border-t-0 lg:col-span-4">
                 <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Próximo passo</span>
                 <h3 className="mt-5 font-display text-3xl font-bold leading-[1.12] text-[#f8f8f8]">
                   Quer avaliar esse cenário com a AUDITSEO?
@@ -657,16 +457,16 @@ function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HT
                 ) : (
                   <form onSubmit={handleContactSubmit} className="mt-8 grid gap-4">
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <TextInput label="Nome" value={contact.name} onChange={(value) => setContact((current) => ({ ...current, name: value }))} required />
-                      <TextInput label="Agência" value={contact.agency} onChange={(value) => setContact((current) => ({ ...current, agency: value }))} required />
+                      <TextInput label="Nome" value={contact.name} onChange={(value) => setContact((c) => ({ ...c, name: value }))} required />
+                      <TextInput label="Agência" value={contact.agency} onChange={(value) => setContact((c) => ({ ...c, agency: value }))} required />
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <TextInput label="WhatsApp" value={contact.whatsapp} onChange={(value) => setContact((current) => ({ ...current, whatsapp: value }))} required />
-                      <TextInput label="E-mail" value={contact.email} onChange={(value) => setContact((current) => ({ ...current, email: value }))} type="email" required />
+                      <TextInput label="WhatsApp" value={contact.whatsapp} onChange={(value) => setContact((c) => ({ ...c, whatsapp: value }))} required />
+                      <TextInput label="E-mail" value={contact.email} onChange={(value) => setContact((c) => ({ ...c, email: value }))} type="email" required />
                     </div>
-                    <TextInput label="Site da agência" value={contact.agencySite} onChange={(value) => setContact((current) => ({ ...current, agencySite: value }))} required />
+                    <TextInput label="Site da agência" value={contact.agencySite} onChange={(value) => setContact((c) => ({ ...c, agencySite: value }))} required />
                     <div className="grid gap-2">
-                      <TextInput label="URL do cliente/projeto, opcional" value={contact.clientUrl} onChange={(value) => setContact((current) => ({ ...current, clientUrl: value }))} />
+                      <TextInput label="URL do cliente/projeto, opcional" value={contact.clientUrl} onChange={(value) => setContact((c) => ({ ...c, clientUrl: value }))} />
                       <p className="px-5 text-[10px] italic text-[#f8f8f8]/40">
                         * A URL informada serve apenas para contexto comercial e não será analisada tecnicamente por este assessment.
                       </p>
@@ -675,7 +475,7 @@ function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HT
                       <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">Contexto rápido do caso, opcional</span>
                       <textarea
                         value={contact.context}
-                        onChange={(event) => setContact((current) => ({ ...current, context: event.target.value }))}
+                        onChange={(e) => setContact((c) => ({ ...c, context: e.target.value }))}
                         className="min-h-[112px] rounded-[18px] border border-[#b28453]/22 bg-[#11100f] px-5 py-4 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
                         placeholder="Conte em poucas linhas o que está acontecendo com essa conta."
                       />
@@ -687,25 +487,24 @@ function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HT
                       Enviar diagnóstico
                       <Send size={15} />
                     </button>
-                    <p className="text-center text-xs leading-[1.6] text-[#f8f8f8]/48">
-                      A primeira conversa é para entender o cenário, não para empurrar uma solução.
-                    </p>
                   </form>
                 )}
               </div>
             </div>
           )}
         </div>
-      </div>
-    </section>
+      </main>
+
+      <SiteFooter onNavigate={onNavigate} />
+    </div>
   );
 }
 
 function buildDiagnosticResult(answers: Answers) {
   const scenario = scenarios.find((item) => item.id === answers.scenario) || scenarios[1];
   const urgency = urgencyOptions.find((item) => item.id === answers.urgency);
-  const bottleneckText = answers.bottlenecks.length ? ` Os gargalos sinalizados foram ${answers.bottlenecks.join(", ")}.` : "";
   const objectiveText = answers.objective ? ` O objetivo da agência é ${answers.objective.toLowerCase()}.` : "";
+  const bottleneckText = answers.bottlenecks.length ? ` Os gargalos sinalizados foram ${answers.bottlenecks.join(", ")}.` : "";
 
   const urgencyRisk =
     urgency?.id === "critical"
@@ -723,7 +522,6 @@ function buildDiagnosticResult(answers: Answers) {
     opportunity: `Ação recomendada: ${scenario.opportunity}`,
     auditseo: scenario.auditseo,
     evidence: scenario.evidence,
-    nextStep: `Próximo passo sugerido: avaliar esse cliente com a AUDITSEO para entender se existe oportunidade real de aplicar ${scenario.solution} nos bastidores da sua agência.`,
   };
 }
 
@@ -732,25 +530,35 @@ function ResultBlock({
   text,
   icon,
   link,
+  onNavigate,
 }: {
   title: string;
   text: string;
   icon: ReactNode;
-  link?: { text: string; onClick: () => void };
+  link?: { text: string; path: string };
+  onNavigate?: (id: string) => void;
 }) {
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (link && onNavigate) {
+      e.preventDefault();
+      onNavigate(link.path);
+    }
+  };
+
   return (
     <div className="rounded-[18px] border border-[#b28453]/18 bg-white/[0.025] p-5">
       <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453]">{icon}</div>
       <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#b28453]">{title}</h4>
       <p className="mt-3 text-sm leading-[1.7] text-[#f8f8f8]/68">{text}</p>
       {link && (
-        <button
-          onClick={link.onClick}
+        <a
+          href={link.path}
+          onClick={handleLinkClick}
           className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#b28453] transition-colors hover:text-[#e0d3c3]"
         >
           {link.text}
-          <ExternalLink size={12} />
-        </button>
+          <ArrowRight size={12} />
+        </a>
       )}
     </div>
   );
@@ -775,81 +583,10 @@ function TextInput({
       <input
         type={type}
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         required={required}
         className="h-12 rounded-full border border-[#b28453]/22 bg-[#11100f] px-5 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
       />
     </label>
-  );
-}
-
-function SectionHeader({
-  eyebrow,
-  title,
-  text,
-  dark = false,
-  center = false,
-}: {
-  eyebrow: string;
-  title: string;
-  text: string;
-  dark?: boolean;
-  center?: boolean;
-}) {
-  return (
-    <div className={`${center ? "text-center mx-auto" : ""} max-w-4xl`}>
-      <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{eyebrow}</span>
-      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"} md:text-[54px]`}>
-        {title}
-      </h2>
-      <p className={`mt-6 text-base leading-[1.75] ${dark ? "text-[#11100f]/66" : "text-[#f8f8f8]/66"} md:text-lg`}>{text}</p>
-    </div>
-  );
-}
-
-function PrimaryButton({ children, onClick }: { children: ReactNode; onClick?: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
-    >
-      {children}
-      <ArrowRight size={18} />
-    </button>
-  );
-}
-
-function DiagnosticHeroVisual() {
-  return (
-    <div className="relative aspect-square w-full max-w-[540px]">
-      <div className="absolute inset-0 animate-[diagnosticCorePulse_4s_ease-in-out_infinite] rounded-full bg-[#b28453]/10 blur-3xl" />
-      <svg viewBox="0 0 100 100" className="relative h-full w-full overflow-visible drop-shadow-[0_0_20px_rgba(178,132,83,0.15)]">
-        {heroNodes.map((node, i) => (
-          <g key={i} className="animate-[diagnosticNodeFloat_6s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.8}s` }}>
-            <circle cx={node.x} cy={node.y} r="1.5" fill="#b28453" className="opacity-40" />
-            <text x={node.x} y={node.y - 4} textAnchor="middle" className="font-mono text-[2.8px] font-bold uppercase tracking-widest fill-[#b28453] opacity-70">
-              {node.label}
-            </text>
-            {heroNodes.map((target, j) =>
-              i < j ? (
-                <line
-                  key={`${i}-${j}`}
-                  x1={node.x}
-                  y1={node.y}
-                  x2={target.x}
-                  y2={target.y}
-                  stroke="#b28453"
-                  strokeWidth="0.15"
-                  strokeDasharray="1 2"
-                  className="opacity-20"
-                />
-              ) : null
-            )}
-          </g>
-        ))}
-        <circle cx="50" cy="50" r="12" className="animate-[diagnosticCorePulse_3s_ease-in-out_infinite] fill-[#b28453]/5 stroke-[#b28453]/30" strokeWidth="0.5" />
-        <path d="M44,50 L56,50 M50,44 L50,56" stroke="#b28453" strokeWidth="0.8" className="opacity-60" />
-      </svg>
-    </div>
   );
 }
