@@ -13,6 +13,7 @@ import MetodoSignalPage from "./components/MetodoSignalPage";
 import SolucoesPage from "./components/SolucoesPage";
 import GeoIaPage from "./components/GeoIaPage";
 import DiagnosticoPage from "./components/DiagnosticoPage";
+import ParaAgenciasPage from "./components/ParaAgenciasPage";
 import SiteFooter from "./components/SiteFooter";
 import ContentPage from "./components/ContentPage";
 import BlogPage from "./components/BlogPage";
@@ -464,6 +465,15 @@ export default function App() {
 
     scrollToHomeSection();
   };
+
+  if (currentPath === "/seo-para-agencias") {
+    return (
+      <div className="bg-[#11100f] text-[#f8f8f8] font-sans antialiased selection:bg-[#b28453] selection:text-[#ffffff]">
+        <Header onNavClick={handleScrollToSection} activeSection="parceria" />
+        <ParaAgenciasPage onNavigate={handleScrollToSection} />
+      </div>
+    );
+  }
 
   if (currentPath === "/para-agencias") {
     return (
