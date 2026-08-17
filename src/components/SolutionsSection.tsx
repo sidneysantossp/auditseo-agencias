@@ -10,7 +10,7 @@ export default function SolutionsSection({ onCtaClick }: SolutionsSectionProps) 
       id: "sol-1",
       icon: <Search className="w-6 h-6 text-[#b28453]" />,
       title: "Auditoria SEO/GEO White-Label",
-      description: "Diagnóstico completo de visibilidade para sua agência de marketing apresentar ao cliente final direto sob a própria marca. Inclui análise semântica técnica profunda, conteúdo, competidores, score de menções em IA e plano consultivo de curto prazo.",
+      description: "Diagnóstico completo de visibilidade para sua agência de marketing apresentar ao cliente final direto sob a própria marca. Inclui análise semântica técnica profunda, conteúdo, competidores e plano consultivo de curto prazo.",
       ideal: "Fechar novos contratos recorrentes, renovar contas com baixa percepção de valor e justificar expansão comercial de escopo das contas atuais."
     },
     {

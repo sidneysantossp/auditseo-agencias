@@ -51,12 +51,8 @@ app.post("/api/diagnose", async (req, res) => {
 
   // Set up fallback mock data if Gemini isn't available or fails
   const mockDiagnostic = {
-    radarScore: 78,
     marketOpportunity: "Alta prioridade estratégica devido à alta densidade comercial em " + (nichos || "Serviços/Negócios Locais") + ".",
-    seoScore: 68,
-    geoScore: 42, // IA/GEO is usually lower
-    brandAuthorityScore: 55,
-    analysis: `Olá ${nome || "Diretor(a)"}, analisamos a agência ${agencia || "Parceira"} (${site || "Sem site informado"}). Atualmente, operar no segmento de "${nichos || "marketing de busca"}" exige uma forte transição de SEO tradicional para GEO (Generative Engine Optimization). Identificamos que a sua principal dificuldade ("${dificuldade || "escalar entregas com rentabilidade"}") é comum em agências com cerca de ${clientes || "10 a 30"} contas ativas.`,
+    analysis: `Olá ${nome || "Diretor(a)"}, analisamos o cenário da agência ${agencia || "Parceira"} (${site || "Sem site informado"}). Atualmente, operar no segmento de "${nichos || "marketing de busca"}" exige uma forte transição de SEO tradicional para GEO (Generative Engine Optimization). Identificamos que a sua principal dificuldade ("${dificuldade || "escalar entregas com rentabilidade"}") é comum em agências com cerca de ${clientes || "10 a 30"} contas ativas.`,
     quickWins: [
       {
         title: "Estruturação de Schema Markup Semântico",
@@ -112,10 +108,6 @@ app.post("/api/diagnose", async (req, res) => {
     - Modelo de parceria em mente: ${modelo || "Squad Externo ou White-Label"}
 
     O seu retorno deve ser exclusivamente um objeto JSON em português do Brasil contendo as seguintes propriedades:
-    - radarScore (número inteiro de 40 a 95, estimando maturidade em busca com IA da agência)
-    - seoScore (número de 40 a 95, estimando maturidade em SEO tradicional)
-    - geoScore (número de 30 a 90, estimando presença em IA)
-    - brandAuthorityScore (número de 40 a 95, estimando autoridade da marca)
     - marketOpportunity (frase curta em português resumindo a oportunidade mercadológica para o nicho de clientes deles)
     - analysis (texto em parágrafo refinado e persuasivo, com tom executivo e consultivo de alto valor, analisando os desafios decorrentes da principal dificuldade apontada e mostrando como a AUDITSEO ajuda no bastidor)
     - quickWins (array com 3 objetos, cada um com as chaves 'title' e 'description', sugerindo 3 ações práticas de altíssimo valor imediatas)
@@ -133,10 +125,6 @@ app.post("/api/diagnose", async (req, res) => {
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            radarScore: { type: Type.INTEGER },
-            seoScore: { type: Type.INTEGER },
-            geoScore: { type: Type.INTEGER },
-            brandAuthorityScore: { type: Type.INTEGER },
             marketOpportunity: { type: Type.STRING },
             analysis: { type: Type.STRING },
             quickWins: {
@@ -165,10 +153,6 @@ app.post("/api/diagnose", async (req, res) => {
             suggestedModel: { type: Type.STRING }
           },
           required: [
-            "radarScore",
-            "seoScore",
-            "geoScore",
-            "brandAuthorityScore",
             "marketOpportunity",
             "analysis",
             "quickWins",

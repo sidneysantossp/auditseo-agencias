@@ -31,7 +31,7 @@ const routeMetadata: Record<string, { title: string; description: string; active
   "/": {
     title: "Consultoria de SEO e Search Intelligence para Empresas | AUDITSEO",
     description:
-      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem crescer o tráfego orgânico, aparecer em IA e ter previsibilidade de vendas. Diagnóstico gratuito.",
+      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem estruturar autoridade orgânica e governança de busca em ecossistemas generativos. Avaliação de cenários.",
     activeSection: "inicio",
   },
   "/seo-para-agencias": {
@@ -196,7 +196,7 @@ const routeMetadata: Record<string, { title: string; description: string; active
   "/consultoria": {
     title: "Consultoria de SEO e Search Intelligence para Empresas | AUDITSEO",
     description:
-      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem crescer o tráfego orgânico, aparecer em IA e ter previsibilidade de vendas. Diagnóstico gratuito.",
+      "Consultoria estratégica de SEO, GEO e Search Intelligence para empresas que querem estruturar autoridade orgânica e governança de busca em ecossistemas generativos. Avaliação de cenários.",
     activeSection: "inicio",
   },
   "/internal/article-v3-proof": {
