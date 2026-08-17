@@ -2,7 +2,7 @@
 
 **Status:** PENDING FINAL REVIEW
 **Branch:** `fix/r16b-remediation`
-**Último Commit (Final Fix):** `51f2777cfd14b6cdf26c6ba24c9c8f49137edd5a`
+**Último Commit (Final Fix):** `2861c5c04f4a88324ead89f943b1d7104de9bd80`
 
 ## 1. Registro de Desvio (DEV-R16B-001)
 
@@ -20,7 +20,8 @@
 - **Disclaimer de URL:** Mantido o aviso explícito de que a URL informada não é analisada tecnicamente.
 
 ### Harmonização de Nomenclatura
-- **Canônico:** Adotado "Generative Search Architecture" como termo canônico em todo o repositório, substituindo variações como "AI Search Context Architecture" ou "GEO & IA Readiness".
+- **Canônico:** Adotado "Generative Search Architecture" como termo canônico nos componentes de produto (`GeoIaPage.tsx`, `SolucoesPage.tsx`, `MetodoSignalPage.tsx`).
+- **Compatibilidade Editorial:** O `ContentPage.tsx` preserva deliberadamente os termos "GEO Readiness" e "GEO & IA" em rotas e conteúdos específicos para garantir compatibilidade com referências externas e histórico editorial.
 - **Componentes Atualizados:** `GeoIaPage.tsx`, `SolucoesPage.tsx` e `MetodoSignalPage.tsx` foram totalmente revisados para refletir essa nomenclatura e remover âncoras legadas (ex: `geo-ai-readiness` -> `generative-search-architecture`).
 
 ### Saneamento de Resquícios de IA
@@ -41,7 +42,7 @@
   - `radarScore`, `seoScore`, `geoScore`, `brandAuthorityScore`
 
 ## 4. Deployment Truth
-- **Branch Remota:** `fix/r16b-remediation` sincronizada com o SHA `ae8652d`.
+- **Branch Remota:** `fix/r16b-remediation` sincronizada com o SHA `2861c5c`.
 - **Production Status:** O site público (`auditseo.com.br`) ainda reflete o legado, aguardando autorização para merge e deployment do patch final.
 
 Este relatório encerra as correções de conformidade da Fase R16-B.
