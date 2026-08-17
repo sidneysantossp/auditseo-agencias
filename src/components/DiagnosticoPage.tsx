@@ -1,22 +1,18 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, ReactNode } from "react";
 import {
   Search,
   Target,
   ArrowRight,
   ChevronRight,
   ChevronLeft,
-  Send,
   CheckCircle2,
-  AlertCircle,
-  FileText,
   Zap,
   ShieldCheck,
-  Globe,
-  Database,
   Users,
   LineChart,
   CircleDot,
-  ExternalLink,
+  MessageCircle,
+  Mail,
 } from "lucide-react";
 import Header from "./Header";
 import SiteFooter from "./SiteFooter";
@@ -32,7 +28,7 @@ const steps = [
   {
     id: "scenario",
     title: "Qual o cenário do projeto?",
-    description: "Selecione a situação que melhor descreve o momento atual do cliente na agência.",
+    description: "Selecione a situation que melhor descreve o momento atual do cliente na agência.",
   },
   {
     id: "bottlenecks",
@@ -63,7 +59,7 @@ const scenarios = [
     auditseo:
       "Atuamos na estruturação da leitura inicial, arquitetura orgânica, estrutura semântica, prioridades técnicas e sinais básicos de autoridade.",
     evidence: {
-      text: "Guia Search Intelligence: Pilares de infraestrutura para novos domínios.",
+      text: "Guia: Search Intelligence",
       path: "/guias/search-intelligence",
     },
   },
@@ -78,7 +74,7 @@ const scenarios = [
     auditseo:
       "Atuamos no mapeamento de gargalos, oportunidades, lacunas de conteúdo, problemas técnicos e prioridades de ação.",
     evidence: {
-      text: "Método S.I.G.N.A.L: Como identificar e destravar potenciais reprimidos.",
+      text: "Metodologia: SIGNAL",
       path: "/metodo-signal",
     },
   },
@@ -93,7 +89,7 @@ const scenarios = [
     auditseo:
       "Atuamos na análise de histórico, páginas afetadas, concorrentes, sinais técnicos, autoridade e mudanças de intenção ou mercado.",
     evidence: {
-      text: "Guia Search Intelligence: Protocolo de investigação de quedas de visibilidade.",
+      text: "Guia: Search Intelligence",
       path: "/guias/search-intelligence",
     },
   },
@@ -108,7 +104,7 @@ const scenarios = [
     auditseo:
       "Atuamos na organização da narrativa, páginas de serviço, reputação, provas, avaliações, menções, dados estruturados e consistência entre canais.",
     evidence: {
-      text: "Estudo Lab #001: Reconhecimento de entidade por contexto temático.",
+      text: "Estudo Lab #001: Reconhecimento de Entidade",
       path: "/estudos-busca-ia/reconhecimento-de-entidade-por-contexto",
     },
   },
@@ -123,7 +119,7 @@ const scenarios = [
     auditseo:
       "Atuamos no mapeamento de intenções, clusters, páginas, lacunas e oportunidades conectadas à jornada orgânica.",
     evidence: {
-      text: "Guia Narrativa Semântica: Arquitetura de conteúdo baseada em intenção.",
+      text: "Guia: Narrativa Semântica",
       path: "/guias/narrativa-semantica",
     },
   },
@@ -138,7 +134,7 @@ const scenarios = [
     auditseo:
       "Atuamos na avaliação da clareza da oferta, estrutura de dados, consistência de menções e autoridade temática.",
     evidence: {
-      text: "Guia AI Search: Como estruturar sinais para a nova era da busca.",
+      text: "Guia: Generative Search Architecture",
       path: "/guias/ai-search",
     },
   },
@@ -153,7 +149,7 @@ const scenarios = [
     auditseo:
       "Atuamos no mapeamento de URLs, arquitetura, indexação, redirects, páginas prioritárias, sinais existentes e riscos de perda orgânica.",
     evidence: {
-      text: "Guia Search Intelligence: Governança de sinais em mudanças estruturais.",
+      text: "Guia: Search Intelligence",
       path: "/guias/search-intelligence",
     },
   },
@@ -168,7 +164,7 @@ const scenarios = [
     auditseo:
       "Atuamos no monitoramento de SERP, sinais de entidade, concorrência, tendências de busca generativa e evolução técnica.",
     evidence: {
-      text: "Guia Search Intelligence: Protocolos de evolução e monitoramento de sinais.",
+      text: "Guia: Search Intelligence",
       path: "/guias/search-intelligence",
     },
   },
@@ -210,16 +206,6 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
     urgency: "",
   });
   const [showResult, setShowResult] = useState(false);
-  const [formSent, setFormSent] = useState(false);
-  const [contact, setContact] = useState({
-    name: "",
-    agency: "",
-    whatsapp: "",
-    email: "",
-    agencySite: "",
-    clientUrl: "",
-    context: "",
-  });
 
   const activeStep = steps[currentStep];
 
@@ -258,12 +244,6 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
     setAnswers({ scenario: "", bottlenecks: [], objective: "", urgency: "" });
     setCurrentStep(0);
     setShowResult(false);
-    setFormSent(false);
-  };
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSent(true);
   };
 
   const result = showResult ? buildDiagnosticResult(answers) : null;
@@ -443,52 +423,30 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
                   Quer avaliar esse cenário com a AUDITSEO?
                 </h3>
                 <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/64">
-                  Envie o resumo do diagnóstico e vamos analisar se existe oportunidade para atuar nos bastidores da sua agência.
+                  Entre em contato através dos nossos canais oficiais para uma conversa estratégica sobre os bastidores da sua agência.
                 </p>
 
-                {formSent ? (
-                  <div className="mt-8 rounded-[22px] border border-[#b28453]/32 bg-[#b28453]/10 p-6">
-                    <CheckCircle2 className="h-9 w-9 text-[#b28453]" />
-                    <h4 className="mt-5 font-display text-2xl font-bold text-[#f8f8f8]">Diagnóstico enviado</h4>
-                    <p className="mt-3 text-sm leading-[1.7] text-[#f8f8f8]/66">
-                      Recebemos o contexto inicial. A primeira conversa é para entender o cenário, não para empurrar uma solução.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleContactSubmit} className="mt-8 grid gap-4">
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <TextInput label="Nome" value={contact.name} onChange={(value) => setContact((c) => ({ ...c, name: value }))} required />
-                      <TextInput label="Agência" value={contact.agency} onChange={(value) => setContact((c) => ({ ...c, agency: value }))} required />
-                    </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <TextInput label="WhatsApp" value={contact.whatsapp} onChange={(value) => setContact((c) => ({ ...c, whatsapp: value }))} required />
-                      <TextInput label="E-mail" value={contact.email} onChange={(value) => setContact((c) => ({ ...c, email: value }))} type="email" required />
-                    </div>
-                    <TextInput label="Site da agência" value={contact.agencySite} onChange={(value) => setContact((c) => ({ ...c, agencySite: value }))} required />
-                    <div className="grid gap-2">
-                      <TextInput label="URL do cliente/projeto, opcional" value={contact.clientUrl} onChange={(value) => setContact((c) => ({ ...c, clientUrl: value }))} />
-                      <p className="px-5 text-[10px] italic text-[#f8f8f8]/40">
-                        * A URL informada serve apenas para contexto comercial e não será analisada tecnicamente por este assessment.
-                      </p>
-                    </div>
-                    <label className="grid gap-2">
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">Contexto rápido do caso, opcional</span>
-                      <textarea
-                        value={contact.context}
-                        onChange={(e) => setContact((c) => ({ ...c, context: e.target.value }))}
-                        className="min-h-[112px] rounded-[18px] border border-[#b28453]/22 bg-[#11100f] px-5 py-4 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
-                        placeholder="Conte em poucas linhas o que está acontecendo com essa conta."
-                      />
-                    </label>
-                    <button
-                      type="submit"
-                      className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
-                    >
-                      Enviar diagnóstico
-                      <Send size={15} />
-                    </button>
-                  </form>
-                )}
+                <div className="mt-8 grid gap-4">
+                  <a
+                    href="https://wa.me/5511996384376"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+                  >
+                    <MessageCircle size={18} />
+                    Continuar pelo WhatsApp
+                  </a>
+                  <a
+                    href="mailto:parceria@auditseo.com.br"
+                    className="inline-flex items-center justify-center gap-3 rounded-full border border-[#b28453]/30 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-all hover:bg-[#b28453]/10"
+                  >
+                    <Mail size={18} />
+                    Falar por e-mail
+                  </a>
+                  <p className="mt-2 px-2 text-[10px] italic text-[#f8f8f8]/40 text-center">
+                    * A primeira conversa é para entender o cenário, não para empurrar uma solução.
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -561,32 +519,5 @@ function ResultBlock({
         </a>
       )}
     </div>
-  );
-}
-
-function TextInput({
-  label,
-  value,
-  onChange,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="grid gap-2">
-      <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">{label}</span>
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        required={required}
-        className="h-12 rounded-full border border-[#b28453]/22 bg-[#11100f] px-5 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
-      />
-    </label>
   );
 }
