@@ -64,7 +64,7 @@ app.post("/api/diagnose", async (req, res) => {
       },
       {
         title: "White-Label de Relatórios de Search Intelligence",
-        description: "Substituir relatórios baseados em cliques industriais por análises de 'Narrativa de Busca e Intenção', agregando 3x mais valor percebido pelo cliente final."
+        description: "Substituir relatórios baseados em cliques industriais por análises de 'Narrativa de Busca e Intenção', agregando alto valor estratégico percebido pelo cliente final."
       }
     ],
     roadmap90Days: [
@@ -81,7 +81,7 @@ app.post("/api/diagnose", async (req, res) => {
         actions: "Apresentação dos primeiros resultados de Search Intelligence, redução do churn e ativação de novos escopos recorrentes de SEO."
       }
     ],
-    growthEstimate: "Adoção da retaguarda AUDITSEO reduz o tempo de entrega interna em até 70% e pode elevar a retenção de contratos em mais de 14 meses.",
+    growthEstimate: "Adoção da retaguarda AUDITSEO reduz significativamente o tempo de entrega interna e pode elevar a retenção de contratos em longo prazo.",
     suggestedModel: modelo || "Parceria White-Label ou Squad Externo SEO/GEO"
   };
 
