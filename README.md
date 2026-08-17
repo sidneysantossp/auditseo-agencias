@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# AUDITSEO - Ecossistema Editorial & Diagnóstico
 
-# Run and deploy your AI Studio app
+Este repositório contém o código-fonte do ecossistema AUDITSEO, uma plataforma dedicada à inteligência de busca e governança de evidências para agências e marcas.
 
-This contains everything you need to run your app locally.
+## Arquitetura do Projeto
 
-View your app in AI Studio: https://ai.studio/apps/7b967594-900f-4bc0-b52e-4db7c6438045
+- **Frontend:** React + Vite + TypeScript (SPA)
+- **Estilização:** Tailwind CSS
+- **Backend:** Node.js (Express) para serviços de apoio e integração
+- **Governança:** Estrutura baseada em evidências (Documentado, Observado, Inferido, Recomendado)
 
-## Run Locally
+## Como Rodar Localmente
 
-**Prerequisites:**  Node.js
+### Pré-requisitos
+- Node.js (v18+)
+- npm ou yarn
 
+### Instalação
+1. Clone o repositório
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Desenvolvimento
+Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+```
+
+### Build de Produção
+Para gerar o bundle otimizado:
+```bash
+npm run build
+```
+
+## Governança de Dados
+
+O projeto segue regras estritas de **Evidence Governance**:
+- **DECLARADO PELO USUÁRIO:** Informações fornecidas via formulários ou assessments.
+- **INFERIDO:** Conclusões lógicas baseadas em dados declarados ou observados.
+- **RECOMENDADO:** Ações sugeridas com base em diagnósticos.
+- **EVIDÊNCIA DE APOIO:** Links para guias, metodologias ou observações reais no Pillar ou Lab.
+
+---
+© 2026 AUDITSEO. Todos os direitos reservados.

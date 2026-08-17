@@ -12,6 +12,8 @@ import {
   Send,
   ShieldCheck,
   Sparkles,
+  BookOpen,
+  Target,
 } from "lucide-react";
 import SiteFooter from "./SiteFooter";
 
@@ -47,7 +49,8 @@ const scenarios = [
     opportunity:
       "Criar uma fundação estratégica de busca antes que arquitetura, conteúdo e entidade sejam definidos sem critério.",
     auditseo:
-      "Nos bastidores, estruturando leitura inicial, arquitetura orgânica, estrutura semântica, prioridades técnicas e sinais básicos de autoridade.",
+      "Atuamos na estruturação da leitura inicial, arquitetura orgânica, estrutura semântica, prioridades técnicas e sinais básicos de autoridade.",
+    evidence: "Metodologia Search Foundation: Pilares de infraestrutura para novos domínios.",
   },
   {
     id: "activation",
@@ -58,7 +61,8 @@ const scenarios = [
     opportunity:
       "Reposicionar a conversa com um diagnóstico de ativação orgânica e um roadmap de evolução.",
     auditseo:
-      "Nos bastidores, mapeando gargalos, oportunidades, lacunas de conteúdo, problemas técnicos e prioridades de ação.",
+      "Atuamos no mapeamento de gargalos, oportunidades, lacunas de conteúdo, problemas técnicos e prioridades de ação.",
+    evidence: "Guia de Ativação Orgânica: Como identificar e destravar potenciais reprimidos.",
   },
   {
     id: "recovery",
@@ -69,7 +73,8 @@ const scenarios = [
     opportunity:
       "Transformar a queda em uma conversa técnica e estratégica sobre reconstrução de relevância, autoridade e confiança.",
     auditseo:
-      "Nos bastidores, analisando histórico, páginas afetadas, concorrentes, sinais técnicos, autoridade e mudanças de intenção ou mercado.",
+      "Atuamos na análise de histórico, páginas afetadas, concorrentes, sinais técnicos, autoridade e mudanças de intenção ou mercado.",
+    evidence: "Framework Search Recovery: Protocolo de investigação de quedas de visibilidade.",
   },
   {
     id: "authority",
@@ -80,7 +85,8 @@ const scenarios = [
     opportunity:
       "Criar uma frente de autoridade de entidade para sustentar reputação, contexto e validação pública.",
     auditseo:
-      "Nos bastidores, organizando narrativa, páginas de serviço, reputação, provas, avaliações, menções, dados estruturados e consistência entre canais.",
+      "Atuamos na organização da narrativa, páginas de serviço, reputação, provas, avaliações, menções, dados estruturados e consistência entre canais.",
+    evidence: "Observation #001: O impacto da consistência de marca na autoridade de entidade.",
   },
   {
     id: "content",
@@ -91,18 +97,20 @@ const scenarios = [
     opportunity:
       "Reposicionar conteúdo como arquitetura de intenção, não como calendário de publicações.",
     auditseo:
-      "Nos bastidores, mapeando intenções, clusters, páginas, lacunas e oportunidades conectadas à jornada orgânica.",
+      "Atuamos no mapeamento de intenções, clusters, páginas, lacunas e oportunidades conectadas à jornada orgânica.",
+    evidence: "Guia Pillar & Lab: Arquitetura de conteúdo baseada em intenção e autoridade.",
   },
   {
     id: "geo",
     title: "Cliente perguntando sobre IA/GEO",
     text: "A empresa quer entender nova busca, ChatGPT, Gemini, AI Overviews ou respostas generativas.",
-    solution: "AI Search Context Architecture",
-    resultScenario: "Cliente pressionando por IA, com necessidade de estruturação de contexto e sinais de entidade.",
+    solution: "Generative Search Architecture",
+    resultScenario: "Cliente com necessidade de estruturação de contexto e sinais de entidade para sistemas de busca modernos.",
     opportunity:
-      "Transformar a curiosidade sobre IA em uma proposta de arquitetura de contexto e sinais para sistemas de busca generativa.",
+      "Transformar a curiosidade sobre IA em uma proposta de arquitetura de contexto e sinais consistentes.",
     auditseo:
-      "Nos bastidores, avaliando a clareza da oferta, estrutura de dados, consistência de menções e autoridade temática para alimentar modelos de linguagem.",
+      "Atuamos na avaliação da clareza da oferta, estrutura de dados, consistência de menções e autoridade temática.",
+    evidence: "Guia de Generative Search Architecture: Como estruturar sinais para a nova era da busca.",
   },
   {
     id: "migration",
@@ -113,7 +121,8 @@ const scenarios = [
     opportunity:
       "Criar uma camada de proteção orgânica para preservar sinais existentes e preparar crescimento futuro.",
     auditseo:
-      "Nos bastidores, mapeando URLs, arquitetura, indexação, redirects, páginas prioritárias, sinais existentes e riscos de perda orgânica.",
+      "Atuamos no mapeamento de URLs, arquitetura, indexação, redirects, páginas prioritárias, sinais existentes e riscos de perda orgânica.",
+    evidence: "Checklist de Migração Segura: Governança de sinais durante mudanças estruturais.",
   },
   {
     id: "evolution",
@@ -124,7 +133,8 @@ const scenarios = [
     opportunity:
       "Transformar dados, aprendizados e oportunidades em ciclos claros de evolução estratégica.",
     auditseo:
-      "Nos bastidores, acompanhando sinais, consultas, páginas, concorrentes, autoridade, aprendizados e próximos movimentos.",
+      "Atuamos no acompanhamento de sinais, consultas, páginas, concorrentes, autoridade, aprendizados e próximos movimentos.",
+    evidence: "Metodologia S.I.G.N.A.L: O ciclo de evolução constante da inteligência de busca.",
   },
 ];
 
@@ -334,170 +344,120 @@ export default function DiagnosticoPage({ onNavigate }: DiagnosticoPageProps) {
           />
           <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {howItWorks.map(([title, text], index) => (
-              <article key={title} className="rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/50 bg-[#11100f] font-mono text-xs font-bold text-[#e0d3c3]">
-                  {index + 1}
-                </span>
-                <h3 className="mt-6 font-display text-2xl font-bold leading-[1.14]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#11100f]/70">{text}</p>
-              </article>
+              <div key={index} className="rounded-2xl border border-[#b28453]/20 bg-white/40 p-7 shadow-sm">
+                <span className="font-mono text-xs font-bold text-[#b28453]">0{index + 1}</span>
+                <h4 className="mt-4 font-display text-xl font-bold">{title}</h4>
+                <p className="mt-3 text-sm leading-[1.6] text-[#11100f]/70">{text}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <OrganicOpportunityScan refEl={scanRef} />
-
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1180px] px-6 xl:px-12">
-          <SectionHeader
-            center
-            eyebrow="Leitura inicial"
-            title="O diagnóstico não substitui uma análise completa. Ele aponta o caminho certo para começar."
-            text="O resultado gerado na página é uma leitura inicial baseada nas respostas selecionadas. A análise estratégica completa considera dados, histórico, concorrência, estrutura, autoridade e contexto do cliente."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             {trustCards.map(([title, text], index) => (
-              <article key={title} className="rounded-[22px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.28)]">
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 text-[#b28453]">
-                  {index === 0 ? <AlertTriangle size={18} /> : index === 1 ? <ShieldCheck size={18} /> : <Compass size={18} />}
+              <div key={index} className="flex items-start gap-4 rounded-2xl border border-[#b28453]/15 bg-white/25 p-6">
+                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453]">
+                  <CheckCircle2 size={16} />
                 </div>
-                <h3 className="font-display text-2xl font-bold leading-[1.14] text-[#f8f8f8]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#f8f8f8]/66">{text}</p>
-              </article>
+                <div>
+                  <h4 className="text-[15px] font-bold">{title}</h4>
+                  <p className="mt-2 text-xs leading-[1.6] text-[#11100f]/60">{text}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#11100f] px-6 py-24 md:py-32 xl:px-12">
-        <div className="mx-auto max-w-[1080px] rounded-[8px] border border-[#b28453]/35 bg-[#171614] px-7 py-14 text-center shadow-2xl shadow-black/35 md:px-14 md:py-18">
-          <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">DIAGNÓSTICO AUDITSEO</span>
-          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[34px] font-bold leading-[1.08] sm:text-[44px] md:text-[58px]">
-            Quer descobrir onde sua agência pode destravar valor orgânico?
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-[1.7] text-[#f8f8f8]/70 md:text-lg">
-            Use o diagnóstico para identificar o cenário e entender qual solução AUDITSEO pode ser estruturada nos bastidores.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <PrimaryButton onClick={scrollToScan}>Iniciar diagnóstico</PrimaryButton>
-          </div>
-        </div>
-      </section>
+      <OpportunityScan scanRef={scanRef} onNavigate={onNavigate} />
 
       <SiteFooter onNavigate={onNavigate} />
     </main>
   );
 }
 
-function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement | null> }) {
+function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HTMLElement | null>; onNavigate: (id: string) => void }) {
   const [stepIndex, setStepIndex] = useState(0);
-  const [showResult, setShowResult] = useState(false);
   const [answers, setAnswers] = useState<Answers>({ bottlenecks: [] });
+  const [showResult, setShowResult] = useState(false);
+  const [contact, setContact] = useState({ name: "", agency: "", email: "", whatsapp: "", agencySite: "", clientUrl: "", context: "" });
   const [formSent, setFormSent] = useState(false);
-  const [contact, setContact] = useState({
-    name: "",
-    agency: "",
-    whatsapp: "",
-    email: "",
-    agencySite: "",
-    clientUrl: "",
-    context: "",
-  });
+  const refEl = useRef<HTMLElement | null>(null);
 
-  const steps: Array<{
-    key: StepKey;
-    title: string;
-    subtitle?: string;
-    multi?: boolean;
-    options: Array<{ id: string; title: string; text?: string }>;
-  }> = [
+  useEffect(() => {
+    if (scanRef) scanRef.current = refEl.current;
+  }, [scanRef]);
+
+  const steps = [
     {
       key: "scenario",
-      title: "Qual cenário representa melhor esse cliente?",
-      subtitle: "Escolha o momento atual do projeto.",
-      options: scenarios.map((scenario) => ({ id: scenario.id, title: scenario.title, text: scenario.text })),
+      title: "Qual é o cenário atual desse projeto?",
+      subtitle: "Escolha a opção que melhor descreve o momento do cliente.",
+      options: scenarios,
     },
     {
       key: "objective",
-      title: "Qual é o principal objetivo da sua agência nesse caso?",
-      options: objectives.map((objective) => ({ id: objective, title: objective })),
+      title: "O que sua agência quer destravar com esse cliente?",
+      subtitle: "O diagnóstico será orientado para este objetivo comercial.",
+      options: objectives.map((obj) => ({ id: obj.toLowerCase().replace(/ /g, "-"), title: obj })),
     },
     {
       key: "bottlenecks",
-      title: "Qual parece ser o maior gargalo hoje?",
-      multi: true,
-      options: bottlenecks.map((bottleneck) => ({ id: bottleneck, title: bottleneck })),
+      title: "Onde você sente que o projeto está travado?",
+      subtitle: "Selecione um ou mais gargalos identificados.",
+      options: bottlenecks.map((b) => ({ id: b.toLowerCase().replace(/ /g, "-"), title: b })),
     },
     {
       key: "clientPressure",
-      title: "O que o cliente mais cobra ou demonstra hoje?",
-      options: clientPressures.map((pressure) => ({ id: pressure, title: pressure })),
+      title: "Qual é a maior pressão do cliente hoje?",
+      subtitle: "O que ele mais cobra nas reuniões?",
+      options: clientPressures.map((p) => ({ id: p.toLowerCase().replace(/ /g, "-"), title: p })),
     },
     {
       key: "urgency",
-      title: "Qual é o nível de urgência desse cenário?",
-      options: urgencyOptions.map((urgency) => ({ id: urgency.id, title: urgency.title, text: urgency.text })),
+      title: "Qual é o nível de urgência desse caso?",
+      subtitle: "Isso ajuda a priorizar a profundidade da resposta.",
+      options: urgencyOptions,
     },
   ];
 
   const activeStep = steps[stepIndex];
-  const progress = showResult ? 100 : ((stepIndex + 1) / steps.length) * 100;
-  const result = useMemo(() => buildDiagnosticResult(answers), [answers]);
+  const progress = ((stepIndex + 1) / steps.length) * 100;
+  const canAdvance = activeStep.key === "bottlenecks" ? answers.bottlenecks.length > 0 : !!answers[activeStep.key as StepKey];
 
-  const canAdvance = useMemo(() => {
-    if (activeStep.key === "bottlenecks") return answers.bottlenecks.length > 0;
-    return Boolean(answers[activeStep.key]);
-  }, [activeStep.key, answers]);
-
-  const updateAnswer = (key: StepKey, value: string) => {
+  const updateAnswer = (key: string, value: string) => {
     if (key === "bottlenecks") {
-      setAnswers((current) => ({
-        ...current,
-        bottlenecks: current.bottlenecks.includes(value)
-          ? current.bottlenecks.filter((item) => item !== value)
-          : [...current.bottlenecks, value],
-      }));
-      return;
+      setAnswers((prev) => {
+        const current = prev.bottlenecks;
+        if (current.includes(value)) return { ...prev, bottlenecks: current.filter((v) => v !== value) };
+        return { ...prev, bottlenecks: [...current, value] };
+      });
+    } else {
+      setAnswers((prev) => ({ ...prev, [key]: value }));
     }
-
-    setAnswers((current) => ({ ...current, [key]: value }));
   };
 
   const keepScanInView = () => {
-    window.setTimeout(() => {
-      const target = refEl.current || document.getElementById("organic-opportunity-scan");
-      if (!target) return;
-
-      const scanTop = target.getBoundingClientRect().top + window.scrollY - 92;
-      if (Math.abs(window.scrollY - scanTop) > 24) {
-        window.scrollTo({ top: scanTop, behavior: "smooth" });
-      }
-    }, 80);
+    if (refEl.current) {
+      window.scrollTo({ top: refEl.current.offsetTop - 82, behavior: "smooth" });
+    }
   };
 
   const goNext = () => {
-    if (!canAdvance) return;
-    if (stepIndex === steps.length - 1) {
+    if (stepIndex < steps.length - 1) {
+      setStepIndex(stepIndex + 1);
+      keepScanInView();
+    } else {
       setShowResult(true);
-      window.setTimeout(() => {
-        const target = document.getElementById("diagnostic-result");
-        if (target) window.scrollTo({ top: target.offsetTop - 100, behavior: "smooth" });
-      }, 80);
-      return;
+      setTimeout(() => {
+        const res = document.getElementById("diagnostic-result");
+        if (res) window.scrollTo({ top: res.offsetTop - 100, behavior: "smooth" });
+      }, 100);
     }
-    setStepIndex((current) => current + 1);
-    keepScanInView();
   };
 
   const goBack = () => {
-    if (showResult) {
-      setShowResult(false);
-      setStepIndex(steps.length - 1);
-      keepScanInView();
-      return;
-    }
-    setStepIndex((current) => Math.max(0, current - 1));
+    if (stepIndex > 0) setStepIndex(stepIndex - 1);
+    setShowResult(false);
     keepScanInView();
   };
 
@@ -512,6 +472,8 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
     event.preventDefault();
     setFormSent(true);
   };
+
+  const result = useMemo(() => buildDiagnosticResult(answers), [answers]);
 
   return (
     <section id="organic-opportunity-scan" ref={refEl} className="relative overflow-hidden bg-[#11100f] py-24 md:py-32">
@@ -561,7 +523,7 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
                   const selected =
                     activeStep.key === "bottlenecks"
                       ? answers.bottlenecks.includes(option.id)
-                      : answers[activeStep.key] === option.id;
+                      : (answers as any)[activeStep.key] === option.id;
 
                   return (
                     <button
@@ -619,7 +581,8 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
                     <ResultBlock title="DECLARADO PELO USUÁRIO" text={result.scenario} icon={<Search size={17} />} />
                     <ResultBlock title="INFERIDO" text={result.risk} icon={<AlertTriangle size={17} />} />
                     <ResultBlock title="RECOMENDADO" text={result.opportunity} icon={<Sparkles size={17} />} />
-                    <ResultBlock title="EVIDÊNCIA DE APOIO" text={result.auditseo} icon={<RefreshCw size={17} />} />
+                    {result.evidence && <ResultBlock title="EVIDÊNCIA DE APOIO" text={result.evidence} icon={<BookOpen size={17} />} />}
+                    <ResultBlock title="COMO A AUDITSEO PODE ATUAR" text={result.auditseo} icon={<Target size={17} />} />
                   </div>
 
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -718,7 +681,7 @@ function buildDiagnosticResult(answers: Answers) {
       : urgency?.id === "high"
         ? "Inferimos que a pressão atual pode comprometer a renovação ou a percepção de valor do contrato."
         : urgency?.id === "medium"
-          ? "Observamos uma dúvida latente que pode evoluir para um gargalo comercial se não for endereçada."
+          ? "Inferimos uma dúvida latente que pode evoluir para um gargalo comercial se não for endereçada."
           : "O cenário permite uma organização estratégica preventiva antes de qualquer pressão comercial direta.";
 
   return {
@@ -726,7 +689,8 @@ function buildDiagnosticResult(answers: Answers) {
     scenario: `Cenário declarado: ${scenario.resultScenario}`,
     risk: `Interpretação de risco: ${urgencyRisk}${objectiveText}${bottleneckText}`,
     opportunity: `Ação recomendada: ${scenario.opportunity}`,
-    auditseo: `Fundamentação AUDITSEO: ${scenario.auditseo}`,
+    auditseo: scenario.auditseo,
+    evidence: scenario.evidence,
     nextStep: `Próximo passo sugerido: avaliar esse cliente com a AUDITSEO para entender se existe oportunidade real de aplicar ${scenario.solution} nos bastidores da sua agência.`,
   };
 }
@@ -762,21 +726,9 @@ function TextInput({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         required={required}
-        className="rounded-full border border-[#b28453]/22 bg-[#11100f] px-5 py-4 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
+        className="h-12 rounded-full border border-[#b28453]/22 bg-[#11100f] px-5 text-sm text-[#f8f8f8] outline-none transition-colors placeholder:text-[#f8f8f8]/30 focus:border-[#b28453]/60"
       />
     </label>
-  );
-}
-
-function PrimaryButton({ children, onClick }: { children: ReactNode; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#e0d3c3] hover:text-[#11100f]"
-    >
-      {children}
-      <ArrowRight size={16} />
-    </button>
   );
 }
 
@@ -784,91 +736,69 @@ function SectionHeader({
   eyebrow,
   title,
   text,
-  center = false,
   dark = false,
+  center = false,
 }: {
   eyebrow: string;
   title: string;
-  text?: string;
-  center?: boolean;
+  text: string;
   dark?: boolean;
+  center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-4xl text-center" : "max-w-4xl"}>
+    <div className={`${center ? "text-center mx-auto" : ""} max-w-4xl`}>
       <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{eyebrow}</span>
-      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] md:text-[54px] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"}`}>
+      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"} md:text-[54px]`}>
         {title}
       </h2>
-      {text ? (
-        <p className={`mt-6 text-base leading-[1.75] md:text-lg ${dark ? "text-[#11100f]/70" : "text-[#f8f8f8]/66"}`}>
-          {text}
-        </p>
-      ) : null}
+      <p className={`mt-6 text-base leading-[1.75] ${dark ? "text-[#11100f]/66" : "text-[#f8f8f8]/66"} md:text-lg`}>{text}</p>
     </div>
+  );
+}
+
+function PrimaryButton({ children, onClick }: { children: ReactNode; onClick?: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+    >
+      {children}
+      <ArrowRight size={18} />
+    </button>
   );
 }
 
 function DiagnosticHeroVisual() {
   return (
-    <div className="relative mx-auto flex h-[520px] max-w-[620px] items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(178,132,83,0.15),transparent_32%),radial-gradient(circle_at_30%_20%,rgba(224,211,195,0.08),transparent_22%)]" />
-      {[...Array(44)].map((_, index) => (
-        <span
-          key={index}
-          className="pointer-events-none absolute h-[2px] w-[2px] rounded-full bg-[#e0d3c3]/45"
-          style={{
-            top: `${8 + ((index * 23) % 82)}%`,
-            left: `${6 + ((index * 37) % 88)}%`,
-            opacity: 0.12 + (index % 5) * 0.07,
-            animation: `diagnosticParticle ${7 + (index % 6)}s ease-in-out infinite`,
-            animationDelay: `${index * 0.18}s`,
-          }}
-        />
-      ))}
-
-      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 600 520" aria-hidden="true">
-        <defs>
-          <linearGradient id="diagnosticLineGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(178,132,83,0.08)" />
-            <stop offset="50%" stopColor="rgba(224,211,195,0.42)" />
-            <stop offset="100%" stopColor="rgba(178,132,83,0.08)" />
-          </linearGradient>
-        </defs>
-        {heroNodes.map((node) => (
-          <line
-            key={node.label}
-            x1="300"
-            y1="260"
-            x2={(node.x / 100) * 600}
-            y2={(node.y / 100) * 520}
-            stroke="url(#diagnosticLineGradient)"
-            strokeWidth="1"
-            strokeDasharray="6 10"
-            style={{ animation: "diagnosticLine 16s linear infinite" }}
-          />
+    <div className="relative aspect-square w-full max-w-[540px]">
+      <div className="absolute inset-0 animate-[diagnosticCorePulse_4s_ease-in-out_infinite] rounded-full bg-[#b28453]/10 blur-3xl" />
+      <svg viewBox="0 0 100 100" className="relative h-full w-full overflow-visible drop-shadow-[0_0_20px_rgba(178,132,83,0.15)]">
+        {heroNodes.map((node, i) => (
+          <g key={i} className="animate-[diagnosticNodeFloat_6s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.8}s` }}>
+            <circle cx={node.x} cy={node.y} r="1.5" fill="#b28453" className="opacity-40" />
+            <text x={node.x} y={node.y - 4} textAnchor="middle" className="font-mono text-[2.8px] font-bold uppercase tracking-widest fill-[#b28453] opacity-70">
+              {node.label}
+            </text>
+            {heroNodes.map((target, j) =>
+              i < j ? (
+                <line
+                  key={`${i}-${j}`}
+                  x1={node.x}
+                  y1={node.y}
+                  x2={target.x}
+                  y2={target.y}
+                  stroke="#b28453"
+                  strokeWidth="0.15"
+                  strokeDasharray="1 2"
+                  className="opacity-20"
+                />
+              ) : null
+            )}
+          </g>
         ))}
+        <circle cx="50" cy="50" r="12" className="animate-[diagnosticCorePulse_3s_ease-in-out_infinite] fill-[#b28453]/5 stroke-[#b28453]/30" strokeWidth="0.5" />
+        <path d="M44,50 L56,50 M50,44 L50,56" stroke="#b28453" strokeWidth="0.8" className="opacity-60" />
       </svg>
-
-      <div
-        className="absolute left-1/2 top-1/2 z-20 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#b28453]/42 bg-[radial-gradient(circle_at_35%_30%,rgba(224,211,195,0.24),rgba(178,132,83,0.20),rgba(17,16,15,0.96)_68%)] shadow-[0_0_76px_rgba(178,132,83,0.30)]"
-        style={{ animation: "diagnosticCorePulse 6s ease-in-out infinite" }}
-      >
-        <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#11100f]/82 text-center">
-          <span className="font-display text-sm font-bold tracking-[0.08em] text-[#e0d3c3]">DIAGNÓSTICO</span>
-        </div>
-      </div>
-
-      {heroNodes.map((node, index) => (
-        <div
-          key={node.label}
-          className="absolute z-30 -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, animation: `diagnosticNodeFloat ${8 + index}s ease-in-out infinite`, animationDelay: `${index * 0.35}s` }}
-        >
-          <div className="rounded-full border border-[#b28453]/32 bg-[#11100f]/86 px-4 py-2 shadow-[0_16px_42px_rgba(0,0,0,0.34)] backdrop-blur-sm">
-            <span className="font-display text-sm font-bold text-[#f8f8f8]">{node.label}</span>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
