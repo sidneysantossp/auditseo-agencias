@@ -97,12 +97,12 @@ const scenarios = [
     id: "geo",
     title: "Cliente perguntando sobre IA/GEO",
     text: "A empresa quer entender nova busca, ChatGPT, Gemini, AI Overviews ou respostas generativas.",
-    solution: "GEO & AI Readiness",
-    resultScenario: "Cliente pressionando por IA, mas com sinais de busca ainda pouco organizados.",
+    solution: "AI Search Context Architecture",
+    resultScenario: "Cliente pressionando por IA, com necessidade de estruturação de contexto e sinais de entidade.",
     opportunity:
-      "Transformar curiosidade sobre IA em uma proposta madura de preparação para nova busca.",
+      "Transformar a curiosidade sobre IA em uma proposta de arquitetura de contexto e sinais para sistemas de busca generativa.",
     auditseo:
-      "Nos bastidores, avaliando entidades, estrutura semântica, perguntas estratégicas, dados estruturados, reputação e clareza de oferta.",
+      "Nos bastidores, avaliando a clareza da oferta, estrutura de dados, consistência de menções e autoridade temática para alimentar modelos de linguagem.",
   },
   {
     id: "migration",
@@ -616,10 +616,10 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
                   <p className="mt-5 text-base leading-[1.7] text-[#f8f8f8]/66">{result.nextStep}</p>
 
                   <div className="mt-9 grid gap-5">
-                    <ResultBlock title="Cenário identificado" text={result.scenario} icon={<Search size={17} />} />
-                    <ResultBlock title="Risco para a agência" text={result.risk} icon={<AlertTriangle size={17} />} />
-                    <ResultBlock title="Oportunidade comercial" text={result.opportunity} icon={<Sparkles size={17} />} />
-                    <ResultBlock title="Como a AUDITSEO entra" text={result.auditseo} icon={<RefreshCw size={17} />} />
+                    <ResultBlock title="DECLARADO PELO USUÁRIO" text={result.scenario} icon={<Search size={17} />} />
+                    <ResultBlock title="INFERIDO" text={result.risk} icon={<AlertTriangle size={17} />} />
+                    <ResultBlock title="RECOMENDADO" text={result.opportunity} icon={<Sparkles size={17} />} />
+                    <ResultBlock title="EVIDÊNCIA DE APOIO" text={result.auditseo} icon={<RefreshCw size={17} />} />
                   </div>
 
                   <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -670,7 +670,12 @@ function OrganicOpportunityScan({ refEl }: { refEl: MutableRefObject<HTMLElement
                       <TextInput label="E-mail" value={contact.email} onChange={(value) => setContact((current) => ({ ...current, email: value }))} type="email" required />
                     </div>
                     <TextInput label="Site da agência" value={contact.agencySite} onChange={(value) => setContact((current) => ({ ...current, agencySite: value }))} required />
-                    <TextInput label="URL do cliente/projeto, opcional" value={contact.clientUrl} onChange={(value) => setContact((current) => ({ ...current, clientUrl: value }))} />
+                    <div className="grid gap-2">
+                      <TextInput label="URL do cliente/projeto, opcional" value={contact.clientUrl} onChange={(value) => setContact((current) => ({ ...current, clientUrl: value }))} />
+                      <p className="px-5 text-[10px] italic text-[#f8f8f8]/40">
+                        * A URL informada serve apenas para contexto comercial e não será analisada tecnicamente por este assessment.
+                      </p>
+                    </div>
                     <label className="grid gap-2">
                       <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">Contexto rápido do caso, opcional</span>
                       <textarea
@@ -709,19 +714,19 @@ function buildDiagnosticResult(answers: Answers) {
 
   const urgencyRisk =
     urgency?.id === "critical"
-      ? "A conta pode estar em risco e a agência precisa transformar incerteza em direção rapidamente."
+      ? "Baseado no relato, a conta está em risco crítico. Recomendamos transformar a incerteza em direção técnica imediatamente."
       : urgency?.id === "high"
-        ? "A cobrança já pode afetar confiança, renovação ou percepção de valor."
+        ? "Inferimos que a pressão atual pode comprometer a renovação ou a percepção de valor do contrato."
         : urgency?.id === "medium"
-          ? "A dúvida já existe e pode crescer se não houver uma leitura mais clara."
-          : "A oportunidade ainda pode ser organizada antes de virar pressão comercial.";
+          ? "Observamos uma dúvida latente que pode evoluir para um gargalo comercial se não for endereçada."
+          : "O cenário permite uma organização estratégica preventiva antes de qualquer pressão comercial direta.";
 
   return {
     solution: scenario.solution,
-    scenario: scenario.resultScenario,
-    risk: `${urgencyRisk}${objectiveText}${bottleneckText}`,
-    opportunity: scenario.opportunity,
-    auditseo: scenario.auditseo,
+    scenario: `Cenário declarado: ${scenario.resultScenario}`,
+    risk: `Interpretação de risco: ${urgencyRisk}${objectiveText}${bottleneckText}`,
+    opportunity: `Ação recomendada: ${scenario.opportunity}`,
+    auditseo: `Fundamentação AUDITSEO: ${scenario.auditseo}`,
     nextStep: `Próximo passo sugerido: avaliar esse cliente com a AUDITSEO para entender se existe oportunidade real de aplicar ${scenario.solution} nos bastidores da sua agência.`,
   };
 }

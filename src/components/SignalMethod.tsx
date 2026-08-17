@@ -24,9 +24,9 @@ export default function SignalMethod({ onCtaClick, ctaText, subtitleText }: Sign
     },
     {
       letter: "G",
-      title: "GEO & AI Readiness",
-      subtitle: "Seu cliente precisa ser encontrado e entendido pelas IAs.",
-      description: "Preparamos a infraestrutura digital da marca para ser processável, citável e recomendável pelos principais mecanismos generativos do mercado (como AI Overviews do Google, ChatGPT, Gemini, Copilot e Perplexity).",
+      title: "Generative Search Architecture",
+      subtitle: "Estruturação de sinais para sistemas de busca generativa.",
+      description: "Ajustamos a infraestrutura digital e semântica da marca para fornecer clareza de contexto e dados estruturados que auxiliam na compreensão da entidade por modelos de linguagem e novos motores de resposta.",
       icon: <Network size={20} className="text-[#b28453]" />
     },
     {

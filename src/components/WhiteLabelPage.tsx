@@ -41,7 +41,7 @@ const whiteLabelItems = [
   ["Diagnósticos estratégicos", "Leituras de presença orgânica, oportunidades, riscos e próximos passos."],
   ["Roadmaps 90 dias", "Planos de evolução com prioridades, impacto, sequência e justificativa."],
   ["Estudos de autoridade de entidade", "Análises de reputação, contexto, sinais públicos, dados estruturados e confiança digital."],
-  ["GEO & AI Readiness", "Preparação estratégica para nova busca, mecanismos de resposta e ambientes generativos."],
+  ["Generative Search Architecture", "Preparação estratégica para nova busca, mecanismos de resposta e ambientes generativos."],
   ["Auditorias técnicas e on-page", "Análises de estrutura, indexação, páginas, headings, metadados, arquitetura e performance."],
   ["Arquitetura de conteúdo", "Mapeamento de intenção, clusters, páginas estratégicas e oportunidades de jornada."],
   ["Materiais para reunião", "Argumentos, mapas, insights e direcionamentos para apoiar apresentação ao cliente."],

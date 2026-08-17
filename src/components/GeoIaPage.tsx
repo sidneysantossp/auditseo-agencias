@@ -88,10 +88,10 @@ const interpretationLayers = [
 const backstageSteps = [
   ["Leitura da presença atual", "Avaliamos como a marca está estruturada hoje em site, conteúdo, autoridade, dados e reputação."],
   ["Mapeamento de entidades e contexto", "Organizamos quem é a marca, quais temas domina, quais serviços oferece e como deve ser compreendida."],
-  ["Diagnóstico de clareza para AI Search", "Identificamos lacunas que dificultam a interpretação da marca em mecanismos de busca e resposta."],
-  ["Plano de estruturação", "Priorizamos ações em conteúdo, dados estruturados, páginas, autoridade e consistência pública."],
-  ["Evolução e monitoramento", "Acompanhamos mudanças, aprendizados e oportunidades para ajustar a estratégia ao longo do tempo."],
-];
+	          ["Diagnóstico de clareza para AI Search", "Identificamos lacunas que dificultam a interpretação da marca em mecanismos de busca e resposta."],
+	          ["Plano de arquitetura de contexto", "Priorizamos ações em conteúdo, dados estruturados, páginas, autoridade e consistência pública para sistemas generativos."],
+	          ["Evolução e monitoramento", "Acompanhamos mudanças, aprendizados e oportunidades para ajustar a estratégia ao longo do tempo."],
+	        ];
 
 const geoScenarios = [
   ["Cliente perguntando sobre IA", "Quando a empresa quer entender como ChatGPT, Gemini ou AI Overviews podem impactar sua visibilidade."],
@@ -104,7 +104,7 @@ const geoScenarios = [
 
 const agencyOffers = [
   ["Diagnóstico de presença na nova busca", "Avaliar como a marca está sendo compreendida em ambientes tradicionais e generativos."],
-  ["Readiness para AI Search", "Preparar site, conteúdo, dados e autoridade para melhor interpretação por mecanismos de resposta."],
+  ["Arquitetura para Generative Search", "Ajustar site, conteúdo, dados e autoridade para fornecer clareza de contexto a sistemas de resposta."],
   ["Autoridade de entidade", "Organizar reputação, narrativa, provas, menções, estrutura e consistência pública."],
   ["Arquitetura de conteúdo para IA", "Criar conteúdos explicativos, páginas estratégicas e respostas que fortalecem clareza e contexto."],
   ["Roadmap GEO 90 dias", "Transformar o diagnóstico em plano de evolução com ações priorizadas."],
@@ -154,7 +154,7 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
           name: "GEO e IA para Agências | Search Intelligence na Nova Busca | AUDITSEO",
           url: `${window.location.origin}/geo-ia`,
           description:
-            "GEO, IA e Search Intelligence para agências: prepare marcas para a nova busca com autoridade de entidade, dados estruturados, contexto, conteúdo e governança estratégica.",
+            "GEO, IA e Search Intelligence para agências: estruture marcas para a nova busca com autoridade de entidade, dados estruturados, contexto, conteúdo e governança estratégica.",
         },
         {
           "@type": "Service",

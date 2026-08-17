@@ -65,11 +65,11 @@ const signalLayers = [
   },
   {
     letter: "G",
-    name: "GEO & AI Readiness",
-    short: "Preparação da marca para ser melhor compreendida em ambientes generativos.",
-    question: "A marca está clara o suficiente para ser compreendida em ambientes de resposta e IA?",
+    name: "Generative Search Architecture",
+    short: "Estruturação de sinais para melhor compreensão em sistemas generativos.",
+    question: "A marca possui sinais e contexto estruturados para sistemas de busca generativa?",
     explanation:
-      "A busca já não acontece apenas em listas de links. AI Overviews, ChatGPT, Gemini e outros mecanismos de resposta influenciam como marcas são descobertas, comparadas e consideradas. O S.I.G.N.A.L não promete presença garantida nesses ambientes. Ele organiza os sinais que aumentam clareza, consistência e capacidade de interpretação da marca.",
+      "A busca já não acontece apenas em listas de links. Sistemas generativos e motores de resposta influenciam como marcas são processadas e compreendidas. O S.I.G.N.A.L não promete presença garantida nesses ambientes. Ele organiza a infraestrutura de sinais que aumenta a clareza de contexto e a capacidade de interpretação da marca por modelos de linguagem.",
     analysis: [
       "clareza da oferta",
       "estrutura semântica",
@@ -266,7 +266,7 @@ function ConstellationVisual() {
   const orbitNodes = [
     { letter: "S", label: "Search Diagnosis", start: 330, pulseDelay: "0s" },
     { letter: "I", label: "Intent Mapping", start: 30, pulseDelay: "1.4s" },
-    { letter: "G", label: "GEO & AI Readiness", start: 90, pulseDelay: "2.8s" },
+    { letter: "G", label: "Generative Search Architecture", start: 90, pulseDelay: "2.8s" },
     { letter: "N", label: "Narrative & Entity Authority", start: 150, pulseDelay: "4.2s" },
     { letter: "A", label: "Action Roadmap", start: 210, pulseDelay: "5.6s" },
     { letter: "L", label: "Learning Loop", start: 270, pulseDelay: "7s" },

@@ -55,7 +55,7 @@ const deliverables = [
   ["Análise de Autoridade de Entidade", "Como a marca é compreendida por buscadores, IAs e usuários a partir de seus sinais públicos."],
   ["SEO Técnico e On-page Estratégico", "Correções, estrutura, conteúdo, headings, indexação, arquitetura e páginas prioritárias."],
   ["Dados Estruturados e Schema Markup", "Organização técnica dos sinais para ajudar buscadores a interpretar serviços, organização, FAQ, páginas e entidades."],
-  ["GEO e AI Search Readiness", "Leitura de como a marca pode ser melhor compreendida em ambientes generativos e mecanismos de resposta."],
+  ["Arquitetura para Generative Search", "Análise de como a marca pode ser melhor compreendida em ambientes generativos e mecanismos de resposta."],
   ["Roadmap Orgânico 90 dias", "Plano claro de execução com prioridades, impacto esperado e próximos passos."],
 ];
 

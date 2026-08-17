@@ -22,10 +22,6 @@ export interface RoadmapStep {
 }
 
 export interface DiagnosticResult {
-  radarScore: number;
-  seoScore: number;
-  geoScore: number;
-  brandAuthorityScore: number;
   marketOpportunity: string;
   analysis: string;
   quickWins: QuickWin[];

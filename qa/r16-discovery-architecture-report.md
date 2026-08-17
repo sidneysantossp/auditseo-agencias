@@ -1,100 +1,107 @@
 # AUDITSEO — Search Intelligence Lab & Editorial Ecosystem
-## Phase R16-A: Discovery & Architecture (Diagnostic Bridge & Commercial Architecture)
+## Phase R16-A: Discovery & Architecture (Diagnostic Bridge & Commercial Architecture — Revised)
 
-**STATUS:** **PENDING GPT AUDITSEO APPROVAL (READ-ONLY ANALYSIS)**  
+**STATUS:** **READY FOR GPT AUDITSEO REVIEW & CLOSEOUT**  
 **DATA:** 14 de agosto de 2026  
-**ESCOPO:** Investigação, desenho arquitetural, inventário de claims e modelagem da ponte comercial e diagnóstica (`/diagnostico`).
+**ESCOPO:** Investigação técnica exaustiva, inventário auditável de CTAs e claims, desenho arquitetural, análise de impacto e testes da ponte comercial e diagnóstica (`/diagnostico`).
 
 ---
 
 ## 1. Objective
-Determinar como a autoridade editorial, o Search Intelligence Lab e a rota `/diagnostico` devem se conectar sem converter conteúdo de pesquisa em promessa comercial, sem criar claims não sustentados e sem introduzir scoring arbitrário.
+Determinar como a autoridade editorial, o Search Intelligence Lab e a rota `/diagnostico` devem se conectar sem converter conteúdo de pesquisa em promessa comercial, sem criar claims não sustentados e sem introduzir scoring arbitrário, mantendo estrita conformidade com a governança de evidências.
 
 ---
 
-## 2. Current Source Truth
+## 2. Current Source Truth (Evidência Reprodutível de Código)
 * **Framework:** React + Vite + TypeScript SPA com Tailwind CSS.
-* **Componentes de Diagnóstico:** `src/components/DiagnosticoPage.tsx` e `src/components/DiagnosticSection.tsx`.
-* **Registry Central:** `src/editorial/researchRegistry.ts` e `src/editorial/articleRegistry.ts`.
-* **Deployment:** `auditseo.com.br` integrado ao repositório canônico `sidneysantossp/auditseo-agencias` (Commit de produção atual: `61bb350`).
+* **Componentes Principais de Diagnóstico:**
+  * `src/components/DiagnosticoPage.tsx` (Linhas 1 a 869): Gerencia o fluxo iterativo de cenários, objetivos, gargalos e pressão do cliente para agências.
+  * `src/components/DiagnosticSection.tsx` (Linhas 1 a 120): Seção de entrada na página inicial que encaminha para `/diagnostico`.
+* **Registries e Rotas:**
+  * `src/editorial/researchRegistry.ts`: Contém as observações do Search Intelligence Lab (OBS #001 a #004).
+  * `src/App.tsx` (Linhas 79-84): Roteamento da rota `/diagnostico` com metadados SEO dedicados.
+* **Deployment Status:** Sincronizado com o repositório canônico `sidneysantossp/auditseo-agencias` (Commit de produção ativo: `61bb350`).
 
 ---
 
 ## 3. Current User Journey
-1. **Descoberta:** O usuário chega por busca orgânica ou referência de parceiros nas páginas de pilares (`/guias/ai-search`), artigos de suporte ou no Hub do Search Intelligence Lab (`/estudos-busca-ia`).
-2. **Autoridade & Evidência:** O usuário lê análises e observações rotuladas com classes rigorosas de evidência (`OBSERVADO`, `DOCUMENTADO`).
-3. **Conversão / Diagnóstico:** O usuário é convidado a avançar para a rota `/diagnostico`, onde interage com um formulário iterativo baseado em cenários de agências (Foundation, Activation, Recovery, Authority, Content, GEO, Migration, Evolution).
+1. **Descoberta de Autoridade:** O usuário chega por busca orgânica ou referência nas páginas de pilares (`/guias/ai-search`) e no Search Intelligence Lab (`/estudos-busca-ia`).
+2. **Consumo de Evidência:** Leitura de artigos e observações com rotulagem rigorosa (`OBSERVADO`, `DOCUMENTADO`).
+3. **Ponte de Diagnóstico:** O usuário clica em CTAs institucionais que apontam para `/diagnostico`, onde interage com um formulário paramétrico baseado em cenários reais de agências.
 
 ---
 
-## 4. Diagnostic Route Findings
-* **Status Atual (`OBSERVADO`):** A rota `/diagnostico` funciona atualmente como um assistente iterativo de cenários para agências, mapeando dores da carteira para soluções da AUDITSEO.
-* **Limitação Técnica (`INFERIDO`):** O formulário coleta inputs do usuário (cenários, gargalos, objetivos) mas atualmente encerra em um resumo estático e um CTA de envio/contato, sem gerar um relatório dinâmico baseado em evidências ou dados públicos conectados.
+## 4. Diagnostic Route Findings (OBSERVADO)
+* **Componente `DiagnosticoPage.tsx`:** O arquivo define cenários (`scenarios`, linhas 40-129) cobrindo situações como projetos novos (`foundation`), perda de visibilidade (`recovery`), e exigência de IA/GEO (`geo`).
+* **Ausência de Crawler Automático:** O diagnóstico não realiza varreduras automatizadas ou crawls de URL em tempo real; ele opera estritamente como um assistente de qualificação estruturada de cenários para agências.
 
 ---
 
-## 5. CTA / Conversion Inventory
-* **Página Inicial (`/`):** CTAs para "Agendar uma Reunião", "Método S.I.G.N.A.L" e "Diagnóstico de Autoridade".
-* **Search Intelligence Lab (`/estudos-busca-ia`):** CTAs ao final de artigos e observações apontando para reflexão analítica e consultoria white-label.
-* **AI Search Pillar (`/guias/ai-search`):** Links cruzados para as Observations #003 e #004 e chamadas para estruturação de autoridade de entidade.
+## 5. CTA & Claim Inventory (Auditável)
+
+| Localização (Arquivo / Componente) | Tipo | Texto / Referência | Alvo / Destino |
+| :--- | :--- | :--- | :--- |
+| `src/components/DiagnosticSection.tsx` | CTA | "Diagnóstico de Autoridade" | `/diagnostico` |
+| `src/components/BlogPage.tsx` (Linha 167) | CTA | "Transformar cobrança em diagnóstico" | `/diagnostico` |
+| `src/components/Hero.tsx` | CTA | "Diagnóstico Gratuito / Agendar Reunião" | `/diagnostico` ou Contato |
+| `src/editorial/articles/...` | Claim | Suporte estratégico white-label para agências | Institucional |
 
 ---
 
-## 6. Claim Inventory
-* **Claims Atuais:** Propostas focadas em suporte estratégico white-label para agências, método S.I.G.N.A.L e organização de autoridade de entidade.
-* **Riscos Identificados (`INFERIDO`):** O uso de termos vagos ou promessas de "crescimento garantido em IA" representaria uma violação da governança de evidências. O ecossistema estipula que claims comerciais devem restringir-se ao que é demonstrável (métodos de estruturação, análise de gaps e governança de busca).
+## 6. Evidence-to-Commercial Gap Analysis
+* **Gap Identificado (`INFERIDO`):** O formulário atual coleta inputs mas encerra em um resumo estático sem vincular as dores declaradas da agência às evidências empíricas ou guias metodológicos do Lab.
+* **Solução Arquitetural:** Preservar a cadeia epistemológica:
+  $$\text{Evidence} \rightarrow \text{Finding} \rightarrow \text{Interpretation} \rightarrow \text{Recommendation} \rightarrow \text{Commercial Next Step}$$
 
 ---
 
-## 7. Evidence-to-Commercial Gap Analysis
-* **Gap Principal:** A transição entre o rigor empírico do Lab (OBS #003, OBS #004) e a conversão comercial precisa ser mediada por uma camada de interpretação estruturada, evitando que o usuário conclua que a observação de um comportamento de IA significa uma vantagem comercial automática.
-* **Alinhamento Metodológico:** A cadeia epistemológica deve ser rigorosamente preservada:
-  $$\text{Evidence (Observação)} \rightarrow \text{Finding (Constatação)} \rightarrow \text{Interpretation (Análise de Risco/Oportunidade)} \rightarrow \text{Recommendation (Intervenção Metodológica)}$$
+## 7. Proposed Diagnostic Architecture
+* **Modelo:** *Qualification Bridge* combinada com *Evidence-backed Assessment*.
+* **Diretriz:** O diagnóstico qualifica o cenário da agência e apresenta constatações metodológicas com links diretos para a documentação ou observações de origem (`[OBSERVADO]`, `[DOCUMENTADO]`), sem utilizar scores compostos arbitrários.
 
 ---
 
-## 8. Proposed Diagnostic Architecture
-* **Modelo Proposto:** Combinação de *Diagnostic Entry Point* com *Evidence-backed Assessment*.
-* **Fluxo:** O diagnóstico interativo guiará a agência através de seleções parametrizadas (sem pontuação arbitrária), entregando um relatório preliminar de gaps baseado em evidências documentadas e direcionando para a consultoria humana de Search Intelligence.
+## 8. Data / Input Model
+* **Inputs Permitidos:** Seleção de cenário de projeto, objetivos estratégicos e gargalos declarados via formulário estruturado.
+* **Restrição:** Proibição absoluta de criação de pontuações sintéticas ("SEO Score" ou "AI Visibility Index").
 
 ---
 
-## 9. Data / Input Model
-* **Inputs Permitidos:** Seleção de cenário de projeto (Foundation, Activation, Recovery, Authority, Content, GEO, Migration, Evolution), objetivos estratégicos e gargalos declarados.
-* **Proibição Absoluta:** Sem introdução de scores compostos arbitrários ("SEO Score: 85/100" ou "AI Visibility Index").
+## 9. Output & Provenance Model
+* **Outputs:** Relatório estruturado de cenários com recomendações metodológicas fundamentadas no Método S.I.G.N.A.L. e nas observações do Lab.
+* **Proveniência:** Cada recomendação aponta explicitamente para o artefato conceitual ou empírico correspondente.
 
 ---
 
-## 10. Output & Provenance Model
-* **Outputs:** Mapeamento do cenário da agência para o entregável correspondente do método S.I.G.N.A.L, com referências cruzadas aos guias e observações do Lab que sustentam a abordagem.
-* **Proveniência:** Cada recomendação aponta explicitamente para a documentação ou observação de origem (`[DOCUMENTADO]`, `[OBSERVADO]`).
+## 10. Commercial Architecture
+* Atua como uma ponte de qualificação avançada, elevando a maturidade da conversa comercial entre a agência parceira e a AUDITSEO.
 
 ---
 
-## 11. Commercial Architecture
-* **Posicionamento:** A rota `/diagnostico` atua como uma ponte de qualificação e estruturação de demanda para agências, preservando a independência do laboratório de pesquisa e reforçando a autoridade técnica da AUDITSEO.
+## 11. Risks & Mitigations
+* **UX Misleading Risk (`INFERIDO`):** O usuário presumir que o diagnóstico é um scanner automatizado de site. **Mitigação:** Clareza textual explícita de que se trata de uma avaliação estruturada de cenários e governança.
 
 ---
 
-## 12. Risks
-* **UX Misleading Risk (`INFERIDO`):** O usuário confundir uma análise de cenários com um crawler automatizado em tempo real de seu domínio.
-* **Commercial Hyperbole Risk (`DOCUMENTADO`):** Promessas infundadas de otimização universal para IA. Mitigado pela governança estrita de evidências.
+## 12. Files That Would Need Modification (Para R16-B)
+* `src/components/DiagnosticoPage.tsx`: Inclusão de blocos de proveniência de evidência e refinamento do resumo final.
+* `src/components/DiagnosticSection.tsx`: Ajuste de cópia para refletir a nova ponte de evidências.
 
 ---
 
-## 13. Open Questions (Para o GPT AUDITSEO)
-1. Devemos introduzir algum mecanismo de input de URL do cliente no futuro para análise preliminar de headers/estruturados, ou manter o diagnóstico estritamente baseado em cenários de agência?
-2. Qual o nível de detalhamento esperado para o relatório preliminar gerado ao final do fluxo `/diagnostico`?
+## 13. Tests That Would Be Required
+* Testes de renderização de rota (`/diagnostico`) para garantir HTTP 200 e ausência de quebras de layout.
+* Validação de interatividade do formulário de cenários (seleção de cenários, objetivos e gargalos).
+* Verificação de conformidade dos links de proveniência para o Lab e Guia de AI Search.
 
 ---
 
-## 14. Recommended Implementation Scope for R16-B (Dependent on Approval)
-* Refinamento textual da rota `/diagnostico` para garantir separação absoluta entre observação empírica e recomendação comercial.
-* Atualização dos CTAs do Lab para direcionar para o diagnóstico baseado em evidência.
-* Nenhum deploy ou alteração será executada sem autorização expressa do GPT AUDITSEO.
+## 14. Deployment Impact
+* **Impacto:** Baixo risco. Nenhuma alteração estrutural de backend ou banco de dados; apenas refinamento de componentes client-side na SPA React.
+* **Compatibilidade:** Totalmente compatível com o ecossistema Vercel atual (`auditseo.com.br`).
 
 ---
 
 ## 15. Gate Recommendation
-**GATE STATUS:** `PENDING CLOSEOUT & GPT AUDITSEO REVIEW`  
-Recomenda-se a análise deste relatório pelo GPT AUDITSEO para validação da arquitetura conceitual e liberação da Fase R16-B.
+**GATE STATUS:** `READY FOR APPROVAL`  
+Recomenda-se ao GPT AUDITSEO a aprovação do closeout da Fase R16-A e a liberação formal da **Fase R16-B (Implementação)** com base no escopo técnico detalhado acima.

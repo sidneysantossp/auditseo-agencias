@@ -129,7 +129,7 @@ const scenarioSolutions = [
       "Mapeamos intenções, clusters, páginas, lacunas e oportunidades conectadas à jornada orgânica.",
   },
   {
-    name: "GEO & AI Readiness",
+    name: "Generative Search Architecture",
     scenario: "Para marcas que precisam se adaptar à nova busca",
     problem:
       "Muitas empresas querem aparecer em ambientes de IA, mas não possuem clareza semântica, autoridade, dados estruturados, conteúdo explicativo ou consistência pública.",
@@ -179,7 +179,7 @@ const scenarioSolutionAnchors = [
 const offerMap = [
   ["Meu site nunca trouxe resultado.", "Organic Activation"],
   ["Nosso tráfego caiu e ninguém conseguiu recuperar.", "Search Recovery"],
-  ["Queremos aparecer melhor no Google e na IA.", "GEO & AI Readiness"],
+  ["Queremos aparecer melhor no Google e na IA.", "Generative Search Architecture"],
   ["Produzimos conteúdo, mas não vemos retorno.", "Intent Content Architecture"],
   ["Estamos refazendo o site.", "SEO Migration & Risk Control"],
   ["Preciso justificar a continuidade do contrato.", "Organic Evolution Cycle"],
