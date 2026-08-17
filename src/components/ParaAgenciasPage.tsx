@@ -15,6 +15,7 @@ import {
   Target,
   Users,
   XCircle,
+  FlaskConical,
 } from "lucide-react";
 import SiteFooter from "./SiteFooter";
 
@@ -55,7 +56,7 @@ const deliverables = [
   ["Análise de Autoridade de Entidade", "Como a marca é compreendida por buscadores, IAs e usuários a partir de seus sinais públicos."],
   ["SEO Técnico e On-page Estratégico", "Correções, estrutura, conteúdo, headings, indexação, arquitetura e páginas prioritárias."],
   ["Dados Estruturados e Schema Markup", "Organização técnica dos sinais para ajudar buscadores a interpretar serviços, organização, FAQ, páginas e entidades."],
-  ["Arquitetura para Generative Search", "Análise de como a marca pode ser melhor compreendida em ambientes generativos e mecanismos de resposta."],
+  ["Generative Search Architecture", "Análise de como a marca pode ser melhor compreendida em ambientes generativos e mecanismos de resposta."],
   ["Roadmap Orgânico 90 dias", "Plano claro de execução com prioridades, impacto esperado e próximos passos."],
 ];
 
@@ -163,67 +164,290 @@ function PrimaryButton({ children, onClick }: { children: string; onClick: () =>
 
 export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) {
   return (
-    <main className="bg-[#11100f] text-[#f8f8f8]">
-      <section className="relative overflow-hidden pt-[130px] md:pt-[160px] pb-20 md:pb-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(178,132,83,0.16),transparent_34%),linear-gradient(135deg,rgba(224,211,195,0.05),transparent_42%)]" />
-        <div className="container relative z-10 mx-auto max-w-[1320px] px-6 xl:px-12">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-8">
-              <span className="mb-5 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-                PARCERIA WHITE-LABEL PARA AGÊNCIAS
-              </span>
-              <h1
-                className="font-display font-bold text-[#f8f8f8]"
-                style={{
-                  fontSize: "clamp(48px, 5vw, 72px)",
-                  lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  maxWidth: "760px",
-                }}
-              >
-                SEO, GEO e IA white-label <br className="hidden md:inline" />
-                para sua agência
-              </h1>
-              <p
-                className="mt-10"
-                style={{
-                  color: "rgba(248,248,248,0.74)",
-                  fontSize: "clamp(18px, 1.4vw, 22px)",
-                  lineHeight: 1.55,
-                  maxWidth: "680px",
-                }}
-              >
-                A AUDITSEO atua nos bastidores para estruturar diagnósticos, roadmaps e entregas mensuráveis para os clientes da sua agência — sem ampliar sua estrutura interna.
-              </p>
-              <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-                <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
-                <button
-                  onClick={() => onNavigate("como-funciona")}
-                  className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
+    <div className="bg-[#11100f] text-[#f8f8f8] font-sans selection:bg-[#b28453] selection:text-white">
+      <main>
+        <section className="relative overflow-hidden pt-[130px] md:pt-[160px] pb-20 md:pb-28">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(178,132,83,0.16),transparent_34%),linear-gradient(135deg,rgba(224,211,195,0.05),transparent_42%)]" />
+          <div className="container relative z-10 mx-auto max-w-[1320px] px-6 xl:px-12">
+            <div className="grid items-center gap-12 lg:grid-cols-12">
+              <div className="lg:col-span-8">
+                <span className="mb-5 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
+                  PARCERIA WHITE-LABEL PARA AGÊNCIAS
+                </span>
+                <h1
+                  className="font-display font-bold text-[#f8f8f8]"
+                  style={{
+                    fontSize: "clamp(48px, 5vw, 72px)",
+                    lineHeight: 1.04,
+                    letterSpacing: "-0.045em",
+                    maxWidth: "760px",
+                  }}
                 >
-                  Ver como funciona
-                </button>
-              </div>
-              <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
-                White-label · Diagnóstico estratégico · Roadmap · Mensuração
-              </p>
-            </div>
-
-            <div className="lg:col-span-4">
-              <div className="rounded-[8px] border border-[#b28453]/25 bg-[#181716]/90 p-6 shadow-2xl shadow-black/40">
-                <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Camada de parceria</p>
-                    <h2 className="mt-2 font-display text-2xl font-bold">Sua agência mantém o relacionamento.</h2>
-                  </div>
-                  <ShieldCheck className="h-9 w-9 text-[#b28453]" />
-                </div>
-                <p className="text-lg leading-[1.6] text-[#e0d3c3]">
-                  A AUDITSEO estrutura a inteligência orgânica por trás da entrega.
+                  Search Intelligence e <br className="hidden md:inline" />
+                  GEO white-label para sua agência
+                </h1>
+                <p
+                  className="mt-10"
+                  style={{
+                    color: "rgba(248,248,248,0.74)",
+                    fontSize: "clamp(18px, 1.4vw, 22px)",
+                    lineHeight: 1.55,
+                    maxWidth: "680px",
+                  }}
+                >
+                  A AUDITSEO atua nos bastidores para estruturar diagnósticos, roadmaps e entregas baseadas em evidências para os clientes da sua agência — sem ampliar sua estrutura interna.
                 </p>
-                <div className="mt-8 grid grid-cols-2 gap-3">
-                  {["SEO técnico", "GEO & IA", "Camada de entidade", "Roadmap 90 dias"].map((item) => (
-                    <div key={item} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold text-[#f8f8f8]">
+                <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+                  <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
+                  <button
+                    onClick={() => onNavigate("como-funciona")}
+                    className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
+                  >
+                    Ver como funciona
+                  </button>
+                </div>
+                <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
+                  White-label · Diagnóstico estratégico · Roadmap · Evidências
+                </p>
+              </div>
+
+              <div className="lg:col-span-4">
+                <div className="rounded-[8px] border border-[#b28453]/25 bg-[#181716]/90 p-6 shadow-2xl shadow-black/40">
+                  <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Camada de parceria</p>
+                      <h2 className="mt-2 font-display text-2xl font-bold">Sua agência mantém o relacionamento.</h2>
+                    </div>
+                    <ShieldCheck className="h-9 w-9 text-[#b28453]" />
+                  </div>
+                  <p className="text-lg leading-[1.6] text-[#e0d3c3]">
+                    A AUDITSEO estrutura a inteligência orgânica por trás da entrega.
+                  </p>
+                  <div className="mt-8 grid grid-cols-2 gap-3">
+                    {["SEO técnico", "Generative Search", "Camada de entidade", "Roadmap 90 dias"].map((item) => (
+                      <div key={item} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold text-[#f8f8f8]">
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#b28453]/10 bg-[#181716] py-20 md:py-24">
+          <div className="container mx-auto max-w-[1120px] px-6 text-center xl:px-12">
+            <SectionHeader
+              align="center"
+              eyebrow="Mudança de mercado"
+              title="O mercado mudou. A entrega orgânica também precisa mudar."
+              text="Clientes já não avaliam presença digital apenas por posts, anúncios ou posições isoladas no Google. Eles pesquisam, comparam, consultam IAs, analisam autoridade, reputação e sinais de confiança antes de tomar uma decisão."
+            />
+            <p className="mx-auto mt-8 max-w-4xl text-base md:text-lg leading-[1.7] text-[#e0d3c3]">
+              Para as agências, isso cria uma nova oportunidade: transformar SEO, GEO, dados estruturados, autoridade de entidade e inteligência de busca em uma entrega estratégica, recorrente e percebida como inovação.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <SectionHeader
+              eyebrow="Dor operacional"
+              title="O desafio não é apenas vender SEO. É sustentar uma entrega estratégica sem aumentar a estrutura."
+            />
+            <div className="mt-14 grid gap-5 md:grid-cols-2">
+              {painPoints.map((item) => (
+                <div key={item.title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
+                  <AlertIcon />
+                  <h3 className="mt-5 font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="apoio-em-reunioes" className="scroll-mt-28 bg-[#181716] py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <SectionHeader
+              eyebrow="Como atuamos"
+              title="Entramos como a camada estratégica de Search Intelligence da sua agência"
+              text="Sem disputar relacionamento, sem aparecer para o cliente final e sem exigir que sua agência monte uma operação interna complexa."
+            />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {howWeEnter.map(([title, text], index) => (
+                <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-7 transition-colors hover:border-[#b28453]/55">
+                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-[8px] bg-[#b28453]/12 text-[#b28453]">
+                    {index % 3 === 0 ? <FileText size={22} /> : index % 3 === 1 ? <Compass size={22} /> : <Layers3 size={22} />}
+                  </div>
+                  <h3 className="font-display text-xl font-bold">{title}</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="diagnosticos-para-propostas" className="scroll-mt-28 py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <SectionHeader
+              align="center"
+              eyebrow="Oferta vendável"
+              title="Uma nova entrega orgânica para sua agência apresentar aos clientes"
+              text="Não é apenas SEO tradicional. É uma camada estruturada de busca, autoridade, dados e inteligência aplicada."
+            />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {deliverables.map(([title, text]) => (
+                <div key={title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
+                  <CheckCircle2 className="h-6 w-6 text-[#b28453]" />
+                  <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+              <div className="lg:col-span-5">
+                <SectionHeader
+                  eyebrow="Camada de entidade e autoridade"
+                  title="Autoridade de entidade: a camada invisível da nova busca"
+                  text="Na nova busca, não basta publicar mais conteúdos. Marcas precisam organizar os sinais que fazem com que sejam reconhecidas como entidades claras, associadas ao contexto certo e validadas como opções confiáveis antes da decisão do cliente."
+                />
+                <p className="mt-6 text-base leading-[1.7] text-[#e0d3c3]">
+                  A AUDITSEO ajuda sua agência a estruturar essa camada conectando SEO semântico, dados estruturados, reputação, conteúdo estratégico, presença externa e inteligência de busca.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:col-span-7">
+                {entityLayer.map(([title, text]) => (
+                  <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-6">
+                    <Network className="h-5 w-5 text-[#b28453]" />
+                    <h3 className="mt-4 font-display text-lg font-bold">{title}</h3>
+                    <p className="mt-3 text-sm leading-[1.6] text-[#c9c9c9]">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#11100f] py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <div className="rounded-[24px] border border-[#b28453]/30 bg-white/[0.02] p-8 md:p-12">
+              <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+                <div className="lg:col-span-7">
+                  <div className="flex items-center gap-3 text-[#b28453]">
+                    <FlaskConical size={20} />
+                    <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em]">Search Intelligence Lab</span>
+                  </div>
+                  <h2 className="mt-6 font-display text-[32px] md:text-[48px] font-bold leading-[1.1] text-[#f8f8f8]">
+                    Baseamos nossa estratégia em <span className="text-[#b28453]">evidências observadas</span>
+                  </h2>
+                  <p className="mt-8 text-lg leading-[1.6] text-[#c9c9c9]">
+                    No Search Intelligence Lab, realizamos experimentos contínuos para entender como buscadores e IAs interpretam marcas, entidades e autoridade. Sua agência utiliza essa inteligência de ponta para sustentar entregas seguras e inovadoras.
+                  </p>
+                  <div className="mt-10">
+                    <button
+                      onClick={() => onNavigate("/estudos-busca-ia/reconhecimento-de-entidade-por-contexto")}
+                      className="group flex items-center gap-3 text-sm font-bold text-[#b28453] transition-colors hover:text-[#e0d3c3]"
+                    >
+                      Ver Estudo Lab #001: Reconhecimento de Entidade
+                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </div>
+                </div>
+                <div className="lg:col-span-5">
+                  <div className="relative rounded-[16px] border border-[#b28453]/20 bg-[#181716] p-8 overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                      <FlaskConical size={120} />
+                    </div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#b28453]">Observation #001</p>
+                    <h3 className="mt-4 font-display text-xl font-bold">Por que o Google reconhece uma pessoa para um tema e praticamente a ignora para outro?</h3>
+                    <p className="mt-4 text-sm leading-[1.6] text-[#c9c9c9]">
+                      Análise sobre reconhecimento de entidade por contexto temático, ruído de homônimos e associação profissional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="modelos-de-parceria" className="scroll-mt-28 py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <SectionHeader align="center" eyebrow="Modelos" title="Escolha o modelo de parceria ideal para o estágio da sua agência" />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {partnershipModels.map(([title, text]) => (
+                <div key={title} className="flex rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
+                  <div className="flex flex-col">
+                    <Target className="h-6 w-6 text-[#b28453]" />
+                    <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
+                    <p className="mt-4 flex-1 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
+                    <button onClick={() => onNavigate("diagnostico")} className="mt-7 inline-flex items-center gap-2 text-left text-sm font-bold text-[#b28453] hover:text-[#e0d3c3]">
+                      Quero avaliar este modelo <ChevronRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#181716] py-24 md:py-32">
+          <div className="container mx-auto grid max-w-[1320px] gap-8 px-6 md:grid-cols-2 xl:px-12">
+            <FitPanel title="Essa parceria faz sentido para sua agência se..." items={fitList} icon="check" />
+            <FitPanel title="Essa parceria talvez não seja para sua agência se..." items={notFitList} icon="x" />
+          </div>
+        </section>
+
+        <section id="como-funciona" className="scroll-mt-28 py-24 md:py-32">
+          <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+            <SectionHeader align="center" eyebrow="Operação" title="Como a parceria funciona na prática" />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {processSteps.map(([step, title, text]) => (
+                <div key={step} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b28453] font-display text-lg font-bold text-white">
+                    {step}
+                  </span>
+                  <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
+                  <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
+          <div className="container mx-auto grid max-w-[1320px] gap-12 px-6 lg:grid-cols-12 xl:px-12">
+            <div className="lg:col-span-5">
+              <SectionHeader
+                eyebrow="Bastidores"
+                title="O que sua agência recebe nos bastidores"
+                text="Entregáveis pensados para apoiar venda, renovação, retenção e direção estratégica sem expor a retaguarda da AUDITSEO para o cliente final."
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <div className="rounded-[8px] border border-[#b28453]/20 bg-[#11100f] p-6 md:p-8">
+                <div className="mb-8 grid gap-4 md:grid-cols-3">
+                  {[
+                    ["Diagnóstico", "Executivo"],
+                    ["Prioridades", "12 ações"],
+                    ["Roadmap", "90 dias"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-5">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8c8275]">{label}</p>
+                      <p className="mt-2 font-display text-2xl font-bold text-[#e0d3c3]">{value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {backstageItems.map((item) => (
+                    <div key={item} className="flex items-center gap-3 rounded-[8px] border border-white/10 bg-[#181716] p-4 text-sm text-[#c9c9c9]">
+                      <ClipboardCheck className="h-4 w-4 shrink-0 text-[#b28453]" />
                       {item}
                     </div>
                   ))}
@@ -231,227 +455,48 @@ export default function ParaAgenciasPage({ onNavigate }: ParaAgenciasPageProps) 
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-y border-[#b28453]/10 bg-[#181716] py-20 md:py-24">
-        <div className="container mx-auto max-w-[1120px] px-6 text-center xl:px-12">
-          <SectionHeader
-            align="center"
-            eyebrow="Mudança de mercado"
-            title="O mercado mudou. A entrega orgânica também precisa mudar."
-            text="Clientes já não avaliam presença digital apenas por posts, anúncios ou posições isoladas no Google. Eles pesquisam, comparam, consultam IAs, analisam autoridade, reputação e sinais de confiança antes de tomar uma decisão."
-          />
-          <p className="mx-auto mt-8 max-w-4xl text-base md:text-lg leading-[1.7] text-[#e0d3c3]">
-            Para as agências, isso cria uma nova oportunidade: transformar SEO, GEO, dados estruturados, autoridade de entidade e inteligência de busca em uma entrega estratégica, recorrente e percebida como inovação.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <SectionHeader
-            eyebrow="Dor operacional"
-            title="O desafio não é apenas vender SEO. É sustentar uma entrega estratégica sem aumentar a estrutura."
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
-            {painPoints.map((item) => (
-              <div key={item.title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                <AlertIcon />
-                <h3 className="mt-5 font-display text-xl font-bold text-[#f8f8f8]">{item.title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="apoio-em-reunioes" className="scroll-mt-28 bg-[#181716] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <SectionHeader
-            eyebrow="Como atuamos"
-            title="Entramos como a camada estratégica de Search Intelligence da sua agência"
-            text="Sem disputar relacionamento, sem aparecer para o cliente final e sem exigir que sua agência monte uma operação interna complexa."
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {howWeEnter.map(([title, text], index) => (
-              <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-7 transition-colors hover:border-[#b28453]/55">
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-[8px] bg-[#b28453]/12 text-[#b28453]">
-                  {index % 3 === 0 ? <FileText size={22} /> : index % 3 === 1 ? <Compass size={22} /> : <Layers3 size={22} />}
-                </div>
-                <h3 className="font-display text-xl font-bold">{title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="diagnosticos-para-propostas" className="scroll-mt-28 py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <SectionHeader
-            align="center"
-            eyebrow="Oferta vendável"
-            title="Uma nova entrega orgânica para sua agência apresentar aos clientes"
-            text="Não é apenas SEO tradicional. É uma camada estruturada de busca, autoridade, dados e inteligência aplicada."
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {deliverables.map(([title, text]) => (
-              <div key={title} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                <CheckCircle2 className="h-6 w-6 text-[#b28453]" />
-                <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-5">
-              <SectionHeader
-                eyebrow="Camada de entidade e autoridade"
-                title="Autoridade de entidade: a camada invisível da nova busca"
-                text="Na nova busca, não basta publicar mais conteúdos. Marcas precisam organizar os sinais que fazem com que sejam reconhecidas como entidades claras, associadas ao contexto certo e validadas como opções confiáveis antes da decisão do cliente."
-              />
-              <p className="mt-6 text-base leading-[1.7] text-[#e0d3c3]">
-                A AUDITSEO ajuda sua agência a estruturar essa camada conectando SEO semântico, dados estruturados, reputação, conteúdo estratégico, presença externa e inteligência de busca.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:col-span-7">
-              {entityLayer.map(([title, text]) => (
-                <div key={title} className="rounded-[8px] border border-white/10 bg-[#11100f] p-6">
-                  <Network className="h-5 w-5 text-[#b28453]" />
-                  <h3 className="mt-4 font-display text-lg font-bold">{title}</h3>
-                  <p className="mt-3 text-sm leading-[1.6] text-[#c9c9c9]">{text}</p>
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto max-w-[1120px] px-6 xl:px-12">
+            <SectionHeader align="center" eyebrow="Objeções" title="Dúvidas comuns antes de iniciar uma parceria" />
+            <div className="mt-12 divide-y divide-white/10 rounded-[8px] border border-[#b28453]/20 bg-[#181716]">
+              {faqs.map(([question, answer]) => (
+                <div key={question} className="p-6 md:p-8">
+                  <h3 className="font-display text-lg font-bold text-[#f8f8f8]">{question}</h3>
+                  <p className="mt-3 text-sm leading-[1.7] text-[#c9c9c9]">{answer}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="modelos-de-parceria" className="scroll-mt-28 py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <SectionHeader align="center" eyebrow="Modelos" title="Escolha o modelo de parceria ideal para o estágio da sua agência" />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {partnershipModels.map(([title, text]) => (
-              <div key={title} className="flex rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                <div className="flex flex-col">
-                  <Target className="h-6 w-6 text-[#b28453]" />
-                  <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-4 flex-1 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-                  <button onClick={() => onNavigate("diagnostico")} className="mt-7 inline-flex items-center gap-2 text-left text-sm font-bold text-[#b28453] hover:text-[#e0d3c3]">
-                    Quero avaliar este modelo <ChevronRight size={16} />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#181716] py-24 md:py-32">
-        <div className="container mx-auto grid max-w-[1320px] gap-8 px-6 md:grid-cols-2 xl:px-12">
-          <FitPanel title="Essa parceria faz sentido para sua agência se..." items={fitList} icon="check" />
-          <FitPanel title="Essa parceria talvez não seja para sua agência se..." items={notFitList} icon="x" />
-        </div>
-      </section>
-
-      <section id="como-funciona" className="scroll-mt-28 py-24 md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
-          <SectionHeader align="center" eyebrow="Operação" title="Como a parceria funciona na prática" />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map(([step, title, text]) => (
-              <div key={step} className="rounded-[8px] border border-[#b28453]/20 bg-[#181716] p-7">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#b28453] font-display text-lg font-bold text-white">
-                  {step}
-                </span>
-                <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
-                <p className="mt-4 text-sm leading-[1.7] text-[#c9c9c9]">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-[#b28453]/10 bg-[#181716] py-24 md:py-32">
-        <div className="container mx-auto grid max-w-[1320px] gap-12 px-6 lg:grid-cols-12 xl:px-12">
-          <div className="lg:col-span-5">
-            <SectionHeader
-              eyebrow="Bastidores"
-              title="O que sua agência recebe nos bastidores"
-              text="Entregáveis pensados para apoiar venda, renovação, retenção e direção estratégica sem expor a retaguarda da AUDITSEO para o cliente final."
-            />
-          </div>
-          <div className="lg:col-span-7">
-            <div className="rounded-[8px] border border-[#b28453]/20 bg-[#11100f] p-6 md:p-8">
-              <div className="mb-8 grid gap-4 md:grid-cols-3">
-                {[
-                  ["Score", "78/100"],
-                  ["Prioridades", "12 ações"],
-                  ["Roadmap", "90 dias"],
-                ].map(([label, value]) => (
-                  <div key={label} className="rounded-[8px] border border-white/10 bg-white/[0.03] p-5">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8c8275]">{label}</p>
-                    <p className="mt-2 font-display text-2xl font-bold text-[#e0d3c3]">{value}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {backstageItems.map((item) => (
-                  <div key={item} className="flex items-center gap-3 rounded-[8px] border border-white/10 bg-[#181716] p-4 text-sm text-[#c9c9c9]">
-                    <ClipboardCheck className="h-4 w-4 shrink-0 text-[#b28453]" />
-                    {item}
-                  </div>
-                ))}
-              </div>
+        <section className="bg-[#b28453] py-20 text-white md:py-24">
+          <div className="container mx-auto max-w-[1080px] px-6 text-center xl:px-12">
+            <h2 className="font-display text-[34px] sm:text-[44px] md:text-[56px] font-bold leading-[1.08]">
+              Quer transformar busca, autoridade e IA em uma entrega real para os clientes da sua agência?
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-base md:text-lg leading-[1.7] text-white/85">
+              Vamos avaliar se a AUDITSEO pode atuar nos bastidores da sua operação como parceira white-label de SEO, GEO e inteligência de busca.
+            </p>
+            <div className="mt-9">
+              <button
+                onClick={() => onNavigate("diagnostico")}
+                className="inline-flex items-center gap-2 rounded-full bg-[#11100f] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+              >
+                Avaliar parceria estratégica
+                <ArrowRight size={16} />
+              </button>
             </div>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70">
+              A primeira conversa é para entender sua agência, sua carteira e o melhor modelo de parceria.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto max-w-[1120px] px-6 xl:px-12">
-          <SectionHeader align="center" eyebrow="Objeções" title="Dúvidas comuns antes de iniciar uma parceria" />
-          <div className="mt-12 divide-y divide-white/10 rounded-[8px] border border-[#b28453]/20 bg-[#181716]">
-            {faqs.map(([question, answer]) => (
-              <div key={question} className="p-6 md:p-8">
-                <h3 className="font-display text-lg font-bold text-[#f8f8f8]">{question}</h3>
-                <p className="mt-3 text-sm leading-[1.7] text-[#c9c9c9]">{answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#b28453] py-20 text-white md:py-24">
-        <div className="container mx-auto max-w-[1080px] px-6 text-center xl:px-12">
-          <h2 className="font-display text-[34px] sm:text-[44px] md:text-[56px] font-bold leading-[1.08]">
-            Quer transformar busca, autoridade e IA em uma entrega real para os clientes da sua agência?
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base md:text-lg leading-[1.7] text-white/85">
-            Vamos avaliar se a AUDITSEO pode atuar nos bastidores da sua operação como parceira white-label de SEO, GEO e inteligência de busca.
-          </p>
-          <div className="mt-9">
-            <button
-              onClick={() => onNavigate("diagnostico")}
-              className="inline-flex items-center gap-2 rounded-full bg-[#11100f] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
-            >
-              Avaliar parceria estratégica
-              <ArrowRight size={16} />
-            </button>
-          </div>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70">
-            A primeira conversa é para entender sua agência, sua carteira e o melhor modelo de parceria.
-          </p>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter onNavigate={onNavigate} />
-    </main>
+    </div>
   );
 }
 
