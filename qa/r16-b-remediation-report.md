@@ -2,7 +2,7 @@
 
 **Status:** PENDING REVIEW
 **Branch:** `fix/r16b-remediation`
-**Último Commit (Patch 2):** `b45630ab407de2d274fbedc2b0f7fc84322895f2`
+**Último Commit (Final Polish):** `55967a0026f9c713898b0820760a55cd8728a143`
 **Commit de Implementação Inicial:** `7ff3d21b9b759718f4803571a2196bd9a06a25fc`
 
 ## 1. Registro de Desvio (DEV-R16B-001)
@@ -14,8 +14,8 @@
 ## 2. Ações Executadas (Patch 1 & 2)
 
 ### Saneamento de Dependências e Ambiente
-- **Remoção de Dependências:** `@google/generative-ai` desinstalado do `package.json`.
-- **Limpeza de Envs:** `GEMINI_API_KEY` removido do `.env.example`.
+- **Remoção de Dependências:** `@google/genai` e `@google/generative-ai` desinstalados do `package.json`.
+- **Limpeza de Envs:** `.env.example` totalmente limpo de comentários do AI Studio e variáveis órfãs.
 - **Documentação:** `README.md` totalmente reescrito para remover referências ao Gemini/AI Studio e refletir a arquitetura profissional AUDITSEO.
 
 ### Refinamento Epistemológico e Provenance (DiagnosticoPage.tsx)
