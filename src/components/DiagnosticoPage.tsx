@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-  LineChart,
   Target,
   Users,
   Zap,
@@ -15,7 +14,6 @@ import {
 interface DiagnosticResult {
   solution: string;
   declared: string;
-  inferred: string;
   opportunity: string;
   auditseo: string;
   evidence?: {
@@ -201,16 +199,12 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
     const objective = objectiveOptions.find((o) => o.id === currentSelections.objectives)?.title || "Não especificado";
 
     // Epistemic labels logic:
-    // Declared: The raw inputs from the user
-    const declared = `${scenario.title}. Gargalo: ${bottleneck}. Objetivo: ${objective}.`;
-    
-    // Inferred: Strategic risk assessment based on scenario + urgency
-    const inferred = `Risco estratégico avaliado como ${urgency.title} baseado no cenário de ${scenario.solution}.`;
+    // Declared: The raw inputs from the user, including scenario, bottleneck, objective and urgency.
+    const declared = `${scenario.title}. Gargalo: ${bottleneck}. Objetivo: ${objective}. Urgência declarada: ${urgency.title}.`;
 
     setResult({
       solution: scenario.solution,
       declared,
-      inferred,
       opportunity: scenario.opportunity,
       auditseo: scenario.auditseo,
       evidence: scenario.evidence,
@@ -309,7 +303,6 @@ export default function DiagnosticoPage({ onNavigate }: { onNavigate: (id: strin
 
               <div className="grid gap-6 sm:grid-cols-2">
                 <ResultBlock title="Declarado pelo usuário" text={result.declared} icon={<Users size={18} />} />
-                <ResultBlock title="Inferido" text={result.inferred} icon={<LineChart size={18} />} />
                 <ResultBlock title="Recomendado" text={result.opportunity} icon={<Zap size={18} />} />
                 {result.evidence && (
                   <ResultBlock

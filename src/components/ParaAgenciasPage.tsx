@@ -140,7 +140,7 @@ export default function ParaAgenciasPage({
                 <span className="font-mono text-[10px] font-bold text-[#b28453]">AUDITSEO-OBS-001</span>
                 <h3 className="mt-3 text-xl font-bold text-[#f8f8f8]">Por que o Google reconhece uma pessoa para um tema e praticamente a ignora para outro?</h3>
                 <p className="mt-4 text-sm leading-relaxed text-[#f8f8f8]/40">
-                  Nossa observação inicial sobre reconhecimento de entidade por contexto temático demonstra como a consistência de sinais afeta a visibilidade de uma entidade em diferentes tópicos.
+                  A observação registra diferenças de reconhecimento e associação de entidade entre contextos temáticos distintos, dentro da amostra documentada.
                 </p>
                 <a 
                   href="/estudos-busca-ia/reconhecimento-de-entidade-por-contexto"
@@ -163,11 +163,11 @@ export default function ParaAgenciasPage({
                 </div>
                 <div className="rounded-xl border border-white/5 bg-[#11100f] p-6">
                   <h4 className="font-bold text-[#f8f8f8]">Testes de Sinais</h4>
-                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Verificação de como mudanças em dados estruturados e menções afetam o contexto.</p>
+                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Protocolos e testes documentados sobre sinais de entidade e contexto.</p>
                 </div>
                 <div className="rounded-xl border border-white/5 bg-[#11100f] p-6">
-                  <h4 className="font-bold text-[#f8f8f8]">Zero Alucinação</h4>
-                  <p className="mt-2 text-xs text-[#f8f8f8]/40">Todas as nossas recomendações são baseadas em evidências observáveis, não em suposições.</p>
+                  <h4 className="font-bold text-[#f8f8f8]">Governança de Evidências</h4>
+                  <p className="mt-2 text-xs text-[#f8f8f8]/40">As recomendações distinguem evidência observada, inferência e orientação metodológica.</p>
                 </div>
               </div>
             </div>
