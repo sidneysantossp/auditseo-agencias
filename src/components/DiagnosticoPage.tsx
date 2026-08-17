@@ -97,8 +97,8 @@ const scenarios = [
     auditseo:
       "Atuamos na organização da narrativa, páginas de serviço, reputação, provas, avaliações, menções, dados estruturados e consistência entre canais.",
     evidence: {
-      text: "Guia Entity Home: A importância de uma fonte canônica clara.",
-      path: "/guias/entity-home",
+      text: "Estudo Lab #001: Reconhecimento de entidade por contexto temático.",
+      path: "/estudos-busca-ia/reconhecimento-de-entidade-por-contexto",
     },
   },
   {

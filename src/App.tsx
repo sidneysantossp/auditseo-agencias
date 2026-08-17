@@ -345,6 +345,13 @@ export default function App() {
 
   // Soft scroll trigger
   const handleScrollToSection = (sectionId: string) => {
+    if (sectionId.startsWith("/")) {
+      window.history.pushState({}, "", sectionId);
+      setCurrentPath(sectionId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const scrollToHomeSection = () => {
       const element = document.getElementById(sectionId);
       if (element) {
