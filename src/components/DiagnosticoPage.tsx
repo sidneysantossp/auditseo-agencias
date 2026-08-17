@@ -28,7 +28,7 @@ const steps = [
   {
     id: "scenario",
     title: "Qual o cenário do projeto?",
-    description: "Selecione a situation que melhor descreve o momento atual do cliente na agência.",
+    description: "Selecione a situação que melhor descreve o momento atual do cliente na agência.",
   },
   {
     id: "bottlenecks",
