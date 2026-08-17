@@ -73,8 +73,8 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
                 <button onClick={() => onNavigate("diagnostico")} className="bg-[#b28453] text-white px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 hover:bg-[#e0d3c3] hover:text-[#11100f] cursor-pointer">
                   Solicitar Diagnóstico de Busca →
                 </button>
-                <button onClick={() => scrollTo("metodologia")} className="border border-[#b28453]/45 text-[#f8f8f8] px-8 py-4 rounded-full text-base font-semibold transition-all hover:bg-[#b28453]/10">
-                  Conhecer a metodologia
+                <button onClick={() => scrollTo("contato")} className="border border-[#b28453]/45 text-[#f8f8f8] px-8 py-4 rounded-full text-base font-semibold transition-all hover:bg-[#b28453]/10">
+                  Falar com Especialista
                 </button>
               </div>
               <div className="flex items-center lg:justify-start font-mono mt-8 select-none text-[#8c8275] gap-x-2" style={{ opacity: 0.62, fontSize: "11px" }}>
@@ -109,7 +109,7 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
               <ul className="space-y-5">
                 {[
                   "Atração Qualificada — Foco em contextos de busca que conectam a marca a usuários com alta intenção de decisão.",
-                  "Prontidão para IA — Otimização de sinais semânticos para auxiliar a leitura da marca em sistemas generativos.",
+                  "Observabilidade em IA — Otimização de sinais semânticos para auxiliar a compreensão da marca em sistemas generativos.",
                   "Direcionamento Estratégico — Decisões baseadas em evidências documentadas e monitoramento contínuo de sinais.",
                 ].map((item) => (
                   <li key={item} className="flex gap-4 text-sm leading-[1.6] text-[#f8f8f8]/74 md:text-base">
@@ -418,9 +418,9 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
                   <div className="space-y-4">
                     {[
                       { label: "Saúde Técnica", value: "Monitorada", color: "text-[#b28453]" },
-                      { label: "Sinais de Autoridade", value: "Em Evolução", color: "text-[#b28453]" },
+                      { label: "Sinais de Autoridade", value: "Documentados", color: "text-[#b28453]" },
                       { label: "Cobertura Semântica", value: "Mapeada", color: "text-[#f8f8f8]" },
-                      { label: "Governança", value: "Ativa", color: "text-[#e0d3c3]" },
+                      { label: "Governança", value: "SIGNAL", color: "text-[#e0d3c3]" },
                     ].map((metric) => (
                       <div key={metric.label} className="flex justify-between items-center border-b border-[#b28453]/12 pb-3 last:border-b-0">
                         <span className="text-[#c9c9c9] text-sm">{metric.label}</span>
@@ -431,7 +431,7 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
                   <div className="mt-6 pt-4 border-t border-[#b28453]/12">
                     <div className="flex items-center gap-2 text-[#b28453] text-xs font-mono">
                       <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b28453] opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-[#b28453]" /></span>
-                      Dados atualizados em tempo real
+                      Protocolo de Governança Ativo
                     </div>
                   </div>
                 </div>
@@ -490,7 +490,7 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
 
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <a
-              href="https://wa.me/5511999999999"
+              href="https://wa.me/5511996384376"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-3 rounded-full bg-[#b28453] px-10 py-5 text-base font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
@@ -499,7 +499,7 @@ export default function ConsultoriaPage({ onNavigate }: ConsultoriaPageProps) {
               Falar pelo WhatsApp
             </a>
             <a
-              href="mailto:contato@auditseo.com.br"
+              href="mailto:parceria@auditseo.com.br"
               className="group flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-10 py-5 text-base font-bold text-[#f8f8f8] transition-all hover:bg-white/[0.08]"
             >
               <Mail size={20} />

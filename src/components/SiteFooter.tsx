@@ -68,20 +68,6 @@ function FooterColumn({ title, links }: { title: string; links: string[][] }) {
 }
 
 export default function SiteFooter({ onNavigate }: SiteFooterProps) {
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-
-  const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!newsletterEmail) return;
-
-    setNewsletterSuccess(true);
-    window.setTimeout(() => {
-      setNewsletterEmail("");
-      setNewsletterSuccess(false);
-    }, 5000);
-  };
 
   return (
     <footer className="border-t border-[#b28453]/10 bg-[#11100f] text-[#f8f8f8]">
@@ -98,29 +84,15 @@ export default function SiteFooter({ onNavigate }: SiteFooterProps) {
             </div>
 
             <div className="flex w-full shrink-0 flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:w-auto">
-              {newsletterSuccess ? (
-                <div className="whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white">
-                  Obrigado por assinar. Seus insights foram registrados.
-                </div>
-              ) : (
-                <form onSubmit={handleNewsletterSubmit} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                  <input
-                    type="email"
-                    value={newsletterEmail}
-                    onChange={(event) => setNewsletterEmail(event.target.value)}
-                    placeholder="Seu e-mail profissional"
-                    className="w-full rounded-full bg-white px-6 py-3 text-sm font-medium text-[#11100f] outline-none placeholder:text-gray-500 sm:w-[390px] lg:w-[430px]"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#11100f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
-                  >
-                    <span>Inscrever-se</span>
-                    <Send size={12} />
-                  </button>
-                </form>
-              )}
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#11100f] px-8 py-3 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f]"
+              >
+                <span>Receber Insights via WhatsApp</span>
+                <Send size={12} />
+              </a>
 
               <div className="hidden items-center border-l border-white/20 pl-4 xl:flex">
                 <button
