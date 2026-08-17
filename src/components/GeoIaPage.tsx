@@ -88,10 +88,10 @@ const interpretationLayers = [
 const backstageSteps = [
   ["Leitura da presença atual", "Avaliamos como a marca está estruturada hoje em site, conteúdo, autoridade, dados e reputação."],
   ["Mapeamento de entidades e contexto", "Organizamos quem é a marca, quais temas domina, quais serviços oferece e como deve ser compreendida."],
-	          ["Diagnóstico de clareza para AI Search", "Identificamos lacunas que dificultam a interpretação da marca em mecanismos de busca e resposta."],
-	          ["Plano de arquitetura de contexto", "Priorizamos ações em conteúdo, dados estruturados, páginas, autoridade e consistência pública para sistemas generativos."],
-	          ["Evolução e monitoramento", "Acompanhamos mudanças, aprendizados e oportunidades para ajustar a estratégia ao longo do tempo."],
-	        ];
+  ["Diagnóstico de clareza de contexto", "Identificamos lacunas que dificultam a interpretação da marca em mecanismos de busca e resposta modernos."],
+  ["Plano de arquitetura de sinais", "Priorizamos ações em conteúdo, dados estruturados, páginas, autoridade e consistência pública para ecossistemas generativos."],
+  ["Evolução e monitoramento", "Acompanhamos mudanças, aprendizados e oportunidades para ajustar a estratégia ao longo do tempo."],
+];
 
 const geoScenarios = [
   ["Cliente perguntando sobre IA", "Quando a empresa quer entender como ChatGPT, Gemini ou AI Overviews podem impactar sua visibilidade."],
@@ -104,10 +104,10 @@ const geoScenarios = [
 
 const agencyOffers = [
   ["Diagnóstico de presença na nova busca", "Avaliar como a marca está sendo compreendida em ambientes tradicionais e generativos."],
-  ["Arquitetura para Generative Search", "Ajustar site, conteúdo, dados e autoridade para fornecer clareza de contexto a sistemas de resposta."],
+  ["Generative Search Architecture", "Ajustar site, conteúdo, dados e autoridade para fornecer clareza de contexto a sistemas de resposta."],
   ["Autoridade de entidade", "Organizar reputação, narrativa, provas, menções, estrutura e consistência pública."],
-  ["Arquitetura de conteúdo para IA", "Criar conteúdos explicativos, páginas estratégicas e respostas que fortalecem clareza e contexto."],
-  ["Roadmap GEO 90 dias", "Transformar o diagnóstico em plano de evolução com ações priorizadas."],
+  ["Arquitetura de conteúdo baseada em contexto", "Criar conteúdos explicativos, páginas estratégicas e respostas que fortalecem clareza e autoridade."],
+  ["Roadmap de evolução 90 dias", "Transformar o diagnóstico em plano de ação com prioridades claras."],
 ];
 
 const governanceCards = [
@@ -151,20 +151,20 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
       "@graph": [
         {
           "@type": "WebPage",
-          name: "GEO e IA para Agências | Search Intelligence na Nova Busca | AUDITSEO",
+          name: "Generative Search Architecture para Agências | AUDITSEO",
           url: `${window.location.origin}/geo-ia`,
           description:
-            "GEO, IA e Search Intelligence para agências: estruture marcas para a nova busca com autoridade de entidade, dados estruturados, contexto, conteúdo e governança estratégica.",
+            "Arquitetura de contexto e sinais para agências: estruture marcas para a nova busca com autoridade de entidade, dados estruturados e governança estratégica.",
         },
         {
           "@type": "Service",
-          name: "GEO, IA e Search Intelligence white-label para agências",
+          name: "Generative Search Architecture white-label para agências",
           provider: { "@type": "Organization", name: "AUDITSEO" },
-          serviceType: "Generative Engine Optimization, AI Search e autoridade de entidade",
+          serviceType: "Search Intelligence e autoridade de entidade",
         },
         {
           "@type": "ItemList",
-          name: "Camadas de interpretação para GEO e IA",
+          name: "Camadas de interpretação para nova busca",
           itemListElement: interpretationLayers.map(([name, description], index) => ({
             "@type": "ListItem",
             position: index + 1,
@@ -217,16 +217,16 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
           <div className="grid items-center gap-14 lg:grid-cols-12 xl:gap-16">
             <div className="lg:col-span-6">
               <span className="mb-5 inline-block font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
-                GEO & IA PARA AGÊNCIAS
+                GENERATIVE SEARCH ARCHITECTURE
               </span>
               <h1 className="max-w-[780px] font-display text-[clamp(54px,5.4vw,82px)] font-bold leading-[1.02] tracking-[-0.045em] text-[#f8f8f8]">
-                GEO e IA sem hype para a nova busca
+                Arquitetura de contexto para a nova era da busca
               </h1>
               <p className="mt-8 max-w-[720px] text-[clamp(18px,1.35vw,22px)] leading-[1.55] text-[rgba(248,248,248,0.76)]">
-                A AUDITSEO ajuda sua agência a transformar AI Search, GEO, autoridade de entidade e inteligência de busca em uma entrega white-label, estratégica e responsável para seus clientes.
+                A AUDITSEO ajuda sua agência a transformar autoridade de entidade e inteligência de busca em uma entrega white-label, estratégica e responsável para sistemas de busca e resposta.
               </p>
               <p className="mt-[22px] max-w-[640px] text-[16px] leading-[1.5] text-[#e0d3c3]/[0.78]">
-                Não prometemos “aparecer na IA”. Estruturamos os sinais que tornam marcas mais claras, confiáveis e interpretáveis em ambientes de busca e resposta.
+                Não prometemos “aparecer na IA”. Estruturamos os sinais que tornam marcas mais claras, confiáveis e interpretáveis em ecossistemas generativos.
               </p>
               <div className="mt-11 flex flex-col gap-4 sm:flex-row">
                 <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
@@ -238,7 +238,7 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
                 </button>
               </div>
               <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
-                AI Search · GEO · Autoridade de Entidade · Dados Estruturados · Search Intelligence
+                AI Search · Autoridade de Entidade · Dados Estruturados · Search Intelligence
               </p>
             </div>
             <div className="lg:col-span-6">
@@ -266,7 +266,7 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
               <span className="text-[#b28453]">conteúdo</span>, <span className="text-[#b28453]">dados</span> e contexto antes de gerar uma resposta ou influenciar uma escolha.
             </p>
             <p className="font-display text-2xl font-bold leading-[1.4] text-[#e0d3c3]">
-              GEO e IA não substituem estratégia. Elas exigem uma estratégia mais organizada.
+              A arquitetura de contexto não substitui a estratégia. Ela exige uma estratégia mais organizada.
             </p>
           </div>
         </div>
@@ -276,6 +276,7 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
         <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
           <SectionHeader
             dark
+            center
             eyebrow="Nova busca"
             title="O que mudou não foi apenas o canal. Foi a forma como a decisão é construída."
             text="A busca deixou de ser apenas uma página de resultados e passou a envolver respostas, resumos, recomendações, comparações e validações distribuídas."
@@ -296,8 +297,8 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
                     <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#6d5132]">Agora</p>
                     <h3 className="mt-1 font-display text-2xl font-bold leading-[1.12]">{item.now}</h3>
                   </div>
+                  <p className="text-sm leading-[1.6] text-[#11100f]/65">{item.text}</p>
                 </div>
-                <p className="mt-6 text-sm leading-[1.7] text-[#11100f]/70">{item.text}</p>
               </article>
             ))}
           </div>
@@ -306,236 +307,162 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
 
       <section className="bg-[#11100f] py-24 md:py-32">
         <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            eyebrow="GEO na prática"
-            title="GEO não é “otimizar para robôs”. É organizar sinais para a marca ser melhor interpretada."
-            text="Generative Engine Optimization deve ser tratada como uma camada estratégica de clareza, contexto, autoridade e estruturação de informação."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {geoSignals.map(([title, text], index) => (
-              <div key={title}>
-                <DarkCard index={index} title={title} text={text} icon={index % 3 === 0 ? <Search size={18} /> : index % 3 === 1 ? <Sparkles size={18} /> : <Layers3 size={18} />} />
+          <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <SectionHeader
+                eyebrow="Pilares técnicos"
+                title="Os novos sinais da inteligência de busca"
+                text="Onde a AUDITSEO atua para organizar a presença digital da marca para ecossistemas modernos."
+              />
+              <div className="mt-12 grid gap-5">
+                {geoSignals.map(([title, text]) => (
+                  <div key={title} className="group flex items-start gap-5 rounded-2xl border border-[#b28453]/15 bg-white/[0.02] p-6 transition-colors hover:bg-white/[0.04]">
+                    <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#b28453]/35 text-[#b28453]">
+                      <CheckCircle2 size={14} />
+                    </div>
+                    <div>
+                      <h4 className="text-[17px] font-bold text-[#f8f8f8]">{title}</h4>
+                      <p className="mt-2 text-sm leading-[1.6] text-[#f8f8f8]/55">{text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="rounded-[40px] border border-[#b28453]/25 bg-[linear-gradient(145deg,rgba(31,30,28,0.98),rgba(13,13,12,0.99))] p-8 md:p-14 shadow-2xl">
+                <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Interpretação</span>
+                <h3 className="mt-6 font-display text-[32px] font-bold leading-[1.1] text-[#f8f8f8] md:text-[44px]">
+                  Como marcas são compreendidas
+                </h3>
+                <p className="mt-6 text-lg leading-[1.7] text-[#f8f8f8]/60">
+                  Sistemas modernos de busca e resposta não apenas indexam palavras. Eles tentam construir uma representação de confiança sobre a entidade.
+                </p>
+                <div className="mt-12 grid gap-8 sm:grid-cols-2">
+                  {interpretationLayers.map(([title, text]) => (
+                    <div key={title}>
+                      <h4 className="font-display text-xl font-bold text-[#f8f8f8]">{title}</h4>
+                      <p className="mt-3 text-sm leading-[1.6] text-[#f8f8f8]/45">{text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
+        <div className="container mx-auto max-w-[1120px] px-6 xl:px-12">
+          <div className="text-center">
+            <SectionHeader
+              dark
+              center
+              eyebrow="Parceria estratégica"
+              title="Por que sua agência precisa dessa entrega"
+              text="Muitas marcas já estão cobrando por IA e nova busca. A AUDITSEO fornece a base técnica e estratégica para você responder com método."
+            />
+          </div>
+          <div className="mt-16 grid gap-6 md:grid-cols-2">
+            {agencyReasons.map(([title, text]) => (
+              <div key={title} className="rounded-3xl border border-[#11100f]/10 bg-white/35 p-8 md:p-10">
+                <h4 className="font-display text-2xl font-bold leading-[1.15]">{title}</h4>
+                <p className="mt-4 text-base leading-[1.65] text-[#11100f]/65">{text}</p>
               </div>
             ))}
           </div>
-          <p className="mx-auto mt-12 max-w-4xl rounded-[22px] border border-[#b28453]/28 bg-[#171614] p-7 text-center font-display text-2xl font-bold leading-[1.35] text-[#e0d3c3]">
-            GEO não começa na IA. Começa na organização dos sinais que a IA, os buscadores e os clientes precisam entender.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            eyebrow="Oportunidade para agências"
-            title="Seus clientes vão pedir IA. Mas eles precisam de estratégia de busca."
-            text="O dono da empresa não sabe exatamente o que é GEO, AI Search ou autoridade de entidade. Mas ele sente que a forma de ser encontrado e escolhido está mudando."
-          />
-          <p className="mt-8 max-w-4xl text-lg leading-[1.75] text-[#11100f]/72">
-            Essa mudança abre uma oportunidade para agências que querem sair do discurso genérico sobre IA e apresentar uma entrega real: diagnóstico, clareza, organização de sinais, autoridade, dados e evolução.
-          </p>
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {agencyReasons.map(([title, text], index) => (
-              <article key={title} className="rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/50 bg-[#11100f] font-mono text-xs font-bold text-[#e0d3c3]">
-                  {index + 1}
-                </span>
-                <h3 className="mt-6 font-display text-2xl font-bold leading-[1.14]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#11100f]/70">{text}</p>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className="bg-[#11100f] py-24 md:py-32">
         <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            center
-            eyebrow="Perguntas do mercado"
-            title="As perguntas que vão chegar na mesa da sua agência"
-            text="A AUDITSEO entende as dúvidas que os clientes finais já começam a levar para as agências."
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {clientQuestions.map((question, index) => (
-              <article key={question} className="rounded-[22px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.28)]">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-5 font-display text-xl font-bold leading-[1.25] text-[#f8f8f8]">“{question}”</h3>
-              </article>
-            ))}
-          </div>
-          <p className="mx-auto mt-12 max-w-4xl rounded-[22px] border border-[#b28453]/28 bg-[#171614] p-7 text-center font-display text-2xl font-bold leading-[1.35] text-[#e0d3c3]">
-            A pior resposta é improvisar. A melhor resposta é transformar essas dúvidas em diagnóstico, método e plano de evolução.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            eyebrow="Camadas de interpretação"
-            title="A IA não avalia apenas uma página. Ela interpreta um ecossistema de sinais."
-            text="Quanto mais clara, consistente e validada uma marca é, maiores as chances de ser corretamente compreendida em diferentes ambientes de descoberta."
-          />
-          <div className="mt-14 overflow-hidden rounded-[28px] border border-[#b28453]/32 bg-[#11100f] p-7 shadow-[0_28px_90px_rgba(17,16,15,0.24)] md:p-10">
-            <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-              <h3 className="font-display text-3xl font-bold text-[#f8f8f8] md:text-4xl">Camadas de interpretação</h3>
-              <p className="max-w-xl text-sm leading-[1.7] text-[#f8f8f8]/62">
-                Uma leitura organizada do que precisa estar claro para buscadores, mecanismos de resposta e decisão humana.
-              </p>
+          <div className="flex flex-col gap-14 lg:flex-row lg:items-center">
+            <div className="lg:w-1/2">
+              <SectionHeader
+                eyebrow="Nos bastidores"
+                title="Como estruturamos a arquitetura de sinais"
+                text="Um processo focado em transformar a presença digital em um ecossistema interpretável e confiável."
+              />
+              <div className="mt-12 space-y-10">
+                {backstageSteps.map(([title, text], index) => (
+                  <div key={title} className="relative flex gap-6">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#b28453] font-mono text-sm font-bold text-white">
+                      {index + 1}
+                    </div>
+                    {index < backstageSteps.length - 1 && (
+                      <div className="absolute left-5 top-10 h-[calc(100%+40px)] w-px bg-gradient-to-b from-[#b28453] to-transparent" />
+                    )}
+                    <div>
+                      <h4 className="text-xl font-bold text-[#f8f8f8]">{title}</h4>
+                      <p className="mt-2 text-sm leading-[1.65] text-[#f8f8f8]/50">{text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {interpretationLayers.map(([title, text], index) => (
-                <article key={title} className="relative rounded-[20px] border border-[#b28453]/18 bg-white/[0.025] p-6">
-                  <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 font-mono text-xs font-bold text-[#e0d3c3]">
-                    {index + 1}
-                  </span>
-                  <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{title}</h3>
-                  <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/66">{text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            center
-            eyebrow="Bastidores GEO & IA"
-            title="Como a AUDITSEO transforma GEO e IA em entrega para sua agência"
-            text="A AUDITSEO atua nos bastidores para estruturar diagnóstico, clareza, autoridade e roadmap — sem transformar IA em promessa vazia."
-          />
-          <div className="mt-14 space-y-5">
-            {backstageSteps.map(([title, text], index) => (
-              <article key={title} className="grid gap-5 rounded-[24px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-6 md:grid-cols-[88px_0.8fr_1.4fr] md:items-center md:p-7">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 font-mono text-sm font-bold text-[#e0d3c3]">
-                  {index + 1}
-                </span>
-                <h3 className="font-display text-2xl font-bold text-[#f8f8f8]">{title}</h3>
-                <p className="text-sm leading-[1.7] text-[#f8f8f8]/66">{text}</p>
-              </article>
-            ))}
-          </div>
-          <p className="mx-auto mt-12 max-w-4xl rounded-[22px] border border-[#b28453]/28 bg-[#171614] p-7 text-center font-display text-2xl font-bold leading-[1.35] text-[#e0d3c3]">
-            Sua agência apresenta a evolução. A AUDITSEO estrutura a inteligência nos bastidores.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            center
-            eyebrow="Cenários de aplicação"
-            title="Quando GEO & IA entram como solução para o cliente"
-            text="Nem todo projeto precisa da mesma intensidade. GEO e IA fazem mais sentido quando existe necessidade de clareza, autoridade, reputação ou adaptação à nova busca."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {geoScenarios.map(([title, text], index) => (
-              <article key={title} className="rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#6d5132]">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-5 font-display text-2xl font-bold leading-[1.14]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#11100f]/70">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            eyebrow="Oferta white-label"
-            title="Como GEO & IA podem virar uma nova oferta no portfólio da agência"
-            text="A AUDITSEO estrutura a inteligência. Sua agência transforma isso em proposta comercial para o cliente."
-          />
-          <div className="mt-14 grid gap-6 lg:grid-cols-5">
-            {agencyOffers.map(([title, text], index) => (
-              <article key={title} className="min-h-[260px] rounded-[22px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.28)] transition-all hover:-translate-y-1 hover:border-[#b28453]/44">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 font-mono text-xs font-bold text-[#e0d3c3]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-6 font-display text-xl font-bold leading-[1.18] text-[#f8f8f8]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#f8f8f8]/66">{text}</p>
-              </article>
-            ))}
-          </div>
-          <p className="mt-10 max-w-4xl text-sm leading-[1.8] text-[#f8f8f8]/62">
-            A linguagem comercial deve ser responsável: preparar, organizar, estruturar, aumentar clareza e melhorar interpretação. Nunca garantir aparição.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1180px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            center
-            eyebrow="Governança"
-            title="IA com método. Não com improviso."
-            text="A AUDITSEO trata IA como uma camada estratégica da busca, não como argumento de venda sem controle."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {governanceCards.map(([title, text], index) => (
-              <article key={title} className="rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/50 bg-[#11100f] text-[#b28453]">
-                  {index === 0 ? <AlertTriangle size={18} /> : index === 1 ? <Compass size={18} /> : <ShieldCheck size={18} />}
+            <div className="lg:w-1/2">
+              <div className="rounded-[40px] border border-[#b28453]/20 bg-white/[0.02] p-8 md:p-12">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">Apoio White-Label</span>
+                <h3 className="mt-6 font-display text-3xl font-bold leading-[1.1] text-[#f8f8f8]">
+                  Soluções para sua agência
+                </h3>
+                <div className="mt-10 grid gap-4">
+                  {agencyOffers.map(([title, text]) => (
+                    <div key={title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition-colors hover:border-[#b28453]/30">
+                      <h4 className="font-bold text-[#f8f8f8]">{title}</h4>
+                      <p className="mt-2 text-sm leading-[1.6] text-[#f8f8f8]/45">{text}</p>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="font-display text-2xl font-bold leading-[1.14]">{title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#11100f]/70">{text}</p>
-              </article>
-            ))}
+              </div>
+            </div>
           </div>
-          <p className="mx-auto mt-10 max-w-4xl rounded-[22px] border border-[#b28453]/32 bg-[#11100f] p-7 text-center font-display text-2xl font-bold leading-[1.35] text-[#e0d3c3]">
-            Essa maturidade protege a agência de vender hype e ajuda o cliente a entender o que realmente precisa ser feito.
-          </p>
         </div>
       </section>
 
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1180px] px-6 xl:px-12">
-          <SectionHeader
-            center
-            eyebrow="Limites responsáveis"
-            title="O que GEO & IA não devem prometer"
-            text="A nova busca exige responsabilidade. Nem toda promessa sobre IA é séria."
-          />
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            <ListPanel title="Não prometemos" items={notPromised} tone="danger" />
-            <ListPanel title="O que estruturamos" items={structuredSignals} tone="positive" />
+      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
+        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
+          <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6">
+              <SectionHeader
+                dark
+                eyebrow="Governança"
+                title="Inteligência sem falsas promessas"
+                text="O ecossistema de busca está mudando rápido. Nosso papel é fornecer governança de sinais, não promessas inalcançáveis."
+              />
+              <div className="mt-12 grid gap-6 sm:grid-cols-2">
+                {governanceCards.map(([title, text]) => (
+                  <div key={title} className="rounded-2xl border border-[#11100f]/10 bg-[#f8f8f8]/45 p-7">
+                    <ShieldCheck className="h-7 w-7 text-[#b28453]" />
+                    <h4 className="mt-5 font-bold">{title}</h4>
+                    <p className="mt-3 text-sm leading-[1.6] text-[#11100f]/60">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="rounded-[40px] bg-[#11100f] p-8 md:p-14 text-white shadow-2xl">
+                <h3 className="font-display text-2xl font-bold leading-[1.2] md:text-3xl">
+                  O que <span className="text-[#b28453]">não</span> entregamos
+                </h3>
+                <div className="mt-10 grid gap-y-5 sm:grid-cols-2 sm:gap-x-8">
+                  {notPromised.map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-sm text-[#f8f8f8]/60">
+                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#b28453]" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-14 border-t border-white/10 pt-10">
+                  <p className="text-lg leading-[1.6] text-[#f8f8f8]/80">
+                    Nossa entrega é baseada em <span className="text-[#b28453] font-bold">evidências</span>, governança e arquitetura técnica de sinais.
+                  </p>
+                  <PrimaryButton onClick={() => onNavigate("diagnostico")} className="mt-8">
+                    Avaliar cenário da carteira
+                  </PrimaryButton>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="mx-auto mt-12 max-w-4xl text-center font-display text-2xl font-bold leading-[1.35] text-[#e0d3c3]">
-            GEO sério não é promessa de visibilidade artificial. É preparação estruturada para uma busca mais interpretativa.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] px-6 py-24 md:py-32 xl:px-12">
-        <div className="mx-auto max-w-[1080px] rounded-[8px] border border-[#b28453]/35 bg-[#171614] px-7 py-14 text-center shadow-2xl shadow-black/35 md:px-14 md:py-18">
-          <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">GEO & IA PARA SUA AGÊNCIA</span>
-          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[34px] font-bold leading-[1.08] sm:text-[44px] md:text-[58px]">
-            Quer transformar IA e nova busca em uma entrega real para seus clientes?
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-[1.7] text-[#f8f8f8]/70 md:text-lg">
-            A AUDITSEO pode estruturar nos bastidores a camada de GEO, autoridade e Search Intelligence que sua agência precisa para responder ao novo momento da busca com método e segurança.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
-            <button
-              onClick={() => onNavigate("solucoes")}
-              className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-            >
-              Conhecer soluções
-            </button>
-          </div>
-          <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.1em] text-[#8c8275]">
-            A primeira conversa é para entender como sua agência pode posicionar GEO & IA sem cair em hype ou promessa exagerada.
-          </p>
         </div>
       </section>
 
@@ -544,15 +471,50 @@ export default function GeoIaPage({ onNavigate }: GeoIaPageProps) {
   );
 }
 
-function PrimaryButton({ children, onClick }: { children: ReactNode; onClick: () => void }) {
+function PrimaryButton({ children, onClick, className = "" }: { children: ReactNode; onClick?: () => void; className?: string }) {
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#e0d3c3] hover:text-[#11100f]"
+      className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f] ${className}`}
     >
       {children}
-      <ArrowRight size={16} />
+      <ArrowRight size={18} />
     </button>
+  );
+}
+
+function GeoHeroVisual() {
+  return (
+    <div className="relative aspect-square w-full max-w-[540px]">
+      <div className="absolute inset-0 animate-[geoCorePulse_4s_ease-in-out_infinite] rounded-full bg-[#b28453]/10 blur-3xl" />
+      <svg viewBox="0 0 100 100" className="relative h-full w-full overflow-visible drop-shadow-[0_0_20px_rgba(178,132,83,0.15)]">
+        {heroSignals.map((node, i) => (
+          <g key={i} className="animate-[geoNodeFloat_6s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.8}s` }}>
+            <circle cx={node.x} cy={node.y} r="1.5" fill="#b28453" className="opacity-40" />
+            <text x={node.x} y={node.y - 4} textAnchor="middle" className="font-mono text-[2.8px] font-bold uppercase tracking-widest fill-[#b28453] opacity-70">
+              {node.label}
+            </text>
+            {heroSignals.map((target, j) =>
+              i < j ? (
+                <line
+                  key={`${i}-${j}`}
+                  x1={node.x}
+                  y1={node.y}
+                  x2={target.x}
+                  y2={target.y}
+                  stroke="#b28453"
+                  strokeWidth="0.15"
+                  strokeDasharray="1 2"
+                  className="opacity-20"
+                />
+              ) : null
+            )}
+          </g>
+        ))}
+        <circle cx="50" cy="50" r="12" className="animate-[geoCorePulse_3s_ease-in-out_infinite] fill-[#b28453]/5 stroke-[#b28453]/30" strokeWidth="0.5" />
+        <Sparkles x="44" y="44" size={12} className="text-[#b28453] opacity-60" />
+      </svg>
+    </div>
   );
 }
 
@@ -560,120 +522,22 @@ function SectionHeader({
   eyebrow,
   title,
   text,
-  center = false,
   dark = false,
+  center = false,
 }: {
   eyebrow: string;
   title: string;
-  text?: string;
-  center?: boolean;
+  text: string;
   dark?: boolean;
+  center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-4xl text-center" : "max-w-4xl"}>
+    <div className={`${center ? "text-center mx-auto" : ""} max-w-4xl`}>
       <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{eyebrow}</span>
-      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] md:text-[54px] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"}`}>
+      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"} md:text-[54px]`}>
         {title}
       </h2>
-      {text ? (
-        <p className={`mt-6 text-base leading-[1.75] md:text-lg ${dark ? "text-[#11100f]/70" : "text-[#f8f8f8]/66"}`}>
-          {text}
-        </p>
-      ) : null}
+      <p className={`mt-6 text-base leading-[1.75] ${dark ? "text-[#11100f]/66" : "text-[#f8f8f8]/66"} md:text-lg`}>{text}</p>
     </div>
-  );
-}
-
-function GeoHeroVisual() {
-  return (
-    <div className="relative mx-auto flex h-[520px] max-w-[620px] items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(178,132,83,0.15),transparent_32%),radial-gradient(circle_at_30%_20%,rgba(224,211,195,0.08),transparent_22%)]" />
-      {[...Array(48)].map((_, index) => (
-        <span
-          key={index}
-          className="pointer-events-none absolute h-[2px] w-[2px] rounded-full bg-[#e0d3c3]/45"
-          style={{
-            top: `${7 + ((index * 23) % 84)}%`,
-            left: `${5 + ((index * 37) % 90)}%`,
-            opacity: 0.12 + (index % 5) * 0.07,
-            animation: `geoParticle ${7 + (index % 6)}s ease-in-out infinite`,
-            animationDelay: `${index * 0.18}s`,
-          }}
-        />
-      ))}
-
-      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 600 520" aria-hidden="true">
-        <defs>
-          <linearGradient id="geoLineGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(178,132,83,0.08)" />
-            <stop offset="50%" stopColor="rgba(224,211,195,0.42)" />
-            <stop offset="100%" stopColor="rgba(178,132,83,0.08)" />
-          </linearGradient>
-        </defs>
-        {heroSignals.map((node) => (
-          <line
-            key={node.label}
-            x1="300"
-            y1="260"
-            x2={(node.x / 100) * 600}
-            y2={(node.y / 100) * 520}
-            stroke="url(#geoLineGradient)"
-            strokeWidth="1"
-            strokeDasharray="6 10"
-            style={{ animation: "geoLine 16s linear infinite" }}
-          />
-        ))}
-      </svg>
-
-      <div
-        className="absolute left-1/2 top-1/2 z-20 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#b28453]/42 bg-[radial-gradient(circle_at_35%_30%,rgba(224,211,195,0.24),rgba(178,132,83,0.20),rgba(17,16,15,0.96)_68%)] shadow-[0_0_76px_rgba(178,132,83,0.30)]"
-        style={{ animation: "geoCorePulse 6s ease-in-out infinite" }}
-      >
-        <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#11100f]/82 text-center">
-          <span className="font-display text-base font-bold tracking-[0.13em] text-[#e0d3c3]">AI SEARCH</span>
-        </div>
-      </div>
-
-      {heroSignals.map((node, index) => (
-        <div
-          key={node.label}
-          className="absolute z-30 -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, animation: `geoNodeFloat ${8 + index}s ease-in-out infinite`, animationDelay: `${index * 0.35}s` }}
-        >
-          <div className="rounded-full border border-[#b28453]/32 bg-[#11100f]/86 px-4 py-2 shadow-[0_16px_42px_rgba(0,0,0,0.34)] backdrop-blur-sm">
-            <span className="font-display text-sm font-bold text-[#f8f8f8]">{node.label}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function DarkCard({ index, title, text, icon }: { index: number; title: string; text: string; icon: ReactNode }) {
-  return (
-    <article className="rounded-[22px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.28)] transition-all hover:-translate-y-1 hover:border-[#b28453]/44">
-      <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 text-[#b28453]">
-        {icon}
-      </div>
-      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{String(index + 1).padStart(2, "0")}</span>
-      <h3 className="mt-5 font-display text-2xl font-bold leading-[1.16] text-[#f8f8f8]">{title}</h3>
-      <p className="mt-5 text-sm leading-[1.7] text-[#f8f8f8]/66">{text}</p>
-    </article>
-  );
-}
-
-function ListPanel({ title, items, tone }: { title: string; items: string[]; tone: "danger" | "positive" }) {
-  return (
-    <article className="rounded-[28px] border border-[#b28453]/24 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-7 shadow-[0_28px_80px_rgba(0,0,0,0.34)] md:p-9">
-      <h3 className="font-display text-3xl font-bold text-[#f8f8f8]">{title}</h3>
-      <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-[1.65] text-[#f8f8f8]/70">
-            {tone === "positive" ? <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#b28453]" /> : <CircleDot className="mt-1 h-4 w-4 shrink-0 text-[#b28453]" />}
-            {item}
-          </li>
-        ))}
-      </ul>
-    </article>
   );
 }

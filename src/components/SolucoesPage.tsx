@@ -22,7 +22,7 @@ const scenarioNodes = [
   { label: "Estagnado", x: 73, y: 18 },
   { label: "Queda", x: 86, y: 50 },
   { label: "Autoridade", x: 70, y: 82 },
-  { label: "GEO", x: 30, y: 82 },
+  { label: "Sinais", x: 30, y: 82 },
   { label: "Evolução", x: 14, y: 51 },
 ];
 
@@ -48,8 +48,8 @@ const scenarioCards = [
     text: "Existe produção, mas falta conexão com intenção, jornada e decisão.",
   },
   {
-    title: "Marca despreparada para IA/GEO",
-    text: "A empresa quer inovação, mas seus sinais ainda são frágeis para a nova busca.",
+    title: "Marca com sinais frágeis",
+    text: "A empresa quer inovação, mas seu contexto ainda é pouco interpretável para a nova busca.",
   },
   {
     title: "Redesign, migração ou expansão",
@@ -67,7 +67,7 @@ const scenarioCardAnchors = [
   "cenario-queda",
   "cenario-autoridade",
   "cenario-conteudo",
-  "cenario-geo",
+  "cenario-contexto",
   "cenario-migracao",
   "cenario-evolucao",
 ];
@@ -130,16 +130,16 @@ const scenarioSolutions = [
   },
   {
     name: "Generative Search Architecture",
-    scenario: "Para marcas que precisam se adaptar à nova busca",
+    scenario: "Para marcas que precisam de estruturação de sinais e contexto",
     problem:
-      "Muitas empresas querem aparecer em ambientes de IA, mas não possuem clareza semântica, autoridade, dados estruturados, conteúdo explicativo ou consistência pública.",
+      "Muitas empresas querem inovação na busca, mas não possuem clareza semântica, autoridade, dados estruturados ou consistência pública.",
     value:
-      "Preparar a marca para ser melhor compreendida por buscadores, mecanismos de resposta e ambientes generativos.",
-    agencySells: "Uma solução de preparação para GEO, IA e nova busca.",
+      "Preparar a marca para ser melhor interpretada por buscadores, mecanismos de resposta e ambientes generativos.",
+    agencySells: "Uma solução de arquitetura de contexto para a nova era da busca.",
     backstage:
       "Avaliamos entidades, estrutura semântica, perguntas estratégicas, dados estruturados, reputação e clareza de oferta.",
     note:
-      "Sem prometer aparição garantida em IA: o trabalho é preparar, organizar sinais, aumentar clareza e melhorar capacidade de interpretação.",
+      "Sem prometer aparição garantida: o trabalho é preparar, organizar sinais, aumentar clareza e melhorar capacidade de interpretação.",
   },
   {
     name: "SEO Migration & Risk Control",
@@ -171,7 +171,7 @@ const scenarioSolutionAnchors = [
   "search-recovery",
   "entity-authority",
   "intent-content-architecture",
-  "geo-ai-readiness",
+  "generative-search-architecture",
   "seo-migration-risk-control",
   "organic-evolution-cycle",
 ];
@@ -179,7 +179,7 @@ const scenarioSolutionAnchors = [
 const offerMap = [
   ["Meu site nunca trouxe resultado.", "Organic Activation"],
   ["Nosso tráfego caiu e ninguém conseguiu recuperar.", "Search Recovery"],
-  ["Queremos aparecer melhor no Google e na IA.", "Generative Search Architecture"],
+  ["Queremos estruturar sinais para a nova busca.", "Generative Search Architecture"],
   ["Produzimos conteúdo, mas não vemos retorno.", "Intent Content Architecture"],
   ["Estamos refazendo o site.", "SEO Migration & Risk Control"],
   ["Preciso justificar a continuidade do contrato.", "Organic Evolution Cycle"],
@@ -214,16 +214,16 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
       "@graph": [
         {
           "@type": "WebPage",
-          name: "Soluções de SEO, GEO e Search Intelligence para Agências | AUDITSEO",
+          name: "Soluções de Search Intelligence para Agências | AUDITSEO",
           url: `${window.location.origin}/solucoes`,
           description:
-            "Soluções white-label de SEO, GEO, IA, autoridade de entidade e Search Intelligence para diferentes cenários da carteira de agências.",
+            "Soluções white-label de Search Intelligence, autoridade de entidade e arquitetura de contexto para diferentes cenários da carteira de agências.",
         },
         {
           "@type": "Service",
           name: "Soluções white-label para cenários de projetos orgânicos",
           provider: { "@type": "Organization", name: "AUDITSEO" },
-          serviceType: "Search Intelligence, SEO, GEO, autoridade e evolução orgânica",
+          serviceType: "Search Intelligence, SEO, autoridade e evolução orgânica",
         },
         {
           "@type": "ItemList",
@@ -286,7 +286,7 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
                 Cada projeto orgânico exige uma estratégia diferente
               </h1>
               <p className="mt-8 max-w-[720px] text-[clamp(18px,1.35vw,22px)] leading-[1.55] text-[rgba(248,248,248,0.76)]">
-                A AUDITSEO estrutura soluções white-label para diferentes momentos da carteira da sua agência: projetos começando do zero, sites estagnados, quedas de tráfego, baixa autoridade, conteúdo sem direção e clientes que precisam se adaptar à nova busca.
+                A AUDITSEO estrutura soluções white-label para diferentes momentos da carteira da sua agência: projetos começando do zero, sites estagnados, quedas de tráfego, baixa autoridade, conteúdo sem direção e estruturação de sinais para a nova busca.
               </p>
               <p className="mt-[22px] max-w-[620px] text-[16px] leading-[1.5] text-[#e0d3c3]/[0.78]">
                 O método fica nos bastidores. O que sua agência apresenta é uma solução clara para o momento real de cada cliente.
@@ -301,7 +301,7 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
                 </button>
               </div>
               <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.08em] text-[#8c8275]">
-                Lançamento · Recuperação · Autoridade · GEO · Conteúdo · Evolução
+                Lançamento · Recuperação · Autoridade · Sinais · Conteúdo · Evolução
               </p>
             </div>
             <div className="lg:col-span-6">
@@ -326,30 +326,37 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
             </p>
             <p>Tratar todos esses cenários com a mesma entrega de SEO é reduzir uma oportunidade estratégica a uma lista de tarefas.</p>
             <p className="font-display text-2xl font-bold leading-[1.4] text-[#e0d3c3]">
-              A AUDITSEO estrutura soluções para <span className="text-[#b28453]">cada estágio da carteira</span> da sua agência.
+              A AUDITSEO estrutura soluções para <span className="text-[#b28453]">cada estágio</span> da jornada de busca do cliente.
             </p>
           </div>
         </div>
       </section>
 
       <section id="mapa-cenarios" className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1320px] px-6 xl:px-12">
+        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
           <SectionHeader
             dark
             center
             eyebrow="Mapa de cenários"
-            title="Em qual cenário o cliente da sua agência está hoje?"
-            text="Cada cenário pede uma leitura diferente, uma solução diferente e uma narrativa diferente para o cliente final."
+            title="Onde o projeto do seu cliente está travado?"
+            text="Identificar o cenário correto é o primeiro passo para vender a solução correta."
           />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {scenarioCards.map((card, index) => (
-              <article id={scenarioCardAnchors[index]} key={card.title} className="min-h-[210px] scroll-mt-28 rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-7 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#6d5132]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-5 font-display text-2xl font-bold leading-[1.12]">{card.title}</h3>
-                <p className="mt-5 text-sm leading-[1.7] text-[#11100f]/70">{card.text}</p>
-              </article>
+              <a
+                key={index}
+                href={`#${scenarioCardAnchors[index]}`}
+                className="group flex flex-col justify-between rounded-3xl border border-[#11100f]/10 bg-white/40 p-8 transition-all hover:-translate-y-1 hover:bg-white/60 hover:shadow-xl"
+              >
+                <div>
+                  <span className="font-mono text-xs font-bold text-[#b28453]">0{index + 1}</span>
+                  <h4 className="mt-4 font-display text-xl font-bold leading-[1.2]">{card.title}</h4>
+                  <p className="mt-4 text-sm leading-[1.6] text-[#11100f]/65">{card.text}</p>
+                </div>
+                <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#b28453]">
+                  Ver solução <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </div>
+              </a>
             ))}
           </div>
         </div>
@@ -357,67 +364,58 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
 
       <section className="bg-[#11100f] py-24 md:py-32">
         <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            eyebrow="Soluções por perfil de projeto"
-            title="Soluções criadas para cada momento da carteira"
-            text="Em vez de aplicar a mesma entrega para todos os clientes, a AUDITSEO estrutura a solução certa para o estágio, o risco e o objetivo de cada projeto."
-          />
-          <div className="mt-16 space-y-8">
+          <div className="space-y-24 md:space-y-32">
             {scenarioSolutions.map((solution, index) => (
-              <div key={solution.name} id={scenarioSolutionAnchors[index]} className="scroll-mt-28">
-                <ScenarioSolutionCard solution={solution} index={index} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1180px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            center
-            eyebrow="Do cenário à oferta"
-            title="Do problema real à solução certa"
-            text="A agência não precisa vender “mais SEO”. Ela pode apresentar uma solução alinhada ao momento do cliente."
-          />
-          <div className="mt-14 space-y-5">
-            {offerMap.map(([quote, offer], index) => (
-              <article key={quote} className="grid gap-5 rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-6 shadow-[0_18px_60px_rgba(17,16,15,0.09)] md:grid-cols-[1.2fr_0.8fr] md:items-center md:p-7">
-                <div className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#b28453]/50 bg-[#11100f] font-mono text-xs font-bold text-[#e0d3c3]">
-                    {index + 1}
+              <article
+                key={solution.name}
+                id={scenarioSolutionAnchors[index]}
+                className="grid gap-12 lg:grid-cols-12 lg:items-center"
+              >
+                <div className="lg:col-span-5">
+                  <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">
+                    {solution.scenario}
                   </span>
-                  <div>
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#6d5132]">Quando o cliente diz</p>
-                    <p className="mt-2 font-display text-xl font-bold leading-[1.35]">“{quote}”</p>
+                  <h3 className="mt-6 font-display text-[32px] font-bold leading-[1.1] text-[#f8f8f8] md:text-[48px]">
+                    {solution.name}
+                  </h3>
+                  <div className="mt-10 space-y-8">
+                    <div>
+                      <h4 className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">O Problema</h4>
+                      <p className="mt-3 text-lg leading-[1.65] text-[#f8f8f8]/75">{solution.problem}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">A Solução</h4>
+                      <p className="mt-3 text-lg leading-[1.65] text-[#f8f8f8]/75">{solution.value}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="rounded-[18px] border border-[#b28453]/30 bg-[#11100f] p-5">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28453]">Oferta indicada</p>
-                  <p className="mt-2 font-display text-2xl font-bold text-[#e0d3c3]">{offer}</p>
+                <div className="lg:col-span-7">
+                  <div className="rounded-[40px] border border-[#b28453]/20 bg-white/[0.02] p-8 md:p-14">
+                    <div className="grid gap-10 sm:grid-cols-2">
+                      <div>
+                        <h4 className="font-display text-xl font-bold text-[#f8f8f8]">O que a agência vende</h4>
+                        <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/50">{solution.agencySells}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-display text-xl font-bold text-[#f8f8f8]">O que fazemos nos bastidores</h4>
+                        <p className="mt-4 text-sm leading-[1.7] text-[#f8f8f8]/50">{solution.backstage}</p>
+                      </div>
+                    </div>
+                    {solution.note && (
+                      <div className="mt-10 rounded-2xl border border-[#b28453]/25 bg-[#b28453]/5 p-6">
+                        <p className="text-sm italic leading-[1.6] text-[#e0d3c3]/70">{solution.note}</p>
+                      </div>
+                    )}
+                    <div className="mt-12 flex justify-end">
+                      <button
+                        onClick={() => onNavigate("diagnostico")}
+                        className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#b28453] transition-colors hover:text-[#e0d3c3]"
+                      >
+                        Avaliar esse cenário <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#11100f] py-24 md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            center
-            eyebrow="Valor para a agência"
-            title="O valor está em reconhecer o cenário antes de vender a solução"
-            text="Quando a agência consegue identificar o estágio real do projeto, a conversa muda. A entrega deixa de ser percebida como uma sequência de tarefas e passa a ser apresentada como resposta estratégica para um problema específico do cliente."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {agencyValueCards.map((card, index) => (
-              <article key={card} className="rounded-[22px] border border-[#b28453]/20 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-7 shadow-[0_22px_70px_rgba(0,0,0,0.28)]">
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 text-[#b28453]">
-                  {index === 0 ? <Search size={18} /> : index === 1 ? <Compass size={18} /> : index === 2 ? <Sparkles size={18} /> : index === 3 ? <ShieldCheck size={18} /> : index === 4 ? <Layers3 size={18} /> : <CheckCircle2 size={18} />}
-                </div>
-                <h3 className="font-display text-2xl font-bold leading-[1.16] text-[#f8f8f8]">{card}</h3>
               </article>
             ))}
           </div>
@@ -425,45 +423,71 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
       </section>
 
       <section className="bg-[#e0d3c3] py-24 text-[#11100f] md:py-32">
-        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
-          <SectionHeader
-            dark
-            eyebrow="Bastidores white-label"
-            title="Sua agência identifica a oportunidade. A AUDITSEO estrutura a solução."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-5">
-            {backstageSteps.map((step, index) => (
-              <article key={step} className="rounded-[22px] border border-[#11100f]/12 bg-[#f8f8f8]/42 p-6 shadow-[0_20px_70px_rgba(17,16,15,0.10)]">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b28453]/50 bg-[#11100f] font-mono text-xs font-bold text-[#e0d3c3]">
-                  {index + 1}
-                </span>
-                <h3 className="mt-6 font-display text-xl font-bold leading-[1.2]">{step}</h3>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 rounded-[22px] border border-[#b28453]/32 bg-[#11100f] p-7 text-center text-lg font-semibold leading-[1.55] text-[#e0d3c3] md:p-9 md:text-2xl">
-            O cliente vê a agência como parceira estratégica. A AUDITSEO sustenta a inteligência por trás.
+        <div className="container mx-auto max-w-[1120px] px-6 xl:px-12">
+          <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6">
+              <SectionHeader
+                dark
+                eyebrow="Venda de valor"
+                title="A conversa muda quando a solução é clara"
+                text="Em vez de vender 'pacotes de SEO', sua agência passa a vender soluções para o momento real do cliente."
+              />
+              <div className="mt-12 grid gap-4 sm:grid-cols-2">
+                {offerMap.map(([ask, offer]) => (
+                  <div key={ask} className="rounded-2xl border border-[#11100f]/10 bg-white/45 p-6">
+                    <p className="text-xs italic text-[#11100f]/50">" {ask} "</p>
+                    <p className="mt-3 font-bold text-[#b28453]">{offer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="rounded-[40px] bg-[#11100f] p-8 md:p-14 text-white shadow-2xl">
+                <h3 className="font-display text-2xl font-bold leading-[1.2] md:text-3xl">
+                  Ganhos para a sua agência
+                </h3>
+                <div className="mt-10 space-y-5">
+                  {agencyValueCards.map((item) => (
+                    <div key={item} className="flex items-center gap-4 text-[#f8f8f8]/70">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#b28453]/20 text-[#b28453]">
+                        <CheckCircle2 size={12} />
+                      </div>
+                      <span className="text-sm md:text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-12 pt-10 border-t border-white/10">
+                  <PrimaryButton onClick={() => onNavigate("diagnostico")} className="w-full">
+                    Iniciar parceria estratégica
+                  </PrimaryButton>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#11100f] px-6 py-24 md:py-32 xl:px-12">
-        <div className="mx-auto max-w-[1080px] rounded-[8px] border border-[#b28453]/35 bg-[#171614] px-7 py-14 text-center shadow-2xl shadow-black/35 md:px-14 md:py-18">
-          <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">CENÁRIOS DA CARTEIRA</span>
-          <h2 className="mx-auto mt-6 max-w-4xl font-display text-[34px] font-bold leading-[1.08] sm:text-[44px] md:text-[58px]">
-            Qual cenário da sua carteira precisa de uma solução agora?
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-[1.7] text-[#f8f8f8]/70 md:text-lg">
-            Vamos avaliar onde a AUDITSEO pode atuar como braço estratégico para destravar, recuperar ou evoluir projetos orgânicos dos clientes da sua agência.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <PrimaryButton onClick={() => onNavigate("diagnostico")}>Avaliar parceria estratégica</PrimaryButton>
-            <button
-              onClick={() => onNavigate("signal")}
-              className="rounded-full border border-[#b28453]/45 px-7 py-4 text-sm font-bold text-[#f8f8f8] transition-colors hover:bg-[#b28453]/10"
-            >
-              Conhecer o Método S.I.G.N.A.L
-            </button>
+      <section className="bg-[#11100f] py-24 md:py-32">
+        <div className="container mx-auto max-w-[1240px] px-6 xl:px-12">
+          <div className="text-center">
+            <SectionHeader
+              eyebrow="Nos bastidores"
+              title="Como a inteligência é construída"
+              text="Um fluxo focado em fornecer a base estratégica para sua agência manter o protagonismo."
+            />
+          </div>
+          <div className="mt-16 grid gap-6 md:grid-cols-5">
+            {backstageSteps.map((step, index) => (
+              <div key={index} className="relative flex flex-col items-center text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#b28453]/40 bg-[#b28453]/10 font-mono text-lg font-bold text-[#b28453]">
+                  {index + 1}
+                </div>
+                <p className="mt-6 text-sm leading-[1.6] text-[#f8f8f8]/60">{step}</p>
+                {index < backstageSteps.length - 1 && (
+                  <div className="absolute left-[calc(50%+30px)] top-6 hidden h-px w-[calc(100%-60px)] bg-gradient-to-r from-[#b28453]/40 to-transparent md:block" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -473,14 +497,14 @@ export default function SolucoesPage({ onNavigate }: SolucoesPageProps) {
   );
 }
 
-function PrimaryButton({ children, onClick }: { children: ReactNode; onClick: () => void }) {
+function PrimaryButton({ children, onClick, className = "" }: { children: ReactNode; onClick?: () => void; className?: string }) {
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-7 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#e0d3c3] hover:text-[#11100f]"
+      className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#b28453] px-8 py-4 text-sm font-bold text-white transition-all hover:bg-[#e0d3c3] hover:text-[#11100f] ${className}`}
     >
       {children}
-      <ArrowRight size={16} />
+      <ArrowRight size={18} />
     </button>
   );
 }
@@ -489,142 +513,57 @@ function SectionHeader({
   eyebrow,
   title,
   text,
-  center = false,
   dark = false,
+  center = false,
 }: {
   eyebrow: string;
   title: string;
-  text?: string;
-  center?: boolean;
+  text: string;
   dark?: boolean;
+  center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-4xl text-center" : "max-w-4xl"}>
+    <div className={`${center ? "text-center mx-auto" : ""} max-w-4xl`}>
       <span className="font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-[#b28453]">{eyebrow}</span>
-      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] md:text-[54px] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"}`}>
+      <h2 className={`mt-5 font-display text-[36px] font-bold leading-[1.08] tracking-[-0.03em] ${dark ? "text-[#11100f]" : "text-[#f8f8f8]"} md:text-[54px]`}>
         {title}
       </h2>
-      {text ? (
-        <p className={`mt-6 text-base leading-[1.75] md:text-lg ${dark ? "text-[#11100f]/70" : "text-[#f8f8f8]/66"}`}>
-          {text}
-        </p>
-      ) : null}
+      <p className={`mt-6 text-base leading-[1.75] ${dark ? "text-[#11100f]/66" : "text-[#f8f8f8]/66"} md:text-lg`}>{text}</p>
     </div>
   );
 }
 
 function ScenarioConstellationVisual() {
   return (
-    <div className="relative mx-auto flex h-[520px] max-w-[620px] items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(178,132,83,0.14),transparent_32%),radial-gradient(circle_at_30%_20%,rgba(224,211,195,0.08),transparent_22%)]" />
-      {[...Array(42)].map((_, index) => (
-        <span
-          key={index}
-          className="pointer-events-none absolute h-[2px] w-[2px] rounded-full bg-[#e0d3c3]/45"
-          style={{
-            top: `${8 + ((index * 23) % 82)}%`,
-            left: `${6 + ((index * 37) % 88)}%`,
-            opacity: 0.12 + (index % 5) * 0.07,
-            animation: `scenarioParticle ${7 + (index % 6)}s ease-in-out infinite`,
-            animationDelay: `${index * 0.18}s`,
-          }}
-        />
-      ))}
-
-      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 600 520" aria-hidden="true">
-        <defs>
-          <linearGradient id="scenarioLineGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(178,132,83,0.08)" />
-            <stop offset="50%" stopColor="rgba(224,211,195,0.42)" />
-            <stop offset="100%" stopColor="rgba(178,132,83,0.08)" />
-          </linearGradient>
-        </defs>
-        {scenarioNodes.map((node) => (
-          <line
-            key={node.label}
-            x1="300"
-            y1="260"
-            x2={(node.x / 100) * 600}
-            y2={(node.y / 100) * 520}
-            stroke="url(#scenarioLineGradient)"
-            strokeWidth="1"
-            strokeDasharray="6 10"
-            style={{ animation: "scenarioLine 14s linear infinite" }}
-          />
+    <div className="relative aspect-square w-full max-w-[540px]">
+      <div className="absolute inset-0 animate-[scenarioCorePulse_4s_ease-in-out_infinite] rounded-full bg-[#b28453]/10 blur-3xl" />
+      <svg viewBox="0 0 100 100" className="relative h-full w-full overflow-visible drop-shadow-[0_0_20px_rgba(178,132,83,0.15)]">
+        {scenarioNodes.map((node, i) => (
+          <g key={i} className="animate-[scenarioNodeFloat_6s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.8}s` }}>
+            <circle cx={node.x} cy={node.y} r="1.5" fill="#b28453" className="opacity-40" />
+            <text x={node.x} y={node.y - 4} textAnchor="middle" className="font-mono text-[2.8px] font-bold uppercase tracking-widest fill-[#b28453] opacity-70">
+              {node.label}
+            </text>
+            {scenarioNodes.map((target, j) =>
+              i < j ? (
+                <line
+                  key={`${i}-${j}`}
+                  x1={node.x}
+                  y1={node.y}
+                  x2={target.x}
+                  y2={target.y}
+                  stroke="#b28453"
+                  strokeWidth="0.15"
+                  strokeDasharray="1 2"
+                  className="opacity-20"
+                />
+              ) : null
+            )}
+          </g>
         ))}
+        <circle cx="50" cy="50" r="12" className="animate-[scenarioCorePulse_3s_ease-in-out_infinite] fill-[#b28453]/5 stroke-[#b28453]/30" strokeWidth="0.5" />
+        <Layers3 x="44" y="44" size={12} className="text-[#b28453] opacity-60" />
       </svg>
-
-      <div
-        className="absolute left-1/2 top-1/2 z-20 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#b28453]/42 bg-[radial-gradient(circle_at_35%_30%,rgba(224,211,195,0.22),rgba(178,132,83,0.18),rgba(17,16,15,0.96)_68%)] shadow-[0_0_70px_rgba(178,132,83,0.26)]"
-        style={{ animation: "scenarioCorePulse 6s ease-in-out infinite" }}
-      >
-        <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#11100f]/82">
-          <span className="font-display text-lg font-bold tracking-[0.10em] text-[#e0d3c3]">AUDITSEO</span>
-        </div>
-      </div>
-
-      {scenarioNodes.map((node, index) => (
-        <div
-          key={node.label}
-          className="absolute z-30 -translate-x-1/2 -translate-y-1/2"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, animation: `scenarioNodeFloat ${8 + index}s ease-in-out infinite`, animationDelay: `${index * 0.35}s` }}
-        >
-          <div className="rounded-full border border-[#b28453]/32 bg-[#11100f]/86 px-4 py-2 shadow-[0_16px_42px_rgba(0,0,0,0.34)] backdrop-blur-sm">
-            <span className="font-display text-sm font-bold text-[#f8f8f8]">{node.label}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ScenarioSolutionCard({ solution, index }: { solution: (typeof scenarioSolutions)[number]; index: number }) {
-  return (
-    <article className="relative overflow-hidden rounded-[28px] border border-[#b28453]/24 bg-[linear-gradient(145deg,rgba(31,30,28,0.96),rgba(13,13,12,0.98))] p-7 shadow-[0_28px_80px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.04)] md:p-12">
-      <div className="pointer-events-none absolute -right-28 -top-28 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(178,132,83,0.16),transparent_68%)]" />
-      <div className="relative grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
-        <div>
-          <span className="inline-flex h-14 min-w-14 items-center justify-center rounded-full border border-[#b28453]/45 bg-[#b28453]/10 px-5 font-mono text-sm font-bold text-[#e0d3c3]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <h3 className="mt-7 font-display text-3xl font-bold leading-[1.08] tracking-[-0.02em] text-[#f8f8f8] md:text-4xl">
-            {solution.name}
-          </h3>
-          <p className="mt-5 text-lg font-semibold leading-[1.45] text-[#e0d3c3]">{solution.scenario}</p>
-          <span className="mt-5 inline-flex rounded-full border border-[#b28453]/24 bg-[#b28453]/10 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#e0d3c3]">
-            Investimento inicial: a partir de R$ 2.500
-          </span>
-          {solution.note ? (
-            <p className="mt-6 rounded-[16px] border border-[#b28453]/24 bg-[#b28453]/10 px-5 py-4 text-sm leading-[1.65] text-[#e0d3c3]/82">
-              {solution.note}
-            </p>
-          ) : null}
-        </div>
-
-        <div className="grid gap-5">
-          <DetailPanel title="Problema real" text={solution.problem} icon={<AlertTriangle size={17} />} />
-          <div className="grid gap-5 md:grid-cols-2">
-            <DetailPanel title="Proposta de valor" text={solution.value} icon={<Sparkles size={17} />} />
-            <DetailPanel title="Como a AUDITSEO entra" text={solution.backstage} icon={<RefreshCw size={17} />} />
-          </div>
-          <div className="rounded-[18px] border-l-2 border-[#b28453] bg-[#e0d3c3]/[0.04] px-5 py-4">
-            <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#e0d3c3]">O que sua agência passa a vender</h4>
-            <p className="mt-3 text-sm font-semibold leading-[1.7] text-[#f8f8f8]/76">{solution.agencySells}</p>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function DetailPanel({ title, text, icon }: { title: string; text: string; icon: ReactNode }) {
-  return (
-    <div className="rounded-[18px] border border-[#b28453]/18 bg-white/[0.025] p-5">
-      <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453]">
-        {icon}
-      </div>
-      <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#b28453]">{title}</h4>
-      <p className="mt-3 text-sm leading-[1.7] text-[#f8f8f8]/68">{text}</p>
     </div>
   );
 }

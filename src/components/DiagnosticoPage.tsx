@@ -14,6 +14,7 @@ import {
   Sparkles,
   BookOpen,
   Target,
+  ExternalLink,
 } from "lucide-react";
 import SiteFooter from "./SiteFooter";
 
@@ -50,7 +51,10 @@ const scenarios = [
       "Criar uma fundação estratégica de busca antes que arquitetura, conteúdo e entidade sejam definidos sem critério.",
     auditseo:
       "Atuamos na estruturação da leitura inicial, arquitetura orgânica, estrutura semântica, prioridades técnicas e sinais básicos de autoridade.",
-    evidence: "Metodologia Search Foundation: Pilares de infraestrutura para novos domínios.",
+    evidence: {
+      text: "Guia Search Intelligence: Pilares de infraestrutura para novos domínios.",
+      path: "/guias/search-intelligence",
+    },
   },
   {
     id: "activation",
@@ -62,7 +66,10 @@ const scenarios = [
       "Reposicionar a conversa com um diagnóstico de ativação orgânica e um roadmap de evolução.",
     auditseo:
       "Atuamos no mapeamento de gargalos, oportunidades, lacunas de conteúdo, problemas técnicos e prioridades de ação.",
-    evidence: "Guia de Ativação Orgânica: Como identificar e destravar potenciais reprimidos.",
+    evidence: {
+      text: "Método S.I.G.N.A.L: Como identificar e destravar potenciais reprimidos.",
+      path: "/metodo-signal",
+    },
   },
   {
     id: "recovery",
@@ -74,7 +81,10 @@ const scenarios = [
       "Transformar a queda em uma conversa técnica e estratégica sobre reconstrução de relevância, autoridade e confiança.",
     auditseo:
       "Atuamos na análise de histórico, páginas afetadas, concorrentes, sinais técnicos, autoridade e mudanças de intenção ou mercado.",
-    evidence: "Framework Search Recovery: Protocolo de investigação de quedas de visibilidade.",
+    evidence: {
+      text: "Guia Search Intelligence: Protocolo de investigação de quedas de visibilidade.",
+      path: "/guias/search-intelligence",
+    },
   },
   {
     id: "authority",
@@ -86,7 +96,10 @@ const scenarios = [
       "Criar uma frente de autoridade de entidade para sustentar reputação, contexto e validação pública.",
     auditseo:
       "Atuamos na organização da narrativa, páginas de serviço, reputação, provas, avaliações, menções, dados estruturados e consistência entre canais.",
-    evidence: "Observation #001: O impacto da consistência de marca na autoridade de entidade.",
+    evidence: {
+      text: "Guia Entity Home: A importância de uma fonte canônica clara.",
+      path: "/guias/entity-home",
+    },
   },
   {
     id: "content",
@@ -98,7 +111,10 @@ const scenarios = [
       "Reposicionar conteúdo como arquitetura de intenção, não como calendário de publicações.",
     auditseo:
       "Atuamos no mapeamento de intenções, clusters, páginas, lacunas e oportunidades conectadas à jornada orgânica.",
-    evidence: "Guia Pillar & Lab: Arquitetura de conteúdo baseada em intenção e autoridade.",
+    evidence: {
+      text: "Guia Narrativa Semântica: Arquitetura de conteúdo baseada em intenção.",
+      path: "/guias/narrativa-semantica",
+    },
   },
   {
     id: "geo",
@@ -110,7 +126,10 @@ const scenarios = [
       "Transformar a curiosidade sobre IA em uma proposta de arquitetura de contexto e sinais consistentes.",
     auditseo:
       "Atuamos na avaliação da clareza da oferta, estrutura de dados, consistência de menções e autoridade temática.",
-    evidence: "Guia de Generative Search Architecture: Como estruturar sinais para a nova era da busca.",
+    evidence: {
+      text: "Guia AI Search: Como estruturar sinais para a nova era da busca.",
+      path: "/guias/ai-search",
+    },
   },
   {
     id: "migration",
@@ -122,7 +141,10 @@ const scenarios = [
       "Criar uma camada de proteção orgânica para preservar sinais existentes e preparar crescimento futuro.",
     auditseo:
       "Atuamos no mapeamento de URLs, arquitetura, indexação, redirects, páginas prioritárias, sinais existentes e riscos de perda orgânica.",
-    evidence: "Checklist de Migração Segura: Governança de sinais durante mudanças estruturais.",
+    evidence: {
+      text: "Guia Search Intelligence: Governança de sinais em mudanças estruturais.",
+      path: "/guias/search-intelligence",
+    },
   },
   {
     id: "evolution",
@@ -134,7 +156,10 @@ const scenarios = [
       "Transformar dados, aprendizados e oportunidades em ciclos claros de evolução estratégica.",
     auditseo:
       "Atuamos no acompanhamento de sinais, consultas, páginas, concorrentes, autoridade, aprendizados e próximos movimentos.",
-    evidence: "Metodologia S.I.G.N.A.L: O ciclo de evolução constante da inteligência de busca.",
+    evidence: {
+      text: "Método S.I.G.N.A.L: O ciclo de evolução constante da inteligência de busca.",
+      path: "/metodo-signal",
+    },
   },
 ];
 
@@ -340,7 +365,7 @@ export default function DiagnosticoPage({ onNavigate }: DiagnosticoPageProps) {
             center
             eyebrow="Como funciona"
             title="Como o diagnóstico funciona"
-            text="Uma experiência rápida para transformar uma dor genérica em uma hipótese estratégica."
+            text="Uma experiênica rápida para transformar uma dor genérica em uma hipótese estratégica."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {howItWorks.map(([title, text], index) => (
@@ -542,7 +567,7 @@ function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HT
                         </span>
                       </div>
                       <h4 className="font-display text-xl font-bold leading-[1.18] text-[#f8f8f8]">{option.title}</h4>
-                      {option.text ? <p className="mt-4 text-sm leading-[1.6] text-[#f8f8f8]/60">{option.text}</p> : null}
+                      {(option as any).text ? <p className="mt-4 text-sm leading-[1.6] text-[#f8f8f8]/60">{(option as any).text}</p> : null}
                     </button>
                   );
                 })}
@@ -581,7 +606,14 @@ function OpportunityScan({ scanRef, onNavigate }: { scanRef: MutableRefObject<HT
                     <ResultBlock title="DECLARADO PELO USUÁRIO" text={result.scenario} icon={<Search size={17} />} />
                     <ResultBlock title="INFERIDO" text={result.risk} icon={<AlertTriangle size={17} />} />
                     <ResultBlock title="RECOMENDADO" text={result.opportunity} icon={<Sparkles size={17} />} />
-                    {result.evidence && <ResultBlock title="EVIDÊNCIA DE APOIO" text={result.evidence} icon={<BookOpen size={17} />} />}
+                    {result.evidence && (
+                      <ResultBlock
+                        title="EVIDÊNCIA DE APOIO"
+                        text={result.evidence.text}
+                        icon={<BookOpen size={17} />}
+                        link={{ text: "Ver referência", onClick: () => onNavigate(result.evidence!.path) }}
+                      />
+                    )}
                     <ResultBlock title="COMO A AUDITSEO PODE ATUAR" text={result.auditseo} icon={<Target size={17} />} />
                   </div>
 
@@ -695,12 +727,31 @@ function buildDiagnosticResult(answers: Answers) {
   };
 }
 
-function ResultBlock({ title, text, icon }: { title: string; text: string; icon: ReactNode }) {
+function ResultBlock({
+  title,
+  text,
+  icon,
+  link,
+}: {
+  title: string;
+  text: string;
+  icon: ReactNode;
+  link?: { text: string; onClick: () => void };
+}) {
   return (
     <div className="rounded-[18px] border border-[#b28453]/18 bg-white/[0.025] p-5">
       <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#b28453]/10 text-[#b28453]">{icon}</div>
       <h4 className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#b28453]">{title}</h4>
       <p className="mt-3 text-sm leading-[1.7] text-[#f8f8f8]/68">{text}</p>
+      {link && (
+        <button
+          onClick={link.onClick}
+          className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#b28453] transition-colors hover:text-[#e0d3c3]"
+        >
+          {link.text}
+          <ExternalLink size={12} />
+        </button>
+      )}
     </div>
   );
 }
