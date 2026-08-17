@@ -2,7 +2,7 @@
 
 **Status:** PENDING FINAL REVIEW
 **Branch:** `fix/r16b-remediation`
-**Último Commit (Final Fix):** `ae8652d9a1c91a33fcb2e0a2bb7604909a657002`
+**Último Commit (Final Fix):** `51f2777cfd14b6cdf26c6ba24c9c8f49137edd5a`
 
 ## 1. Registro de Desvio (DEV-R16B-001)
 
@@ -13,7 +13,8 @@
 ## 2. Ações Executadas (Patch Final)
 
 ### Provenance Verificável e Semântica (DiagnosticoPage.tsx)
-- **Proveniência com Links:** O bloco **EVIDÊNCIA DE APOIO** agora utiliza referências reais e verificáveis do ecossistema AUDITSEO (ex: `/guias/ai-search`, `/metodo-signal`, `/guias/entity-home`), com botões de navegação funcionais.
+- **Proveniência com Links:** O bloco **EVIDÊNCIA DE APOIO** agora utiliza referências reais e verificáveis do ecossistema AUDITSEO (ex: `/guias/ai-search`, `/metodo-signal`, `/estudos-busca-ia/reconhecimento-de-entidade-por-contexto`).
+- **Navegação Funcional:** Atualizado o `handleScrollToSection` no `App.tsx` para suportar rotas iniciadas com `/`, garantindo que os links de evidência no diagnóstico funcionem corretamente dentro da SPA.
 - **Separação Comercial:** O texto comercial (`scenario.auditseo`) foi isolado em um bloco próprio (**COMO A AUDITSEO PODE ATUAR**), removendo a confusão semântica com evidências.
 - **Correção de Inferência:** Substituído "Observamos uma dúvida latente" por "Inferimos uma dúvida latente", refletindo a natureza do assessment baseado em relato.
 - **Disclaimer de URL:** Mantido o aviso explícito de que a URL informada não é analisada tecnicamente.
