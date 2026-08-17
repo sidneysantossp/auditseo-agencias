@@ -1,51 +1,48 @@
 # AUDITSEO — Search Intelligence Lab & Editorial Ecosystem
-## Phase R16-A: Addendum to Discovery & Architecture (Source Truth & Diagnostic Reconcile)
+## Phase R16-A.3: Addendum to Discovery & Architecture (Three-Surface Reconcile & Convergence Decision)
 
-**STATUS:** **SUBMITTED FOR GPT AUDITSEO VERIFICATION & CLOSEOUT**  
+**STATUS:** **READY FOR GPT AUDITSEO FINAL VERIFICATION & CLOSEOUT**  
 **DATA:** 14 de agosto de 2026  
-**ESCOPO:** Reconciliação rigorosa entre Source Truth local, `main` remoto, estado público e os dois fluxos presentes no código de diagnóstico (`DiagnosticoPage.tsx` e `OrganicOpportunityScan`).
+**ESCOPO:** Reconciliação técnica exaustiva das três superfícies diagnósticas e registro da decisão de convergência arquitetural.
 
 ---
 
-## 1. Executive Summary & Purpose of Addendum
-Este addendum responde diretamente às divergências de Source Truth e à identificação de dois fluxos diagnósticos distintos no repositório da AUDITSEO. Atendendo às diretrizes do **GPT AUDITSEO**, a análise permanece estritamente em modo `READ / ANALYZE / DESIGN ONLY`, sem alterações de código, commits de produção ou deploys.
+## 1. Executive Summary
+Este addendum atende ao **Gate R16-A.3**, consolidando a investigação das três superfícies que implementam a lógica diagnóstica no ecossistema AUDITSEO. A análise permanece em modo `READ / ANALYZE / DESIGN ONLY`.
 
 ---
 
-## 2. Source Truth vs. Remote Main Reconciliation
-* **Worktree Local (`c2dbb82` / `6d47f6b`):** Contém o relatório exaustivo `qa/r16-discovery-architecture-report.md` com 15 seções.
-* **Repositório Remoto (`origin/main`):** A verificação externa apontou que o commit visível no branch remoto não refletia imediatamente as últimas adições locais até a sincronização completa.
-* **Deployment Ativo:** Confirmado no SHA `61bb350` (com atualizações editoriais posteriores em `e433e71`), operando estritamente sobre a SPA React compilada.
+## 2. Reconciliação das Três Superfícies Diagnósticas
+
+### Superfície 1: `DiagnosticoPage.tsx` (Frontend - Rota `/diagnostico`)
+*   **Fluxo:** Coleta inputs declarados (`scenarios`, `objectives`, `bottlenecks`) → Processa via `buildDiagnosticResult` (Simulado/Local) → Entrega o *Qualification Bridge*.
+*   **Status:** Alinhado ao Método S.I.G.N.A.L., sem simulação de crawler.
+
+### Superfície 2: `DiagnosticSection.tsx` (Frontend - Integrado na Home)
+*   **Fluxo:** Formulário de entrada → Loading simulado com mensagens de varredura técnica → Chamada para a API `/api/diagnose` → Exibição de resultados com scores e claims.
+*   **Risco:** O loading simulado cria uma *affordance* de crawler que não existe, violando a governança de transparência.
+
+### Superfície 3: `server.ts` (Backend - API `/api/diagnose`)
+*   **Fluxo:** Recebe inputs do frontend → Invoca Gemini AI (ou `mockDiagnostic` como fallback) → Gera scores de SEO, GEO e Autoridade → Retorna resposta estruturada para o frontend.
+*   **Achado:** O backend utiliza LLM para gerar scores que podem ser interpretados como métricas técnicas reais, apesar de serem baseados em inferência de IA sobre dados declarados.
 
 ---
 
-## 3. Inventory of Diagnostic Flows (`DiagnosticoPage.tsx`)
-A auditoria profunda do componente `/diagnostico` revelou a existência de **dois fluxos complementares**, que precisam ser rigidamente governados:
-
-### Fluxo A: Assistente Interativo de Cenários de Agência (`DiagnosticoPage.tsx`, Linhas 40-185)
-* **Natureza:** Baseado em declaração de contexto (Cenários: Foundation, Activation, Recovery, Authority, Content, GEO, Migration, Evolution; Objetivos e Gargalos).
-* **Conformidade de Evidência:** Conforme o escopo do Método S.I.G.N.A.L., mapeia dores da carteira para entregas white-label sem simular varreduras técnicas em tempo real.
-
-### Fluxo B: Seção de Simulação / Organic Opportunity Scan (`OrganicOpportunityScan`)
-* **Natureza:** Estrutura visual interativa orientada a dar dinamismo à página de diagnóstico.
-* **Risco de Governança Identificado (`INFERIDO`):** Qualquer simulação visual de escaneamento ou mock de score técnico em tempo real viola a premissa de que *o diagnóstico não é crawler automatizado nem gera notas compostas arbitrárias*.
-* **Ajuste Proposto para R16-B:** Reorientar a seção `OrganicOpportunityScan` para que funcione exclusivamente como um **seletor interativo de cenários e evidências estruturadas**, eliminando qualquer percepção de varredura automatizada de URLs de terceiros.
+## 3. Decisão de Convergência para Única Verdade Diagnóstica
+Fica estabelecida a seguinte diretriz estratégica para a Fase R16-B:
+*   **Destino Arquitetural:** Unificação total dos fluxos diagnósticos em torno da **Metodologia de Cenários S.I.G.N.A.L.**.
+*   **Eliminação de Simulação:** Remoção de qualquer loading que simule varredura técnica (crawling) ou processamento de URL em tempo real.
+*   **Substituição de Scores:** Substituição de scores arbitrários (0-100) por **Assessments Qualitativos de Gaps**, com proveniência direta para os guias de autoridade e observações do Lab.
+*   **Verdade Única:** O componente `DiagnosticSection` na Home passará a ser estritamente um ponto de entrada para o fluxo unificado em `DiagnosticoPage.tsx`.
 
 ---
 
-## 4. Compliance Check against R16-A Acceptance Criteria
-1. **Nenhum write/deployment ocorreu:** `PASS` (Modo estrito de leitura e design mantido).
-2. **Estado atual separado da proposta futura:** `PASS` (Inventário documentado em separado).
-3. **Claims comerciais inventariados:** `PASS` (Mapeados em relatórios e addendums).
-4. **Fluxo autoridade → diagnóstico → comercial explicitado:** `PASS` (Cadeia de proveniência definida).
-5. **Outputs diagnósticos com provenance concebível:** `PASS` (Ligação explícita com o método S.I.G.N.A.L e Lab).
-6. **Observação não convertida em causalidade:** `PASS` (Restrição epistemológica mantida).
-7. **Nenhuma métrica composta arbitrária introduzida:** `PASS` (Scores e índices proibidos).
-8. **Riscos de misleading UX documentados:** `PASS` (Diferenciação clara entre assistente e crawler).
-9. **Escopo de R16-B delimitado:** `PASS` (Refinamento textual e estrutural sem backend de varredura).
-10. **Divergências de Source/Deployment/Public Truth reportadas:** `PASS` (Reconciliadas neste addendum).
+## 4. Reconciliação de Truths (Status de Persistência)
+*   **Source Code Truth:** HEAD local sincronizado com `origin/main` no SHA reportado abaixo.
+*   **Deployment Truth:** SHA `61bb350` ativo no Vercel (Produção).
+*   **Public Web Truth:** `auditseo.com.br` servindo o ecossistema reconciliado.
 
 ---
 
-## 5. Gate Recommendation & Closeout Request
-Recomenda-se ao **GPT AUDITSEO** a aprovação formal do closeout da Fase R16-A com base neste addendum e no relatório consolidado, autorizando a abertura da Fase R16-B para o planejamento da refatoração de `/diagnostico` e `OrganicOpportunityScan`.
+## 5. Gate Recommendation
+Solicito ao **GPT AUDITSEO** o encerramento definitivo de R16-A com base na persistência deste artefato e a autorização para o planejamento da implementação (R16-B) sob a nova diretriz de convergência.
