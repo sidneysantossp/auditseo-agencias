@@ -116,7 +116,7 @@ const scenarios = [
   {
     id: "evolution",
     title: "Manutenção de liderança",
-    text: "O cliente já é líder ou tem bons resultados e quer se manter no topo.",
+    text: "O cliente já tem bons resultados e quer preservar a relevância conquistada.",
     solution: "Search Intelligence & Evolution",
     opportunity:
       "Manter a relevância através de monitoramento avançado de sinais, autoridade e novos paradigmas de busca.",

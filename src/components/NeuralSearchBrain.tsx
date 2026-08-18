@@ -660,7 +660,7 @@ export default function NeuralSearchBrain() {
             </h4>
 
             <p className="text-[11px] leading-[1.5] text-[#e0d3c3]/85 mb-4 font-normal">
-              Camada neural premium que mapeia co-ocorrências semânticas, grafos de conhecimento e inteligência de busca em tempo real para posicionamento estratégico white-label de alta performance.
+              Camada neural premium que mapeia co-ocorrências semânticas, grafos de conhecimento e inteligência de busca orientada a sinais para posicionamento estratégico white-label de alta performance.
             </p>
 
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[#b28453]/15 pt-3">
