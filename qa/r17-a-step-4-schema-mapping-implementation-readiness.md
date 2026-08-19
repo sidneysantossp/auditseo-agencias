@@ -126,7 +126,85 @@ O repositório está **documentalmente pronto para uma futura discussão de exte
 
 **Recomendação:** `PROCEED` para QA e decisão governamental do relatório do R17-A Step 4; `HOLD` para qualquer implementação, schema mapping de produção, alteração de registry, renderer, API, banco, rota, metadata pública, Vercel ou Production. Qualquer R17-B deve depender de autorização explícita após o QA deste documento.
 
-## 10. Acceptance Checklist
+## 10. Commercial Eligibility Mapping
+
+O contrato atual não possui `commercialEligibility`. O campo `commercialRelation` de `TopicGraph` e `ArticleData` é uma relação editorial de navegação para uma superfície comercial e não pode ser promovido a elegibilidade, finding, evidence ou promessa. Portanto, o estado atual é **não mapeado**, e não `NO` por inferência automática.
+
+No modelo futuro do Step 3, `commercialEligibility` pertence ao `Finding` e admite somente `YES | CONDITIONAL | NO`, sempre com rationale, allowed use e limitations separados. A ausência do campo legado não deve ser preenchida como `YES`, `CONDITIONAL` ou `NO` sem finding estruturado e provenance correspondente. Um futuro adapter deve manter `commercialRelation` como link editorial e tratar elegibilidade como dimensão independente, sem score, confidence ou garantia.
+
+| Origem atual | Destino conceitual futuro | Classificação | Regra |
+|---|---|---|---|
+| `commercialRelation` em `TopicGraph`/`ArticleData` | Link editorial | `REUSE AS-IS` no escopo de navegação | Não é evidence, finding ou elegibilidade. |
+| Ausência de `commercialEligibility` em `ResearchItem` | Campo do `Finding` | `DO NOT MAP` por default | Ausência não vira `NO` automaticamente; permanece não mapeada até existir finding/provenance. |
+| Finding futuro estruturado com limitações | `commercialEligibility` | `EXTENSION REQUIRED` | Usar somente `YES | CONDITIONAL | NO`; `allowedUse` e rationale permanecem separados. |
+
+## 11. Renderer Compatibility
+
+O renderer atual deve continuar consumindo o contrato legado sem alteração: `ResearchItemPage` e `ResearchPrimitives` exibem arrays/strings, `EvidenceItem` com rótulo e statement, query set, limitations, interpretation e recommendations. A compatibilidade de leitura é preservada enquanto o modelo-alvo não for implementado.
+
+Qualquer futura adoção deve ocorrer por uma projeção/adaptador não destrutivo e reversível. A projeção não pode substituir silenciosamente `ResearchItem`, alterar o significado visual das cinco categorias legadas, converter `INFERIDO` ou `RECOMENDADO` em source evidence, nem reutilizar os IDs posicionais `EVIDENCE-01` como IDs estáveis. O tratamento visual específico de OBS-002 continuará apresentação editorial até que outro gate autorize qualquer mudança.
+
+A compatibilidade do renderer precisa ser verificada com itens `PUBLISHED`, `DRAFT`, `MIGRATION_PENDING`, com evidence profile vazio/parcial, ausência de source, limitation ausente, query set incompleto e findings sem provenance estruturada. Nenhuma dessas verificações é executada neste Step.
+
+## 12. Migration Risks
+
+Os riscos principais são perda semântica ao converter strings em objetos, promoção indevida de `INFERIDO`/`RECOMENDADO` a evidência, duplicação de IDs canônicos, mistura entre TopicGraph e provenance, quebra do renderer legado, publicação acidental de registros `DRAFT` ou `MIGRATION_PENDING`, e preenchimento artificial de missingness.
+
+Há também risco de reclassificar relações editoriais como relações observadas, interpretar `commercialRelation` como elegibilidade, ou transportar um finding para fora do seu scope, surface, query set ou data. Esses riscos são de governança e compatibilidade, não devem ser tratados com score ou confiança arbitrária.
+
+## 13. Compatibility Options
+
+| Opção futura | Descrição | Reversibilidade | Decisão no Step 4 |
+|---|---|---|---|
+| A — Manter o legado | Preservar os contratos atuais e usar o relatório como especificação sem adapter | Alta | `PROCEED` para documentação; não implementada. |
+| B — Projeção read-only isolada | Criar uma projeção versionada de um único `ResearchItem` para validar mapping sem write-back nem publicação | Alta | Candidata ao menor experimento futuro, dependente de R17-B. |
+| C — Extensão compatível versionada | Adicionar contratos novos mantendo os campos legados e uma camada explícita de compatibilidade | Média | Exige decisão de schema, testes e autorização posterior. |
+| D — Big-bang migration | Substituir o contrato legado e migrar todos os itens/consumidores de uma vez | Baixa | `DO NOT MAP`; rejeitada no estado atual. |
+
+A opção recomendada para eventual R17-B é B, seguida de avaliação de C somente após evidência de compatibilidade. Não há autorização para executar nenhuma delas no Step 4.
+
+## 14. Recommended R17-B Scope
+
+O menor escopo reversível recomendado para um futuro R17-B é uma **projeção read-only de um único item de pesquisa existente**, preferencialmente em fixture ou superfície não pública, sem alterar o `ResearchItem` legado, sem dual-write e sem criar rota indexável. Essa projeção teria apenas a finalidade de validar o caminho `Entity/Attribute/Relationship/Topic Association → Evidence → Finding → Interpretation → Recommendation` e os estados de missingness, preservando os IDs canônicos como anchors sem duplicá-los.
+
+A validação futura deveria comparar o resultado da projeção com OBS-001 e OBS-002 sem alterar seus Source Truths, verificar a preservação do renderer legado e testar que `commercialRelation` não se converte em `commercialEligibility`. O escopo não inclui migração em massa, alteração de JSON-LD público, banco de dados, API, UI, registry, produção ou publicação de novos findings.
+
+A decisão vinculante deste Step é **NO BIG-BANG MIGRATION**. R17-B, inclusive a projeção piloto, permanece dependente de autorização formal posterior.
+
+## 15. Explicit Non-Goals
+
+Este Step não altera `researchTypes.ts`, `types.ts`, `registry.ts`, `researchRegistry.ts`, `researchSchema.ts`, `schema.ts`, `ResearchPrimitives.tsx`, `ResearchItemPage.tsx`, `ArticleData`, `TopicGraph`, qualquer registry central, renderer, rota, metadata pública, JSON-LD, API, banco, UI, Vercel ou Production. Não cria `Entity`, `Attribute`, `Relationship`, `Finding`, `Provenance` ou `Commercial Eligibility` de produção.
+
+Também não executa migração, normalização de dados, backfill de provenance, reclassificação de OBS-001/OBS-002, alteração de EvidenceCategory, adoção de score, confidence, KPI ou garantia comercial. O documento não autoriza R17-B e não transforma readiness documental em autorização de implementação.
+
+## 16. Files That Would Require Change
+
+A tabela abaixo é prospectiva e não representa alteração neste Step:
+
+| Finalidade futura | Arquivos que provavelmente exigiriam mudança | Motivo |
+|---|---|---|
+| Contratos de compatibilidade e objetos futuros | `src/editorial/researchTypes.ts`, `src/editorial/types.ts` | Definir versões/adapters sem apagar o legado. |
+| Mapping/projection de ResearchItem | Novo módulo futuro ou camada explicitamente autorizada junto de `researchRegistry.ts` | Construir projeção read-only e preservar Source Truth. |
+| Anchors e entidades canônicas | `src/editorial/registry.ts` somente se um gate autorizar extensão | Adicionar referências sem duplicar IDs existentes. |
+| Serialização futura | `src/editorial/researchSchema.ts`, `src/editorial/schema.ts` | Só se houver decisão explícita sobre JSON-LD e escopo público. |
+| Consumo visual futuro | `src/components/research/ResearchPrimitives.tsx`, `ResearchItemPage.tsx` | Renderizar objetos novos sem quebrar itens legados. |
+| Fixtures e verificações | Testes ou fixtures futuros ainda não existentes | Validar mapping, missingness, renderer, schema e rollback. |
+
+Nenhum desses arquivos foi modificado. O único arquivo alterado no Step 4 continua sendo o relatório QA.
+
+## 17. Required Tests
+
+Qualquer implementação futura deverá, antes de publicação, demonstrar ao menos: compatibilidade de tipos/build; projeção determinística de um fixture legado; preservação dos IDs canônicos sem duplicação; separação entre source-bearing Evidence, Interpretation e Recommendation; estados `MATCH | CONFLICT | MISSING | UNCLEAR | NOT_ASSESSABLE` sem conversão para score; preservação de `UNKNOWN` e `NOT ASSESSABLE`; escopo de query/surface/date; não promoção de `TopicGraph` a Knowledge Graph; não conversão de `commercialRelation` em elegibilidade; regressão do renderer para itens públicos e não públicos; e snapshots de JSON-LD sem publicação acidental de objetos não autorizados.
+
+Também seriam necessários testes de rollback: remoção da projeção sem alterar o contrato legado, reexecução idempotente, ausência de dual-write, preservação de itens sem provenance, e garantia de que um failure no caminho novo deixa a superfície legada intacta. Esses testes são requisitos de prontidão futura, não foram executados neste Step documental.
+
+## 18. Rollback / Backward Compatibility Considerations
+
+O estado atual não possui migração executada e, portanto, não requer rollback de produto. Para um gate futuro, a compatibilidade deve ser backward-compatible by default: manter `ResearchItem` e `EvidenceItem` legados como leitura, adicionar a projeção atrás de flag ou superfície isolada, evitar sobrescrita e permitir remoção do adapter sem alterar os dados históricos.
+
+Não deve haver big-bang replacement, dual-write prematuro, renomeação destrutiva de categorias ou preenchimento de campos ausentes com valores inventados. Falhas de mapping devem resultar em `MISSING`, `UNCLEAR`, `NOT_ASSESSABLE` ou gap explícito, nunca zero, score ou promoção epistemológica. Rollback deve consistir em desativar a projeção e retornar à leitura do contrato legado, mantendo IDs canônicos e Source Truth intactos.
+
+## 19. Acceptance Checklist
 
 | Critério | Resultado |
 |---|---|
@@ -137,14 +215,24 @@ O repositório está **documentalmente pronto para uma futura discussão de exte
 | IDs canônicos foram tratados como anchors, não como Entity Object completo | `PASS` |
 | TopicGraph foi mantido separado de Knowledge Graph e provenance | `PASS` |
 | Research schema foi limitado a metadata observada | `PASS` |
-| Commercial Eligibility não foi mapeada para `commercialRelation` ou schema atual | `PASS` |
+| Commercial Eligibility foi mapeada explicitamente sem usar commercialRelation como elegibilidade | `PASS` |
+| Renderer compatibility e limites de leitura legada foram explicitados | `PASS` |
+| Riscos, opções e escopo reversível para R17-B foram documentados | `PASS` |
+| Não foi recomendada big-bang migration | `PASS` |
+| Arquivos futuros, testes e rollback foram especificados sem alterações | `PASS` |
 | Nenhum score, confidence arbitrária, KPI universal ou autoridade calculada foi criado | `PASS` |
 | Nenhum código, schema, registry, renderer, rota, metadata, Vercel ou Production foi alterado | `PASS — verificar no git status` |
 | O documento permite decisão futura sem autorizar implementação atual | `PASS` |
 
-## 11. Gate Boundary
+## 20. Gate Recommendation
 
-Este documento encerra somente o mapeamento documental de readiness do R17-A Step 4. Ele não implementa, migra, normaliza ou publica objetos. O próximo gate, se autorizado pelo GPT AUDITSEO, deverá decidir se e como uma extensão futura será especificada. Até lá, `R17-B`, produto, schema, registry, renderer, API, Vercel e Production permanecem `NOT AUTHORIZED`.
+A recomendação permanece **PROCEED** para QA e decisão governamental do relatório do R17-A Step 4. O conteúdo agora explicita Commercial Eligibility Mapping, Renderer Compatibility, Migration Risks, Compatibility Options, Recommended R17-B Scope, Explicit Non-Goals, Files That Would Require Change, Required Tests e Rollback/Backward Compatibility.
+
+A recomendação permanece **HOLD** para qualquer implementação, schema mapping de produção, alteração de registry, renderer, API, banco, rota, metadata pública, Vercel ou Production. A opção futura mínima é uma projeção read-only isolada de um único item, sem big-bang migration, mas ela continua `NOT AUTHORIZED` até um gate formal posterior.
+
+## 21. Gate Boundary
+
+Este documento encerra somente o mapeamento documental de readiness do R17-A Step 4. Ele não implementa, migra, normaliza ou publica objetos. O próximo gate, se autorizado pelo GPT AUDITSEO, deverá decidir se e como a opção mínima reversível será especificada. Até lá, `R17-B`, produto, schema, registry, renderer, API, Vercel e Production permanecem `NOT AUTHORIZED`.
 
 ## References
 
