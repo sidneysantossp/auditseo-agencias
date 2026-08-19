@@ -61,7 +61,7 @@ O `researchRegistry.ts` contém os seguintes itens no corpus atual:
 | `AUDITSEO-OBS-004` | `OBSERVATION / PUBLISHED` | Consistência de atributos entre sistemas de IA; registra acordo em identidade/relações e divergências pontuais em atributos temporais, sem presumir causa interna. |
 | `AUDITSEO-ANALYSIS-001` | `ANALYSIS / MIGRATION_PENDING` | Registro migratório de análise histórica sobre autoridade de entidade e AI Overviews; o texto original não está integralmente preservado e o próprio item recomenda aguardar recuperação documental, sem fabricar conteúdo. |
 
-O corpus contém relações explícitas entre entidades, tópicos, sistemas observados, queries, findings, limitações e referências. Nenhuma dessas relações, isoladamente, autoriza concluir mecanismo interno, causalidade universal, reconhecimento garantido, citação, recomendação ou resultado comercial.
+O corpus contém relações explícitas entre entidades, tópicos, sistemas observados, queries, findings, limitações e referências. Essas relações não autorizam, isoladamente, concluir mecanismo interno, causalidade universal, reconhecimento garantido, citação, recomendação ou resultado comercial. O próprio corpus contém formulações que precisam permanecer inventariadas como inferenciais ou potencialmente excessivas, conforme a seção de revisão de evidência abaixo.
 
 ## Corpus editorial e associações temáticas
 
@@ -134,6 +134,35 @@ Há também um placeholder explícito para fotografia oficial. O inventário reg
 6. **Divergência potencial de rota:** `researchRegistry.ts` contém OBS-003 e OBS-004, enquanto o recorte de `routeMetadata` examinado no `App.tsx` não mostrou suas entradas de metadata. Isso é uma divergência de Source Truth a ser confirmada por QA posterior, não uma conclusão sobre runtime.
 7. **Fronteira comercial existente:** artigos e TopicGraph possuem relações comerciais, mas o briefing R17-A proíbe traduzir findings em promessa de ranking, AI visibility, citação ou resultado comercial.
 8. **Sem score autorizado:** o registry de pesquisa demonstra uma alternativa qualitativa em pelo menos um experimento (`YES`, `NO`, `UNCLEAR`), coerente com a proibição de score agregado; não se propõe nova métrica neste passo.
+9. **Overclaims não podem ser classificados como inexistentes:** OBS-001 e OBS-002 contêm formulações que excedem o que foi diretamente observado e devem permanecer marcadas para revisão documental.
+
+## R17-A.1 — revisão explícita de evidência e claims
+
+Esta seção foi adicionada após o veredito formal do GPT AUDITSEO. Ela não corrige os registros-fonte e não altera o produto; apenas classifica os riscos epistemológicos encontrados no inventário.
+
+| Item do Source Truth | Formulação observada | Classificação obrigatória | Limite documental |
+|---|---|---|---|
+| `AUDITSEO-OBS-001` — `interpretation` | A resolução de entidade “depende criticamente” da densidade de coocorrência entre nome e conceito técnico. | `INFERENTIAL / NEEDS REVIEW / POTENTIAL OVERCLAIM` | A observação registra diferença entre contextos e ruído de homônimos, mas não demonstra dependência crítica nem causalidade linear. |
+| `AUDITSEO-OBS-002` — `findings` | Sinais temporais conflitantes em fontes secundárias “exercem peso” na síntese de LLMs. | `POTENTIAL OVERCLAIM` | O caso documenta entidade/relação corretas e atributo temporal divergente; não identifica peso de fonte, mecanismo de síntese ou influência causal. |
+| `AUDITSEO-OBS-002` — `interpretation` | Motores generativos operariam em camadas sucessivas `Entity Resolution → Relation Resolution → Attribute Resolution → Consistency`. | `POTENTIAL INTERNAL-MECHANISM CLAIM` | A sequência é uma hipótese editorial derivada do caso, não arquitetura interna universal demonstrada de buscadores ou LLMs. |
+
+Esses itens permanecem como material de QA documental, não como conclusões estabelecidas. Qualquer etapa posterior deve preservar a distinção entre `OBSERVADO`, `INFERIDO` e `RECOMENDADO` e não pode corrigir o registro-fonte dentro deste gate sem autorização específica.
+
+## Metadata pública marcada para revisão
+
+O inventário também marca para revisão, sem corrigir neste gate, metadata pública que pode carregar overclaim ou pressuposto não demonstrado:
+
+| Superfície | Claim/metadata observada | Classificação |
+|---|---|---|
+| `src/App.tsx` — `/guias/o-que-e-entidade-seo` | “como o Google e a IA resolvem identidades” | `NEEDS REVIEW / POSSIBLE INTERNAL-MECHANISM FRAMING`; descreve mecanismos de forma ampla demais para o corpus demonstrado. |
+| `src/App.tsx` — `/guias/desambiguacao-de-entidades` | “como separar nomes iguais em grafos” | `NEEDS REVIEW`; “grafos” pode ser lido como estrutura interna de sistemas e não está aqui qualificado como modelo editorial AUDITSEO. |
+| `src/App.tsx` — `/guias/geo-readiness` | `GEO Readiness` e “como preparar marcas para a nova busca” | `NEEDS REVIEW`; o termo é metadata pública e não deve ser tratado como estado mensurável, garantia ou capacidade demonstrada sem governança adicional. |
+
+Esses itens foram apenas inventariados e classificados. Não houve edição de `src/App.tsx`, dos artigos, dos registries ou de qualquer componente.
+
+## Persistência da primeira versão
+
+A primeira versão do inventário e do briefing foi persistida em `main` no commit `8f0f8cd231bbcb6d343417a78ba1f6c6bd9ba7e5`. Esta revisão R17-A.1 deverá ser publicada em um novo commit e seu SHA final será reportado separadamente ao GPT AUDITSEO.
 
 ## Gaps e perguntas abertas
 
