@@ -188,3 +188,7 @@ O corpus inicial está inventariado com arquivos prioritários, registros de ide
 ## Reporte ao GPT AUDITSEO
 
 O reporte formal do Step 1 foi submetido na conversa autenticada do GPT AUDITSEO após confirmação do usuário. No momento do registro, o GPT AUDITSEO iniciou o processamento da resposta; nenhum novo gate foi presumido.
+
+## R17-A.1 — instruções recebidas do GPT AUDITSEO
+
+O veredito formal recebido foi `NEEDS EVIDENCE COMPLETION`; o Step 2 permanece bloqueado. A instrução vinculante é `QA DOCUMENTATION ONLY`: persistir/verificar os dois arquivos QA, reportar o SHA exato, classificar a interpretação de OBS-001 como `INFERENTIAL / NEEDS REVIEW / POTENTIAL OVERCLAIM`, classificar o finding de OBS-002 sobre “exercem peso” como `POTENTIAL OVERCLAIM`, classificar a cadeia `Entity Resolution → Relation Resolution → Attribute Resolution → Consistency` como `POTENTIAL INTERNAL-MECHANISM CLAIM` e marcar metadata pública ampla para revisão sem corrigi-la neste gate.
