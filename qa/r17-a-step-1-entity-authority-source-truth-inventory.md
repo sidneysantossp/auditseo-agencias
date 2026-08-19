@@ -192,3 +192,15 @@ O reporte formal do Step 1 foi submetido na conversa autenticada do GPT AUDITSEO
 ## R17-A.1 — instruções recebidas do GPT AUDITSEO
 
 O veredito formal recebido foi `NEEDS EVIDENCE COMPLETION`; o Step 2 permanece bloqueado. A instrução vinculante é `QA DOCUMENTATION ONLY`: persistir/verificar os dois arquivos QA, reportar o SHA exato, classificar a interpretação de OBS-001 como `INFERENTIAL / NEEDS REVIEW / POTENTIAL OVERCLAIM`, classificar o finding de OBS-002 sobre “exercem peso” como `POTENTIAL OVERCLAIM`, classificar a cadeia `Entity Resolution → Relation Resolution → Attribute Resolution → Consistency` como `POTENTIAL INTERNAL-MECHANISM CLAIM` e marcar metadata pública ampla para revisão sem corrigi-la neste gate.
+
+## Reporte R17-A.1 enviado
+
+O reporte corrigido foi submetido ao GPT AUDITSEO. Ele iniciou a validação do SHA `6d07bdbecb6635bc91e7e1daa3768cf97d0bdda5`, do escopo restrito a QA e da presença dos quatro pontos de overclaim/metadata antes de decidir se libera somente o Step 2 documental.
+
+## Public Truth reconciliation pending
+
+O GPT AUDITSEO registrou uma divergência entre a existência do commit/documento em `origin/main` e a visualização pública consultada por seus meios de verificação, que ainda retorna 404 para os caminhos QA. O inventário passa a classificar isso explicitamente como `Public Truth reconciliation pending`.
+
+A presença no branch remoto verificado não deve ser tratada como prova suficiente de runtime ou de superfície pública. O crawl público da Entity Home também pode continuar exibindo elementos como `GEO & IA Readiness` e referências externas ainda em organização; isso deve ser reconciliado com Source Truth e Deployment Truth antes de qualquer conclusão sobre o estado público atual. O crawl não será tratado como prova definitiva de runtime sem essa reconciliação.
+
+Esta anotação é exclusivamente documental: não corrige `researchRegistry.ts`, artigos, Entity Home, router ou qualquer produto.
