@@ -41,7 +41,43 @@ São proibidos, neste Step 3, objetos ou campos que impliquem um valor agregado 
 
 Uma fonte oficial, controlada externamente ou independente pode desempenhar papéis diferentes. `Primary`, `Supporting` e `Background` descrevem a relação da evidência com a proposição analisada; não são notas de qualidade nem uma ordem universal de confiança. A fonte canônica da organização ajuda a registrar a verdade declarada pelo ecossistema AUDITSEO, mas não prova sozinha o comportamento de uma plataforma externa.
 
-### 2.7 Causalidade e arquitetura interna permanecem fora do modelo
+### 2.7 Entity Object Contract
+
+`Entity` é o objeto canônico ou observado ao qual um finding se refere. O modelo não trata `Authority` como um nó adicional nem como um valor calculado. Quando `Entity Authority` aparece, ele permanece uma categoria metodológica agregadora da AUDITSEO, ligada aos findings que a compõem.
+
+| Campo conceitual | Obrigatoriedade | Função e limite |
+|---|---|---|
+| `entityId` | Obrigatório | Identificador interno estável ou identificador canônico disponível; não é score. |
+| `type` | Obrigatório quando conhecido | Tipo editorial, como `PERSON`, `ORGANIZATION`, `PRODUCT`, `SERVICE` ou `TOPIC`; quando não conhecido, usar `UNKNOWN`. |
+| `canonicalName` | Obrigatório quando houver referência canônica | Nome usado pela referência de identidade; não elimina variantes observadas. |
+| `canonicalUrl` | Quando houver | URL canônica ou `NOT AVAILABLE`; não prova que uma plataforma a usou. |
+| `knownVariants` | Quando relevante | Nomes, grafias ou aliases observados, sem inferir equivalência automática. |
+| `scope` / `context` | Obrigatório para análise situada | Delimita país, idioma, tópico, query set, sistema, surface ou período. |
+| `evidenceRefs` | Quando o objeto for observado | Evidências que sustentam a identificação ou a relação; um gap deve ser marcado explicitamente. |
+| `limitations` | Quando aplicável | Ambiguidade, homônimos, referência incompleta ou ausência de acesso. |
+
+A distinção entre `canonical entity` e `presented entity` deve ser mantida quando uma superfície apresentar uma entidade que precisa ser comparada à referência. `Entity Object` registra identidade e contexto; não registra autoridade, força, confiança ou preferência algorítmica.
+
+### 2.8 Attribute Model
+
+`Attribute` é uma propriedade verificável de uma entidade ou relação. Ele deve permanecer como objeto comparável, e não como um índice de qualidade. Um atributo pode ser cargo, relação organizacional, descrição, localização, data, especialidade ou outro predicado definido pelo escopo.
+
+| Campo conceitual | Obrigatoriedade | Função e limite |
+|---|---|---|
+| `attributeId` | Obrigatório | Identificador do atributo dentro do finding; não é score. |
+| `subjectEntityRef` | Obrigatório | Entidade à qual o atributo se refere. |
+| `attributeType` / `predicate` | Obrigatório | Nome controlável do atributo, como `JOB_TITLE`, `FOUNDER_OF`, `START_DATE` ou `SPECIALTY`. |
+| `canonicalValue` / `expectedValue` | Quando houver referência de comparação | Valor documentado ou canônico usado como comparação, com `provenanceRef`. |
+| `observedValue` | Quando houver captura | Valor efetivamente observado na resposta, source ou documento. |
+| `valueType` | Quando relevante | Tipo do valor: texto, data, relação, localização ou outro tipo explicitamente definido. |
+| `status` | Obrigatório | Um dos estados `MATCH`, `CONFLICT`, `MISSING`, `UNCLEAR` ou `NOT_ASSESSABLE`. |
+| `scope` / `validAt` | Quando aplicável | Contexto temporal, geográfico, query, system ou surface do valor. |
+| `evidenceRefs` / `provenanceRefs` | Obrigatório, salvo gap explícito | Liga o atributo ao documento, captura, registry ou protocolo que permite sua revisão. |
+| `limitations` | Quando aplicável | Registra conflito, acesso parcial, data desconhecida ou impossibilidade de comparação. |
+
+`MATCH` significa alinhamento dentro da referência e do escopo declarados; `CONFLICT` significa divergência observável; `MISSING` significa que o valor esperado não foi encontrado no recorte; `UNCLEAR` significa que a leitura não pode ser classificada; `NOT_ASSESSABLE` significa que a evidência necessária está indisponível. Nenhum estado produz `attribute quality score` ou `authority score`.
+
+### 2.9 Causalidade e arquitetura interna permanecem fora do modelo
 
 O modelo pode registrar que duas condições apareceram juntas ou que um estado mudou entre observações. Não pode registrar como fato que uma intervenção causou essa mudança sem desenho experimental apropriado. Tampouco pode representar como arquitetura conhecida a cadeia `Entity Resolution → Relation Resolution → Attribute Resolution → Consistency`; essa cadeia permanece uma hipótese/modelo editorial inferencial quando utilizada para interpretar OBS-002.
 
@@ -93,6 +129,7 @@ O `Finding` é uma proposição auditável sobre uma entidade, relação, atribu
 | `evidenceRefs` | Um ou mais `evidenceId` | Obrigatório, salvo gap explicitamente marcado. |
 | `provenanceRefs` | Referências de origem e contexto | Permite reconstruir a captura e a fonte que foi consultada. |
 | `status` | Estado descritivo, como `MATCH`, `MISMATCH`, `PRESENT`, `ABSENT`, `UNCLEAR`, `UNKNOWN`, `NOT ASSESSABLE` ou `NOT DEMONSTRATED` | Estados não devem ser convertidos em score ou ranking. |
+| `commercialEligibility` | Obrigatório | Exatamente `YES`, `CONDITIONAL` ou `NO`; classifica elegibilidade comercial delimitada, não verdade epistemológica. |
 | `limitations` | Limitações específicas do finding | Evita generalização indevida. |
 | `reviewNote` | Nota de revisão ou conflito | Deve registrar overclaim, revisão pendente ou divergência sem apagar o dado original. |
 
@@ -263,16 +300,24 @@ O modelo deve impedir:
 
 ## 14. Public Truth e elegibilidade comercial
 
-A verdade epistemológica e a elegibilidade comercial devem permanecer separadas. O modelo pode apoiar uma conversa comercial quando há findings reproduzíveis sobre identidade, relação, atributo, associação, source, citation ou consistência no escopo de um protocolo. Isso não autoriza promessa de resultado.
+A verdade epistemológica e a elegibilidade comercial devem permanecer separadas. O campo `commercialEligibility` usa exatamente três estados, sem um quarto estado implícito:
 
-| Claim ou estado | Tratamento no modelo |
+| Estado | Semântica AUDITSEO |
 |---|---|
-| `OBSERVED_RECOGNITION` | `CONDITIONAL`: descreve reconhecimento em contexto observado, sem universalidade. |
-| `ENTITY_PRESENT` | `CONDITIONAL`: presença na captura; não equivale a autoridade ou recomendação. |
-| `ATTRIBUTE_MISMATCH` | `DIAGNOSTICALLY ELIGIBLE`: pode justificar investigação factual, sem atribuir causa. |
-| `LOW ENTITY AUTHORITY` | `NO / NOT DEMONSTRATED`: não deve ser usado como finding sem método e evidência que o sustentem. |
-| `Citation guarantee`, `authority score`, `ranking promise` | `REMOVE / AVOID`: não são claims autorizadas pelo modelo. |
-| `Recommendation` | `CONDITIONAL`: só existe quando vinculada a finding e limitações. |
+| `YES` | O finding é reproduzível e suficientemente delimitado para orientar a definição de um escopo comercial diagnóstico; não afirma autoridade nem promete resultado. |
+| `CONDITIONAL` | O finding pode apoiar uma conversa comercial somente com escopo, protocolo, qualificadores, revisão de evidência e limitações explícitos; não promete resultado. |
+| `NO` | O finding não pode ser usado como claim comercial ou promessa, por ausência de demonstração, extrapolação ou proibição metodológica. |
+
+O modelo pode apoiar uma conversa comercial quando há findings reproduzíveis sobre identidade, relação, atributo, associação, source, citation ou consistência no escopo de um protocolo. Isso não autoriza promessa de resultado.
+
+| Claim ou estado | Commercial Eligibility | Tratamento e limite |
+|---|---|---|
+| `OBSERVED_RECOGNITION` | `CONDITIONAL` | Descreve reconhecimento em contexto observado, sem universalidade. |
+| `ENTITY_PRESENT` | `CONDITIONAL` | Presença na captura; não equivale a autoridade ou recomendação. |
+| `ATTRIBUTE_MISMATCH` | `CONDITIONAL` | Pode justificar investigação factual delimitada, sem atribuir causa. |
+| `LOW ENTITY AUTHORITY` | `NO` | Não demonstrado; não deve ser usado como finding sem método e evidência que o sustentem. |
+| `Citation guarantee`, `authority score`, `ranking promise` | `NO` | Claims removidas/evitadas; não são autorizadas pelo modelo. |
+| `Recommendation` | `CONDITIONAL` | Só existe quando vinculada a finding e limitações. |
 
 O modelo não deve criar metadata pública, copy comercial, schema ou rota. A classificação acima é uma regra documental para impedir que um finding seja promovido indevidamente durante futura revisão.
 
@@ -308,6 +353,7 @@ O Step 3 documental é considerado conforme quando:
 | OBS-001 permanece contextual e não causal | `PASS` |
 | OBS-002 não é apresentada como mecanismo interno ou arquitetura conhecida | `PASS` |
 | `AI_AUTHORITY_SCORE`, `ENTITY_STRENGTH` e equivalentes agregados são proibidos | `PASS` |
+| `Commercial Eligibility` usa exclusivamente `YES`, `CONDITIONAL` ou `NO` | `PASS` |
 | `OBSERVED_RECOGNITION` permanece condicional e “LOW ENTITY AUTHORITY” permanece `NOT DEMONSTRATED` | `PASS` |
 | Nenhum código, schema, registry, rota, metadata pública, Vercel ou Production foi alterado | `PASS — a verificar no git status` |
 
