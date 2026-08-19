@@ -204,7 +204,51 @@ O estado atual não possui migração executada e, portanto, não requer rollbac
 
 Não deve haver big-bang replacement, dual-write prematuro, renomeação destrutiva de categorias ou preenchimento de campos ausentes com valores inventados. Falhas de mapping devem resultar em `MISSING`, `UNCLEAR`, `NOT_ASSESSABLE` ou gap explícito, nunca zero, score ou promoção epistemológica. Rollback deve consistir em desativar a projeção e retornar à leitura do contrato legado, mantendo IDs canônicos e Source Truth intactos.
 
-## 19. Acceptance Checklist
+## 19. Missingness and Raw Capture Mapping
+
+O contrato atual não garante uma captura bruta estruturada. `EvidenceItem` oferece `type`, `statement`, `source?`, `limitations?` e `notes?`; `ResearchItem` oferece contexto editorial como queries, sistemas observados, datas e referências quando existentes, mas não garante locale, surface, timestamp de captura, payload bruto, trecho de resposta ou identificador de captura estável. Esses campos não podem ser inventados durante um mapping futuro.
+
+| Campo/estado atual | Destino conceitual | Tratamento seguro |
+|---|---|---|
+| `statement` com classe `DOCUMENTADO`, `OBSERVADO` ou `TESTADO` e contexto suficiente | Evidence Item source-bearing | Pode ser candidato a `observedText`, sempre preservando a origem, o contexto e as limitações; não vira raw capture por si só. |
+| `source` presente | `sourceRef`/provenance | Reutilizar apenas como referência de origem; não presumir que a fonte contém o payload capturado. |
+| `limitations` e `notes` | Limitações e notas de provenance | Preservar textualmente; não converter em finding ou interpretação. |
+| `query`, `systemsObserved`, data ou referência disponíveis | Contexto de provenance | Reutilizar com o escopo efetivamente observado; ausência permanece ausência. |
+| Captura bruta, locale, surface, timestamp ou payload ausente | Raw Capture | `MISSING`, `UNCLEAR` ou `NOT_ASSESSABLE`, conforme o caso; nunca preencher com zero, valor padrão ou inferência. |
+| `INFERIDO` ou `RECOMENDADO` no contrato legado | Interpretation/Recommendation | Não mapear como source-bearing Evidence Item; exigir referência a evidence/finding de base. |
+
+A regra de missingness é **não promover ausência a evidência**. Um objeto futuro somente poderá afirmar captura bruta quando houver referência reproduzível ao registro, contexto temporal e de superfície, query/sistema quando pertinente e limitation explícita. Sem isso, o estado é um gap de evidência ou `NOT_ASSESSABLE`, não um resultado negativo.
+
+## 20. Migration Decision Record
+
+A decisão documental é preservar o contrato legado como leitura e evitar qualquer migração em massa. O estado seguro atual é `NO MIGRATION`; a opção futura candidata é uma projeção read-only e versionada, sem write-back, sem dual-write e sem publicação. A extensão compatível somente deve ser considerada depois de testes de fixture, renderer, missingness, identidade e rollback.
+
+| Opção | Escopo | Contratos legados preservados | Reversibilidade | Estado |
+|---|---|---|---|---|
+| A — Sem migração | Documentação e leitura apenas | `ResearchItem`, `EvidenceItem`, `TopicGraph`, renderer e JSON-LD atuais | Total | Estado atual aprovado. |
+| B — Projeção read-only | Um fixture ou um único `ResearchItem`, sem rota pública | Todos os contratos acima, sem write-back | Alta | Menor experimento futuro; não autorizado agora. |
+| C — Extensão compatível versionada | Novos objetos atrás de adapter/feature flag | Campos e consumidores legados permanecem disponíveis | Média | Exige R17-B formal. |
+| D — Big-bang migration | Substituição e backfill global | Não preserva compatibilidade por default | Baixa | Rejeitada; `NO BIG-BANG MIGRATION`. |
+
+A decisão vinculante do Step 4 é A no presente e B como único candidato a eventual R17-B. Nenhuma opção de migration foi executada e nenhuma alteração de schema foi autorizada.
+
+## 21. Minimal R17-B Experiment and Legacy Contracts
+
+O menor experimento reversível é uma **projeção read-only de um único `ResearchItem` existente**, executada sobre fixture ou superfície não pública, sem alterar o Source Truth, sem criar rota indexável, sem alterar o renderer e sem persistir objetos novos. O objetivo é comparar o contrato legado com uma representação conceitual de `Entity/Attribute/Relationship/Topic Association → Evidence → Finding → Interpretation → Recommendation` e medir somente preservação, missingness e reversibilidade.
+
+Durante esse experimento permaneceriam intactos: `src/editorial/researchTypes.ts`, `src/editorial/types.ts`, `src/editorial/registry.ts`, `src/editorial/researchRegistry.ts`, `src/editorial/researchSchema.ts`, `src/editorial/schema.ts`, `src/components/research/ResearchPrimitives.tsx`, `src/components/research/ResearchItemPage.tsx`, os IDs canônicos, o `EvidenceCategory` de cinco classes, o `ResearchItem` flat, o `TopicGraph`, a renderização pública, JSON-LD, rotas, metadata, Vercel e Production. A projeção não poderia reclassificar `commercialRelation`, OBS-001 ou OBS-002.
+
+O experimento somente seria considerado reversível se a projeção pudesse ser desligada ou descartada sem alterar qualquer contrato, dado histórico ou output público. Esse experimento é recomendação documental para um gate futuro, não autorização de execução.
+
+## 22. Test and Rollback Readiness
+
+Antes de qualquer implementação futura, o mapping deverá ser validado por uma matriz de testes. A validação mínima inclui uma fixture de `ResearchItem` legado com evidência completa, evidência parcial, ausência de source, limitation ausente, query incompleta, item `DRAFT`, item `PUBLISHED`, `MIGRATION_PENDING`, `INFERIDO` e `RECOMENDADO`. O resultado esperado deve confirmar que a projeção é determinística, não duplica IDs, não promove TopicGraph a Knowledge Graph, não converte `commercialRelation` em elegibilidade e não publica objetos não autorizados.
+
+Também devem ser verificados: preservação do renderer antes/depois; manutenção de `MISSING`, `UNCLEAR`, `NOT_ASSESSABLE`, `UNKNOWN` e gaps sem conversão para zero; isolamento de `source-bearing Evidence`, `Interpretation` e `Recommendation`; ausência de score, confidence ou ranking; e snapshots de serialização sem novos objetos públicos. Nenhum desses testes foi executado neste Step documental.
+
+O rollback futuro deve ser operacionalmente simples: desativar o adapter/projeção, remover a leitura da superfície experimental, confirmar que o renderer legado continua consumindo o `ResearchItem` original e preservar o estado do repositório sem backfill destrutivo. Como não haverá migração nem dual-write no experimento mínimo, não existirá rollback de dados; o rollback será a remoção da projeção e a volta integral ao contrato legado. Falhas de mapping devem bloquear a projeção e preservar o estado anterior.
+
+## 23. Acceptance Checklist
 
 | Critério | Resultado |
 |---|---|
@@ -223,14 +267,21 @@ Não deve haver big-bang replacement, dual-write prematuro, renomeação destrut
 | Nenhum score, confidence arbitrária, KPI universal ou autoridade calculada foi criado | `PASS` |
 | Nenhum código, schema, registry, renderer, rota, metadata, Vercel ou Production foi alterado | `PASS — verificar no git status` |
 | O documento permite decisão futura sem autorizar implementação atual | `PASS` |
+| Missingness e raw capture foram mapeados sem inventar campos ausentes | `PASS` |
+| `INFERIDO`/`RECOMENDADO` não foram promovidos a source-bearing Evidence | `PASS` |
+| A decisão `NO MIGRATION` e as opções futuras foram explicitadas | `PASS` |
+| O menor experimento R17-B foi definido como projeção read-only de um único `ResearchItem` | `PASS` |
+| Os contratos legados que permanecem intactos foram listados | `PASS` |
+| Testes de fixture, renderer, missingness, identidade, serialização e rollback foram definidos | `PASS — não executados neste Step` |
+| O rollback futuro foi definido como desligamento da projeção sem alteração do legado | `PASS` |
 
-## 20. Gate Recommendation
+## 24. Gate Recommendation
 
 A recomendação permanece **PROCEED** para QA e decisão governamental do relatório do R17-A Step 4. O conteúdo agora explicita Commercial Eligibility Mapping, Renderer Compatibility, Migration Risks, Compatibility Options, Recommended R17-B Scope, Explicit Non-Goals, Files That Would Require Change, Required Tests e Rollback/Backward Compatibility.
 
 A recomendação permanece **HOLD** para qualquer implementação, schema mapping de produção, alteração de registry, renderer, API, banco, rota, metadata pública, Vercel ou Production. A opção futura mínima é uma projeção read-only isolada de um único item, sem big-bang migration, mas ela continua `NOT AUTHORIZED` até um gate formal posterior.
 
-## 21. Gate Boundary
+## 25. Gate Boundary
 
 Este documento encerra somente o mapeamento documental de readiness do R17-A Step 4. Ele não implementa, migra, normaliza ou publica objetos. O próximo gate, se autorizado pelo GPT AUDITSEO, deverá decidir se e como a opção mínima reversível será especificada. Até lá, `R17-B`, produto, schema, registry, renderer, API, Vercel e Production permanecem `NOT AUTHORIZED`.
 
