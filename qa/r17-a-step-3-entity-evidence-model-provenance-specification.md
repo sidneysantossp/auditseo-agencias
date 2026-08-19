@@ -114,6 +114,32 @@ A interface atual já expõe, para itens de pesquisa, `type`, `statement`, `sour
 
 `INFERIDO` e `RECOMENDADO` são camadas analíticas, não substitutes para `sourceRef`. Uma recomendação pode referenciar findings e evidências, mas não pode se apresentar como evidência observada.
 
+### 3.2 Evidence Item versus objetos analíticos
+
+A interface e o registry atuais usam `EvidenceItem` como um contrato editorial de governança ligado a um `ResearchItem`. Esse contrato contém `type`, `statement`, `source`, `limitations` e `notes`, além de query, sistema e resumo de resultado quando disponíveis. O Step 3 não renomeia esse tipo, não cria um novo tipo TypeScript e não altera seu renderer. A expressão **Evidence Item** neste documento é a unidade lógica documental correspondente a esse registro de fonte ou captura.
+
+A fronteira obrigatória é a seguinte:
+
+| Objeto | Natureza | Pode conter | Não pode ser confundido com |
+|---|---|---|---|
+| `EvidenceItem` / Evidence Item | Fonte, captura ou registro documental reproduzível | `evidenceId`, classe editorial, source/reference, captured value, contexto, data/surface/query quando necessários e limitations | Finding, interpretação, recomendação ou conclusão de authority. |
+| `Entity` | Objeto de identidade canônica ou apresentada | Identificador, tipo, nome canônico, URL, variantes, escopo e referências | Evidence source ou authority calculada. |
+| `Attribute` | Propriedade verificável de uma entidade ou relação | Predicado, valor esperado/canônico, valor observado, tipo de valor, estado e provenance | Evidence Item; o atributo aponta para evidence. |
+| `Relationship` | Ligação entre entidades ou entidade–objeto | Sujeito, predicado, objeto, estado declarado/documentado/observado e provenance | Evidence Item; proximidade textual não cria relação. |
+| `Topic Association` | Associação temática situada em query set/contexto | Entidade, tópico, contexto, estado observado, evidenceRefs e limitation | Entity Authority global, Knowledge Graph interno ou reconhecimento universal. |
+| `Finding` | Proposição analítica construída sobre evidence identificável | Subject/entity, scope, findingType, evidenceClass, evidenceRefs, statement, interpretation, limitations, recommendation e commercialEligibility | Captura bruta, source evidence ou mecanismo interno. |
+| `Interpretation` | Leitura inferencial explicitamente derivada de findings/evidências | Hipótese, rationale, evidenceRefs, limitations e review state | Observação direta, documentação da plataforma ou arquitetura conhecida. |
+| `Recommendation` | Orientação editorial ou pergunta de pesquisa | Ação, basisFindingRefs, evidenceRefs, scope, dependencies e limitations | Evidence source ou garantia comercial. |
+| `Commercial Eligibility` | Classificação contextual do finding para uso comercial | Exatamente `YES`, `CONDITIONAL` ou `NO`, com rationale e limitations | Evidência, score, nível de confiança ou claim de resultado. |
+
+O fluxo abaixo é uma relação de referência documental, não uma sequência causal nem uma arquitetura de sistema:
+
+> `Entity / Attribute / Relationship / Topic Association` **referenciam** `Evidence Item`; `Finding` **agrega uma proposição sobre** esses objetos e referencia a mesma provenance; `Interpretation` **explica uma leitura** do finding; `Recommendation` **propõe uma ação** a partir do finding; `Commercial Eligibility` **classifica o uso comercial delimitado do finding**.
+
+A distinção também resolve a ambiguidade do campo `type` do contrato legado. O renderer atual pode exibir `DOCUMENTADO`, `OBSERVADO`, `TESTADO`, `INFERIDO` ou `RECOMENDADO` como rótulo de governança. No modelo do Step 3, entretanto, `INFERIDO` e `RECOMENDADO` não são `source evidence`: são camadas analíticas que precisam apontar para Evidence Items ou findings de base. O rótulo legado não autoriza uma recomendação a fingir que é uma captura, nem uma inferência a fingir que é documentação externa.
+
+As regras de fronteira são: `Evidence Item` sem `Finding` continua válido como registro documental não interpretado; `Finding` sem `evidenceRefs` somente pode existir como `EVIDENCE_GAP` explicitamente marcado; `Interpretation` sem evidence/finding é inválida; `Recommendation` sem finding é inválida; e `Commercial Eligibility` sem finding delimitado é `NO`, não uma evidência independente. Nenhuma dessas regras cria schema ou implementação neste Step.
+
 ## 4. Finding Model
 
 O `Finding` é uma proposição auditável sobre uma entidade, relação, atributo, associação temática, consistência, corroboração, visibilidade ou citação. Ele é mais específico do que uma narrativa geral e deve poder ser reavaliado sem reescrever a evidência original.
@@ -343,6 +369,7 @@ O Step 3 documental é considerado conforme quando:
 | Critério | Resultado desta especificação |
 |---|---|
 | Evidence Item, Finding e Provenance Rules foram definidos antes da validação dos casos | `PASS` |
+| A fronteira entre Evidence Item legado e Entity, Attribute, Relationship, Topic Association, Finding, Interpretation, Recommendation e Commercial Eligibility está explícita | `PASS` |
 | Cada finding possui caminho para provenance ou é explicitamente marcado como gap | `PASS` |
 | Evidence e inference são objetos conceitualmente distintos | `PASS` |
 | Observation, Interpretation e Recommendation permanecem separados | `PASS` |
@@ -354,6 +381,7 @@ O Step 3 documental é considerado conforme quando:
 | OBS-002 não é apresentada como mecanismo interno ou arquitetura conhecida | `PASS` |
 | `AI_AUTHORITY_SCORE`, `ENTITY_STRENGTH` e equivalentes agregados são proibidos | `PASS` |
 | `Commercial Eligibility` usa exclusivamente `YES`, `CONDITIONAL` ou `NO` | `PASS` |
+| `Evidence Item` não é confundido com objeto analítico, source interna ou authority calculada | `PASS` |
 | `OBSERVED_RECOGNITION` permanece condicional e “LOW ENTITY AUTHORITY” permanece `NOT DEMONSTRATED` | `PASS` |
 | Nenhum código, schema, registry, rota, metadata pública, Vercel ou Production foi alterado | `PASS — a verificar no git status` |
 
